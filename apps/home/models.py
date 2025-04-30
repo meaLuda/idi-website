@@ -5,7 +5,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class TeamMember(models.Model):
     name = models.CharField(max_length=100)
     position = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='team/')
+    image = models.ImageField(upload_to='uploads/team/')
     background_shape = models.ImageField(upload_to='team/shapes/', blank=True, null=True)
     bio = RichTextUploadingField('bio', config_name='extends')  
     linkedin = models.URLField(blank=True)
@@ -33,7 +33,7 @@ class TeamMember(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-    thumbnail = models.ImageField(upload_to='projects/thumbnails/', help_text="Main image shown in grid")
+    thumbnail = models.ImageField(upload_to='uploads/projects/thumbnails/', help_text="Main image shown in grid")
     content = RichTextUploadingField('Content', config_name='extends')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -49,7 +49,7 @@ class Project(models.Model):
         super().save(*args, **kwargs)
     
     def get_absolute_url(self):
-        return f'/projects/{self.slug}/'
+        return f'uploads/projects/{self.slug}/'
 
     def __str__(self):
         return self.title
@@ -61,8 +61,7 @@ class Testimonial(models.Model):
     position = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
     content = models.TextField()
-    image = models.ImageField(upload_to='testimonials/', blank=True, null=True)
-    rating = models.IntegerField(default=5, choices=[(1, '1 Star'), (2, '2 Stars'), (3, '3 Stars'), (4, '4 Stars'), (5, '5 Stars')])
+    image = models.ImageField(upload_to='uploads/testimonials/', blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     order = models.IntegerField(default=0)
