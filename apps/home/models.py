@@ -6,7 +6,7 @@ class TeamMember(models.Model):
     name = models.CharField(max_length=100)
     position = models.CharField(max_length=100)
     image = models.ImageField(upload_to='uploads/team/')
-    background_shape = models.ImageField(upload_to='team/shapes/', blank=True, null=True)
+    background_shape = models.ImageField(upload_to='uploads/team/shapes/', blank=True, null=True)
     bio = RichTextUploadingField('bio', config_name='extends')  
     linkedin = models.URLField(blank=True)
     slug = models.SlugField(unique=True, blank=True)
@@ -24,7 +24,7 @@ class TeamMember(models.Model):
         return None
 
     def get_absolute_url(self):
-        return f'/team/{self.slug}/'
+        return f'uploads//team/{self.slug}/'
     
     def __str__(self):
         return self.name
