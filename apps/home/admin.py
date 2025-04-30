@@ -28,13 +28,13 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ('name', 'company', 'position', 'rating', 'is_active', 'order')
-    list_filter = ('is_active', 'rating', 'created_at')
+    list_display = ('name', 'company', 'position', 'is_active', 'order')
+    list_filter = ('is_active', 'created_at')
     search_fields = ('name', 'company', 'content')
     list_editable = ('order', 'is_active')
     fieldsets = (
         (None, {
-            'fields': ('name', 'position', 'company', 'content', 'rating', 'image')
+            'fields': ('name', 'position', 'company', 'content', 'image')
         }),
         ('Settings', {
             'fields': ('is_active', 'order')

@@ -251,6 +251,22 @@
                         </div>
                     </a>
                 </div>
+                {% empty %}
+                    <div class="w-full">
+                        <div class="bg-white rounded-xl p-8 shadow-md flex flex-col items-center justify-center">
+                            <div class="text-gray-400 mb-4">
+                                <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-700 italic text-center">
+                                No Projects available at the moment.
+                            </p>
+                            <p class="text-gray-500 text-sm text-center">
+                                Please check back later.
+                            </p>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
             <!-- Navigation buttons -->
@@ -396,23 +412,11 @@
                         {% for testimonial in testimonials %}
                         <div class="swiper-slide">
                             <div class="bg-white rounded-xl p-8 shadow-md">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-[#f99a00]">
-                                        <!-- Star Rating -->
-                                        <div class="flex">
-                                            {% for i in "12345"|make_list %}
-                                                {% if forloop.counter <= testimonial.rating %}
-                                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                                </svg>
-                                                {% else %}
-                                                <svg class="w-5 h-5 text-gray-300 fill-current" viewBox="0 0 24 24">
-                                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                                </svg>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    </div>
+                                <!-- Quote icon -->
+                                <div class="text-[#006B7D]/10 mb-2">
+                                    <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                                    </svg>
                                 </div>
                                 <p class="text-gray-700 italic mb-6">
                                     "{{ testimonial.content }}"
@@ -435,68 +439,21 @@
                             </div>
                         </div>
                         {% empty %}
-                        <!-- Default testimonials if none are in the database yet -->
-                        <div class="swiper-slide">
-                            <div class="bg-white rounded-xl p-8 shadow-md">
-
-                                <p class="text-gray-700 italic mb-6">
-                                    "IDI's approach to design thinking fundamentally changed how we approach innovation in our organization. Their team brought clarity to complex challenges and helped us develop solutions that truly address the needs of our community."
-                                </p>
-                                <div class="flex items-center">
-                                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                                    <div>
-                                        <h4 class="font-bold text-gray-900">Sarah Kimani</h4>
-                                        <p class="text-gray-600 text-sm">Program Director, UNEP</p>
+                           <div class="w-full">
+                                <div class="bg-white rounded-xl p-8 shadow-md flex flex-col items-center justify-center">
+                                    <div class="text-gray-400 mb-4">
+                                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
                                     </div>
+                                    <p class="text-gray-700 italic text-center">
+                                        No testimonials available at the moment.
+                                    </p>
+                                    <p class="text-gray-500 text-sm text-center">
+                                        Please check back later.
+                                    </p>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="bg-white rounded-xl p-8 shadow-md">
-
-                                <p class="text-gray-700 italic mb-6">
-                                    "Working with IDI has been transformative for our startup. Their human-centered design methodology helped us better understand our users and create products that truly resonate with our target market. The impact on our business has been substantial."
-                                </p>
-                                <div class="flex items-center">
-                                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                                    <div>
-                                        <h4 class="font-bold text-gray-900">Daniel Ochieng</h4>
-                                        <p class="text-gray-600 text-sm">CEO, TechInnovate Africa</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="bg-white rounded-xl p-8 shadow-md">
-
-                                <p class="text-gray-700 italic mb-6">
-                                    "Working with IDI has been transformative for our startup. Their human-centered design methodology helped us better understand our users and create products that truly resonate with our target market. The impact on our business has been substantial."
-                                </p>
-                                <div class="flex items-center">
-                                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                                    <div>
-                                        <h4 class="font-bold text-gray-900">Daniel Ochieng</h4>
-                                        <p class="text-gray-600 text-sm">CEO, TechInnovate Africa</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="bg-white rounded-xl p-8 shadow-md">
-
-                                <p class="text-gray-700 italic mb-6">
-                                    "Working with IDI has been transformative for our startup. Their human-centered design methodology helped us better understand our users and create products that truly resonate with our target market. The impact on our business has been substantial."
-                                </p>
-                                <div class="flex items-center">
-                                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                                    <div>
-                                        <h4 class="font-bold text-gray-900">Daniel Ochieng</h4>
-                                        <p class="text-gray-600 text-sm">CEO, TechInnovate Africa</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         {% endfor %}
                     </div>
                     

@@ -60,8 +60,20 @@
                         </div>
                     {% endif %}
                 {% empty %}
-                <div class="text-center py-12">
-                    <p class="text-gray-500 text-lg">Team members will be added soon!</p>
+                <div class="w-full">
+                    <div class="bg-white rounded-xl p-8 shadow-md flex flex-col items-center justify-center">
+                        <div class="text-gray-400 mb-4">
+                            <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 italic text-center">
+                            No Team Members available at the moment.
+                        </p>
+                        <p class="text-gray-500 text-sm text-center">
+                            Please check back later.
+                        </p>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
