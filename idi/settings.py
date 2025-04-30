@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-h#1=zgzhz&c@g+p9w0b9kr$b-_$8+iyn6g8_0a!js*u12%lonj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['170.187.145.60']
+ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost']
 
 
 # Application definition
