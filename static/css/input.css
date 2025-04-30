@@ -1,0 +1,454 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.slide-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: white;
+  z-index: 10;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: width 0.3s ease;
+}
+
+.dot.active {
+  width: 24px;
+  border-radius: 4px;
+}
+
+.mobile-menu-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+.group:hover .absolute {
+  display: block;
+  pointer-events: auto;
+}
+
+.group .absolute {
+  pointer-events: none;
+  display: block;
+  visibility: hidden;
+  margin-top: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.group:hover .absolute {
+  visibility: visible;
+  opacity: 1;
+  margin-top: 0.5rem;
+}
+
+/* Optional: Add a small delay before hiding */
+.group .absolute {
+  transition-delay: 0.1s;
+}
+
+.group:hover .absolute {
+  transition-delay: 0s;
+}
+
+.dropdown-menu {
+  z-index: 1000;
+  transform-origin: top;
+  min-width: 200px;
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 20px;
+}
+
+/* Animation for smoother transitions */
+.dropdown-menu {
+  animation: dropdownFade 0.2s ease-in-out;
+  margin-top: 0.5rem;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.phase {
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out,
+    visibility 0ms linear;
+}
+
+.phase img {
+  transition: transform 1000ms ease-in-out;
+}
+
+/* Additional styles for image effects */
+img {
+  transition: all 0.3s ease-in-out;
+}
+
+img:hover {
+  filter: grayscale(0%);
+}
+
+/* Ensure SVG decorations don't interfere with interactions */
+svg {
+  pointer-events: none;
+}
+
+.gallery-container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.gallery-wrap {
+  display: flex;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+}
+
+.item {
+  flex: 1;
+  min-width: 200px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.8s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gallery-wrap {
+      justify-content: flex-start;
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+  
+  .item {
+      width: 220px !important;
+      height: 330px !important;
+  }
+}
+
+/* our work section */
+/* Custom Swiper Styles */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+
+/* --------------------------- projects view section --------------------------  */
+@media (max-width: 768px) {
+  .semplice-cover {
+    height: 100vh;
+    min-height: auto;
+  }
+  
+  .semplice-cover .text-5xl {
+    font-size: 2.5rem; /* Smaller font on mobile */
+  }
+}
+@media (max-width: 768px) {
+  .ck-content img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .ck-content .image-style-align-left,
+  .ck-content .image-style-align-right {
+    float: none;
+    margin: 1em auto;
+    display: block;
+  }
+  
+  .ck-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@layer utilities {
+  .ck-content {
+    @apply w-full;
+  }
+  
+  .ck-content img, 
+  .ck-content iframe,
+  .ck-content table {
+    @apply w-full max-w-full;
+  }
+}
+/* Custom styles for CKEditor content */
+.ck-content {
+  /* Basic text styling */
+  font-family: inherit;
+  line-height: 1.6;
+  color: inherit;
+}
+
+/* Image alignment classes */
+.ck-content .image {
+  display: table;
+  clear: both;
+  text-align: center;
+  margin: 1em auto;
+}
+
+.ck-content .image-style-align-left {
+  float: left;
+  margin-right: 1.5em;
+}
+
+.ck-content .image-style-align-right {
+  float: right;
+  margin-left: 1.5em;
+}
+
+.ck-content .image-style-align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Table styles */
+.ck-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.ck-content table td,
+.ck-content table th {
+  border: 1px solid #dee2e6;
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+/* List styles */
+.ck-content ul,
+.ck-content ol {
+  padding-left: 2em;
+  margin: 1em 0;
+}
+
+/* Blockquote styles */
+.ck-content blockquote {
+  border-left: 5px solid #e5e7eb;
+  padding-left: 1em;
+  margin: 1em 0;
+  font-style: italic;
+}
+
+/* Code block styles */
+.ck-content pre {
+  background-color: #f8f9fa;
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+
+/* Add these styles to your CSS */
+.projectSwiper {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.swiper-slide {
+  text-align: center;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #006B7D;
+}
+
+.swiper-pagination-bullet-active {
+  background: #006B7D;
+}
+
+
+
+
+
+
+/* -------------------------------------------------------------- font  */
+.poppins-thin {
+  font-family: "Poppins", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: "Poppins", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: "Poppins", serif;
+  font-weight: 900;
+  font-style: italic;
+}

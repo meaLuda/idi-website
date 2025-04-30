@@ -1,0 +1,70 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Divider Section -->
+    <section class="h-[20px] relative overflow-hidden" style="background-image: url('media/slicer.png'); background-size: cover;">
+    </section>
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-gradient-to-r from-[#f3f3f3] to-[#e9f5f7]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl">
+                <h1 class="text-5xl font-bold text-[#006377] mb-6">Our Team</h1>
+                <p class="text-gray-700 text-xl leading-relaxed">
+                    Meet the passionate individuals behind IDI who work together to drive innovation and 
+                    create impactful solutions for communities across Africa.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members -->
+    <section class="py-20 bg-[#e5e5e5]">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 gap-y-16">
+                {% for member in team_members %}
+                    {% if forloop.counter0|divisibleby:2 %}
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    {% endif %}
+                    
+                    <div class="flex gap-8 items-start">
+                        <!-- Member Image -->
+                        <a href="{{ member.get_absolute_url }}" class="block">
+                            <img src="{{ member.image.url }}" 
+                                alt="{{ member.name }}" 
+                                class="w-64 h-64 object-cover grayscale rounded-xl">
+                        </a>
+
+                        <!-- Member Info with Background Shape -->
+                        <div class="relative pt-4">
+                            <!-- Background Shape -->
+                            {% if member.background_shape %}
+                            <div class="absolute -left-8 -top-4 w-40 h-40" style="z-index: 1;">
+                                <img src="{{ member.background_shape.url }}" 
+                                    alt="background shape" 
+                                    class="w-full h-full object-contain">
+                            </div>
+                            {% endif %}
+
+                            <!-- Name and Position -->
+                            <div class="relative z-10">
+                                <h3 class="text-xl font-bold">
+                                    <a href="{{ member.get_absolute_url }}">{{ member.name }}</a>
+                                </h3>
+                                <p class="text-gray-600">{{ member.position }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if forloop.counter|divisibleby:2 or forloop.last %}
+                        </div>
+                    {% endif %}
+                {% empty %}
+                <div class="text-center py-12">
+                    <p class="text-gray-500 text-lg">Team members will be added soon!</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

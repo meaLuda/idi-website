@@ -1,0 +1,534 @@
+<!-- templates/index.html -->
+{% load compress %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Primary Meta Tags -->
+    <title>IDI - Institute of Design & Innovation</title>
+    <meta name="title" content="IDI - Institute of Design & Innovation">
+    <meta name="description"
+        content="IDI is a leading institute focused on design thinking and innovation, helping organizations and individuals transform ideas into impactful solutions.">
+    <meta name="keywords"
+        content="design thinking, innovation, design institute, IDI, creative solutions, design education, innovation hub">
+    <meta name="author" content="Institute of Design & Innovation">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="IDI - Institute of Design & Innovation">
+    <meta property="og:description"
+        content="IDI is a leading institute focused on design thinking and innovation, helping organizations and individuals transform ideas into impactful solutions.">
+    <meta property="og:image" content="{% static 'images/idi-social-share.jpg' %}">
+    <meta property="og:site_name" content="Institute of Design & Innovation">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:title" content="IDI - Institute of Design & Innovation">
+    <meta name="twitter:description"
+        content="IDI is a leading institute focused on design thinking and innovation, helping organizations and individuals transform ideas into impactful solutions.">
+    <meta name="twitter:image" content="{% static 'images/idi-social-share.jpg' %}">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/logo_150x150.webp' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/logo_150x150.webp' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/logo_150x150.webp' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+    <!-- Preload Critical Resources -->
+    {% compress css %}
+    <link rel="preload" href="{% static 'css/output.css' %}" as="style">
+    {% endcompress %}
+    <link rel="preload" href="{% static 'js/jquery-3.6.0.min.js' %}" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js" as="script" crossorigin>
+
+    <!-- Stylesheets -->
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/lottie.min.js' %}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "Institute of Design & Innovation",
+            "alternateName": "IDI",
+            "url": "{{ request.build_absolute_uri }}",
+            "logo": "{% static 'images/logo.png' %}",
+            "sameAs": [
+                "https://www.facebook.com/IDIorg",
+                "https://www.twitter.com/IDIorg",
+                "https://www.linkedin.com/company/idiafrica",
+                "https://www.instagram.com/idi_org"
+            ],
+            "description": "IDI is a leading institute focused on design thinking and innovation, helping organizations and individuals transform ideas into impactful solutions.",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Dennis Pritt Rd, Kilimani",
+                "addressLocality": "Nairobi",
+                "addressRegion": "East Africa",
+                "postalCode": "P.O. Box 103609-00100 Nairobi",
+                "addressCountry": "Kenya"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+254 708 291 098",
+                "contactType": "customer service",
+                "email": "collectives@idi.africa"
+            }
+        }
+        </script>
+
+    <!-- Google Analytics (Optional) -->
+    {% if not debug %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA4-ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'YOUR-GA4-ID');
+    </script>
+    {% endif %}
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="{% url 'home:lander' %}" class="flex items-center">
+                    <img src="{% static 'images/wp-content/uploads/2024/08/idi-main-logo.png' %}" alt="IDI Logo"
+                        class="h-10 md:h-12">
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="{% url 'home:lander' %}#about-us"
+                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">About
+                        Us</a>
+                    <a href="{% url 'home:lander' %}#what-we-do"
+                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">What
+                        We Do</a>
+                    <a href="{% url 'home:lander' %}#our-approach"
+                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">Our
+                        Approach</a>
+                    <a href="{% url 'home:projects_list' %}"
+                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">Our
+                        Work</a>
+                    <a href="{% url 'home:team_list' %}"
+                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">Our
+                        Team</a>
+
+                    <!-- Fellowship Dropdown -->
+                    <div class="relative" id="fellowship-dropdown">
+                        <button
+                            class="flex items-center px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">
+                            <span>DID Academy</span>
+                            <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg mt-2 w-56 rounded-md py-1 z-50">
+                            <a href="{% url 'home:decision-intelligence-design-academy' %}"
+                                class="block px-4 py-2 text-sm text-[#006377] hover:text-[#f99a00] hover:bg-gray-50">DID Programs</a>
+                            <a href="{% url 'home:did-fellowships' %}"
+                                class="block px-4 py-2 text-sm text-[#006377] hover:text-[#f99a00] hover:bg-gray-50">DID Fellowships</a>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'home:lander' %}#contact"
+                        class="ml-2 px-5 py-2 bg-[#006377] text-white rounded-lg hover:bg-[#f99a00] transition-colors">Contact
+                        Us</a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-button" type="button"
+                    class="lg:hidden p-2 rounded-md text-[#006377] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#006377]">
+                    <svg id="open-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel (Slide Down) -->
+        <div id="mobile-menu" class="hidden bg-white border-t border-gray-200 lg:hidden">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex flex-col space-y-2">
+                    <a href="{% url 'home:lander' %}#about-us"
+                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">About Us</a>
+                    <a href="{% url 'home:lander' %}#what-we-do"
+                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">What We Do</a>
+                    <a href="{% url 'home:lander' %}#our-approach"
+                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">Our Approach</a>
+                    <a href="{% url 'home:projects_list' %}"
+                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">Our Work</a>
+                    <a href="{% url 'home:team_list' %}"
+                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">Our Team</a>
+
+                    <!-- Mobile Fellowship Dropdown -->
+                    <div class="py-2 border-b border-gray-100">
+                        <button id="fellowship-mobile-button"
+                            class="flex justify-between items-center w-full text-[#006377] hover:text-[#f99a00]">
+                            <span>DID Academy</span>
+                            <svg id="fellowship-icon" class="w-5 h-5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div id="fellowship-submenu" class="hidden pl-4 mt-2 space-y-2">
+                            <a href="{% url 'home:decision-intelligence-design-academy' %}"
+                                class="block py-2 text-[#006377] hover:text-[#f99a00]">DID
+                                Programs</a>
+                            <a href="{% url 'home:did-fellowships' %}"
+                                class="block py-2 text-[#006377] hover:text-[#f99a00]">DID Fellowships</a>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'home:lander' %}#contact"
+                        class="mt-2 block text-center py-2 bg-[#006377] text-white rounded-lg hover:bg-[#f99a00] transition-colors">Contact
+                        Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add this script to your existing scripts section -->
+    <script>
+        $(document).ready(function () {
+            // Mobile menu toggle
+            $('#mobile-menu-button').click(function () {
+                $('#mobile-menu').slideToggle(300);
+                $('#open-icon, #close-icon').toggleClass('hidden');
+            });
+
+            // Close mobile menu when clicking on links
+            $('#mobile-menu a').click(function () {
+                $('#mobile-menu').slideUp(300);
+                $('#close-icon').addClass('hidden');
+                $('#open-icon').removeClass('hidden');
+            });
+
+            // Fellowship dropdown in mobile view
+            $('#fellowship-mobile-button').click(function () {
+                $('#fellowship-submenu').slideToggle(200);
+                $('#fellowship-icon').toggleClass('rotate-180');
+            });
+
+            // Desktop fellowship dropdown
+            let dropdownTimeout;
+
+            $('#fellowship-dropdown').hover(
+                function () {
+                    clearTimeout(dropdownTimeout);
+                    $(this).find('.dropdown-menu').stop(true, true).fadeIn(200);
+                },
+                function () {
+                    const $dropdown = $(this);
+                    dropdownTimeout = setTimeout(function () {
+                        $dropdown.find('.dropdown-menu').stop(true, true).fadeOut(200);
+                    }, 800);
+                }
+            );
+
+            // Keep menu open when hovering over submenu
+            $('.dropdown-menu').hover(
+                function () {
+                    clearTimeout(dropdownTimeout);
+                },
+                function () {
+                    const $dropdown = $(this).closest('#fellowship-dropdown');
+                    dropdownTimeout = setTimeout(function () {
+                        $dropdown.find('.dropdown-menu').stop(true, true).fadeOut(200);
+                    }, 800);
+                }
+            );
+
+            // Handle window resize
+            $(window).resize(function () {
+                if ($(window).width() >= 1024) { // lg breakpoint
+                    $('#mobile-menu').hide();
+                    $('#close-icon').addClass('hidden');
+                    $('#open-icon').removeClass('hidden');
+                }
+            });
+        });
+    </script>
+
+
+    <!-- body -->
+    <main class="w-full">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-black text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Address Column -->
+                <div class="space-y-2">
+                    <p class="text-gray-400">Institute of Design and Innovation</p>
+                    <p class="text-gray-400">P.O. Box 103609-00100 Nairobi</p>
+                    <p class="text-gray-400">IHit Kenya</p>
+                    <p class="text-gray-400">Dennis Pritt Rd, Kilimani</p>
+                    <p class="text-gray-400">Nairobi, Kenya</p>
+                </div>
+
+                <!-- Spacer Column -->
+                <div></div>
+
+                <!-- Contact Column -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-[#ccd19c]">Get in touch</h3>
+                    <div class="space-y-2">
+                        <p class="text-white">Tel: +254 708 291 098</p>
+                        <p class="text-white">collectives@idi.africa</p>
+                        <a href="https://idi.africa"
+                            class="text-white hover:text-[#ccd19c] transition-colors">www.idi.africa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        $(document).ready(function () {
+            let currentSlide = 0;
+            const slides = $('.slide');
+            const dots = $('.dot');
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                slides.removeClass('active');
+                dots.removeClass('active');
+
+                slides.eq(index).addClass('active');
+                dots.eq(index).addClass('active');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+
+            // Auto advance slides
+            let slideInterval = setInterval(nextSlide, 5000);
+
+            // Dot navigation
+            dots.click(function () {
+                clearInterval(slideInterval);
+                currentSlide = $(this).index();
+                showSlide(currentSlide);
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+
+            // Mobile menu toggle
+            $('#mobile-menu-button').click(function () {
+                $('.mobile-menu').toggleClass('hidden');
+            });
+
+            const animation = lottie.loadAnimation({
+                container: document.getElementById('lottie-container'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: "/media/animations/holistic-approach-.json"
+            });
+            // Control methods you can use
+            animation.play();
+            animation.pause();
+            animation.stop();
+            animation.setSpeed(2); // Double speed
+
+
+            const $mobileMenu = $('#mobile-menu');
+            const $body = $('body');
+
+            function toggleMobileMenu() {
+                if ($mobileMenu.hasClass('hidden')) {
+                    $mobileMenu
+                        .removeClass('hidden')
+                        .removeClass('translate-x-full');
+                    $body.css('overflow', 'hidden');
+                } else {
+                    $mobileMenu.addClass('translate-x-full');
+                    setTimeout(() => {
+                        $mobileMenu.addClass('hidden');
+                        $body.css('overflow', '');
+                    }, 300);
+                }
+            }
+            let dropdownTimeout;
+
+            $('#fellowship-dropdown').hover(
+                function () {
+                    clearTimeout(dropdownTimeout);
+                    $(this).find('.dropdown-menu').stop(true, true).fadeIn(200);
+                },
+                function () {
+                    const $dropdown = $(this);
+                    dropdownTimeout = setTimeout(function () {
+                        $dropdown.find('.dropdown-menu').stop(true, true).fadeOut(200);
+                    }, 800); // Increased to 800ms
+                }
+            );
+
+            // Keep menu open when hovering over submenu
+            $('.dropdown-menu').hover(
+                function () {
+                    clearTimeout(dropdownTimeout);
+                },
+                function () {
+                    const $dropdown = $(this).closest('#fellowship-dropdown');
+                    dropdownTimeout = setTimeout(function () {
+                        $dropdown.find('.dropdown-menu').stop(true, true).fadeOut(200);
+                    }, 800); // Increased to 800ms
+                }
+            );
+            // Toggle menu on button click
+            $('#mobile-menu-button, #close-mobile-menu').click(function (e) {
+                e.stopPropagation();
+                toggleMobileMenu();
+            });
+
+            // Toggle fellowship submenu in mobile view
+            $('#fellowship-mobile').click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $('#fellowship-submenu').slideToggle();
+                $(this).find('svg').toggleClass('rotate-180');
+            });
+
+            // Close menu when clicking a link
+            $('#mobile-menu a').click(function () {
+                toggleMobileMenu();
+            });
+
+            // Close menu when clicking outside
+            $(document).click(function (e) {
+                if (!$mobileMenu.hasClass('hidden') &&
+                    !$(e.target).closest('#mobile-menu').length &&
+                    !$(e.target).closest('#mobile-menu-button').length) {
+                    toggleMobileMenu();
+                }
+            });
+
+            // Handle escape key
+            $(document).keydown(function (e) {
+                if (e.key === 'Escape' && !$mobileMenu.hasClass('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+
+
+            // Show first process detail by default
+            $('#learn-detail').removeClass('hidden');
+
+            // Handle hover events for process steps
+            $('.process-step').hover(
+                function () {
+                    // Mouse enter
+                    const step = $(this).data('step');
+                    $('.process-detail').addClass('hidden');
+                    $(`#${step}-detail`).removeClass('hidden').addClass('animate-fade-in');
+                }
+            );
+
+            // Add smooth transitions
+            $('.process-detail').addClass('transition-all duration-300 ease-in-out');
+
+            // Optional: Add active state styling for the hovered step
+            $('.process-step').hover(
+                function () {
+                    $('.process-step').removeClass('active');
+                    $(this).addClass('active');
+                }
+            );
+
+            // ===================== our work section ====================
+            if (document.querySelector('.projectSwiper')) {
+                const swiper = new Swiper('.projectSwiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    loop: false, // Changed to false to avoid warnings when few slides
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 2,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                        }
+                    },
+                    speed: 800,
+                    grabCursor: true,
+                    effect: "slide",
+                    // Enable if there are enough slides
+                    on: {
+                        init: function () {
+                            if (this.slides.length > 3) {
+                                this.params.loop = true;
+                                this.loopCreate();
+                                this.update();
+                            }
+                        }
+                    }
+                });
+            }
+
+            {% block extra_js %}
+            {% endblock %}
+
+        });
+    </script>
+
+</body>
+
+</html>

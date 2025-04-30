@@ -1,0 +1,151 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page Header with Accent Shape -->
+<section class="pt-32 pb-16 bg-gradient-to-r from-[#f3f3f3] to-[#e9f5f7] relative overflow-hidden">
+    <!-- Decorative shape -->
+    <div class="absolute right-0 bottom-0 w-64 h-64 rounded-full bg-[#cceef2] opacity-40 -mr-20 -mb-20"></div>
+    <div class="absolute left-0 top-20 w-32 h-32 rounded-full bg-[#006377] opacity-10 -ml-10"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl">
+            <h1 class="text-5xl font-bold text-[#006377] mb-6 relative">
+                Our Work
+                <span class="absolute -left-4 -top-4 w-12 h-12 bg-[#ffd300] opacity-20 rounded-lg transform -rotate-6"></span>
+            </h1>
+            <p class="text-gray-700 text-xl leading-relaxed">
+                IDI employs cross-disciplinary collaborations to generate impactful outcomes that benefit all stakeholders. 
+                We firmly believe in seamlessly integrating design into products, services, processes, and systems.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Grid - Improved with No Hover Dependencies -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for project in projects %}
+            <div class="h-[400px]">
+                <a href="{% url 'home:project_detail' project.slug %}" 
+                   class="block h-full rounded-2xl overflow-hidden shadow-lg relative">
+                    <!-- Background gradient for text readability - always visible -->
+                    <div class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black to-transparent opacity-80 z-10"></div>
+                    
+                    <!-- Image - always fully visible -->
+                    <div class="w-full h-full overflow-hidden">
+                        <img src="{{ project.thumbnail.url }}" 
+                             alt="{{ project.title }}" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- Content - Always fully visible -->
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                        <!-- Category Tag - Always visible -->
+                        <div class="bg-[#ffd300] text-[#006377] inline-block py-1 px-3 rounded-full text-xs font-semibold mb-3">
+                            Case Study
+                        </div>
+                        
+                        <!-- Title - Always visible -->
+                        <h3 class="text-white text-2xl font-bold mb-2">{{ project.title }}</h3>
+                        
+                        <!-- Brief description - Always visible -->
+                        <p class="text-white text-sm opacity-70 max-w-xs">
+                            Click to explore this impactful project
+                        </p>
+                    </div>
+                    
+                    <!-- View Button - Always visible -->
+                    <div class="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md z-20">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#006377]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center py-16">
+                <div class="max-w-md mx-auto bg-gray-50 rounded-2xl p-8 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                    <p class="text-gray-500 text-lg mb-4">No projects available at the moment.</p>
+                    <p class="text-gray-400">Check back soon as we're constantly updating our portfolio!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-16 bg-gradient-to-r from-[#006377] to-[#00849e] text-white">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-6">Interested in working with us?</h2>
+        <p class="max-w-2xl mx-auto mb-8 text-gray-100">
+            Let's collaborate on your next project and create impactful solutions that drive positive change.
+        </p>
+        <a href="{% url 'home:lander' %}#contact" class="inline-block px-8 py-3 bg-white text-[#006377] font-semibold rounded-full shadow-lg">
+            Contact Us
+        </a>
+    </div>
+</section>
+
+<!-- Animation Script - Only for initial page load, no hover animations -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate items as they enter viewport
+        const projectItems = document.querySelectorAll('.grid > div');
+        
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            projectItems.forEach(item => {
+                item.style.opacity = "0";
+                observer.observe(item);
+            });
+        }
+        
+        // Add animation class with delay
+        projectItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = "1";
+                item.style.transform = "translateY(0)";
+            }, 100 * index);
+        });
+    });
+</script>
+
+<style>
+    /* Custom animations - only for initial page load */
+    .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Initial state for animation */
+    .grid > div {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+</style>
+{% endblock %}

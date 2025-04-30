@@ -1,0 +1,9 @@
+pillow
+django
+django-ckeditor
+gunicorn
+whitenoise == 6.5.0
+pyngrok
+pymysql
+python-dotenv
+django-compressor

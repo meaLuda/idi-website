@@ -1,0 +1,132 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$zHRNz0T25qGZZusYwE7WU1$nppLiegS/+W3ALKWFuu1zOMTL4IrUOKKSiglPtPsn5I=",
+    "last_login": "2025-01-16T20:58:40.243Z",
+    "is_superuser": true,
+    "username": "munyalamea@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "munyalamea@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-01-15T19:17:17.907Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "home.teammember",
+  "pk": 1,
+  "fields": {
+    "name": "Pauline Kanana",
+    "position": "Chief Executive Officer & CoFounder",
+    "image": "team/PaulineKanana.jpg",
+    "background_shape": "team/shapes/pie.png",
+    "bio": "<p>Kanana is an experienced design and strategy lead and a seasoned trainer and mentor in the design innovation space, who is passionate about young people in Africa.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>She leverages multi-disciplinary design strategies and tools as a catalyst for innovation in academia, private and public sectors and local and global organizations to promote impact-driven and community-led solutions that lead to positively long-lasting social, economic and environmental development locally and globally.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kanana co-founded and directed Nairobi Design Institute (NDI), the first design innovation school in the region that fostered design talent based on human-centered design practices to create innovative and effective user experiences that address Africa&rsquo;s biggest challenges. She is also a design lead at Proportion Global and SpaceAI.</p>",
+    "linkedin": "",
+    "slug": "pauline-kanana",
+    "create_at": "2025-01-15T21:07:19.442Z"
+  }
+},
+{
+  "model": "home.teammember",
+  "pk": 2,
+  "fields": {
+    "name": "Munyala Mwalo",
+    "position": "Chief Design Director & Founder",
+    "image": "team/MunyalaMwalo.jpg",
+    "background_shape": "team/shapes/square.png",
+    "bio": "<p>Munyala is an experienced Strategic designer with a keen interest in the application of Human centered and behavioral design for Social Impact.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>He has spent the last 6 years applying design-led processes to help organizations overcome the barriers of innovation, facilitating the adoption of a beginner&rsquo;s mindset in problem solving and behavioral strategies in creating and testing impactful interventions for social change.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Being a creative and an amazing listener, he understands the role of experimentation, empathy &amp; facilitation of collaborative processes in crafting complex problems and designing sustainable and impactful solutions.</p>",
+    "linkedin": "",
+    "slug": "munyala-mwalo",
+    "create_at": "2025-01-15T21:07:12.530Z"
+  }
+},
+{
+  "model": "home.teammember",
+  "pk": 3,
+  "fields": {
+    "name": "Ramah Madiba",
+    "position": "Chief Technical Director & Founder",
+    "image": "team/RamahMadiba.jpg",
+    "background_shape": "team/shapes/circle.png",
+    "bio": "<p>Ramah is a highly experienced technical lead with over 10 years of experience in the industry. In his previous role as a Senior Network Planning Engineer, Ramah demonstrated his technical expertise in network planning and optimization.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>He has a deep understanding of network infrastructure and is skilled in designing and implementing complex networks that meet business requirements. Ramah&#39;s experience in network planning and optimization, coupled with his strategic design background and user-centered approach, make him a well-rounded technical lead with a broad range of skills and expertise.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>He is adept at leading cross-functional teams and managing projects from concept to delivery, ensuring that products and services are optimized for success.</p>",
+    "linkedin": "",
+    "slug": "ramah-madiba",
+    "create_at": "2025-01-15T21:07:04.123Z"
+  }
+},
+{
+  "model": "home.teammember",
+  "pk": 4,
+  "fields": {
+    "name": "Sarah Mpapuluu",
+    "position": "Senior Research and Design Partner",
+    "image": "team/SarahMpapuluu.jpg",
+    "background_shape": "team/shapes/pie_Eb8IRnY.png",
+    "bio": "<p>Sarah is passionate about people, social change and innovation. She is keen on working on projects where she engages in research and designing with communities and end-users of design. She has over four years of experience conducting research and design projects across the African continent.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>At ThinkPlace she worked on various projects engaging with people from vulnerable and challenging or hard to reach contexts across Africa. She has also engaged in capacity building projects to train young men and women in the continent on design thinking skills.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>With a professional background in Development studies and knowledge of behavioral design, she can identify key behavioral traits for understanding people and provide insights to build interventions that influence context-friendly outputs in programming work.</p>",
+    "linkedin": "",
+    "slug": "sarah-mpapuluu",
+    "create_at": "2025-01-15T21:06:55.891Z"
+  }
+},
+{
+  "model": "home.teammember",
+  "pk": 5,
+  "fields": {
+    "name": "Denise Wendy",
+    "position": "Accountant & Administrator",
+    "image": "team/DeniseWendy.jpg",
+    "background_shape": "team/shapes/circle_vPW9bMJ.png",
+    "bio": "<p>With a passion that goes beyond statistics, Denise is a multidimensional accountant and administrative maestro. As a key component of the IDI Africa team and success, she thrives at assuring financial accuracy and effectiveness due to her background in taxation and accounting.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Overseeing administrative tasks and making sure everything goes as planned is what she enjoys doing best. Volunteering for charities is her most passionate endeavor since she invests in helping others have meaningful experiences and lives.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>She leads and takes part in a variety of philanthropic activities, which demonstrates her compassionate and communal values.</p>",
+    "linkedin": "",
+    "slug": "denise-wendy",
+    "create_at": "2025-01-15T21:06:48.100Z"
+  }
+},
+{
+  "model": "home.project",
+  "pk": 1,
+  "fields": {
+    "title": "Mombasa Plastics Prize",
+    "slug": "mombasa-plastics-prize",
+    "thumbnail": "projects/thumbnails/mombasa_LHaQ8ol.jpg",
+    "content": "<p style=\"margin-left:360px;\"><strong>Website:</strong> <a href=\"https://mombasaplasticsprize.challenges.org/\">mombasaplasticsprize.challenges.org</a></p><figure class=\"table\"><table style=\"border-style:none;\"><tbody><tr><td><figure class=\"image image-style-align-right image_resized\" style=\"width:26.05%;\"><img style=\"aspect-ratio:750/750;\" src=\"https://idi.africa/wp-content/uploads/2024/04/1-1.png\" alt=\"1-1\" width=\"750\" height=\"750\"></figure></td><td style=\"text-align:center;vertical-align:top;\"><figure class=\"image image-style-align-center image_resized\" style=\"width:34.47%;\"><img style=\"aspect-ratio:625/625;\" src=\"https://idi.africa/wp-content/uploads/2024/04/IDI-Partnership-Logos-3.png\" alt=\"IDI-Partnership-Logos-3\" width=\"625\" height=\"625\"></figure></td><td><figure class=\"image image-style-align-left image_resized\" style=\"width:26.53%;\"><img style=\"aspect-ratio:750/750;\" src=\"https://idi.africa/wp-content/uploads/2024/04/6.png\" alt=\"6\" width=\"750\" height=\"750\"></figure></td></tr></tbody></table></figure><h1 style=\"margin-left:0px;\"><span style=\"color:rgb(0,99,119);\"><strong>Design Challange</strong></span></h1><p style=\"margin-left:0px;\">To encourage <u>innovation and awareness</u> amongst <u>aspiring entrepreneurs and leaders</u> (ages 18-25) in Mombasa County through the Mombasa Plastics Prize challenge by Challenge Works, by inspiring the development of solutions that tackle the problem of <i>plastic waste mismanagement within informal settlements.</i></p><figure class=\"image image-style-align-left image_resized\" style=\"width:69.08%;\"><img style=\"aspect-ratio:1366/565;\" src=\"https://idi.africa/wp-content/uploads/2024/03/IDI-website-4.jpg\" alt=\"IDI-website-4\" width=\"1366\" height=\"565\"></figure><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><hr><h1 style=\"margin-left:0px;\"><span style=\"color:rgb(0,99,119);\"><strong>What we did</strong></span></h1><figure class=\"image image-style-align-left image_resized\" style=\"width:47.01%;\"><img style=\"aspect-ratio:960/540;\" src=\"https://idi.africa/wp-content/uploads/2024/03/for-website-IDI-Homepage-.pdf-6.jpg\" alt=\"for-website-IDI-Homepage-.pdf-6\" width=\"960\" height=\"540\"></figure><p style=\"margin-left:40px;\">&nbsp;</p><ul><li><p style=\"margin-left:40px;\">Contextual research with youths and local stakeholders to inform the design and validation of the challenge prize</p></li><li><p style=\"margin-left:40px;\">Program design of a 5-month innovation challenge prize</p></li><li><p style=\"margin-left:40px;\">Innovation support from problem-framing to validating viable business ideas through financial and non-financial capacities</p></li><li><p style=\"margin-left:40px;\">Program design of a 6-month incubator program to transform 9 high potential innovations into viable businesses.</p></li><li><p style=\"margin-left:40px;\">&nbsp;Designing impact evaluation strategies and tools</p><p style=\"margin-left:40px;\">&nbsp;</p></li></ul><hr><h1 style=\"margin-left:0px;\"><span style=\"color:rgb(0,99,119);\"><strong>Outputs</strong></span></h1><figure class=\"table\"><table style=\"border-style:none;\"><tbody><tr><td><figure class=\"image image-style-align-left image_resized\" style=\"width:24.37%;\"><img style=\"aspect-ratio:500/500;\" src=\"https://idi.africa/wp-content/uploads/2024/04/10.png\" alt=\"10\" width=\"500\" height=\"500\"></figure><p style=\"margin-left:0px;\">14 viable business ideas <span style=\"color:rgb(0,99,119);\">across innovation, behavioural change and recycling themes</span></p></td><td><figure class=\"image image-style-align-left image_resized\" style=\"width:24.59%;\"><img style=\"aspect-ratio:500/500;\" src=\"https://idi.africa/wp-content/uploads/2024/04/11-1.png\" alt=\"11-1\" width=\"500\" height=\"500\"></figure><p>&nbsp;</p><p style=\"margin-left:0px;\">9 businesses successfully transformed into viable businesses</p></td></tr></tbody></table></figure><p style=\"margin-left:0px;\">&nbsp;</p><hr>",
+    "created_at": "2025-01-16T21:36:21.983Z",
+    "updated_at": "2025-01-16T22:22:19.377Z",
+    "is_active": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.project",
+  "pk": 2,
+  "fields": {
+    "title": "E4Impact Accelerator",
+    "slug": "e4impact-accelerator",
+    "thumbnail": "projects/thumbnails/e4d.jpg",
+    "content": "<figure class=\"table\"><table style=\"border-style:none;\"><tbody><tr><td style=\"border-style:none;\"><figure class=\"image image-style-side image_resized\" style=\"width:40.74%;\"><img style=\"aspect-ratio:750/750;\" src=\"https://idi.africa/wp-content/uploads/2024/04/1-1.png\" alt=\"1-1\" width=\"750\" height=\"750\"></figure></td><td style=\"border-style:none;\"><figure class=\"image image_resized\" style=\"width:51.45%;\"><img style=\"aspect-ratio:625/625;\" src=\"https://idi.africa/wp-content/uploads/2024/04/IDI-Partnership-Logos-3.png\" alt=\"IDI-Partnership-Logos-3\" width=\"625\" height=\"625\"></figure></td><td style=\"border-style:none;\"><figure class=\"image image-style-align-left image_resized\" style=\"width:40.94%;\"><img style=\"aspect-ratio:750/750;\" src=\"https://idi.africa/wp-content/uploads/2024/04/6.png\" alt=\"6\" width=\"750\" height=\"750\"></figure></td></tr></tbody></table></figure><h1 style=\"margin-left:0px;\"><span style=\"color:rgb(0,99,119);\"><strong>Design Challange</strong></span></h1><p style=\"margin-left:0px;\">Designing and delivering a comprehensive capacity-building program for&nbsp; tech-entrepreneurs&nbsp; to empower their companies with the skills and knowledge to overcome challenges and transform their pain points into viable business ideas.&nbsp;</p><figure class=\"table\"><table style=\"border-style:none;\"><tbody><tr><td style=\"border-style:none;\"><figure class=\"image image-style-side image_resized\" style=\"height:auto;width:575.016px;\"><img style=\"aspect-ratio:2040/1148;\" src=\"https://idi.africa/wp-content/uploads/2024/04/21.jpg\" alt=\"xr:d:DAF-V3_Jpfg:58,j:4096448198338539664,t:24040914\" width=\"2040\" height=\"1148\"></figure></td><td style=\"border-style:none;\"><figure class=\"image image-style-align-left image_resized\" style=\"height:auto;width:575.016px;\"><img style=\"aspect-ratio:2040/1148;\" src=\"https://idi.africa/wp-content/uploads/2024/04/22.jpg\" alt=\"xr:d:DAF-V3_Jpfg:58,j:4096448198338539664,t:24040914\" width=\"2040\" height=\"1148\"></figure></td></tr></tbody></table></figure><h1 style=\"margin-left:0px;\"><span style=\"color:rgb(0,99,119);\"><strong>What we did</strong></span></h1><ul><li><p style=\"margin-left:0px;\">Design thinking research sprints for challenge identification and problem reframing</p></li><li><p style=\"margin-left:0px;\">Development of innovation-led business plans for better value-offerings through&nbsp;</p></li><li><p style=\"margin-left:0px;\">Product iteration through product design workshops to improve their competitiveness</p></li><li><p style=\"margin-left:0px;\">Supporting in pitch preparation for fundraising</p></li></ul><h1 style=\"margin-left:0px;\"><span style=\"color:rgb(0,99,119);\"><strong>Outputs</strong></span></h1><figure class=\"table\" style=\"height:51px;\"><table style=\"border-style:none;\"><tbody><tr><td style=\"border-style:none;\"><figure class=\"image image-style-align-left image_resized\" style=\"width:31.9%;\"><img style=\"aspect-ratio:500/500;\" src=\"https://idi.africa/wp-content/uploads/2024/04/10.png\" alt=\"10\" width=\"500\" height=\"500\"></figure><p>Entrepreneurs gained problem-framing skills to convert challenges into business opportunities with robust value-addition models</p></td><td style=\"border-style:none;\"><figure class=\"image image-style-align-left image_resized\" style=\"width:23.34%;\"><img style=\"aspect-ratio:500/500;\" src=\"https://idi.africa/wp-content/uploads/2024/04/11-1.png\" alt=\"11-1\" width=\"500\" height=\"500\"></figure><p style=\"margin-left:0px;\">A better grasp of customer insights that inform decisions leading to more impactful solutions and enhancing their competitive edge in their markets.</p></td></tr></tbody></table></figure>",
+    "created_at": "2025-01-16T22:21:16.821Z",
+    "updated_at": "2025-01-16T22:29:03.454Z",
+    "is_active": true,
+    "order": 1
+  }
+},
+{
+  "model": "home.project",
+  "pk": 3,
+  "fields": {
+    "title": "﻿Founders Factory Africa Academy",
+    "slug": "founders-factory-africa-academy",
+    "thumbnail": "projects/thumbnails/Founders_Factory_Africa_Academy.jpg",
+    "content": "<figure class=\"table\"><table style=\"border-style:none;\"><tbody><tr><td style=\"border-style:none;\"><figure class=\"image image-style-align-center image_resized\" style=\"width:35.06%;\"><img style=\"aspect-ratio:750/750;\" src=\"https://idi.africa/wp-content/uploads/2024/04/1-1.png\" alt=\"1-1\" width=\"750\" height=\"750\"></figure></td><td style=\"border-style:none;\"><figure class=\"image image-style-align-center image_resized\" style=\"width:41.13%;\"><img style=\"aspect-ratio:625/625;\" src=\"https://idi.africa/wp-content/uploads/2024/04/IDI-Partnership-Logos-3.png\" alt=\"IDI-Partnership-Logos-3\" width=\"625\" height=\"625\"></figure></td><td style=\"border-style:none;\"><figure class=\"image image-style-align-center image_resized\" style=\"width:31.68%;\"><img style=\"aspect-ratio:750/750;\" src=\"https://idi.africa/wp-content/uploads/2024/04/6.png\" alt=\"6\" width=\"750\" height=\"750\"></figure></td></tr></tbody></table></figure><hr><h1 style=\"margin-left:0px;\"><span style=\"color:rgb(0,99,119);\"><strong>Design Challange</strong></span></h1><p style=\"margin-left:0px;\">Developing an entrepreneurship program for aspiring entrepreneurs to identify and frame challenges, develop ideas and create businesses that are investable.</p><figure class=\"image image-style-align-center image_resized\" style=\"width:67.43%;\"><img style=\"aspect-ratio:2040/1148;\" src=\"https://idi.africa/wp-content/uploads/2024/04/for-website-IDI-Homepage-.pdf-12.jpg\" alt=\"xr:d:DAF-V3_Jpfg:60,j:4239437490315956606,t:24040915\" width=\"2040\" height=\"1148\"></figure><hr><h1 style=\"margin-left:0px;\"><span style=\"color:rgb(0,99,119);\"><strong>What we did</strong></span></h1><figure class=\"image image-style-align-center image_resized\" style=\"width:67.36%;\"><img style=\"aspect-ratio:2040/1148;\" src=\"https://idi.africa/wp-content/uploads/2024/04/for-website-IDI-Homepage-.pdf-11.jpg\" alt=\"xr:d:DAF-V3_Jpfg:59,j:825708971878871367,t:24040915\" width=\"2040\" height=\"1148\"></figure><ul><li><p style=\"margin-left:0px;\">Needs assessment to identify entrepreneurial gaps and opportunities</p></li><li><p style=\"margin-left:0px;\">Designing of a 6-week innovation program</p></li><li><p style=\"margin-left:0px;\">Innovation support from problem-framing to validating viable business ideas through financial and non-financial capacities</p></li><li><p style=\"margin-left:0px;\">Designing impact evaluation strategies and tools</p></li></ul><hr><h1 style=\"margin-left:0px;\"><span style=\"color:rgb(0,99,119);\"><strong>Outputs</strong></span></h1><p style=\"margin-left:0px;\">&nbsp;</p><figure class=\"table\"><table style=\"border-style:none;\"><tbody><tr><td style=\"border-style:none;\"><figure class=\"image image-style-align-left image_resized\" style=\"width:42.38%;\"><img style=\"aspect-ratio:500/500;\" src=\"https://idi.africa/wp-content/uploads/2024/04/10.png\" alt=\"10\" width=\"500\" height=\"500\"></figure><p>Successfully trained and graduated 101 entrepreneurs</p></td><td style=\"border-style:none;\"><figure class=\"image image-style-align-left image_resized\" style=\"width:43.31%;\"><img style=\"aspect-ratio:500/500;\" src=\"https://idi.africa/wp-content/uploads/2024/04/11-1.png\" alt=\"11-1\" width=\"500\" height=\"500\"></figure><p style=\"margin-left:0px;\">34 entrepreneurs receiving a $5,000 grant to support their new ventures.&nbsp;</p></td></tr></tbody></table></figure><p style=\"margin-left:0px;\"><br>&nbsp;</p><p style=\"margin-left:0px;\">&nbsp;</p>",
+    "created_at": "2025-01-16T22:35:49.484Z",
+    "updated_at": "2025-01-16T22:37:31.544Z",
+    "is_active": true,
+    "order": 0
+  }
+}
+]

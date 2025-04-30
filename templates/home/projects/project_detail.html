@@ -1,0 +1,433 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Mobile optimization styles -->
+<style>
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+        position: relative;
+    }
+    .ck-content {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+    .ck-content img, .ck-content iframe, .ck-content table {
+        max-width: 100%;
+        height: auto;
+    }
+    .ck-content figure {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
+    .ck-content pre {
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+</style>
+
+<!-- Breadcrumb Navigation -->
+<nav class="bg-gray-50 py-4 border-b border-gray-100">
+    <div class="container mx-auto px-4">
+        <ol class="flex flex-wrap items-center text-sm text-gray-500">
+            <li class="flex items-center">
+                <a href="{% url 'home:lander' %}" class="hover:text-[#006377] transition-colors">Home</a>
+                <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </li>
+            <li class="flex items-center">
+                <a href="{% url 'home:projects_list' %}" class="hover:text-[#006377] transition-colors">Our Work</a>
+                <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </li>
+            <li class="text-gray-800 font-medium truncate max-w-[200px] md:max-w-xs">{{ project.title }}</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- Hero Section with improved visual presentation -->
+<section id="cover-{{ project.id }}" class="relative h-[50vh] md:h-[75vh]">
+    {% if project.thumbnail %}
+    <div class="absolute inset-0">
+        <img src="{{ project.thumbnail.url }}" 
+             alt="{{ project.title }}" 
+             class="w-full h-full object-cover"
+             loading="eager">
+        <!-- Enhanced gradient overlay for better accessibility -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+    </div>
+    {% endif %}
+    
+    <div class="absolute inset-0 flex flex-col justify-end container mx-auto px-4 py-8 md:px-8 lg:px-16 md:py-16">
+        <!-- Project metadata with improved spacing and readability -->
+        <div class="text-white/90 mb-4 flex flex-wrap gap-x-6 gap-y-2 items-center">
+            <span class="inline-flex items-center bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <time>{{ project.created_at|date:"F Y" }}</time>
+            </span>
+            
+            <!-- Tags with improved visual design -->
+            <span class="bg-[#006377]/80 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Design Research</span>
+            <span class="bg-[#006377]/80 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Innovation</span>
+        </div>
+        
+        <!-- Project title with refined typography -->
+        <h1 class="text-3xl md:text-5xl lg:text-6xl text-white font-bold leading-tight max-w-4xl mb-6 md:mb-10 break-words">
+            {{ project.title }}
+        </h1>
+    </div>
+</section>
+
+<!-- Project Summary with enhanced presentation -->
+<section class="bg-white py-10 md:py-16 border-b border-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="flex items-center mb-8">
+                <span class="w-12 h-1 bg-[#006377] mr-4 flex-shrink-0"></span>
+                <h2 class="text-xl font-bold text-gray-800">Overview</h2>
+            </div>
+            <p class="text-lg md:text-xl text-gray-700 leading-relaxed font-light">
+                {{ project.content|safe|striptags|truncatewords:50 }}
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Content Section with refined layout -->
+<div class="bg-white">
+    <div class="container mx-auto px-4 py-12 md:py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
+            <!-- Main content with enhanced typography -->
+            <main class="lg:col-span-9 order-first lg:order-last">
+                <article class="prose prose-lg lg:prose-xl max-w-none overflow-visible">
+                    <!-- Better styling for CKEditor content -->
+                    <div class="ck-content" id="project-content">
+                        {{ project.content|safe }}
+                    </div>
+                </article>
+                
+                <!-- Project navigation links at bottom -->
+                <div class="mt-16 pt-8 border-t border-gray-200">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <a href="{% url 'home:projects_list' %}" class="inline-flex items-center text-[#006377] hover:text-[#f99a00] transition-colors">
+                            <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                            </svg>
+                            Back to all projects
+                        </a>
+                        
+                        <div class="flex items-center space-x-2 text-sm text-gray-500">
+                            <span>Was this project helpful?</span>
+                            <button class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-[#006377] focus:ring-offset-2" aria-label="Like">
+                                <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905a3.61 3.61 0 01-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- Sidebar with enhanced visual design -->
+            <aside class="lg:col-span-3 order-last lg:order-first">
+                <div class="lg:sticky lg:top-32 space-y-8">
+                    <!-- Share project section -->
+                    <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                        <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-[#006377] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                            </svg>
+                            Share
+                        </h2>
+                        <div class="flex space-x-3">
+                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ project.title }}" 
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex-1 flex items-center justify-center p-3 bg-[#1DA1F2] text-white rounded-lg hover:bg-[#1a94e0] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ project.title }}" 
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex-1 flex items-center justify-center p-3 bg-[#0A66C2] text-white rounded-lg hover:bg-[#0958a8] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                                </svg>
+                            </a>
+                            <a href="mailto:?subject={{ project.title }}&body=Check out this project: {{ request.build_absolute_uri }}" 
+                               class="flex-1 flex items-center justify-center p-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project details section -->
+                    <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                        <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-[#006377] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Project Details
+                        </h2>
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex flex-col">
+                                <dt class="text-gray-500 mb-1">Date</dt>
+                                <dd class="font-medium text-gray-800">{{ project.created_at|date:"F Y" }}</dd>
+                            </div>
+                            <div class="flex flex-col">
+                                <dt class="text-gray-500 mb-1">Client</dt>
+                                <dd class="font-medium text-gray-800"><!-- Client name could be added here --></dd>
+                            </div>
+                            <div class="flex flex-col">
+                                <dt class="text-gray-500 mb-1">Tags</dt>
+                                <dd class="font-medium text-gray-800 flex flex-wrap gap-1 mt-1">
+                                    <span class="bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded">Design Research</span>
+                                    <span class="bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded">Innovation</span>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+<!-- Related Projects Section with improved design -->
+<section class="bg-gray-50 py-16 md:py-20 border-t border-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between mb-8 md:mb-12">
+            <div class="flex items-center">
+                <span class="w-8 md:w-12 h-1 bg-[#006377] mr-3 md:mr-4 flex-shrink-0"></span>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">More Projects</h2>
+            </div>
+            <a href="{% url 'home:projects_list' %}" class="text-[#006377] hover:text-[#f99a00] transition-colors hidden md:block">
+                View all projects
+                <span class="ml-1">→</span>
+            </a>
+        </div>
+        
+        <!-- Mobile-only View All button -->
+        <div class="text-center mt-8 md:hidden">
+            <a href="{% url 'home:projects_list' %}" class="inline-flex items-center px-6 py-3 bg-[#006377] text-white rounded-lg hover:bg-[#f99a00] transition-colors">
+                View All Projects
+                <svg class="w-5 h-5 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Back to Top button -->
+<button id="back-to-top" aria-label="Back to top" 
+        class="fixed bottom-6 right-6 bg-[#006377] text-white p-3 rounded-full shadow-lg opacity-0 
+              transition-all duration-300 transform translate-y-10 hover:bg-[#f99a00] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#006377]">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+</button>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Fix horizontal scroll issues by ensuring content width
+    function fixHorizontalScroll() {
+        document.documentElement.style.overflowX = 'hidden';
+        document.body.style.overflowX = 'hidden';
+        
+        const contentElements = document.querySelectorAll('.ck-content *');
+        contentElements.forEach(el => {
+            if (el.scrollWidth > el.clientWidth) {
+                el.style.maxWidth = '100%';
+                el.style.overflow = 'hidden';
+            }
+        });
+        
+        // Handle tables specifically
+        const tables = document.querySelectorAll('.ck-content table');
+        tables.forEach(table => {
+            if (!table.parentElement.classList.contains('table-wrapper')) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'table-wrapper overflow-x-auto max-w-full';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            }
+        });
+        
+        // Fix images
+        const images = document.querySelectorAll('.ck-content img');
+        images.forEach(img => {
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+        });
+        
+        // Fix iframes
+        const iframes = document.querySelectorAll('.ck-content iframe');
+        iframes.forEach(iframe => {
+            if (!iframe.parentElement.classList.contains('iframe-wrapper')) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'iframe-wrapper relative w-full pb-[56.25%]'; // 16:9 aspect ratio
+                iframe.parentNode.insertBefore(wrapper, iframe);
+                wrapper.appendChild(iframe);
+                iframe.style.position = 'absolute';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+            }
+        });
+    }
+    
+    // Run initially and on window resize
+    fixHorizontalScroll();
+    window.addEventListener('resize', fixHorizontalScroll);
+    
+    // Enhanced Back to Top Button
+    const backToTop = document.getElementById('back-to-top');
+    
+    if (backToTop) {
+        // Show/hide based on scroll position with improved animation
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'translate-y-10');
+                backToTop.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTop.classList.remove('opacity-100', 'translate-y-0');
+                backToTop.classList.add('opacity-0', 'translate-y-10');
+            }
+        });
+        
+        // Scroll to top when clicked with smooth animation
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Add smooth scrolling to all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            
+            if (href !== '#') {
+                e.preventDefault();
+                
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    // Improved offset calculation for better positioning
+                    const headerOffset = window.innerWidth < 768 ? 80 : 100;
+                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL hash without jumping
+                    history.pushState(null, null, href);
+                    
+                    // Set focus to the target for accessibility
+                    targetElement.setAttribute('tabindex', '-1');
+                    targetElement.focus({ preventScroll: true });
+                }
+            }
+        });
+    });
+    
+    // Add parallax effect to hero image (subtle) - disabled on mobile for performance
+    const heroSection = document.getElementById('cover-{{ project.id }}');
+    if (heroSection && window.innerWidth > 768) {
+        const heroImage = heroSection.querySelector('img');
+        if (heroImage) {
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset;
+                if (scrollPosition < window.innerHeight) {
+                    // Create subtle parallax effect
+                    heroImage.style.transform = 'translateY(' + scrollPosition * 0.15 + 'px)';
+                }
+            });
+        }
+    }
+    
+    // Enhanced image handling with mobile optimization
+    const contentImages = document.querySelectorAll('.ck-content img');
+    contentImages.forEach(img => {
+        // Add classes for better styling
+        img.classList.add('rounded-lg', 'max-w-full', 'h-auto');
+        img.setAttribute('loading', 'lazy');
+        
+        // Create lightbox behavior when image is clicked
+        img.addEventListener('click', function() {
+            // Simplified lightbox - could be replaced with a proper library
+            const imgSrc = this.src;
+            const overlay = document.createElement('div');
+            overlay.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center';
+            
+            const imgElement = document.createElement('img');
+            imgElement.src = imgSrc;
+            imgElement.className = 'max-w-[90%] max-h-[90vh] object-contain';
+            
+            const closeButton = document.createElement('button');
+            closeButton.className = 'absolute top-4 right-4 md:top-6 md:right-6 text-white p-2';
+            closeButton.innerHTML = '<svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            
+            overlay.appendChild(imgElement);
+            overlay.appendChild(closeButton);
+            document.body.appendChild(overlay);
+            
+            // Prevent scrolling when lightbox is open
+            document.body.style.overflow = 'hidden';
+            
+            // Close lightbox on click
+            overlay.addEventListener('click', function() {
+                document.body.removeChild(overlay);
+                document.body.style.overflow = '';
+            });
+        });
+    });
+    
+    // Fix any CKEditor content issues that might cause overflow
+    const ckContent = document.querySelector('.ck-content');
+    if (ckContent) {
+        // Force tables to be responsive
+        const tables = ckContent.querySelectorAll('table');
+        tables.forEach(table => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'overflow-x-auto w-full';
+            table.parentNode.insertBefore(wrapper, table);
+            wrapper.appendChild(table);
+        });
+        
+        // Fix pre and code blocks
+        const preBlocks = ckContent.querySelectorAll('pre');
+        preBlocks.forEach(pre => {
+            pre.classList.add('overflow-x-auto', 'whitespace-pre-wrap', 'break-words');
+        });
+        
+        // Fix embedded content
+        const iframes = ckContent.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'relative w-full aspect-w-16 aspect-h-9';
+            iframe.parentNode.insertBefore(wrapper, iframe);
+            wrapper.appendChild(iframe);
+            iframe.classList.add('absolute', 'inset-0', 'w-full', 'h-full');
+        });
+    }
+});
+</script>
+{% endblock %}
