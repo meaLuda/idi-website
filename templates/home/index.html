@@ -166,54 +166,297 @@
         </div>
     </section>
 
-    <section id="holistic-section" class="min-h-screen bg-[#EDEDED] py-20">
+    <!-- A holistic Approach section - Increased display time for secondary images -->
+    <section id="holistic-section" class="w-full bg-[#EDEDED] py-20">
         <h2 class="text-center text-3xl md:text-4xl font-semibold mt-5 mb-20">A holistic approach to innovation</h2>
-        <div class="container mx-auto">
+        <div class="container mx-auto px-4">
             <div class="gallery-container">
-                <div class="gallery-wrap"> 
+                <div class="gallery-wrap" x-data="{ isMobile: window.innerWidth < 768 }" x-init="
+                    window.addEventListener('resize', () => { isMobile = window.innerWidth < 768; });
+                    if (isMobile) {
+                        document.querySelector('.gallery-wrap').classList.add('mobile-gallery');
+                    }
+                "> 
                     <div class="item item-1 relative transition-transform duration-300 ease-in-out" 
-                         x-data="{ hover: false }" 
-                         @mouseenter="hover = true" 
-                         @mouseleave="hover = false"
-                         :class="{ 'scale-110 z-10': hover }"
-                         :style="hover ? 'background-image: url(\'media/sequence/replacer/2.jpg\')' : 'background-image: url(\'media/sequence/sequence1.jpg\')'">
+                        x-data="{ hover: false }" 
+                        @mouseenter="!isMobile && (hover = true)" 
+                        @mouseleave="!isMobile && (hover = false)"
+                        @touchstart="isMobile && (hover = true)"
+                        @touchend="isMobile && setTimeout(() => hover = false, 3000)"
+                        :class="{ 'scale-110 z-10': hover }">
+                        <div class="bg-image" :style="hover ? 'background-image: url(\'media/sequence/replacer/2.jpg\')' : 'background-image: url(\'media/sequence/sequence1.jpg\')'"></div>
                     </div>
-    
+
                     <div class="item item-2 relative transition-transform duration-300 ease-in-out" 
-                         x-data="{ hover: false }" 
-                         @mouseenter="hover = true" 
-                         @mouseleave="hover = false"
-                         :class="{ 'scale-110 z-10': hover }"
-                         :style="hover ? 'background-image: url(\'media/sequence/replacer/3.jpg\')' : 'background-image: url(\'media/sequence/sequence2.jpg\')'">
+                        x-data="{ hover: false }" 
+                        @mouseenter="!isMobile && (hover = true)" 
+                        @mouseleave="!isMobile && (hover = false)"
+                        @touchstart="isMobile && (hover = true)"
+                        @touchend="isMobile && setTimeout(() => hover = false, 3000)"
+                        :class="{ 'scale-110 z-10': hover }">
+                        <div class="bg-image" :style="hover ? 'background-image: url(\'media/sequence/replacer/3.jpg\')' : 'background-image: url(\'media/sequence/sequence2.jpg\')'"></div>
                     </div>
-    
+
                     <div class="item item-3 relative transition-transform duration-300 ease-in-out" 
-                         x-data="{ hover: false }" 
-                         @mouseenter="hover = true" 
-                         @mouseleave="hover = false"
-                         :class="{ 'scale-110 z-10': hover }"
-                         :style="hover ? 'background-image: url(\'media/sequence/replacer/4.jpg\')' : 'background-image: url(\'media/sequence/sequence3.jpg\')'">
+                        x-data="{ hover: false }" 
+                        @mouseenter="!isMobile && (hover = true)" 
+                        @mouseleave="!isMobile && (hover = false)"
+                        @touchstart="isMobile && (hover = true)"
+                        @touchend="isMobile && setTimeout(() => hover = false, 3000)"
+                        :class="{ 'scale-110 z-10': hover }">
+                        <div class="bg-image" :style="hover ? 'background-image: url(\'media/sequence/replacer/4.jpg\')' : 'background-image: url(\'media/sequence/sequence3.jpg\')'"></div>
                     </div>
-    
+
                     <div class="item item-4 relative transition-transform duration-300 ease-in-out" 
-                         x-data="{ hover: false }" 
-                         @mouseenter="hover = true" 
-                         @mouseleave="hover = false"
-                         :class="{ 'scale-110 z-10': hover }"
-                         :style="hover ? 'background-image: url(\'media/sequence/replacer/5.jpg\')' : 'background-image: url(\'media/sequence/sequence4.jpg\')'">
+                        x-data="{ hover: false }" 
+                        @mouseenter="!isMobile && (hover = true)" 
+                        @mouseleave="!isMobile && (hover = false)"
+                        @touchstart="isMobile && (hover = true)"
+                        @touchend="isMobile && setTimeout(() => hover = false, 3000)"
+                        :class="{ 'scale-110 z-10': hover }">
+                        <div class="bg-image" :style="hover ? 'background-image: url(\'media/sequence/replacer/5.jpg\')' : 'background-image: url(\'media/sequence/sequence4.jpg\')'"></div>
                     </div>
-    
+
                     <div class="item item-5 relative transition-transform duration-300 ease-in-out" 
-                         x-data="{ hover: false }" 
-                         @mouseenter="hover = true" 
-                         @mouseleave="hover = false"
-                         :class="{ 'scale-110 z-10': hover }"
-                         :style="hover ? 'background-image: url(\'media/sequence/replacer/6.jpg\')' : 'background-image: url(\'media/sequence/sequence5.jpg\')'">
+                        x-data="{ hover: false }" 
+                        @mouseenter="!isMobile && (hover = true)" 
+                        @mouseleave="!isMobile && (hover = false)"
+                        @touchstart="isMobile && (hover = true)"
+                        @touchend="isMobile && setTimeout(() => hover = false, 3000)"
+                        :class="{ 'scale-110 z-10': hover }">
+                        <div class="bg-image" :style="hover ? 'background-image: url(\'media/sequence/replacer/6.jpg\')' : 'background-image: url(\'media/sequence/sequence5.jpg\')'"></div>
                     </div>
                 </div>
             </div>
+            <p class="text-center text-gray-500 italic text-sm mt-6 md:hidden">Swipe to see more • Tap to view details</p>
         </div>
     </section>
+
+    <!-- responsive CSS for the gallery -->
+    <style>
+        .gallery-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .gallery-wrap {
+            display: flex;
+            width: 100%;
+            height: 70vh;
+            max-height: 500px;
+        }
+        
+        .item {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            transition: all 0.8s ease;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 0 5px;
+        }
+        
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: all 0.5s ease;
+        }
+        
+        /* Scale effect on hover/touch */
+        .item:hover {
+            flex: 1.5;
+            z-index: 10;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 767px) {
+            .gallery-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 15px; /* Space for scrollbar */
+                height: 300px; /* Fixed height for mobile */
+            }
+            
+            .item {
+                min-width: 80%;
+                flex: 0 0 80%;
+                margin: 0 10px;
+                scroll-snap-align: center;
+            }
+            
+            .bg-image {
+                background-position: center;
+                background-size: contain;
+                background-color: rgba(0,0,0,0.03); /* Very subtle background to make transparent images visible */
+            }
+            
+            /* First and last items get some extra spacing to show there's more content */
+            .item:first-child {
+                margin-left: 20px;
+            }
+            
+            .item:last-child {
+                margin-right: 20px;
+            }
+            
+            /* Hide scrollbar for cleaner look */
+            .gallery-wrap::-webkit-scrollbar {
+                display: none;
+            }
+            
+            /* For Firefox */
+            .gallery-wrap {
+                scrollbar-width: none;
+            }
+        }
+        
+        /* Add a subtle indicator for horizontal scrolling on mobile */
+        @media (max-width: 767px) {
+            .gallery-container::after {
+                content: "⟺";
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: rgba(0,0,0,0.2);
+                font-size: 20px;
+            }
+        }
+    </style>
+
+    <!-- Enhanced touch interaction with LONGER display time -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we're on mobile
+            const isMobile = window.innerWidth < 768;
+            
+            // Preload all images to prevent blank states
+            const imageUrls = [
+                'media/sequence/sequence1.jpg',
+                'media/sequence/sequence2.jpg',
+                'media/sequence/sequence3.jpg',
+                'media/sequence/sequence4.jpg',
+                'media/sequence/sequence5.jpg',
+                'media/sequence/replacer/2.jpg',
+                'media/sequence/replacer/3.jpg',
+                'media/sequence/replacer/4.jpg',
+                'media/sequence/replacer/5.jpg',
+                'media/sequence/replacer/6.jpg'
+            ];
+            
+            // Preload all images
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+            
+            if (isMobile) {
+                // Add touch-based interaction with longer display times
+                const items = document.querySelectorAll('.item');
+                
+                items.forEach(item => {
+                    // Track which items have active timers
+                    item.hasActiveTimer = false;
+                    
+                    item.addEventListener('touchstart', function(e) {
+                        // Prevent scroll while viewing detail
+                        e.preventDefault();
+                        
+                        // Apply visual feedback
+                        this.style.opacity = '0.9';
+                        
+                        // Cancel any existing timer when touched again
+                        if (this.hasActiveTimer) {
+                            clearTimeout(this.displayTimeout);
+                        }
+                        
+                        // For any other item with active display, reset it
+                        items.forEach(otherItem => {
+                            if (otherItem !== item && otherItem.hasActiveTimer) {
+                                // Reset other items
+                                clearTimeout(otherItem.displayTimeout);
+                                const otherItemImage = otherItem.querySelector('.bg-image');
+                                if (otherItemImage) {
+                                    otherItemImage.style.backgroundImage = otherItemImage.dataset.defaultImage;
+                                }
+                                otherItem.hasActiveTimer = false;
+                                otherItem.classList.remove('scale-110', 'z-10');
+                            }
+                        });
+                        
+                        // Show the alternate image
+                        const bgImage = this.querySelector('.bg-image');
+                        if (bgImage) {
+                            // Store the default image if not already stored
+                            if (!bgImage.dataset.defaultImage) {
+                                bgImage.dataset.defaultImage = getComputedStyle(bgImage).backgroundImage;
+                            }
+                            
+                            // Get hover image URL
+                            const hoverImageUrl = bgImage.dataset.defaultImage.replace('sequence', 'replacer');
+                            
+                            // Set the hover image
+                            bgImage.style.backgroundImage = hoverImageUrl;
+                        }
+                        
+                        // Add the scale effect
+                        this.classList.add('scale-110', 'z-10');
+                        
+                        // Set a longer timer (5 seconds)
+                        this.hasActiveTimer = true;
+                        this.displayTimeout = setTimeout(() => {
+                            if (bgImage) {
+                                bgImage.style.backgroundImage = bgImage.dataset.defaultImage;
+                            }
+                            this.classList.remove('scale-110', 'z-10');
+                            this.hasActiveTimer = false;
+                        }, 5000); // 5 seconds
+                    });
+                    
+                    item.addEventListener('touchend', function() {
+                        // Just restore opacity
+                        this.style.opacity = '1';
+                        // Don't reset the image yet - let the timer handle it
+                    });
+                });
+                
+                // Improve scrolling experience
+                const gallery = document.querySelector('.gallery-wrap');
+                
+                // Add fading edges for scroll indication
+                const leftFade = document.createElement('div');
+                leftFade.className = 'absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#EDEDED] to-transparent pointer-events-none z-10';
+                
+                const rightFade = document.createElement('div');
+                rightFade.className = 'absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#EDEDED] to-transparent pointer-events-none z-10';
+                
+                if (gallery) {
+                    gallery.parentNode.style.position = 'relative';
+                    gallery.parentNode.appendChild(leftFade);
+                    gallery.parentNode.appendChild(rightFade);
+                    
+                    // Update fade opacity based on scroll position
+                    gallery.addEventListener('scroll', function() {
+                        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+                        const scrollRatio = gallery.scrollLeft / maxScroll;
+                        
+                        // Fade out left/right indicators based on scroll position
+                        leftFade.style.opacity = gallery.scrollLeft > 20 ? '1' : '0';
+                        rightFade.style.opacity = scrollRatio < 0.95 ? '1' : '0';
+                    });
+                }
+            }
+        });
+    </script>
 
     <!-- Divider Section -->
     <section class="h-[20px] relative overflow-hidden" style="background-image: url('media/slicer.png'); background-size: cover;">
