@@ -4,3 +4,4 @@ node_modules
 uploads
 migrations
 Makefile
+staticfiles
