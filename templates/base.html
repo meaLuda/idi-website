@@ -1,49 +1,19 @@
 <!-- templates/index.html -->
 {% load compress %}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Essential Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- Primary Meta Tags -->
-    <title>IDI - Institute of Design & Innovation</title>
-    <meta name="title" content="IDI - Institute of Design & Innovation">
-    <meta name="description"
-        content="IDI is a leading institute focused on design thinking and innovation, helping organizations and individuals transform ideas into impactful solutions.">
-    <meta name="keywords"
-        content="design thinking, innovation, design institute, IDI, creative solutions, design education, innovation hub">
-    <meta name="author" content="Institute of Design & Innovation">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:title" content="IDI - Institute of Design & Innovation">
-    <meta property="og:description"
-        content="IDI is a leading institute focused on design thinking and innovation, helping organizations and individuals transform ideas into impactful solutions.">
-    <meta property="og:image" content="{% static 'images/idi-social-share.jpg' %}">
-    <meta property="og:site_name" content="Institute of Design & Innovation">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="{{ request.build_absolute_uri }}">
-    <meta name="twitter:title" content="IDI - Institute of Design & Innovation">
-    <meta name="twitter:description"
-        content="IDI is a leading institute focused on design thinking and innovation, helping organizations and individuals transform ideas into impactful solutions.">
-    <meta name="twitter:image" content="{% static 'images/idi-social-share.jpg' %}">
-
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/logo_150x150.webp' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/logo_150x150.webp' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/logo_150x150.webp' %}">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
-
+    
+    <!-- Include the meta tags partial -->
+    {% include 'partials/meta_tags.html' %}
+    
+    <!-- The rest of your head content goes here -->
+    <title>{% if page_title %}{{ page_title }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}</title>
+    
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ request.build_absolute_uri }}">
 
@@ -117,6 +87,7 @@
 </head>
 
 <body>
+    {% block header %}
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
         <div class="container mx-auto px-4 py-3">
@@ -227,7 +198,7 @@
             </div>
         </div>
     </nav>
-
+    {% endblock %}
     <!-- Add this script to your existing scripts section -->
     <script>
         $(document).ready(function () {
@@ -297,6 +268,7 @@
         {% endblock %}
     </main>
 
+    {% block footer %}
     <!-- Footer Section -->
     <footer id="contact" class="bg-[#051924] text-white py-16">
         <div class="container mx-auto px-4">
@@ -408,7 +380,7 @@
             </div>
         </div>
     </footer>
-
+    {% endblock %}
 
     <script>
         $(document).ready(function () {

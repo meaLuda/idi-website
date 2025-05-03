@@ -24,7 +24,8 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'django-insecure-h#1=zgzhz&c@g+p9w0b9kr$b-_$8+iyn6g8_0a!js*u12%lonj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (bool(int(os.environ.get('DEBUG',1))))
+print(f"DEBUG: {DEBUG}")
 
 ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost']
 
@@ -38,12 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django.contrib.sites",  # new
+    "django.contrib.sitemaps",  # new 
     'compressor',
     'ckeditor',
     'ckeditor_uploader',
     # internal apps
     'apps.home',
 ]
+
+SITE_ID = 1  # new
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

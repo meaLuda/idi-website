@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<section class="py-16 md:py-24 lg:py-32 relative overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+        <div class="absolute top-10 left-10 w-32 h-32 md:w-64 md:h-64 rounded-full bg-[#e6a94e] opacity-5"></div>
+        <div class="absolute bottom-10 right-10 w-40 h-40 md:w-80 md:h-80 rounded-full bg-[#006B7D] opacity-5"></div>
+        <div class="absolute top-1/4 right-1/4 w-20 h-20 md:w-40 md:h-40 rounded-full bg-[#e6a94e] opacity-5"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Main content with animation -->
+            <div class="flex flex-col md:flex-row items-center justify-between mb-16">
+                <div class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#006B7D] mb-6 leading-tight">Oops! Something Went wrong</h1>
+                    <p class="text-lg text-gray-600 mb-8">The page you're looking for seems to have wandered off. Let's get you back on track.</p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="{% url 'home:lander' %}" class="px-6 py-3 bg-[#006B7D] text-white font-medium rounded-lg hover:bg-[#e6a94e] transition-colors flex items-center justify-center hover:scale-105">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                            Return to Homepage
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <!-- Compass illustration - you can replace with your own SVG or image -->
+                        <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                            <!-- Outer circle -->
+                            <circle cx="120" cy="120" r="110" fill="white" stroke="#006B7D" stroke-width="2" />
+                            <circle cx="120" cy="120" r="105" fill="none" stroke="#e6a94e" stroke-width="1" stroke-dasharray="5,5" />
+                            
+                            <!-- Compass cardinal points -->
+                            <text x="120" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#006B7D">N</text>
+                            <text x="210" y="125" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#006B7D">E</text>
+                            <text x="120" y="220" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#006B7D">S</text>
+                            <text x="30" y="125" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#006B7D">W</text>
+                            
+                            <!-- Compass lines -->
+                            <line x1="120" y1="35" x2="120" y2="205" stroke="#006B7D" stroke-width="1" stroke-opacity="0.3" />
+                            <line x1="35" y1="120" x2="205" y2="120" stroke="#006B7D" stroke-width="1" stroke-opacity="0.3" />
+                            
+                            <!-- Compass needle with animation -->
+                            <g>
+                                <animateTransform 
+                                    attributeName="transform"
+                                    type="rotate"
+                                    from="0 120 120"
+                                    to="360 120 120"
+                                    dur="20s"
+                                    repeatCount="indefinite"
+                                />
+                                <path d="M120,50 L140,140 L120,180 L100,140 Z" fill="#e6a94e" />
+                                <circle cx="120" cy="120" r="12" fill="white" stroke="#006B7D" stroke-width="2" />
+                                <circle cx="120" cy="120" r="5" fill="#006B7D" />
+                            </g>
+                            
+                            <!-- Question mark inside -->
+                            <text x="120" y="130" font-family="Arial, sans-serif" font-size="100" font-weight="bold" text-anchor="middle" fill="#006B7D" opacity="0.1">?</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Suggested pages -->
+            <div>
+                <h2 class="text-2xl font-bold text-[#006B7D] mb-6">Explore Popular Pages</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <a href="{% url 'home:did-fellowships' %}" class="group p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-[#006B7D] transition-all duration-300">
+                        <div class="w-12 h-12 bg-[#006B7D] bg-opacity-10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#006B7D] transition-colors duration-300">
+                            <svg class="w-6 h-6 text-[#006B7D] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-[#006B7D] mb-2 group-hover:text-[#e6a94e] transition-colors duration-300">DID Fellowships</h3>
+                        <p class="text-gray-600">Transform complexity into actionable solutions through our fellowship programs.</p>
+                    </a>
+                    
+                    <a href="{% url 'home:decision-intelligence-design-academy' %}" class="group p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-[#006B7D] transition-all duration-300">
+                        <div class="w-12 h-12 bg-[#006B7D] bg-opacity-10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#006B7D] transition-colors duration-300">
+                            <svg class="w-6 h-6 text-[#006B7D] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-[#006B7D] mb-2 group-hover:text-[#e6a94e] transition-colors duration-300">DID Academy</h3>
+                        <p class="text-gray-600">Learn about our decision intelligence design programs and courses.</p>
+                    </a>
+                    
+                    <a href="{% url 'home:team_list' %}" class="group p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-[#006B7D] transition-all duration-300">
+                        <div class="w-12 h-12 bg-[#006B7D] bg-opacity-10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#006B7D] transition-colors duration-300">
+                            <svg class="w-6 h-6 text-[#006B7D] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-[#006B7D] mb-2 group-hover:text-[#e6a94e] transition-colors duration-300">Our Team</h3>
+                        <p class="text-gray-600">Meet the experts and innovators behind IDI Africa's mission.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
