@@ -1,0 +1,20 @@
+{% load static %}
+<!-- Primary Meta Tags -->
+<meta name="title" content="{% if page_title %}{{ page_title }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
+<meta name="description" content="{% if page_description %}{{ page_description }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
+<meta name="keywords" content="{% if page_keywords %}{{ page_keywords }}{% else %}Decision Intelligence, Design, AI, Fellowship, Innovation, Africa, Kenya{% endif %}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:title" content="{% if page_title %}{{ page_title }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
+<meta property="og:description" content="{% if page_description %}{{ page_description }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
+<meta property="og:image" content="{% if page_image %}{{ page_image.url }}{% else %}{% static 'images/idi-social-preview.jpg' %}{% endif %}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="{% if page_title %}{{ page_title }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
+<meta property="twitter:description" content="{% if page_description %}{{ page_description }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
+
+<!-- Canonical link -->
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
