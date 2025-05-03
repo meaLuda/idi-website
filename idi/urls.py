@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
 from django.views.decorators.http import require_GET
+from django.views.static import serve
 from apps.home.sitemap import StaticSitemap, ProjectSitemap, TeamMemberSitemap
 from apps.home.views import custom_bad_request, custom_page_not_found, custom_permission_denied, custom_server_error
 
@@ -63,15 +64,21 @@ urlpatterns = [
          name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', robots_txt, name='robots_txt'),
     
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # THIS IS THE KEY FIX - Always serve media files regardless of DEBUG setting
+    path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),
+]
 
+# Static files handling
 if settings.DEBUG:
     urlpatterns += [
         path('test-404/', lambda request: custom_page_not_found(request, Exception())),
         path('test-500/', lambda request: custom_server_error(request)),
         path('test-403/', lambda request: custom_permission_denied(request, Exception())),
         path('test-400/', lambda request: custom_bad_request(request, Exception())),
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+else:
+    # In production, make sure we can still serve static files with Django
+    # (Although ideally, you'd configure Nginx/Apache to handle this)
+    urlpatterns += [
+        path('static/<path:path>', serve, {'document_root': settings.STATIC_ROOT}),
     ]
-
-    
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
