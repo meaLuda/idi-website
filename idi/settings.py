@@ -59,7 +59,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
+
+# CSRF settings
+CSRF_COOKIE_SECURE = True  # Only send CSRF cookie over HTTPS
+CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to access the CSRF cookie
+CSRF_TRUSTED_ORIGINS = ['https://idi.africa', 'https://www.idi.africa','http://localhost', 'http://127.0.0.1','http://170.187.145.60']  # Trusted origins that can submit forms
+
+# Session settings
+SESSION_COOKIE_SECURE = True  # Only send session cookie over HTTPS
 
 ROOT_URLCONF = 'idi.urls'
 
