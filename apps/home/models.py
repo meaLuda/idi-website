@@ -24,7 +24,7 @@ class TeamMember(models.Model):
         return None
 
     def get_absolute_url(self):
-        return f'uploads//team/{self.slug}/'
+        return f'uploads/team/{self.slug}/'
     
     def __str__(self):
         return self.name
