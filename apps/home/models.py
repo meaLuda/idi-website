@@ -24,7 +24,9 @@ class TeamMember(models.Model):
         return None
 
     def get_absolute_url(self):
-        return f'uploads/team/{self.slug}/'
+        """Return the URL for this team member"""
+        from django.urls import reverse
+        return reverse('home:team_member_detail', kwargs={'slug': self.slug})
     
     def __str__(self):
         return self.name

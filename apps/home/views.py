@@ -84,15 +84,17 @@ def team_list(request):
 
 class TeamMemberDetailView(DetailView):
     model = TeamMember
-    template_name = 'home/team_member_detail.html'
+    template_name = 'home/team/team_member_detail.html'
     context_object_name = 'member'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         member = self.get_object()
         
-        # SEO metadata
+        # Always set single_member to True
         context['single_member'] = True
+        
+        # SEO metadata
         context['page_title'] = member.name
         context['page_description'] = f'{member.name} - {member.position} at IDI Africa. Learn more about their work in decision intelligence design.'
         context['page_keywords'] = f'Team Member, {member.name}, {member.position}, Decision Intelligence Design, Innovation, Africa, Kenya'
