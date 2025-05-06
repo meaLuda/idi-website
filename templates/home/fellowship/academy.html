@@ -85,9 +85,9 @@
         </div>
 
         <!-- Process Content -->
-        <div class="lg:grid lg:grid-cols-12 gap-8 md:gap-10 items-center">
-            <!-- Left Content -->
-            <div class="lg:col-span-5 mb-10 lg:mb-0">
+        <div class="lg:grid flex flex-col items-center gap-8 md:gap-10 items-center">
+            <!-- Content -->
+            <div class="lg:col-span-7 mb-10 lg:mb-0">
                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm border-l-4 border-[#E6A94E] hover:shadow-md transition-shadow duration-300">
                     <h3 class="text-xl md:text-2xl text-[#006B7D] font-medium mb-5 md:mb-6">
                         Our Decision Intelligence Design process follows a continuous flow:
@@ -212,13 +212,12 @@
                 </div>
             </div>
 
-            <!-- Right Image -->
-            <div class="lg:col-span-7 flex justify-center">
+            <!-- Image -->
+            <div class="lg:col-span-7 h-full flex justify-center">
                 <div class="relative w-full max-w-7xl">
                     <!-- Desktop/Tablet Image -->
                     <div class="hidden md:block">
-                        <img src="{% static 'images/did-academy/idi_did_processflow.svg' %}" alt="DID Process Diagram"
-                            class="w-full object-contain  rounded-lg hover:shadow-lg transition-shadow duration-300">
+                            <img src="{% static 'images/did-academy/idi_did_processflow.svg' %}" alt="DID Process Diagram" class="w-full object-contain  rounded-lg hover:shadow-lg transition-shadow duration-300">
                     </div>
                     
                     <!-- Mobile Image with Interactive Zoom -->
@@ -233,7 +232,7 @@
         </div>
         
         <!-- Call to Action -->
-        <div class="mt-24 md:mt-16 text-center">
+        <div class="mt-20 md:mt-22 text-center">
             <a href="https://forms.gle/bc22iSjAV2YrMsfv7" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#006B7D] hover:bg-[#005766] transition-colors duration-300">
                 Join Us Today
                 <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
