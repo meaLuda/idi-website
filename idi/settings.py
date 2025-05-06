@@ -24,7 +24,9 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'django-insecure-h#1=zgzhz&c@g+p9w0b9kr$b-_$8+iyn6g8_0a!js*u12%lonj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (bool(int(os.environ.get('DEBUG',1))))
+DEBUG = (bool(int(os.environ.get('DEBUG'))))
+print(f"DEBUG: {os.environ.get('DEBUG')}")
+
 print(f"DEBUG: {DEBUG}")
 
 ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost','014b-41-90-68-161.ngrok-free.app']
