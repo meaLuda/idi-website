@@ -402,7 +402,9 @@
                             }
                             
                             // Get hover image URL
-                            const hoverImageUrl = bgImage.dataset.defaultImage.replace('sequence', 'replacer');
+                            const defaultImagePath = bgImage.dataset.defaultImage;
+                            const sequenceNumber = defaultImagePath.match(/sequence(\d+)\.jpg/)[1];
+                            const hoverImageUrl = `url('media/sequence/replacer/${parseInt(sequenceNumber)+1}.jpg')`;
                             
                             // Set the hover image
                             bgImage.style.backgroundImage = hoverImageUrl;
