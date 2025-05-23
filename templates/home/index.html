@@ -166,7 +166,7 @@
         </div>
     </section>
 
-    <!-- A holistic Approach section - Increased display time for secondary images -->
+<!-- A holistic Approach section - Increased display time for secondary images -->
     <section id="holistic-section" class="w-full bg-[#EDEDED] py-20">
         <h2 class="text-center text-3xl md:text-4xl font-semibold mt-5 mb-20">A holistic approach to innovation</h2>
         <div class="container mx-auto px-4">
@@ -187,16 +187,6 @@
                         <div class="bg-image" :style="hover ? 'background-image: url(\'media/sequence/replacer/2.jpg\')' : 'background-image: url(\'media/sequence/sequence1.jpg\')'"></div>
                     </div>
 
-                    <div class="item item-2 relative transition-transform duration-300 ease-in-out" 
-                        x-data="{ hover: false }" 
-                        @mouseenter="!isMobile && (hover = true)" 
-                        @mouseleave="!isMobile && (hover = false)"
-                        @touchstart="isMobile && (hover = true)"
-                        @touchend="isMobile && setTimeout(() => hover = false, 3000)"
-                        :class="{ 'scale-110 z-10': hover }">
-                        <div class="bg-image" :style="hover ? 'background-image: url(\'media/sequence/replacer/3.jpg\')' : 'background-image: url(\'media/sequence/sequence2.jpg\')'"></div>
-                    </div>
-
                     <div class="item item-3 relative transition-transform duration-300 ease-in-out" 
                         x-data="{ hover: false }" 
                         @mouseenter="!isMobile && (hover = true)" 
@@ -205,6 +195,16 @@
                         @touchend="isMobile && setTimeout(() => hover = false, 3000)"
                         :class="{ 'scale-110 z-10': hover }">
                         <div class="bg-image" :style="hover ? 'background-image: url(\'media/sequence/replacer/4.jpg\')' : 'background-image: url(\'media/sequence/sequence3.jpg\')'"></div>
+                    </div>
+
+                    <div class="item item-2 relative transition-transform duration-300 ease-in-out" 
+                        x-data="{ hover: false }" 
+                        @mouseenter="!isMobile && (hover = true)" 
+                        @mouseleave="!isMobile && (hover = false)"
+                        @touchstart="isMobile && (hover = true)"
+                        @touchend="isMobile && setTimeout(() => hover = false, 3000)"
+                        :class="{ 'scale-110 z-10': hover }">
+                        <div class="bg-image" :style="hover ? 'background-image: url(\'media/sequence/replacer/3.jpg\')' : 'background-image: url(\'media/sequence/sequence2.jpg\')'"></div>
                     </div>
 
                     <div class="item item-4 relative transition-transform duration-300 ease-in-out" 
