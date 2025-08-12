@@ -1,11 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView
-from django.views.decorators.cache import cache_page
-from django.core.cache import cache
 from .models import Project, TeamMember, Testimonial, Program, Partner, Client
 
 # Create your views here.
-@cache_page(60 * 15)  # Cache for 15 minutes
 def home(request):
     # Optimize queries with select_related and prefetch_related
     team_members = TeamMember.objects.select_related().all()[:6]
@@ -38,7 +35,6 @@ def home(request):
 #     return render(request, "home/fellowship/fellowship.html", context)
 
 
-@cache_page(60 * 30)  # Cache for 30 minutes
 def academy(request):
     # Get featured programs for the current year with optimized query
     featured_programs = Program.objects.filter(
@@ -85,7 +81,6 @@ def program_detail(request, slug):
     return render(request, 'home/programs/program_detail.html', context)
 
 # New view for Projects list page (Our Work)
-@cache_page(60 * 20)  # Cache for 20 minutes
 def projects_list(request):
     projects = Project.objects.filter(is_active=True).select_related().order_by('-created_at')
     
@@ -100,7 +95,6 @@ def projects_list(request):
 
 
 # New view for Team page
-@cache_page(60 * 30)  # Cache for 30 minutes
 def team_list(request):
     team_members = TeamMember.objects.select_related().all()
     

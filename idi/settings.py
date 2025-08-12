@@ -214,20 +214,7 @@ CKEDITOR_ALLOW_NONIMAGE_FILES = False
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Cache Configuration - File-based caching
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': os.path.join(BASE_DIR, 'cache'),
-        'TIMEOUT': 300,
-        'OPTIONS': {
-            'MAX_ENTRIES': 1000,
-        }
-    }
-}
-
-# Session Configuration - Database sessions for better performance
-SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+# Session Configuration - Database sessions
 SESSION_COOKIE_AGE = 86400  # 24 hours
 
 # Security Headers
