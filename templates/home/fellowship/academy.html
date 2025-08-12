@@ -3,1019 +3,795 @@
 {% load static %}
 
 {% block content %}
-<!-- Custom styles for preventing overlay issues -->
-<style>
-    @media (max-width: 768px) {
-        .program-info {
-            position: relative !important;
-            top: auto !important;
-        }
-    }
-</style>
-<!-- Academy Hero Section -->
-<section class="pt-24 pb-20 lg:pt-32 bg-white relative">
-    <div class="absolute top-0 left-0 w-60 h-60 md:w-96 md:h-96 overflow-hidden">
-        <svg viewBox="0 0 100 100" class="w-full h-full">
-            <circle cx="0" cy="0" r="100" fill="none" stroke="#E6A94E" stroke-width="1" />
-        </svg>
+<!-- Hero Section -->
+<section class="relative h-[80vh] flex items-center overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0">
+        <img src="{% static 'images/engagment_bg.webp' %}" alt="Background Image"
+            class="w-full h-full object-cover scale-y-100">
+        <!-- Teal Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#006377]/40 to-[#006377]/10"></div>
     </div>
 
-    <div class="container mx-auto px-4 relative">
-        <!-- Title and Description -->
-        <div class="md:grid md:grid-cols-12 gap-8">
-            <div class="md:col-span-5 mb-8 md:mb-0">
-                <h1 class="text-[#006B7D] text-4xl sm:text-5xl md:text-6xl font-normal leading-tight mb-8 mt-8">
+    <!-- Content -->
+    <div class="relative z-10 container mx-auto px-4 py-10">
+        <div class="max-w-3xl">
+            <!-- DIDA Logo/Brand -->
+            <div class="mb-6">
+                <svg width="207" height="59" viewBox="0 0 207 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M178.326 0.699627V34.7059H151.123V27.9037C151.123 12.8788 163.302 0.699627 178.326 0.699627Z"
+                        fill="#F6F9FD" />
+                    <path d="M178.326 58.3004H151.123V36.3203H178.326V58.3004Z" fill="#F6F9FD" />
+                    <path d="M207 33.0574V58.3004H179.796V5.85333C194.821 5.85333 207 18.0335 207 33.0574Z"
+                        fill="#F6F9FD" />
+                    <path
+                        d="M54.0887 28.0296H3.75002C3.16757 28.0296 2.69629 27.5574 2.69629 26.9759V1.88021C2.69629 1.29775 3.16757 0.825523 3.75002 0.825523H28.993C43.4354 0.825523 55.1424 12.5334 55.1424 26.9759C55.1424 27.5574 54.6711 28.0296 54.0887 28.0296Z"
+                        fill="#F6F9FD" />
+                    <path
+                        d="M86.7573 4.3308V54.6694C86.7573 55.2519 86.2851 55.7232 85.7036 55.7232H60.6079C60.0255 55.7232 59.5542 55.2519 59.5542 54.6694V29.4265C59.5542 14.984 71.2611 3.27707 85.7036 3.27707C86.2851 3.27707 86.7573 3.74835 86.7573 4.3308Z"
+                        fill="#F6F9FD" />
+                    <path d="M25.243 56.7037H0V29.4996H52.4461C52.4461 44.5246 40.2669 56.7037 25.243 56.7037Z"
+                        fill="#F6F9FD" />
+                    <path
+                        d="M146.728 28.0296H96.3897C95.8072 28.0296 95.3359 27.5574 95.3359 26.9759V1.88021C95.3359 1.29775 95.8072 0.825523 96.3897 0.825523H121.633C136.075 0.825523 147.782 12.5334 147.782 26.9759C147.782 27.5574 147.311 28.0296 146.728 28.0296Z"
+                        fill="#F6F9FD" />
+                    <path d="M117.883 56.7037H92.6396V29.4996H145.087C145.087 44.5246 132.907 56.7037 117.883 56.7037Z"
+                        fill="#F6F9FD" />
+                </svg>
+            </div>
+            <!-- Description -->
+            <div class="mb-8">
+                <h1 class="text-white text-4xl md:text-5xl font-semibold leading-tight">
                     Decision Intelligence Design Academy
                 </h1>
+                <p class="text-white text-2xl md:text-3xl leading-relaxed mt-4">
+                    Institute of Design and Innovation • Nairobi, Kenya
+                </p>
+                <p class="text-white text-xl md:text-2xl leading-relaxed mt-2">
+                    Developing Africa’s capacity for design-, tech- & data-driven decision-making for social, business
+                    and public innovation.
+                </p>
             </div>
-            <div class="md:col-span-7">
-                <p class="text-lg sm:text-xl text-gray-600 mb-8">
-                    The Institute of Design and Innovation (IDI) recognizes the need for a new generation of
-                    decision-makers who are ready to lead with intelligence, innovation, and impact.
-                </p>
-                <p class="text-base sm:text-lg text-gray-600 leading-relaxed text-wrap font-medium tracking-wide mb-8">
-                    To meet this need, IDI proudly presents transformative design innovation academy with programs
-                    designed to build decision-making capacities across sectors.
-                </p>
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg border-l-4 border-[#E6A94E]">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-4">Our Key Objectives</h3>
-                    <ul class="space-y-3 sm:space-y-4">
-                        <li class="flex items-start gap-3">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <p><span class="font-semibold">Empower Decsion-Making:</span> Equip participants with
-                                cutting-edge decision intelligence skills to navigate complex challenges and drive
-                                meaningful change in their respective fields.</p>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <p><span class="font-semibold">Strengthen Cross-Sector Collaboration:</span> Facilitate
-                                strategic partnerships between public institutions, private enterprises, and civic
-                                organizations to co-create impactful solutions.</p>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <p><span class="font-semibold">Drive Innovation for Impact:</span> Enable participants to
-                                apply
-                                decision intelligence methodologies to real-world challenges, ensuring solutions are
-                                data-driven, ethical, and sustainable.</p>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <p><span class="font-semibold">Scale Transformative Solutions:</span> Develop replicable and
-                                adaptable decision-making frameworks that can be implemented across industries and
-                                geographies for long-term impact.</p>
-                        </li>
-                    </ul>
-                </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button
+                    class="bg-white text-[#006377] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center">
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="mr-2">
+                        <path
+                            d="M12 22.8004C17.5228 22.8004 22 18.3233 22 12.8004C22 7.27757 17.5228 2.80042 12 2.80042C6.47715 2.80042 2 7.27757 2 12.8004C2 18.3233 6.47715 22.8004 12 22.8004Z"
+                            stroke="#006477" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M9.5 9.76575C9.5 9.28846 9.5 9.04982 9.59974 8.91659C9.68666 8.80049 9.81971 8.72785 9.96438 8.71752C10.1304 8.70566 10.3311 8.83471 10.7326 9.0928L15.4532 12.1275C15.8016 12.3514 15.9758 12.4634 16.0359 12.6058C16.0885 12.7302 16.0885 12.8706 16.0359 12.995C15.9758 13.1374 15.8016 13.2494 15.4532 13.4734L10.7326 16.508C10.3311 16.7661 10.1304 16.8952 9.96438 16.8833C9.81971 16.873 9.68666 16.8003 9.59974 16.6842C9.5 16.551 9.5 16.3124 9.5 15.8351V9.76575Z"
+                            stroke="#006477" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    Join the network
+                </button>
+                <button
+                    class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#006377] transition-colors">
+                    Explore programs
+                </button>
             </div>
         </div>
     </div>
 </section>
 <!-- Divider Section -->
 <section class="h-[20px] relative overflow-hidden"
-    style="background-image: url('/media/slicer.png'); background-size: cover;">
+    style="background-image: url('{% static 'images/slicer.webp' %}'); background-size: cover;">
 </section>
-<!-- DID Process Section -->
-<section class="mt-4 py-16 md:py-20 bg-gray-50">
+<!-- About the Academy Section -->
+<section class="min-h-screen py-20 relative overflow-hidden bg-[#F8F9FB] bg-center bg-fixed">
     <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-10 md:mb-12">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl text-[#006B7D] font-bold mb-4 md:mb-6 mt-2">Decision Intelligence Design Learning Journey</h2>
-            <div class="h-1 w-24 md:w-32 bg-[#E6A94E] mx-auto mb-6 md:mb-8"></div>
-            <p class="text-gray-600 text-lg max-w-3xl mx-auto">A structured approach to transform how organizations make decisions through data, design, and deliberate action.</p>
-        </div>
-        
-        <!-- Process Content -->
-        <div class="flex flex-col items-center gap-8 md:gap-10">
-            <!-- Content -->
-            <div class="w-full mb-8">
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm border-l-4 border-[#E6A94E] hover:shadow-md transition-shadow duration-300">
-                    <h3 class="text-xl md:text-2xl text-[#006B7D] font-medium mb-5 md:mb-6">
-                        Our Decision Intelligence Design process follows a continuous flow:
-                    </h3>
-                    
-                    <!-- Flow Diagram for Mobile -->
-                    <div class="mb-6 py-4 px-3 bg-gray-50 rounded-lg text-center lg:hidden">
-                        <div class="overflow-x-auto">
-                            <div class="inline-flex items-center min-w-max pb-2">
-                                <div class="flex flex-col items-center px-3">
-                                    <div class="w-12 h-12 bg-[#006B7D] text-white rounded-full flex items-center justify-center mb-2">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    </div>
-                                    <span class="font-medium text-[#006B7D]">Sense</span>
-                                </div>
-                                <svg class="w-6 h-6 text-[#E6A94E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                <div class="flex flex-col items-center px-3">
-                                    <div class="w-12 h-12 bg-[#006B7D] text-white rounded-full flex items-center justify-center mb-2">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-                                        </svg>
-                                    </div>
-                                    <span class="font-medium text-[#006B7D]">Frame</span>
-                                </div>
-                                <svg class="w-6 h-6 text-[#E6A94E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                <div class="flex flex-col items-center px-3">
-                                    <div class="w-12 h-12 bg-[#006B7D] text-white rounded-full flex items-center justify-center mb-2">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                        </svg>
-                                    </div>
-                                    <span class="font-medium text-[#006B7D]">Model</span>
-                                </div>
-                                <svg class="w-6 h-6 text-[#E6A94E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                <div class="flex flex-col items-center px-3">
-                                    <div class="w-12 h-12 bg-[#006B7D] text-white rounded-full flex items-center justify-center mb-2">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                        </svg>
-                                    </div>
-                                    <span class="font-medium text-[#006B7D]">Decide</span>
-                                </div>
-                                <svg class="w-6 h-6 text-[#E6A94E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                <div class="flex flex-col items-center px-3">
-                                    <div class="w-12 h-12 bg-[#006B7D] text-white rounded-full flex items-center justify-center mb-2">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                        </svg>
-                                    </div>
-                                    <span class="font-medium text-[#006B7D]">Act</span>
-                                </div>
-                                <svg class="w-6 h-6 text-[#E6A94E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                <div class="flex flex-col items-center px-3">
-                                    <div class="w-12 h-12 bg-[#006B7D] text-white rounded-full flex items-center justify-center mb-2">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                        </svg>
-                                    </div>
-                                    <span class="font-medium text-[#006B7D]">Learn</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-xs text-gray-500 mt-2 italic">Swipe to view full process</div>
-                    </div>
-                    
-                    <!-- Flow Diagram for Desktop -->
-                    <div class="hidden lg:block mb-6 py-3 px-4 bg-gray-50 rounded-lg text-center">
-                        <p class="font-medium text-[#006B7D] text-lg">
-                            Sense → Frame → Model → Decide → Act → Learn
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Column - Text Content -->
+            <div class="space-y-8">
+                <h2 class="text-[#006377] text-4xl font-bold mb-8">About the Academy</h2>
+
+                <div class="space-y-6">
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        The Decision Intelligence Design Academy (DIDA) is Africa's leading capacity-development
+                        ecosystem for decision-intelligent governance, leadership and innovation. We weave leadership
+                        and talent development with rigorous training in design, data, AI and emerging
+                        technologies—cultivating shared vocabularies, interoperable frameworks, value-driven solutions,
+                        and cross-program networks to accelerate responsible, high-impact AI literacy and adoption
+                        across public, private, and civic sectors.
+                    </p>
+                </div>
+
+                <!-- Feature Boxes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+                    <div
+                        class="bg-[#f99a00] text-white p-6 rounded-lg shadow-lg transform rotate-1 border-2 border-[#f99a00]">
+                        <h3 class="font-bold text-lg mb-2">Integrity-first, life-centered design</h3>
+                        <p class="text-sm text-white/90">
+                            Ethics, care and sustainable decision practices
                         </p>
                     </div>
-                    
-                    <p class="mb-6 text-gray-700 leading-relaxed">
-                        This continuous cycle guides practitioners from spotting signals to embedding insight-driven actions and
-                        improvements in their decision-making processes.
+
+                    <div
+                        class="bg-[#ccd19c] text-[#006377] p-6 rounded-lg shadow-lg transform rotate-1 border-2 border-[#ccd19c]">
+                        <h3 class="font-bold text-lg mb-2">Interoperable, cross-sector frameworks</h3>
+                        <p class="text-sm text-[#006377]/90">
+                            Shared methodologies from pilots to enterprise
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Image with Overlays -->
+            <div class="relative">
+                <!-- Main Image -->
+                <div class="relative rounded-2xl overflow-hidden">
+                    <img src="{% static 'images/mamaDigital.webp' %}" alt="Academy participants"
+                        class="w-full h-[500px] object-cover">
+
+                    <!-- Overlay Boxes -->
+                    <div class="absolute inset-0 flex flex-col justify-center items-center space-y-4">
+                        <!-- Leadership Box -->
+                        <div
+                            class="bg-white/30 text-white px-6 py-4 rounded-lg backdrop-blur-md w-3/4 text-center shadow-lg">
+                            <h4 class="font-bold text-lg">Leadership</h4>
+                        </div>
+
+                        <!-- Design + Data + AI Box -->
+                        <div
+                            class="bg-white/30 text-white px-6 py-4 rounded-lg backdrop-blur-md w-3/4 text-center shadow-lg">
+                            <h4 class="font-bold text-lg">Design + Data + AI</h4>
+                        </div>
+
+                        <!-- Cross Program Networks Box -->
+                        <div
+                            class="bg-white/30 text-white px-6 py-4 rounded-lg backdrop-blur-md w-3/4 text-center shadow-lg">
+                            <h4 class="font-bold text-lg">Cross-Program Networks</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Decorative geometric shape -->
+                <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-[#f99a00] rounded-lg transform rotate-12 z-10">
+                </div>
+                <div class="absolute -top-4 -right-4 w-16 h-16 bg-[#ccd19c] rounded-lg transform -rotate-12 z-10"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Vision Section -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="mb-16">
+            <h2 class="text-[#006377] text-4xl font-bold mb-4">Vision</h2>
+            <p class="text-gray-600 text-xl">Scale Resilience and Prosperity through Decision & Innovation Intelligence
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <!-- Left Column - Image with Modal -->
+            <div class="relative">
+                <img src="{% static 'images/teamDecionIntelligence.webp' %}" alt="Team working on decision intelligence"
+                    class="w-full h-[400px] object-cover rounded-2xl">
+
+                <!-- Modal/Popup Box -->
+                <div
+                    class="bg-white/55 text-white px-6 py-4 rounded-lg backdrop-blur-md absolute bottom-8 left-8 right-8 rounded-lg shadow-xl p-6 border border-gray-200">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 mt-1">
+                            <svg class="w-6 h-6 text-[#006377]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg mb-2">What is Decision Intelligence?</h4>
+                            <p class="text-black text-sm leading-relaxed">
+                                Decision intelligence blends data, design and behavioural insights to turn information
+                                into transformative action through emerging technologies, and thinks of decision as a
+                                Design Intelligence framework that empowers networks with stakeholder engagement and
+                                enable communities to thrive.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Benefits List -->
+            <div class="space-y-8">
+                <p class="text-gray-700 text-lg leading-relaxed mb-8 border border-gray-200 p-4 rounded-lg shadow-sm">
+                    Decision intelligence sits at the intersection of strategy and impact, empowering teams to thrive in
+                    volatile, uncertain, complex and ambiguous contexts. By embedding a culture of innovation,
+                    collaboration and ethical leadership, DI-DI drives lasting positive change.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Left Column Benefits -->
+                    <div class="space-y-6">
+                        <div
+                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
+                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Shaping the Future of Work with data-driven
+                                    decision strategies</h4>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
+                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Enhancing Resilience & Adaptability to
+                                    anticipate change and respond with agility</h4>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
+                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Developing Cross-Sector Competencies with
+                                    lab-saving workforces</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column Benefits -->
+                    <div class="space-y-6">
+                        <div
+                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
+                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Advancing Ethical & Inclusive practices
+                                    centered on sustainability and equity</h4>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
+                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Driving Economic Growth by unlocking new
+                                    markets and revenue streams</h4>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
+                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Fostering Cross-Industry Collaboration to
+                                    co-innovate across sectors</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Core Offerings Section -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="mb-16 text-left">
+            <h2 class="text-[#006377] text-4xl font-bold mb-4">Core Offerings: Decision Intelligence Programs</h2>
+            <div class="w-64 h-2 bg-[#f99a00] mb-4 mt-3"></div>
+
+            <p class="text-gray-600 text-xl max-w-3xl">
+                Positioning Africa's integrative ecosystem for decision-intelligent capacity.
+            </p>
+        </div>
+
+        <!-- Programs Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Executive Program -->
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+                <!-- Image Island -->
+                <div class="mb-6">
+                    <div class="rounded-xl overflow-hidden shadow-md">
+                        <img src="{% static 'images/executive-boardroom.webp' %}" alt="Executive boardroom meeting"
+                            class="w-full h-64 object-cover">
+                    </div>
+                </div>
+
+                <!-- Content Island -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-[#006377] text-2xl font-bold mb-4">Executive</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        A modular set of fellowships, masterclasses, micro-courses, and strategic lens designed for
+                        executives and senior decision-makers.
                     </p>
-                    
-                    <p class="mb-4 font-medium text-[#006B7D]">Each stage builds on the last:</p>
-                    
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-start gap-3 group">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0 group-hover:text-[#006B7D] transition-colors duration-300">•</span>
-                            <span><span class="font-semibold text-[#006B7D]">sensing</span> real-world data,</span>
-                        </li>
-                        <li class="flex items-start gap-3 group">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0 group-hover:text-[#006B7D] transition-colors duration-300">•</span>
-                            <span><span class="font-semibold text-[#006B7D]">framing</span> clear questions,</span>
-                        </li>
-                        <li class="flex items-start gap-3 group">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0 group-hover:text-[#006B7D] transition-colors duration-300">•</span>
-                            <span><span class="font-semibold text-[#006B7D]">modeling</span> evidence-based options,</span>
-                        </li>
-                        <li class="flex items-start gap-3 group">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0 group-hover:text-[#006B7D] transition-colors duration-300">•</span>
-                            <span><span class="font-semibold text-[#006B7D]">deciding</span> with confidence,</span>
-                        </li>
-                        <li class="flex items-start gap-3 group">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0 group-hover:text-[#006B7D] transition-colors duration-300">•</span>
-                            <span><span class="font-semibold text-[#006B7D]">acting</span> through purposeful implementation, and</span>
-                        </li>
-                        <li class="flex items-start gap-3 group">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0 group-hover:text-[#006B7D] transition-colors duration-300">•</span>
-                            <span><span class="font-semibold text-[#006B7D]">learning</span> from outcomes to restart the cycle stronger.</span>
-                        </li>
-                    </ul>
-                    
-                    <p class="text-gray-700 leading-relaxed">Mastering this rhythm equips teams to make smarter, faster, and more
-                        responsible decisions in any context.</p>
-                </div>
-            </div>
-            
-            <!-- Image -->
-            <div class="w-full">
-                <div class="relative">
-                    <!-- Desktop/Tablet Image -->
-                    <div class="hidden md:block">
-                        <img src="{% static 'images/did-academy/idi_did_processflow.svg' %}" alt="DID Process Diagram" 
-                             class="w-full object-contain rounded-lg hover:shadow-lg transition-shadow duration-300">
-                    </div>
-                    
-                    <!-- Mobile Image with Scrollable Container -->
-                    <div class="md:hidden relative">
-                        <div class="overflow-x-auto pb-4">
-                            <img src="{% static 'images/did-academy/idi_did_processflow.svg' %}" alt="DID Process Diagram"
-                                class="min-w-[640px] w-auto h-auto object-cover rounded-lg">
-                        </div>
-                        <div class="text-xs text-gray-500 text-center mt-1 italic">Swipe to view full image</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Call to Action -->
-        <div class="mt-16 md:mt-20 text-center">
-            <a href="https://forms.gle/CjLbgtmuaLXzvpcR9" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#006B7D] hover:bg-[#005766] transition-colors duration-300">
-                Join Us Today
-                <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </a>
-        </div>
-    </div>
-</section>
-<!-- Divider Section -->
-<section class="h-[20px] relative overflow-hidden"
-    style="background-image: url('/media/slicer.png'); background-size: cover;">
-</section>
 
-<!-- Academy Overview Section -->
-<section class="py-16 md:py-20 bg-[#006B7D] text-white">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl mb-6 md:mb-8 font-bold">DID Programs</h2>
-            <div class="h-1 w-32 bg-[#E6A94E] mx-auto mb-6 md:mb-8"></div>
-            <p class="text-lg sm:text-xl mb-6">
-                Our Decision Intelligence programs are designed to transform complexity into clarity by blending data,
-                design, and ethics to empower better decision-making.
-            </p>
-            <p class="text-base sm:text-lg leading-relaxed sm:leading-7">
-                <span class="block mb-4">
-                    Through a mix of curated learning, real-world case studies, and hands-on design sprints,
-                    participants explore life-centered design, behavioral science, AI, and data
-                    analytics to tackle complex challenges.
-                </span>
-                <span class="block">
-                    Whether you're building foundational knowledge or applying advanced strategies at the executive
-                    level, our programs offer interactive learning, peer exchange, and mentorship—equipping
-                    professionals with the tools to drive meaningful impact across sectors.
-                </span>
-            </p>
-            <div class="flex justify-center mt-8">
-                <!-- <span class="bg-yellow-200 px-2 py-1 rounded font-bold text-[#D97706] text-3xl">*Applications open in May 2025</span> -->
-                <a href="https://forms.gle/CjLbgtmuaLXzvpcR9"
-                    class="inline-block bg-[#E6A94E] hover:bg-white hover:text-[#006B7D] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 text-base sm:text-lg animate-pulse">
-                    Express Interest
-                </a>
+                    <!-- Details List -->
+                    <div class="space-y-4">
+                        <div>
+                            <span class="font-semibold text-gray-800">Objective:</span>
+                            <span class="text-gray-600 ml-2">Equip leadership with frameworks to scale innovation from
+                                pilots to enterprise.</span>
+                        </div>
+
+                        <div>
+                            <span class="font-semibold text-gray-800">Need:</span>
+                            <span class="text-gray-600 ml-2">Address gaps in systems thinking and clear roadmaps for
+                                responsible adoption.</span>
+                        </div>
+
+                        <div>
+                            <span class="font-semibold text-gray-800">Approach:</span>
+                            <span class="text-gray-600 ml-2">Case studies, diagnostics, innovation labs, roadmap sprints
+                                and executive coaching.</span>
+                        </div>
+
+                        <div>
+                            <span class="font-semibold text-gray-800">Outcomes:</span>
+                            <span class="text-gray-600 ml-2">Agile governance, organisational capability and networks
+                                that reduce digital and human risk.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emerging Talent Program -->
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+                <!-- Image Island -->
+                <div class="mb-6">
+                    <div class="rounded-xl overflow-hidden shadow-md">
+                        <img src="{% static 'images/emerging-talent-collaboration.webp' %}"
+                            alt="Young professionals collaborating" class="w-full h-64 object-cover">
+                    </div>
+                </div>
+
+                <!-- Content Island -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-[#006377] text-2xl font-bold mb-4">Emerging Talent</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Bootcamps, bootcamps, courses and hackathons for early- and mid-career professionals,
+                        innovators, designers and researchers.
+                    </p>
+
+                    <!-- Details List -->
+                    <div class="space-y-4">
+                        <div>
+                            <span class="font-semibold text-gray-800">Objective:</span>
+                            <span class="text-gray-600 ml-2">Cultivate cross-disciplinary talent for end-to-end and
+                                data-driven innovation.</span>
+                        </div>
+
+                        <div>
+                            <span class="font-semibold text-gray-800">Need:</span>
+                            <span class="text-gray-600 ml-2">Bridge deep expertise across innovation gaps with a
+                                structured journey to deployment.</span>
+                        </div>
+
+                        <div>
+                            <span class="font-semibold text-gray-800">Approach:</span>
+                            <span class="text-gray-600 ml-2">Opportunity mapping, rapid prototyping, hands-on training
+                                and accelerated apprenticeships.</span>
+                        </div>
+
+                        <div>
+                            <span class="font-semibold text-gray-800">Outcomes:</span>
+                            <span class="text-gray-600 ml-2">Portfolio development, case strategy, visualization and
+                                real-world application readiness.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Divider Section -->
-<section class="h-[20px] relative overflow-hidden"
-    style="background-image: url('/media/slicer.png'); background-size: cover;">
-</section>
-<!-- Programs Section -->
-<section class="py-16 md:py-20 bg-white">
+<!-- 2025 Programs Section -->
+<section class="py-20 bg-[#006377] relative overflow-hidden">
     <div class="container mx-auto px-4">
-        <!-- Program 1: Fundamentals -->
-        <div class="md:grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
-            <div class="md:col-span-5 program-info md:sticky md:top-24 mb-10 md:mb-0">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl text-[#006B7D] font-bold mb-6">Decision Intelligence Design
-                    Fundamentals</h2>
-                <div class="h-1 w-32 bg-[#E6A94E] mb-4 md:mb-6"></div>
-                <p class="text-lg sm:text-xl text-gray-700 mb-6">
-                    8-Week Fundamental Program
-                </p>
-                <p class="text-base sm:text-lg text-gray-600 mb-6">
-                    Explore the fundamentals of life-centered design, behavioral science data and artificial
-                    intelligence that redefine the future of decision-making.
-                </p>
+        <!-- Section Header -->
+        <div class="mb-16">
+            <h2 class="text-white text-5xl font-bold mb-4">2025 Programs</h2>
+            <div class="w-32 h-1 bg-[#f99a00] rounded-full"></div>
+        </div>
 
-                <div class="bg-gray-50 p-4 sm:p-5 rounded-lg mb-4 sm:mb-6">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-3 sm:mb-4">Who Should Apply</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Designers (HCD, UX/UI, product, service, system designers)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Technologists (data scientists, engineers, tech innovators)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Behavioral scientists</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Career changers</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Recent graduates</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Tertiary Institution Learners</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gray-50 p-4 sm:p-5 rounded-lg">
-                    <p class="font-medium text-[#006B7D] mb-2">Time Commitment: <span
-                            class="font-normal text-gray-700">8-10
-                            hours/week</span></p>
-                    <p class="font-medium text-[#006B7D] mb-2">Start Date: <span class="font-normal text-gray-700">2nd
-                            July 2025</span></p>
-                    <p class="font-medium text-[#006B7D] mb-2">Fees: <span class="font-normal text-gray-700">Kes 70,000
-                            per individual*</span></p>
-                    <p class="text-sm text-gray-600 italic">*Installment options available. Scholarship opportunities
-                        given based on merit.</p>
-                </div>
-            </div>
-
-            <div class="md:col-span-7 relative z-10">
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg shadow-sm mb-8 sm:mb-10">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-4">Program Features</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">AI, Design and Data Analytics Primer</p>
-                                <p class="text-gray-600">Exploration of behavioral science approaches, data analytics
-                                    tools and AI capabilities tailored for decision-making.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Interactive Learning</p>
-                                <p class="text-gray-600">Participants engage with self-paced curated courses from
-                                    leading platforms and live sessions with leading instructors.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Case Studies</p>
-                                <p class="text-gray-600">Analysis of real-world examples to understand decision
-                                    intelligence in action.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Peer Learning Sessions</p>
-                                <p class="text-gray-600">Interactive discussions with peers to exchange insights and
-                                    experiences with other professionals.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg shadow-sm mb-8 sm:mb-10">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-5 sm:mb-6">Our Approach</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6">
-                        <div class="flex items-center gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D]">Hybrid Facilitation</p>
-                        </div>
-
-                        <div class="flex items-center gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D]">Self-paced Learning</p>
-                        </div>
-
-                        <div class="flex items-center gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D]">Peer Collaborations</p>
-                        </div>
-
-                        <div class="flex items-center gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D]">Thought Leadership</p>
-                        </div>
+        <!-- Programs Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for program in featured_programs %}
+            <div class="transform hover:scale-105 transition-transform duration-300">
+                <!-- Image Island -->
+                <div class="mb-6">
+                    <div class="rounded-xl overflow-hidden shadow-md">
+                        <img src="{% if program.image %}{{ program.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}"
+                            alt="{{ program.title }}" class="w-full h-48 object-cover">
                     </div>
                 </div>
 
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg shadow-sm">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-4">Opportunities</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Access to a multi-sector knowledge and tools hub</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Access a diverse group of local and global peer learners and experts.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Priority access to the DID Innovation Fellowships</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Build lifelong professional networks as a DIDA Alumnus</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Certification by local and global bodies</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+                <!-- Content Island -->
+                <div class="rounded-xl p-4 shadow-sm">
+                    <h3 class="text-white text-xl font-bold mb-4 leading-tight">{{ program.title }}</h3>
+                    <p class="text-white text-sm leading-relaxed mb-6">
+                        {{ program.short_description }}
+                    </p>
 
-        <hr class="my-16 md:my-20 border-gray-200">
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        {% if program.learn_more_url %}
+                        <a href="{{ program.learn_more_url }}"
+                            class="flex-1 bg-white border-2 border-[#f99a00] text-[#006377] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#006377] hover:text-white transition-colors text-center flex items-center justify-center">
+                            Learn More
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                        {% endif %}
 
-        <!-- Program 2: Executive Program -->
-        <div class="md:grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
-            <div class="md:col-span-5 program-info md:sticky md:top-24 mb-10 md:mb-0">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl text-[#006B7D] font-bold mb-6">Executive Decision
-                    Intelligence Design
-                    Program</h2>
-                <div class="h-1 w-32 bg-[#E6A94E] mb-4 md:mb-6"></div>
-                <p class="text-lg sm:text-xl text-gray-700 mb-6">
-                    4-Week Intensive Program
-                </p>
-                <p class="text-base sm:text-lg text-gray-600 mb-6">
-                    Establish a robust understanding of advanced decision intelligence principles and their strategic
-                    application at the executive level.
-                </p>
-
-                <div class="bg-gray-50 p-4 sm:p-5 rounded-lg mb-4 sm:mb-6">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-3 sm:mb-4">Who Should Apply</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>CEOs, CTOs, and other senior leaders</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Heads of departments and team leads</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Policymakers and visionaries</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Entrepreneurs</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gray-50 p-4 sm:p-5 rounded-lg">
-                    <p class="font-medium text-[#006B7D]">Time Commitment: <span class="font-normal text-gray-700">4-6
-                            hours/week
+                        {% if program.application_url and program.application_open %}
+                        <a href="{{ program.application_url }}"
+                            class="flex-1 bg-[#006377] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#f99a00] transition-colors text-center">
+                            Apply Now
+                        </a>
+                        {% elif not program.application_open %}
+                        <span
+                            class="flex-1 bg-gray-400 text-white px-4 py-2 rounded-lg text-sm font-semibold text-center cursor-not-allowed">
+                            Applications Closed
                         </span>
-                    </p>
-                    <p class="font-medium text-[#006B7D] mb-2">Start Date: <span class="font-normal text-gray-700">5th
-                            August 2025</span></p>
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-3 sm:mb-4">Fees</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Kes 150,000 for individuals*</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Kes 350,000 for a team of 3*</span>
-                        </li>
-                        <li class="text-sm text-gray-600 ml-6 italic">
-                            *Installment options available. Scholarship opportunities given based on merit available.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="md:col-span-7 relative z-10">
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg shadow-sm mb-8 sm:mb-10">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-4">Program Features</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v10m2 4h-8m-4 0v-8m4 0h8" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Interactive Masterclasses</p>
-                                <p class="text-gray-600">Live sessions led by global and regional leaders focusing on
-                                    strategic decision intelligence frameworks, behavioral insights, and ethical design
-                                    principles.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Case Studies</p>
-                                <p class="text-gray-600">Analysis of real-world examples to understand decision
-                                    intelligence in action.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Peer Learning Sessions</p>
-                                <p class="text-gray-600">Facilitated discussions to exchange insights and experiences
-                                    with other executives.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">AI, Design and Data Analytics Primer</p>
-                                <p class="text-gray-600">Exploration of advanced analytics tools and AI capabilities
-                                    tailored for leadership decision-making.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg shadow-sm mb-8 sm:mb-10">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-5 sm:mb-6">Our Approach</h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v10m2 4h-8m-4 0v-8m4 0h8" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">MasterClasses</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Self-paced Learning</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Peer Collaborations</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 13v-1m4 1v-3m4 3V8M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Workshops</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Coaching</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Mentorships</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Field Visits</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Thought Leadership</p>
-                        </div>
+                        {% endif %}
                     </div>
-                </div>
 
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg shadow-sm">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-4">Opportunities</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Access to a multi-sectoral knowledge and tools hub</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Access to a diverse group of local and global leaders</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Build lifelong professional networks as a DIDA Alumnus</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Post-program innovation support to apply decision intelligence design to prioritised
-                                organisational challenges</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Certification by local and global bodies</span>
-                        </li>
-                    </ul>
+                    <!-- Optional: Application Deadline -->
+                    {% if program.application_deadline and program.application_open %}
+                    <div class="mt-3 text-xs text-[#f99a00] text-center">
+                        Apply by: {{ program.application_deadline|date:"M j, Y" }}
+                    </div>
+                    {% endif %}
                 </div>
             </div>
+            {% empty %}
+            <!-- Fallback content if no programs -->
+            <div class="col-span-full">
+                <div class="bg-white rounded-xl p-12 text-center shadow-sm">
+                    <div class="text-gray-400 mb-4">
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Programs Coming Soon</h3>
+                    <p class="text-gray-500">Our 2025 programs are currently being finalized. Check back soon for
+                        updates!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Decorative Elements 
+    <div class="absolute bottom-0 left-0 w-full">
+        <div class="relative h-20">
+            Geometric shapes 
+            <div class="absolute bottom-0 left-8 w-16 h-16 bg-[#f99a00] transform rotate-45"></div>
+            <div class="absolute bottom-0 left-32 w-12 h-12 bg-[#ccd19c] rounded-full"></div>
+            <div class="absolute bottom-0 right-32 w-14 h-14 bg-[#f99a00] transform rotate-12"></div>
+            <div class="absolute bottom-0 right-8 w-10 h-10 bg-[#ccd19c] transform -rotate-45"></div>
+            
+            Additional smaller shapes 
+            <div class="absolute bottom-4 left-64 w-8 h-8 bg-[#ccd19c] transform rotate-45"></div>
+            <div class="absolute bottom-6 right-64 w-6 h-6 bg-[#f99a00] rounded-full"></div>
+        </div>
+    </div>-->
+</section>
+<!-- Divider Section -->
+<section class="h-[20px] relative overflow-hidden"
+    style="background-image: url('{% static 'images/slicer.webp' %}'); background-size: cover;">
+</section>
+<!-- A Tailored Experiential Learning Approach Section -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="mb-16">
+            <h2 class="text-[#006377] text-4xl font-bold mb-6">A Tailored Experiential Learning Approach</h2>
+            <div class="w-32 h-1 bg-[#f99a00] rounded-full mb-6"></div>
+            <p class="text-gray-600 text-lg max-w-3xl">
+                Our expert-led, experiential model employs flexible modules so partners can co-create
+                participant-focused outcomes.
+            </p>
         </div>
 
-        <hr class="my-16 md:my-20 border-gray-200">
-
-        <!-- Program 3: Design Sprints -->
-        <div class="md:grid md:grid-cols-12 gap-8">
-            <div class="md:col-span-5 program-info md:sticky md:top-24 mb-10 md:mb-0">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl text-[#006B7D] font-bold mb-6">Decision Intelligence Design
-                    Sprints
-                </h2>
-                <div class="h-1 w-32 bg-[#E6A94E] mb-4 md:mb-6"></div>
-                <p class="text-lg sm:text-xl text-gray-700 mb-6">
-                    8-Week Practical Program
-                </p>
-                <p class="text-base sm:text-lg text-gray-600 mb-6">
-                    Transform complexity into clarity by applying DID fundamentals into relevant use cases, mastering
-                    decision-making scenarios that you can implement back to your organisations for growth and enhance
-                    your professional expertise.
-                </p>
-
-                <div class="bg-gray-50 p-4 sm:p-5 rounded-lg mb-4 sm:mb-6">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-3 sm:mb-4">Who Should Apply</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Individuals looking to expand their career expertise*</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Organisational professionals and teams looking to enhance their organisation’s
-                                decision-making approaches*</span>
-                        </li>
-                        <li class="text-sm text-gray-600 ml-6 italic">
-                            *Must have graduated from Decision Intelligence Design Fundamentals or Executive Decision
-                            Intelligence Design Program
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gray-50 p-4 sm:p-5 rounded-lg">
-                    <p class="font-medium text-[#006B7D]">Time Commitment: <span class="font-normal text-gray-700">8-12
-                            hours/week hybrid</span></p>
-                    <p class="font-medium text-[#006B7D] mb-2">Start Date: <span class="font-normal text-gray-700">7th
-                            October
-                            2025</span></p>
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-3 sm:mb-4">Fees</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Kes 80,000 for individuals*</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Kes 200,000 for a team of 3*</span>
-                        </li>
-                        <li class="text-sm text-gray-600 ml-6 italic">
-                            *Installment options available. Scholarship opportunities given based on merit available
-                        </li>
-                    </ul>
+        <!-- Learning Methods Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Row 1 -->
+            <div
+                class="bg-[#006377] text-white px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] transition-colors">
+                <span class="font-semibold">Masterclasses</span>
+                <div class="w-8 h-8 rounded flex items-center justify-center">
+                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.8332 18V16.3333C18.8332 14.7801 17.7709 13.4751 16.3332 13.105M13.4165 3.2423C14.6381 3.73679 15.4998 4.93443 15.4998 6.33333C15.4998 7.73224 14.6381 8.92988 13.4165 9.42437M14.6665 18C14.6665 16.4469 14.6665 15.6703 14.4128 15.0577C14.0745 14.241 13.4255 13.592 12.6088 13.2537C11.9962 13 11.2196 13 9.6665 13H7.1665C5.61337 13 4.8368 13 4.22423 13.2537C3.40747 13.592 2.75855 14.241 2.42024 15.0577C2.1665 15.6703 2.1665 16.4469 2.1665 18M11.7498 6.33333C11.7498 8.17428 10.2575 9.66667 8.4165 9.66667C6.57555 9.66667 5.08317 8.17428 5.08317 6.33333C5.08317 4.49238 6.57555 3 8.4165 3C10.2575 3 11.7498 4.49238 11.7498 6.33333Z" stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
             </div>
 
-            <div class="md:col-span-7 relative z-10">
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg shadow-sm mb-8 sm:mb-10">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-4">Program Features</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Use Case-Led Workshops</p>
-                                <p class="text-gray-600">Delve into real-world challenges provided by public sector
-                                    agencies, private sector partners, and NGOs—developing prototype solutions in small
-                                    teams.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Elective Learning Tracks</p>
-                                <p class="text-gray-600">Tailor foundational learnings with specialized topics such as
-                                    climate tech, digital finance, public health innovation, or conservation solutions.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Team Projects</p>
-                                <p class="text-gray-600">Through rapid design sprints and pilot testing, refine
-                                    solutions while gaining practical insights into community and institutional
-                                    contexts.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-[#006B7D] text-white p-2 rounded-full mt-1 flex-shrink-0">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium">Mentorship & Peer Review</p>
-                                <p class="text-gray-600">Project team benefits from domain-specific mentors, culminating
-                                    in feedback sessions and iterative solution improvement.</p>
-                            </div>
-                        </li>
-                    </ul>
+            <div
+                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
+                <span class="font-semibold">Use Case Clinics</span>
+                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                    </svg>
                 </div>
+            </div>
 
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg shadow-sm mb-10">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-5 sm:mb-6">Our Approach</h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Peer Collaborations</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Sprints and Workshops</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Hands-on Projects</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Field Visits</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Coaching</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Mentorships</p>
-                        </div>
-
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="text-[#006B7D] flex-shrink-0">
-                                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                </svg>
-                            </div>
-                            <p class="font-medium text-[#006B7D] text-sm sm:text-base">Thought Leadership</p>
-                        </div>
-                    </div>
+            <div
+                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
+                <span class="font-semibold">Design Sprints</span>
+                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                    </svg>
                 </div>
+            </div>
 
-                <div class="bg-gray-50 p-5 sm:p-6 rounded-lg shadow-sm">
-                    <h3 class="text-lg sm:text-xl text-[#006B7D] font-medium mb-4">Opportunities</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Access to a multi-sector knowledge and tools hub</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Access to a diverse group of local and global peer learners and experts during the
-                                sprint</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Build lifelong professional networks as a DIDA Alumnus</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-[#E6A94E] mt-1 flex-shrink-0">•</span>
-                            <span>Certification by local and global bodies</span>
-                        </li>
-                    </ul>
+            <div
+                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
+                <span class="font-semibold">Peer Clinics</span>
+                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div
+                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
+                <span class="font-semibold">Webinars</span>
+                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div
+                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
+                <span class="font-semibold">Mentorship Streams</span>
+                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div
+                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
+                <span class="font-semibold">Field Excursions</span>
+                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div
+                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
+                <span class="font-semibold">Apprenticeships</span>
+                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.75 2.524z" />
+                    </svg>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Collaboration Partners Section -->
-<section class="py-12 md:py-16 bg-gray-50">
-    <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-[#006B7D]">Collaboration Partners</h2>
-        <p class="text-lg sm:text-xl mb-8 max-w-3xl mx-auto text-gray-600">
-            We are proud to collaborate with leading organizations to bring you the best in Decision Intelligence Design
-            education.
-        </p>
-        <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- OSE Technology -->
-            <div class="group relative">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105">
-                    <img src="{% static 'images/partners/special-envoy.png' %}" alt="Office of the Special Envoy Technology" class="w-full h-full object-contain">
+<!-- Divider Section -->
+<section class="h-[20px] relative overflow-hidden"
+    style="background-image: url('{% static 'images/slicer.png' %}'); background-size: cover;">
+</section>
+
+<!-- Join Our Collective Intelligence Network Section -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="mb-16">
+            <h2 class="text-[#006377] text-4xl font-bold mb-6">Join our collective intelligence network for
+                talent-driven impact</h2>
+            <div class="w-32 h-1 bg-[#f99a00] rounded-full mb-6"></div>
+        </div>
+
+        <!-- Partnership Types Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Knowledge Partners -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow group">
+                <div class="mb-6">
+                    <div
+                        class="w-16 h-16 bg-[#006377] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_58983_6833)">
+                                <path
+                                    d="M2.5 11.5C2.5 5.97715 6.97715 1.5 12.5 1.5H40.5C46.0229 1.5 50.5 5.97715 50.5 11.5V39.5C50.5 45.0229 46.0228 49.5 40.5 49.5H12.5C6.97715 49.5 2.5 45.0228 2.5 39.5V11.5Z"
+                                    fill="#006477" shape-rendering="crispEdges" />
+                                <path
+                                    d="M26.5 34.5L26.3999 34.3499C25.7053 33.308 25.358 32.787 24.8991 32.4098C24.4929 32.0759 24.0248 31.8254 23.5216 31.6726C22.9533 31.5 22.3271 31.5 21.0748 31.5H19.7C18.5799 31.5 18.0198 31.5 17.592 31.282C17.2157 31.0903 16.9097 30.7843 16.718 30.408C16.5 29.9802 16.5 29.4201 16.5 28.3V19.7C16.5 18.5799 16.5 18.0198 16.718 17.592C16.9097 17.2157 17.2157 16.9097 17.592 16.718C18.0198 16.5 18.5799 16.5 19.7 16.5H20.1C22.3402 16.5 23.4603 16.5 24.316 16.936C25.0686 17.3195 25.6805 17.9314 26.064 18.684C26.5 19.5397 26.5 20.6598 26.5 22.9M26.5 34.5V22.9M26.5 34.5L26.6001 34.3499C27.2947 33.308 27.642 32.787 28.1009 32.4098C28.5071 32.0759 28.9752 31.8254 29.4784 31.6726C30.0467 31.5 30.6729 31.5 31.9252 31.5H33.3C34.4201 31.5 34.9802 31.5 35.408 31.282C35.7843 31.0903 36.0903 30.7843 36.282 30.408C36.5 29.9802 36.5 29.4201 36.5 28.3V19.7C36.5 18.5799 36.5 18.0198 36.282 17.592C36.0903 17.2157 35.7843 16.9097 35.408 16.718C34.9802 16.5 34.4201 16.5 33.3 16.5H32.9C30.6598 16.5 29.5397 16.5 28.684 16.936C27.9314 17.3195 27.3195 17.9314 26.936 18.684C26.5 19.5397 26.5 20.6598 26.5 22.9"
+                                    stroke="#FFAD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_58983_6833" x="0.5" y="0.5" width="52" height="52"
+                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="1" />
+                                    <feGaussianBlur stdDeviation="1" />
+                                    <feComposite in2="hardAlpha" operator="out" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                        result="effect1_dropShadow_58983_6833" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6833"
+                                        result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
+
+                    </div>
+                    <h3 class="text-[#006377] text-xl font-bold mb-4">Knowledge Partners</h3>
                 </div>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-[#f99a00] rounded-full mr-3"></span>
+                        Facilitators, Coaches, Mentors, Speakers
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-[#f99a00] rounded-full mr-3"></span>
+                        Accreditation & Certifications
+                    </li>
+                </ul>
             </div>
 
-            <!-- Space.ai -->
-            <div class="group relative">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105">
-                    <img src="{% static 'images/partners/space-ai.png' %}" alt="Space.ai" class="w-full h-full object-contain">
+            <!-- Tool Resource Partners -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow group">
+                <div class="mb-6">
+                    <div
+                        class="w-16 h-16 bg-[#006377] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_58983_6836)">
+                                <path
+                                    d="M2.5 11.5C2.5 5.97715 6.97715 1.5 12.5 1.5H40.5C46.0229 1.5 50.5 5.97715 50.5 11.5V39.5C50.5 45.0229 46.0228 49.5 40.5 49.5H12.5C6.97715 49.5 2.5 45.0228 2.5 39.5V11.5Z"
+                                    fill="#006477" shape-rendering="crispEdges" />
+                                <path
+                                    d="M20.5 19.5L25 24M20.5 19.5H17.5L16.5 16.5L17.5 15.5L20.5 16.5V19.5ZM33.759 16.241L31.1314 18.8686C30.7354 19.2646 30.5373 19.4627 30.4632 19.691C30.3979 19.8918 30.3979 20.1082 30.4632 20.309C30.5373 20.5373 30.7354 20.7354 31.1314 21.1314L31.3686 21.3686C31.7646 21.7646 31.9627 21.9627 32.191 22.0368C32.3918 22.1021 32.6082 22.1021 32.809 22.0368C33.0373 21.9627 33.2354 21.7646 33.6314 21.3686L36.0893 18.9107C36.354 19.5549 36.5 20.2604 36.5 21C36.5 24.0376 34.0376 26.5 31 26.5C30.6338 26.5 30.2759 26.4642 29.9298 26.3959C29.4436 26.3001 29.2005 26.2521 29.0532 26.2668C28.8965 26.2824 28.8193 26.3059 28.6805 26.3802C28.5499 26.4501 28.419 26.581 28.157 26.843L21 34C20.1716 34.8284 18.8284 34.8284 18 34C17.1716 33.1716 17.1716 31.8284 18 31L25.157 23.843C25.419 23.581 25.5499 23.4501 25.6198 23.3195C25.6941 23.1807 25.7176 23.1035 25.7332 22.9468C25.7479 22.7995 25.6999 22.5564 25.6041 22.0702C25.5358 21.7241 25.5 21.3662 25.5 21C25.5 17.9624 27.9624 15.5 31 15.5C32.0055 15.5 32.948 15.7698 33.759 16.241ZM26.5001 28.4999L32 33.9999C32.8284 34.8283 34.1716 34.8283 35 33.9999C35.8284 33.1715 35.8284 31.8283 35 30.9999L30.4753 26.4753C30.155 26.445 29.8427 26.3872 29.5408 26.3043C29.1517 26.1975 28.7249 26.2751 28.4397 26.5603L26.5001 28.4999Z"
+                                    stroke="#FFAD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_58983_6836" x="0.5" y="0.5" width="52" height="52"
+                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="1" />
+                                    <feGaussianBlur stdDeviation="1" />
+                                    <feComposite in2="hardAlpha" operator="out" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                        result="effect1_dropShadow_58983_6836" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6836"
+                                        result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
+
+                    </div>
+                    <h3 class="text-[#006377] text-xl font-bold mb-4">Tool Resource Partners</h3>
                 </div>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-[#f99a00] rounded-full mr-3"></span>
+                        Cloud platforms, Data visualization
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-[#f99a00] rounded-full mr-3"></span>
+                        AI/ML & Prototyping tools
+                    </li>
+                </ul>
             </div>
 
-            <!-- ActionLab -->
-            <div class="group relative">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105">
-                    <img src="{% static 'images/partners/action-lab.png' %}" alt="ActionLab" class="w-full h-full object-contain">
+            <!-- Implementation Partners -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow group">
+                <div class="mb-6">
+                    <div
+                        class="w-16 h-16 bg-[#006377] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_58983_6840)">
+                                <path
+                                    d="M2.5 11.5C2.5 5.97715 6.97715 1.5 12.5 1.5H40.5C46.0229 1.5 50.5 5.97715 50.5 11.5V39.5C50.5 45.0229 46.0228 49.5 40.5 49.5H12.5C6.97715 49.5 2.5 45.0228 2.5 39.5V11.5Z"
+                                    fill="#006477" shape-rendering="crispEdges" />
+                                <path
+                                    d="M26.5 16.5H30.7C32.3802 16.5 33.2202 16.5 33.862 16.827C34.4265 17.1146 34.8854 17.5735 35.173 18.138C35.5 18.7798 35.5 19.6198 35.5 21.3V29.7C35.5 31.3802 35.5 32.2202 35.173 32.862C34.8854 33.4265 34.4265 33.8854 33.862 34.173C33.2202 34.5 32.3802 34.5 30.7 34.5H22.3C20.6198 34.5 19.7798 34.5 19.138 34.173C18.5735 33.8854 18.1146 33.4265 17.827 32.862C17.5 32.2202 17.5 31.3802 17.5 29.7V25.5M22.5 26.5V30.5M30.5 24.5V30.5M26.5 20.5V30.5M16.5 18.5L19.5 15.5M19.5 15.5L22.5 18.5M19.5 15.5L19.5 21.5"
+                                    stroke="#FFAD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_58983_6840" x="0.5" y="0.5" width="52" height="52"
+                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                        result="hardAlpha" />
+                                    <feOffset dy="1" />
+                                    <feGaussianBlur stdDeviation="1" />
+                                    <feComposite in2="hardAlpha" operator="out" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_58983_6840" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6840" result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
+            
+                    </div>
+                    <h3 class="text-[#006377] text-xl font-bold mb-4">Implementation Partners</h3>
                 </div>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-[#f99a00] rounded-full mr-3"></span>
+                        Use cases, Training spaces, Field visits
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-[#f99a00] rounded-full mr-3"></span>
+                        Networks, Internships, Apprenticeships
+                    </li>
+                </ul>
             </div>
 
-            <!-- Regional Center of Excellence -->
-            <div class="group relative">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105">
-                    <img src="{% static 'images/partners/regional-center.webp' %}" alt="Regional Center of Excellence" class="w-full h-full object-contain">
-                </div>
-            </div>
+            <!-- Funding Partners -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow group">
+                <div class="mb-6">
+                    <div
+                        class="w-16 h-16 bg-[#006377] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_58983_6838)">
+                                <path
+                                    d="M2.5 11.5C2.5 5.97715 6.97715 1.5 12.5 1.5H40.5C46.0229 1.5 50.5 5.97715 50.5 11.5V39.5C50.5 45.0229 46.0228 49.5 40.5 49.5H12.5C6.97715 49.5 2.5 45.0228 2.5 39.5V11.5Z"
+                                    fill="#006477" shape-rendering="crispEdges" />
+                                <path
+                                    d="M28.0295 21.8519C27.4571 22.2599 26.7566 22.5 26 22.5C24.067 22.5 22.5 20.933 22.5 19C22.5 17.067 24.067 15.5 26 15.5C27.253 15.5 28.3522 16.1584 28.9705 17.1481M20.5 33.5872H23.1103C23.4506 33.5872 23.7889 33.6277 24.1188 33.7086L26.8769 34.3789C27.4753 34.5247 28.0988 34.5388 28.7035 34.4214L31.753 33.8281C32.5585 33.6712 33.2996 33.2854 33.8803 32.7205L36.0379 30.6217C36.654 30.0234 36.654 29.0524 36.0379 28.4531C35.4832 27.9134 34.6047 27.8527 33.9771 28.3103L31.4626 30.1449C31.1025 30.4081 30.6643 30.5498 30.2137 30.5498H27.7855L29.3311 30.5498C30.2022 30.5498 30.9079 29.8633 30.9079 29.0159V28.7091C30.9079 28.0055 30.4156 27.392 29.7141 27.2219L27.3286 26.6417C26.9404 26.5476 26.5428 26.5 26.1431 26.5C25.1783 26.5 23.4319 27.2988 23.4319 27.2988L20.5 28.5249M34.5 20C34.5 21.933 32.933 23.5 31 23.5C29.067 23.5 27.5 21.933 27.5 20C27.5 18.067 29.067 16.5 31 16.5C32.933 16.5 34.5 18.067 34.5 20ZM16.5 28.1L16.5 33.9C16.5 34.4601 16.5 34.7401 16.609 34.954C16.7049 35.1422 16.8578 35.2951 17.046 35.391C17.2599 35.5 17.5399 35.5 18.1 35.5H18.9C19.4601 35.5 19.7401 35.5 19.954 35.391C20.1422 35.2951 20.2951 35.1422 20.391 34.954C20.5 34.7401 20.5 34.4601 20.5 33.9V28.1C20.5 27.5399 20.5 27.2599 20.391 27.046C20.2951 26.8578 20.1422 26.7049 19.954 26.609C19.7401 26.5 19.4601 26.5 18.9 26.5L18.1 26.5C17.5399 26.5 17.2599 26.5 17.046 26.609C16.8578 26.7049 16.7049 26.8578 16.609 27.046C16.5 27.2599 16.5 27.5399 16.5 28.1Z"
+                                    stroke="#FFAD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_58983_6838" x="0.5" y="0.5" width="52" height="52"
+                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="1" />
+                                    <feGaussianBlur stdDeviation="1" />
+                                    <feComposite in2="hardAlpha" operator="out" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                        result="effect1_dropShadow_58983_6838" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6838"
+                                        result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
 
-            <!-- DDI -->
-            <div class="group relative">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105">
-                    <img src="{% static 'images/partners/ddi.png' %}" alt="DDI" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-[#006377] text-xl font-bold mb-4">Funding Partners</h3>
                 </div>
-            </div>
-
-            <!-- Proportion Global -->
-            <div class="group relative">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105">
-                    <img src="{% static 'images/partners/proportion.png' %}" alt="Proportion Global" class="w-full h-full object-contain">
-                </div>
-            </div>
-
-            <!-- Under our skin -->
-            <div class="group relative">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105">
-                    <img src="{% static 'images/partners/under-your-skin.png' %}" alt="Under Our Skin" class="w-full h-full object-contain">
-                </div>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-[#f99a00] rounded-full mr-3"></span>
+                        Sponsorships, Grants, Philanthropy
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-[#f99a00] rounded-full mr-3"></span>
+                        In-kind contributions, Scholarships
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

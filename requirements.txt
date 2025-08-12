@@ -6,3 +6,4 @@ whitenoise == 6.5.0
 python-dotenv
 django-compressor
 psycopg2-binary
+requests

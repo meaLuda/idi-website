@@ -30,7 +30,7 @@
                     <div class="flex gap-8 items-start">
                         <!-- Member Image -->
                         <a href="{{ member.get_absolute_url }}" class="block">
-                            <img src="{{ member.image.url }}" 
+                            <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
                                 alt="{{ member.name }}" 
                                 class="w-64 h-64 object-cover grayscale rounded-xl">
                         </a>
@@ -40,7 +40,7 @@
                             <!-- Background Shape -->
                             {% if member.background_shape %}
                             <div class="absolute -left-8 -top-4 w-40 h-40" style="z-index: 1;">
-                                <img src="{{ member.background_shape.url }}" 
+                                <img src="{% if member.background_shape %}{{ member.background_shape.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
                                     alt="background shape" 
                                     class="w-full h-full object-contain">
                             </div>

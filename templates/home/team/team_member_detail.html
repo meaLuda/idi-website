@@ -27,9 +27,9 @@
                     {% if member.background_shape %}
                         <div class="relative">
                             <div class="absolute -left-4 -top-4 w-72 h-72 -z-10">
-                                <img src="{{ member.background_shape.url }}" alt="" class="w-full h-full object-cover grayscale rounded-xl">
+                                <img src="{% if member.background_shape %}{{ member.background_shape.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" alt="" class="w-full h-full object-cover grayscale rounded-xl">
                             </div>
-                            <img src="{{ member.image.url }}" alt="{{ member.name }}" class="w-full h-full object-cover grayscale rounded-xl">
+                            <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" alt="{{ member.name }}" class="w-full h-full object-cover grayscale rounded-xl">
                         </div>
                     {% else %}
                         <img src="{{ member.image.url }}" alt="{{ member.name }}" class="w-full h-full object-cover grayscale rounded-xl">

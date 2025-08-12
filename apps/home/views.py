@@ -1,18 +1,26 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView
-from .models import Project, TeamMember, Testimonial
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
+from .models import Project, TeamMember, Testimonial, Program, Partner, Client
 
 # Create your views here.
+@cache_page(60 * 15)  # Cache for 15 minutes
 def home(request):
-    team_members = TeamMember.objects.all()[:6]  # Limit to 6 team members for landing page
-    projects = Project.objects.filter(is_active=True)[:6]  # Limit projects on home page
-    testimonials = Testimonial.objects.filter(is_active=True)
+    # Optimize queries with select_related and prefetch_related
+    team_members = TeamMember.objects.select_related().all()[:6]
+    projects = Project.objects.filter(is_active=True).select_related()[:6]
+    testimonials = Testimonial.objects.filter(is_active=True).select_related()
+    partners = Partner.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
+    clients = Client.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
     
     # SEO metadata
     context = {
         'team_members': team_members,
         'projects': projects,
         'testimonials': testimonials,
+        'partners': partners,
+        'clients': clients,
         'page_title': 'Home',
         'page_description': 'IDI Africa pioneers Decision Intelligence Design in Africa, transforming complexity into actionable solutions through our innovative fellowship programs and impactful initiatives.',
         'page_keywords': 'Decision Intelligence, Design Thinking, AI, Innovation, Fellowship, Africa, Kenya',
@@ -20,19 +28,28 @@ def home(request):
     return render(request, "home/index.html", context)
 
 
-def fellowships(request):
-    # SEO metadata
-    context = {
-        'page_title': 'Decision Intelligence Design Fellowships',
-        'page_description': 'Transform complexity into actionable solutions through our immersive fellowship programs designed for impact across sectors in Africa.',
-        'page_keywords': 'Fellowships, Decision Intelligence Design, Innovation, Public Sector, Research, Emerging Leaders, Kenya, Africa',
-    }
-    return render(request, "home/fellowship/fellowship.html", context)
+# def fellowships(request):
+#     # SEO metadata
+#     context = {
+#         'page_title': 'Decision Intelligence Design Fellowships',
+#         'page_description': 'Transform complexity into actionable solutions through our immersive fellowship programs designed for impact across sectors in Africa.',
+#         'page_keywords': 'Fellowships, Decision Intelligence Design, Innovation, Public Sector, Research, Emerging Leaders, Kenya, Africa',
+#     }
+#     return render(request, "home/fellowship/fellowship.html", context)
 
 
+@cache_page(60 * 30)  # Cache for 30 minutes
 def academy(request):
+    # Get featured programs for the current year with optimized query
+    featured_programs = Program.objects.filter(
+        is_active=True, 
+        is_featured=True, 
+        year=2025
+    ).select_related().order_by('order')
+    
     # SEO metadata
     context = {
+        'featured_programs': featured_programs,
         'page_title': 'Decision Intelligence Design Academy',
         'page_description': 'Develop critical skills in decision intelligence design through our comprehensive academy programs for professionals, executives, and organizations.',
         'page_keywords': 'Academy, Decision Intelligence Design, Training, Professional Development, Executive Education, Africa, Kenya',
@@ -54,9 +71,23 @@ def project_detail(request, slug):
     return render(request, 'home/projects/project_detail.html', context)
 
 
+def program_detail(request, slug):
+    program = get_object_or_404(Program, slug=slug, is_active=True)
+    
+    # SEO metadata
+    context = {
+        'program': program,
+        'page_title': program.title,
+        'page_description': program.meta_description if program.meta_description else program.short_description,
+        'page_keywords': program.meta_keywords if program.meta_keywords else f'{program.title}, Decision Intelligence Design, Academy, Africa, Kenya',
+        'page_image': program.image,
+    }
+    return render(request, 'home/programs/program_detail.html', context)
+
 # New view for Projects list page (Our Work)
+@cache_page(60 * 20)  # Cache for 20 minutes
 def projects_list(request):
-    projects = Project.objects.filter(is_active=True).order_by('-created_at')
+    projects = Project.objects.filter(is_active=True).select_related().order_by('-created_at')
     
     # SEO metadata
     context = {
@@ -69,8 +100,9 @@ def projects_list(request):
 
 
 # New view for Team page
+@cache_page(60 * 30)  # Cache for 30 minutes
 def team_list(request):
-    team_members = TeamMember.objects.all()
+    team_members = TeamMember.objects.select_related().all()
     
     # SEO metadata
     context = {

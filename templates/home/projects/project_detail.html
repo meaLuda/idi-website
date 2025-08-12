@@ -55,7 +55,7 @@
 <section id="cover-{{ project.id }}" class="relative h-[50vh] md:h-[75vh]">
     {% if project.thumbnail %}
     <div class="absolute inset-0">
-        <img src="{{ project.thumbnail.url }}" 
+        <img src="{% if project.thumbnail %}{{ project.thumbnail.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
              alt="{{ project.title }}" 
              class="w-full h-full object-cover"
              loading="eager">

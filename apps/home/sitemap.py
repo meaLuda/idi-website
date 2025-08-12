@@ -8,7 +8,7 @@ class StaticSitemap(Sitemap):
     priority = 0.8
 
     def items(self):
-        return ['home:lander', 'home:did-fellowships', 'home:decision-intelligence-design-academy', 
+        return ['home:lander', 'home:did-academy', 
                 'home:projects_list', 'home:team_list']
 
     def location(self, item):
