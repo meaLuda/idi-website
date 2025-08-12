@@ -53,7 +53,6 @@ COPY --chown=django:django . .
 # Collect static files
 RUN python manage.py collectstatic --noinput
 RUN python manage.py compress --force
-RUN python manage.py migrate
 
 # Create directories for media files with proper permissions
 RUN mkdir -p /app/media /app/staticfiles /app/cache && \
