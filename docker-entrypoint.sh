@@ -80,21 +80,6 @@ run_migrations
 # Collect static files (in case of changes)
 collect_static
 
-# Create superuser if it doesn't exist (optional)
-python -c "
-import django
-import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'idi.settings')
-django.setup()
-from django.contrib.auth import get_user_model
-User = get_user_model()
-if not User.objects.filter(username='admin').exists():
-    print('Creating default admin user...')
-    User.objects.create_superuser('admin', 'admin@idi.africa', 'admin123')
-    print('Default admin user created: admin/admin123')
-else:
-    print('Admin user already exists')
-" || true
 
 echo "Starting gunicorn server..."
 
