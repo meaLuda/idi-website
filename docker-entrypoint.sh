@@ -28,38 +28,38 @@ except OperationalError:
 fix_media_permissions() {
     echo "Checking and fixing media directory permissions..."
     
-    # Create media directory if it doesn't exist
-    mkdir -p /app/media
-    
-    # Check if media directory is writable
-    if [ -w /app/media ]; then
-        echo "Media directory is writable"
+    # Always ensure proper permissions as root first (if we are root)
+    if [ "$(id -u)" = "0" ]; then
+        echo "Running as root, ensuring proper media directory setup..."
+        
+        # Create all necessary directories
+        mkdir -p /app/media/uploads/team/shapes
+        mkdir -p /app/media/uploads/projects/thumbnails
+        mkdir -p /app/media/uploads/testimonials
+        mkdir -p /app/media/uploads/programs/brochures
+        mkdir -p /app/media/uploads/partners
+        mkdir -p /app/media/uploads/clients
+        
+        # Set ownership and permissions
+        chown -R django:django /app/media/uploads
+        chmod -R 755 /app/media
+        
+        echo "Media directory permissions fixed"
     else
-        echo "Warning: Media directory is not writable!"
-        # If running as root, fix permissions
-        if [ "$(id -u)" = "0" ]; then
-            echo "Running as root, fixing permissions..."
-            chmod -R 755 /app/media
-            chown -R django:django /app/media
+        # If not running as root, just check if we can write
+        if [ -w /app/media ]; then
+            echo "Media directory is writable"
+            # Try to create subdirectories (they may already exist)
+            mkdir -p /app/media/uploads/team/shapes 2>/dev/null || true
+            mkdir -p /app/media/uploads/projects/thumbnails 2>/dev/null || true
+            mkdir -p /app/media/uploads/testimonials 2>/dev/null || true
+            mkdir -p /app/media/uploads/programs/brochures 2>/dev/null || true
+            mkdir -p /app/media/uploads/partners 2>/dev/null || true
+            mkdir -p /app/media/uploads/clients 2>/dev/null || true
+        else
+            echo "Warning: Media directory is not writable and not running as root!"
         fi
     fi
-    
-    # Create uploads subdirectory for CKEditor
-    mkdir -p /app/media/uploads
-    
-    # Create media upload subdirectories based on models
-    mkdir -p /app/media/uploads/team
-    mkdir -p /app/media/uploads/team/shapes
-    mkdir -p /app/media/uploads/projects/thumbnails
-    mkdir -p /app/media/uploads/testimonials
-    mkdir -p /app/media/uploads/programs
-    mkdir -p /app/media/uploads/programs/brochures
-    mkdir -p /app/media/uploads/partners
-    mkdir -p /app/media/uploads/clients
-    
-    # Set proper permissions for uploaded files
-    find /app/media -type d -exec chmod 755 {} \;
-    find /app/media -type f -exec chmod 644 {} \; 2>/dev/null || true
 }
 
 # Function to collect static files

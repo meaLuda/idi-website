@@ -63,25 +63,11 @@ RUN mkdir -p /app/media /app/staticfiles /app/cache && \
 RUN python manage.py collectstatic --noinput
 RUN python manage.py compress --force
 
-# Switch to non-root user
-USER django
-
 # Port where the Django app runs
 EXPOSE 8000
 
-# Use entrypoint script
+# Use entrypoint script (runs as root initially)
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-# Start the application with optimized gunicorn settings
-CMD ["gunicorn", "idi.wsgi:application", \
-     "--bind", "0.0.0.0:8000", \
-     "--workers", "4", \
-     "--worker-class", "sync", \
-     "--worker-connections", "1000", \
-     "--max-requests", "1000", \
-     "--max-requests-jitter", "100", \
-     "--timeout", "30", \
-     "--keep-alive", "5", \
-     "--preload", \
-     "--access-logfile", "-", \
-     "--error-logfile", "-"]
+# Start the application with optimized gunicorn settings (will switch to django user in entrypoint)
+CMD ["su", "-s", "/bin/sh", "django", "-c", "gunicorn idi.wsgi:application --bind 0.0.0.0:8000 --workers 4 --worker-class sync --worker-connections 1000 --max-requests 1000 --max-requests-jitter 100 --timeout 30 --keep-alive 5 --preload --access-logfile - --error-logfile -"]
