@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount media directory with proper permissions
+      - ./media:/app/media
+      # Optional: Mount static files for development
+      - ./staticfiles:/app/staticfiles
+    environment:
+      - DEBUG=False
+      - DATABASE_URL=sqlite:///db.sqlite3
+      # Media settings
+      - MEDIA_ROOT=/app/media
+      - MEDIA_URL=/media/
+    # Ensure proper user mapping for volume permissions
+    user: "1000:1000"
+    restart: unless-stopped
+    
+  # Optional: Add nginx for better static/media file serving
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./media:/usr/share/nginx/html/media:ro
+      - ./staticfiles:/usr/share/nginx/html/static:ro
+    depends_on:
+      - web
+    restart: unless-stopped
+    profiles:
+      - production

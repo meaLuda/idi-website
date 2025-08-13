@@ -207,67 +207,6 @@
         </div>
     </nav>
     {% endblock %}
-    <!-- Add this script to your existing scripts section -->
-    <script>
-        $(document).ready(function () {
-            // Mobile menu toggle
-            $('#mobile-menu-button').click(function () {
-                $('#mobile-menu').slideToggle(300);
-                $('#open-icon, #close-icon').toggleClass('hidden');
-            });
-
-            // Close mobile menu when clicking on links
-            $('#mobile-menu a').click(function () {
-                $('#mobile-menu').slideUp(300);
-                $('#close-icon').addClass('hidden');
-                $('#open-icon').removeClass('hidden');
-            });
-
-            // Fellowship dropdown in mobile view
-            $('#fellowship-mobile-button').click(function () {
-                $('#fellowship-submenu').slideToggle(200);
-                $('#fellowship-icon').toggleClass('rotate-180');
-            });
-
-            // Desktop fellowship dropdown
-            let dropdownTimeout;
-
-            $('#fellowship-dropdown').hover(
-                function () {
-                    clearTimeout(dropdownTimeout);
-                    $(this).find('.dropdown-menu').stop(true, true).fadeIn(200);
-                },
-                function () {
-                    const $dropdown = $(this);
-                    dropdownTimeout = setTimeout(function () {
-                        $dropdown.find('.dropdown-menu').stop(true, true).fadeOut(200);
-                    }, 800);
-                }
-            );
-
-            // Keep menu open when hovering over submenu
-            $('.dropdown-menu').hover(
-                function () {
-                    clearTimeout(dropdownTimeout);
-                },
-                function () {
-                    const $dropdown = $(this).closest('#fellowship-dropdown');
-                    dropdownTimeout = setTimeout(function () {
-                        $dropdown.find('.dropdown-menu').stop(true, true).fadeOut(200);
-                    }, 800);
-                }
-            );
-
-            // Handle window resize
-            $(window).resize(function () {
-                if ($(window).width() >= 1024) { // lg breakpoint
-                    $('#mobile-menu').hide();
-                    $('#close-icon').addClass('hidden');
-                    $('#open-icon').removeClass('hidden');
-                }
-            });
-        });
-    </script>
 
 
     <!-- body -->

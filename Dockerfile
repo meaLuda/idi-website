@@ -41,8 +41,8 @@ RUN apt-get update && apt-get install -y \
 COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-# Create non-root user for security
-RUN groupadd -r django && useradd -r -g django django
+# Create non-root user with specific UID/GID to match host permissions
+RUN groupadd -g 1000 django && useradd -u 1000 -g 1000 -r django
 
 # Set work directory
 WORKDIR /app
@@ -50,20 +50,27 @@ WORKDIR /app
 # Copy project files
 COPY --chown=django:django . .
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
-RUN python manage.py compress --force
+# Copy and make entrypoint script executable
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
 # Create directories for media files with proper permissions
 RUN mkdir -p /app/media /app/staticfiles /app/cache && \
-    chown -R django:django /app/media /app/staticfiles /app/cache
+    chown -R django:django /app/media /app/staticfiles /app/cache && \
+    chmod -R 755 /app/media
+
+# Collect static files (before switching users)
+RUN python manage.py collectstatic --noinput
+RUN python manage.py compress --force
 
 # Switch to non-root user
 USER django
 
-
 # Port where the Django app runs
 EXPOSE 8000
+
+# Use entrypoint script
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Start the application with optimized gunicorn settings
 CMD ["gunicorn", "idi.wsgi:application", \

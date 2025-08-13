@@ -43,9 +43,15 @@ def academy(request):
         year=2025
     ).select_related().order_by('order')
     
+    # Get partners and clients for the academy page
+    partners = Partner.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
+    clients = Client.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
+    
     # SEO metadata
     context = {
         'featured_programs': featured_programs,
+        'partners': partners,
+        'clients': clients,
         'page_title': 'Decision Intelligence Design Academy',
         'page_description': 'Develop critical skills in decision intelligence design through our comprehensive academy programs for professionals, executives, and organizations.',
         'page_keywords': 'Academy, Decision Intelligence Design, Training, Professional Development, Executive Education, Africa, Kenya',
