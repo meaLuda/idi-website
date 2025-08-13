@@ -69,6 +69,7 @@ collect_static() {
     python manage.py compress --force
 }
 
+
 # Main execution
 echo "Starting IDI Django application..."
 
