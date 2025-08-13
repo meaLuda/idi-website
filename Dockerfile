@@ -70,4 +70,4 @@ EXPOSE 8000
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Start the application with optimized gunicorn settings (will switch to django user in entrypoint)
-CMD ["gunicorn idi.wsgi:application --bind 0.0.0.0:8000 --workers 4 --worker-class sync --worker-connections 1000 --max-requests 1000 --max-requests-jitter 100 --timeout 30 --keep-alive 5 --preload --access-logfile - --error-logfile -", "django"]
+CMD ["gunicorn", "idi.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--worker-class", "sync", "--worker-connections", "1000", "--max-requests", "1000", "--max-requests-jitter", "100", "--timeout", "30", "--keep-alive", "5", "--preload", "--access-logfile", "-", "--error-logfile", "-"]

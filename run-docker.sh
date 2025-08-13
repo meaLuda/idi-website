@@ -42,12 +42,15 @@ create_directories() {
     
     # Set proper permissions for media directory (if writable)
     if [ -w media ]; then
-        chmod -R 755 media 2>/dev/null || true
+        # Set directories to 755 (executable for traversal) and files to 644 (not executable)
+        find media -type d -exec chmod 755 {} \; 2>/dev/null || true
+        find media -type f -exec chmod 644 {} \; 2>/dev/null || true
         echo -e "${GREEN}✅ Directories created with proper permissions${NC}"
     else
         echo -e "${YELLOW}⚠️  Created directories but cannot set permissions. You may need to run:${NC}"
         echo "  sudo chown -R \$(id -u):\$(id -g) media/"
-        echo "  chmod -R 755 media/"
+        echo "  find media -type d -exec chmod 755 {} \;"
+        echo "  find media -type f -exec chmod 644 {} \;"
     fi
 }
 
@@ -150,7 +153,9 @@ fix_permissions() {
         return 1
     }
     
-    chmod -R 755 media/
+    # Set directories to 755 and files to 644
+    find media -type d -exec chmod 755 {} \;
+    find media -type f -exec chmod 644 {} \;
     
     echo -e "${GREEN}✅ All directories created and permissions fixed${NC}"
 }
