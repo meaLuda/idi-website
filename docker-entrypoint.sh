@@ -47,6 +47,16 @@ fix_media_permissions() {
     # Create uploads subdirectory for CKEditor
     mkdir -p /app/media/uploads
     
+    # Create media upload subdirectories based on models
+    mkdir -p /app/media/uploads/team
+    mkdir -p /app/media/uploads/team/shapes
+    mkdir -p /app/media/uploads/projects/thumbnails
+    mkdir -p /app/media/uploads/testimonials
+    mkdir -p /app/media/uploads/programs
+    mkdir -p /app/media/uploads/programs/brochures
+    mkdir -p /app/media/uploads/partners
+    mkdir -p /app/media/uploads/clients
+    
     # Set proper permissions for uploaded files
     find /app/media -type d -exec chmod 755 {} \;
     find /app/media -type f -exec chmod 644 {} \; 2>/dev/null || true

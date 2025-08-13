@@ -21,14 +21,34 @@ check_docker() {
 create_directories() {
     echo -e "${YELLOW}📁 Creating necessary directories...${NC}"
     
-    # Create media directory if it doesn't exist
-    mkdir -p media/uploads
-    mkdir -p staticfiles
+    # Create main directories
+    mkdir -p media/uploads 2>/dev/null || {
+        echo -e "${RED}❌ Cannot create media directories. You may need to run:${NC}"
+        echo "  sudo mkdir -p media/uploads"
+        echo "  sudo chown -R \$(id -u):\$(id -g) media/"
+        return 1
+    }
+    mkdir -p staticfiles 2>/dev/null || true
     
-    # Set proper permissions for media directory
-    chmod -R 755 media
+    # Create media upload subdirectories based on models
+    mkdir -p media/uploads/team 2>/dev/null || true
+    mkdir -p media/uploads/team/shapes 2>/dev/null || true
+    mkdir -p media/uploads/projects/thumbnails 2>/dev/null || true
+    mkdir -p media/uploads/testimonials 2>/dev/null || true
+    mkdir -p media/uploads/programs 2>/dev/null || true
+    mkdir -p media/uploads/programs/brochures 2>/dev/null || true
+    mkdir -p media/uploads/partners 2>/dev/null || true
+    mkdir -p media/uploads/clients 2>/dev/null || true
     
-    echo -e "${GREEN}✅ Directories created${NC}"
+    # Set proper permissions for media directory (if writable)
+    if [ -w media ]; then
+        chmod -R 755 media 2>/dev/null || true
+        echo -e "${GREEN}✅ Directories created with proper permissions${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Created directories but cannot set permissions. You may need to run:${NC}"
+        echo "  sudo chown -R \$(id -u):\$(id -g) media/"
+        echo "  chmod -R 755 media/"
+    fi
 }
 
 # Function to build Docker image
@@ -113,15 +133,26 @@ show_status() {
 fix_permissions() {
     echo -e "${YELLOW}🔧 Fixing media directory permissions...${NC}"
     
+    # Create directories first if they don't exist
+    echo "Creating missing directories..."
+    sudo mkdir -p media/uploads/team
+    sudo mkdir -p media/uploads/team/shapes
+    sudo mkdir -p media/uploads/projects/thumbnails
+    sudo mkdir -p media/uploads/testimonials
+    sudo mkdir -p media/uploads/programs
+    sudo mkdir -p media/uploads/programs/brochures
+    sudo mkdir -p media/uploads/partners
+    sudo mkdir -p media/uploads/clients
+    
     # Fix local media directory permissions
     sudo chown -R $(id -u):$(id -g) media/ 2>/dev/null || {
-        echo -e "${YELLOW}⚠️  Could not change ownership. You may need to run:${NC}"
-        echo "  sudo chown -R \$(id -u):\$(id -g) media/"
+        echo -e "${RED}❌ Could not change ownership${NC}"
+        return 1
     }
     
     chmod -R 755 media/
     
-    echo -e "${GREEN}✅ Permissions fixed${NC}"
+    echo -e "${GREEN}✅ All directories created and permissions fixed${NC}"
 }
 
 # Main script execution

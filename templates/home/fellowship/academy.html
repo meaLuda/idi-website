@@ -4,7 +4,7 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative h-[80vh] flex items-center overflow-hidden">
+<section class="relative min-h-[80vh] flex items-center overflow-hidden">
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0">
         <img src="{% static 'images/engagment_bg.webp' %}" alt="Background Image"
@@ -14,7 +14,7 @@
     </div>
 
     <!-- Content -->
-    <div class="relative z-10 container mx-auto px-4 py-10">
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-10 max-w-full sm:py-20">
         <div class="max-w-3xl">
             <!-- DIDA Logo/Brand -->
             <div class="mb-6">
@@ -55,7 +55,7 @@
             </div>
 
             <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up">
                 <button
                     class="bg-white text-[#006377] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center">
                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -83,9 +83,9 @@
     style="background-image: url('{% static 'images/slicer.webp' %}'); background-size: cover;">
 </section>
 <!-- About the Academy Section -->
-<section class="min-h-screen py-20 relative overflow-hidden bg-[#F8F9FB] bg-center bg-fixed">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<section class="min-h-screen py-16 sm:py-20 relative overflow-hidden bg-[#F8F9FB] bg-center bg-fixed">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <!-- Left Column - Text Content -->
             <div class="space-y-8">
                 <h2 class="text-[#006377] text-4xl font-bold mb-8">About the Academy</h2>
@@ -102,7 +102,7 @@
                 </div>
 
                 <!-- Feature Boxes -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 animate-fade-in-up">
                     <div
                         class="bg-[#f99a00] text-white p-6 rounded-lg shadow-lg transform rotate-1 border-2 border-[#f99a00]">
                         <h3 class="font-bold text-lg mb-2">Integrity-first, life-centered design</h3>
@@ -119,143 +119,18 @@
                         </p>
                     </div>
                 </div>
-
-                <!-- Core Values Section -->
-                <div class="mt-16">
-                    <h3 class="text-[#006377] text-2xl font-bold mb-8">Our Core Values</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Collaboration -->
-                        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#006377]">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-[#006377] rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-[#006377] mb-2">Collaboration</h4>
-                                    <p class="text-gray-700 text-sm leading-relaxed">
-                                        We believe in the power of collective intelligence, fostering cross-sector partnerships and co-creation to drive systemic change.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Empowerment -->
-                        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#f99a00]">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-[#f99a00] rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-[#006377] mb-2">Empowerment</h4>
-                                    <p class="text-gray-700 text-sm leading-relaxed">
-                                        We equip individuals and organizations with the knowledge and tools to navigate complexity and lead innovation in their respective fields.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Adaptability -->
-                        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#ccd19c]">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-[#ccd19c] rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-[#006377] mb-2">Adaptability</h4>
-                                    <p class="text-gray-700 text-sm leading-relaxed">
-                                        We embrace a growth mindset, continuously refining our programs and methodologies to align with evolving global and local challenges.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Data-Driven Decision-Making -->
-                        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#006377]">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-[#006377] rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-[#006377] mb-2">Data-Driven Decision-Making</h4>
-                                    <p class="text-gray-700 text-sm leading-relaxed">
-                                        We champion the use of empirical data, behavioral science, and AI to enhance governance, business strategy, and social innovation.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sustainability -->
-                        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#ccd19c]">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-[#ccd19c] rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-[#006377] mb-2">Sustainability</h4>
-                                    <p class="text-gray-700 text-sm leading-relaxed">
-                                        We advocate for long-term, scalable impact by integrating circular economy principles and sustainable development goals into our programs.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Ethical Integrity -->
-                        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#f99a00]">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-[#f99a00] rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-[#006377] mb-2">Ethical Integrity</h4>
-                                    <p class="text-gray-700 text-sm leading-relaxed">
-                                        Our initiatives align with responsible AI adoption, ensuring transparency, inclusivity, and fairness in all decision-making processes.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Right Column - Image with Overlays -->
-            <div class="relative">
+            <div class="relative animate-fade-in-right">
                 <!-- Main Image -->
                 <div class="relative rounded-2xl overflow-hidden">
                     <img src="{% static 'images/mamaDigital.webp' %}" alt="Academy participants"
                         class="w-full h-[500px] object-cover">
 
                     <!-- Overlay Boxes -->
-                    <div class="absolute inset-0 flex flex-col justify-center items-center space-y-4">
+                    <div
+                        class="absolute inset-0 flex flex-col justify-center items-center space-y-4 animate-pulse-subtle">
                         <!-- Leadership Box -->
                         <div
                             class="bg-white/30 text-white px-6 py-4 rounded-lg backdrop-blur-md w-3/4 text-center shadow-lg">
@@ -281,11 +156,149 @@
                 <div class="absolute -top-4 -right-4 w-16 h-16 bg-[#ccd19c] rounded-lg transform -rotate-12 z-10"></div>
             </div>
         </div>
+
+        <!-- Core Values Section - Now Below Both Columns -->
+        <div class="mt-16">
+            <h3 class="text-[#006377] text-2xl font-bold mb-8 animate-fade-in-up">Built on Core Values</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-stagger-children">
+                <!-- Collaboration -->
+                <div
+                    class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#006377] hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-[#006377] rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#006377] mb-2">Collaboration</h4>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                We believe in the power of collective intelligence, fostering cross-sector partnerships
+                                and co-creation to drive systemic change.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empowerment -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#f99a00] hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up"
+                    style="animation-delay: 0.1s">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-[#f99a00] rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#006377] mb-2">Empowerment</h4>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                We equip individuals and organizations with the knowledge and tools to navigate
+                                complexity and lead innovation in their respective fields.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adaptability -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#ccd19c] hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up"
+                    style="animation-delay: 0.2s">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-[#ccd19c] rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#006377] mb-2">Adaptability</h4>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                We embrace a growth mindset, continuously refining our programs and methodologies to
+                                align with evolving global and local challenges.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data-Driven Decision-Making -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#006377] hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up"
+                    style="animation-delay: 0.3s">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-[#006377] rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#006377] mb-2">Data-Driven Decision-Making</h4>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                We champion the use of empirical data, behavioral science, and AI to enhance governance,
+                                business strategy, and social innovation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sustainability -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#ccd19c] hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up"
+                    style="animation-delay: 0.4s">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-[#ccd19c] rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#006377] mb-2">Sustainability</h4>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                We advocate for long-term, scalable impact by integrating circular economy principles
+                                and sustainable development goals into our programs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ethical Integrity -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#f99a00] hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up"
+                    style="animation-delay: 0.5s">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-[#f99a00] rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#006377] mb-2">Ethical Integrity</h4>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                Our initiatives align with responsible AI adoption, ensuring transparency, inclusivity,
+                                and fairness in all decision-making processes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <!-- Vision Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
+<section class="py-16 sm:py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
         <!-- Section Header -->
         <div class="mb-16">
             <h2 class="text-[#006377] text-4xl font-bold mb-4">Vision</h2>
@@ -297,7 +310,7 @@
             <!-- Left Column - Image with Modal -->
             <div class="relative">
                 <img src="{% static 'images/teamDecionIntelligence.webp' %}" alt="Team working on decision intelligence"
-                    class="w-full h-[400px] object-cover rounded-2xl">
+                    class="w-full h-[550px] object-cover rounded-2xl">
 
                 <!-- Modal/Popup Box -->
                 <div
@@ -335,7 +348,17 @@
                     <div class="space-y-6">
                         <div
                             class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div class="w-2 h-2 flex-shrink-0">
+                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
+                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
+                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-1">Shaping the Future of Work with data-driven
                                     decision strategies</h4>
@@ -344,7 +367,17 @@
 
                         <div
                             class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div class="w-2 h-2 flex-shrink-0">
+                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
+                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
+                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-1">Enhancing Resilience & Adaptability to
                                     anticipate change and respond with agility</h4>
@@ -353,7 +386,17 @@
 
                         <div
                             class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div class="w-2 h-2 flex-shrink-0">
+                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
+                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
+                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-1">Developing Cross-Sector Competencies with
                                     lab-saving workforces</h4>
@@ -365,7 +408,17 @@
                     <div class="space-y-6">
                         <div
                             class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div class="w-2 h-2 flex-shrink-0">
+                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
+                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
+                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-1">Advancing Ethical & Inclusive practices
                                     centered on sustainability and equity</h4>
@@ -374,7 +427,17 @@
 
                         <div
                             class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div class="w-2 h-2 flex-shrink-0">
+                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
+                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
+                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-1">Driving Economic Growth by unlocking new
                                     markets and revenue streams</h4>
@@ -383,7 +446,17 @@
 
                         <div
                             class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 bg-[#f99a00] rounded-full mt-2 flex-shrink-0"></div>
+                            <div class="w-2 h-2 flex-shrink-0">
+                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
+                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
+                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-1">Fostering Cross-Industry Collaboration to
                                     co-innovate across sectors</h4>
@@ -396,8 +469,8 @@
     </div>
 </section>
 <!-- Core Offerings Section -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
+<section class="py-16 sm:py-20 bg-gray-50 overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
         <!-- Section Header -->
         <div class="mb-16 text-left">
             <h2 class="text-[#006377] text-4xl font-bold mb-4">Core Offerings: Decision Intelligence Programs</h2>
@@ -507,8 +580,8 @@
     </div>
 </section>
 <!-- 2025 Programs Section -->
-<section class="py-20 bg-[#006377] relative overflow-hidden">
-    <div class="container mx-auto px-4">
+<section class="py-16 sm:py-20 bg-[#006377] relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
         <!-- Section Header -->
         <div class="mb-16">
             <h2 class="text-white text-5xl font-bold mb-4">2025 Programs</h2>
@@ -516,9 +589,9 @@
         </div>
 
         <!-- Programs Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {% for program in featured_programs %}
-            <div class="transform hover:scale-105 transition-transform duration-300">
+            <div class="transform hover:scale-105 transition-all duration-300 hover:shadow-xl animate-fade-in-up">
                 <!-- Image Island -->
                 <div class="mb-6">
                     <div class="rounded-xl overflow-hidden shadow-md">
@@ -544,7 +617,7 @@
                                     d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </a>
-                        
+
                         {% if program.learn_more_url %}
                         <a href="{{ program.learn_more_url }}"
                             class="flex-1 bg-transparent border-2 border-white text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white hover:text-[#006377] transition-colors text-center flex items-center justify-center">
@@ -616,8 +689,8 @@
     style="background-image: url('{% static 'images/slicer.webp' %}'); background-size: cover;">
 </section>
 <!-- A Tailored Experiential Learning Approach Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
+<section class="py-16 sm:py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
         <!-- Section Header -->
         <div class="mb-16">
             <h2 class="text-[#006377] text-4xl font-bold mb-6">A Tailored Experiential Learning Approach</h2>
@@ -629,93 +702,141 @@
         </div>
 
         <!-- Learning Methods Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <!-- Row 1 -->
-            <div
-                class="bg-[#006377] text-white px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] transition-colors">
-                <span class="font-semibold">Masterclasses</span>
-                <div class="w-8 h-8 rounded flex items-center justify-center">
-                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.8332 18V16.3333C18.8332 14.7801 17.7709 13.4751 16.3332 13.105M13.4165 3.2423C14.6381 3.73679 15.4998 4.93443 15.4998 6.33333C15.4998 7.73224 14.6381 8.92988 13.4165 9.42437M14.6665 18C14.6665 16.4469 14.6665 15.6703 14.4128 15.0577C14.0745 14.241 13.4255 13.592 12.6088 13.2537C11.9962 13 11.2196 13 9.6665 13H7.1665C5.61337 13 4.8368 13 4.22423 13.2537C3.40747 13.592 2.75855 14.241 2.42024 15.0577C2.1665 15.6703 2.1665 16.4469 2.1665 18M11.7498 6.33333C11.7498 8.17428 10.2575 9.66667 8.4165 9.66667C6.57555 9.66667 5.08317 8.17428 5.08317 6.33333C5.08317 4.49238 6.57555 3 8.4165 3C10.2575 3 11.7498 4.49238 11.7498 6.33333Z" stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+            <div class="relative group">
+                <div
+                    class="bg-gray-100 text-[#006377] px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
+                    <span class="font-semibold">Masterclasses</span>
+                    <div class="w-8 h-8 rounded flex items-center justify-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.8332 18V16.3333C18.8332 14.7801 17.7709 13.4751 16.3332 13.105M13.4165 3.2423C14.6381 3.73679 15.4998 4.93443 15.4998 6.33333C15.4998 7.73224 14.6381 8.92988 13.4165 9.42437M14.6665 18C14.6665 16.4469 14.6665 15.6703 14.4128 15.0577C14.0745 14.241 13.4255 13.592 12.6088 13.2537C11.9962 13 11.2196 13 9.6665 13H7.1665C5.61337 13 4.8368 13 4.22423 13.2537C3.40747 13.592 2.75855 14.241 2.42024 15.0577C2.1665 15.6703 2.1665 16.4469 2.1665 18M11.7498 6.33333C11.7498 8.17428 10.2575 9.66667 8.4165 9.66667C6.57555 9.66667 5.08317 8.17428 5.08317 6.33333C5.08317 4.49238 6.57555 3 8.4165 3C10.2575 3 11.7498 4.49238 11.7498 6.33333Z"
+                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
                 </div>
             </div>
 
-            <div
-                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
-                <span class="font-semibold">Use Case Clinics</span>
-                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
-                    </svg>
+            <div class="relative group">
+                <div
+                    class="bg-gray-100 text-[#006377] px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
+                    <span class="font-semibold">Use Case Clinics</span>
+                    <div class="w-8 h-8  rounded flex items-center justify-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.1667 17.1665C12.1667 18.087 11.4205 18.8332 10.5 18.8332C9.57953 18.8332 8.83333 18.087 8.83333 17.1665M12.1667 17.1665C12.1667 16.246 11.4205 15.4998 10.5 15.4998M12.1667 17.1665H18M8.83333 17.1665C8.83333 16.246 9.57953 15.4998 10.5 15.4998M8.83333 17.1665H3M10.5 15.4998V12.1665M18 4.6665C18 6.04722 14.6421 7.1665 10.5 7.1665C6.35786 7.1665 3 6.04722 3 4.6665M18 4.6665C18 3.28579 14.6421 2.1665 10.5 2.1665C6.35786 2.1665 3 3.28579 3 4.6665M18 4.6665V9.6665C18 11.0498 14.6667 12.1665 10.5 12.1665M3 4.6665V9.6665C3 11.0498 6.33333 12.1665 10.5 12.1665"
+                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
                 </div>
             </div>
 
-            <div
-                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
-                <span class="font-semibold">Design Sprints</span>
-                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                    </svg>
+            <div class="relative group">
+                <div
+                    class="bg-gray-100 text-[#006377] px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
+                    <span class="font-semibold">Design Sprints</span>
+                    <div class="w-8 h-8  rounded flex items-center justify-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_58983_2021)">
+                                <path
+                                    d="M13.0001 6.33317L7.86214 7.80115C7.60805 7.87375 7.481 7.91005 7.37606 7.97828C7.28316 8.03869 7.20324 8.11701 7.14097 8.20867C7.07063 8.31222 7.03177 8.4385 6.95406 8.69107L3.83341 18.8332M3.83341 18.8332L13.9755 15.7125C14.2281 15.6348 14.3544 15.596 14.4579 15.5256C14.5496 15.4634 14.6279 15.3834 14.6883 15.2905C14.7565 15.1856 14.7928 15.0585 14.8654 14.8044L16.3334 9.6665M3.83341 18.8332L9.32175 13.3448M4.66675 7.1665V2.1665M2.16675 4.6665H7.16675M18.7239 7.05703L15.6096 3.94265C15.2795 3.61263 15.1145 3.44763 14.9243 3.3858C14.7569 3.33142 14.5766 3.33142 14.4092 3.3858C14.219 3.44763 14.054 3.61263 13.7239 3.94265L13.1096 4.55703C12.7795 4.88704 12.6145 5.05205 12.5527 5.24232C12.4983 5.40969 12.4983 5.58998 12.5527 5.75735C12.6145 5.94763 12.7795 6.11263 13.1096 6.44265L16.2239 9.55703C16.554 9.88704 16.719 10.0521 16.9092 10.1139C17.0766 10.1683 17.2569 10.1683 17.4243 10.1139C17.6145 10.052 17.7795 9.88704 18.1096 9.55703L18.7239 8.94265C19.054 8.61263 19.219 8.44763 19.2808 8.25735C19.3352 8.08998 19.3352 7.90969 19.2808 7.74232C19.219 7.55205 19.054 7.38704 18.7239 7.05703ZM10.5001 10.4998C11.4206 10.4998 12.1667 11.246 12.1667 12.1665C12.1667 13.087 11.4206 13.8332 10.5001 13.8332C9.57961 13.8332 8.83342 13.087 8.83342 12.1665C8.83341 11.246 9.57961 10.4998 10.5001 10.4998Z"
+                                    stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_58983_2021">
+                                    <rect width="20" height="20" fill="white" transform="translate(0.5 0.5)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                    </div>
                 </div>
             </div>
 
-            <div
-                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
-                <span class="font-semibold">Peer Clinics</span>
-                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                    </svg>
+            <div class="relative group">
+                <div
+                    class="bg-gray-100 text-[#006377] px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
+                    <span class="font-semibold">Peer Clinics</span>
+                    <div class="w-8 h-8  rounded flex items-center justify-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3.83343 18.681C4.33558 18.8332 5.01382 18.8332 6.16675 18.8332H14.8334C15.9863 18.8332 16.6646 18.8332 17.1667 18.681M3.83343 18.681C3.72577 18.6484 3.62619 18.6088 3.53177 18.5607C3.06137 18.321 2.67892 17.9386 2.43923 17.4681C2.16675 16.9334 2.16675 16.2333 2.16675 14.8332V6.1665C2.16675 4.76637 2.16675 4.06631 2.43923 3.53153C2.67892 3.06112 3.06137 2.67867 3.53177 2.43899C4.06655 2.1665 4.76662 2.1665 6.16675 2.1665H14.8334C16.2335 2.1665 16.9336 2.1665 17.4684 2.43899C17.9388 2.67867 18.3212 3.06112 18.5609 3.53153C18.8334 4.06631 18.8334 4.76637 18.8334 6.1665V14.8332C18.8334 16.2333 18.8334 16.9334 18.5609 17.4681C18.3212 17.9386 17.9388 18.321 17.4684 18.5607C17.374 18.6088 17.2744 18.6484 17.1667 18.681M3.83343 18.681C3.83371 18.0066 3.83775 17.6497 3.89746 17.3495C4.16049 16.0272 5.19415 14.9936 6.51645 14.7306C6.83844 14.6665 7.22566 14.6665 8.00008 14.6665H13.0001C13.7745 14.6665 14.1617 14.6665 14.4837 14.7306C15.806 14.9936 16.8397 16.0272 17.1027 17.3495C17.1624 17.6497 17.1665 18.0066 17.1667 18.681M13.8334 8.4165C13.8334 10.2575 12.341 11.7498 10.5001 11.7498C8.65913 11.7498 7.16675 10.2575 7.16675 8.4165C7.16675 6.57555 8.65913 5.08317 10.5001 5.08317C12.341 5.08317 13.8334 6.57555 13.8334 8.4165Z"
+                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
                 </div>
             </div>
 
             <!-- Row 2 -->
-            <div
-                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
-                <span class="font-semibold">Webinars</span>
-                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
-                    </svg>
+            <div class="relative group">
+                <div
+                    class="bg-gray-100 text-[#006377] px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
+                    <span class="font-semibold">Webinars</span>
+                    <div class="w-8 h-8  rounded flex items-center justify-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.4998 13.8333V18M10.4998 13.8333L15.4998 18M10.4998 13.8333L5.49984 18M7.1665 6.33333V10.5M10.4998 8V10.5M13.8332 9.66667V10.5M18.8332 3H2.1665M2.99984 3H17.9998V9.83333C17.9998 11.2335 17.9998 11.9335 17.7274 12.4683C17.4877 12.9387 17.1052 13.3212 16.6348 13.5608C16.1 13.8333 15.4 13.8333 13.9998 13.8333H6.99984C5.59971 13.8333 4.89964 13.8333 4.36486 13.5608C3.89446 13.3212 3.512 12.9387 3.27232 12.4683C2.99984 11.9335 2.99984 11.2335 2.99984 9.83333V3Z"
+                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
                 </div>
             </div>
 
-            <div
-                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
-                <span class="font-semibold">Mentorship Streams</span>
-                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" />
-                    </svg>
+            <div class="relative group">
+                <div
+                    class="bg-gray-100 text-[#006377] px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
+                    <span class="font-semibold">Mentorship Streams</span>
+                    <div class="w-8 h-8  rounded flex items-center justify-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.5001 13.6974C16.7134 14.3069 17.7536 15.285 18.5128 16.508C18.6632 16.7502 18.7383 16.8713 18.7643 17.039C18.8172 17.3798 18.5841 17.7988 18.2667 17.9336C18.1105 18 17.9348 18 17.5834 18M13.8334 10.1102C15.0682 9.49657 15.9168 8.22238 15.9168 6.75C15.9168 5.27762 15.0682 4.00343 13.8334 3.3898M12.1668 6.75C12.1668 8.82107 10.4878 10.5 8.41678 10.5C6.34571 10.5 4.66678 8.82107 4.66678 6.75C4.66678 4.67893 6.34571 3 8.41678 3C10.4878 3 12.1668 4.67893 12.1668 6.75ZM2.6328 16.282C3.96139 14.2871 6.05792 13 8.41677 13C10.7756 13 12.8722 14.2871 14.2008 16.282C14.4918 16.719 14.6373 16.9375 14.6206 17.2166C14.6075 17.4339 14.4651 17.7 14.2914 17.8313C14.0684 18 13.7616 18 13.1481 18H3.68541C3.07192 18 2.76517 18 2.54214 17.8313C2.36848 17.7 2.22601 17.4339 2.21297 17.2166C2.19622 16.9375 2.34174 16.719 2.6328 16.282Z"
+                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
                 </div>
             </div>
 
-            <div
-                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
-                <span class="font-semibold">Field Excursions</span>
-                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
-                    </svg>
+            <div class="relative group">
+                <div
+                    class="bg-gray-100 text-[#006377] px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
+                    <span class="font-semibold">Field Excursions</span>
+                    <div class="w-8 h-8  rounded flex items-center justify-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.16667 3L13.8333 18M3 14.6667L10.5 10.5M7 18H14C15.4001 18 16.1002 18 16.635 17.7275C17.1054 17.4878 17.4878 17.1054 17.7275 16.635C18 16.1002 18 15.4001 18 14V7C18 5.59987 18 4.8998 17.7275 4.36502C17.4878 3.89462 17.1054 3.51217 16.635 3.27248C16.1002 3 15.4001 3 14 3H7C5.59987 3 4.8998 3 4.36502 3.27248C3.89462 3.51217 3.51217 3.89462 3.27248 4.36502C3 4.8998 3 5.59987 3 7V14C3 15.4001 3 16.1002 3.27248 16.635C3.51217 17.1054 3.89462 17.4878 4.36502 17.7275C4.8998 18 5.59987 18 7 18Z"
+                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
                 </div>
             </div>
 
-            <div
-                class="bg-gray-100 text-[#006377] px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors">
-                <span class="font-semibold">Apprenticeships</span>
-                <div class="w-8 h-8 bg-[#f99a00] rounded flex items-center justify-center">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.75 2.524z" />
-                    </svg>
+            <div class="relative group">
+                <div
+                    class="bg-gray-100 text-[#006377] px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-[#005066] hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
+                    <span class="font-semibold">Apprenticeships</span>
+                    <div class="w-8 h-8  rounded flex items-center justify-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3.83325 18L3.83325 3.83333M3.83325 11.3333H9.99992C10.4666 11.3333 10.7 11.3333 10.8782 11.2425C11.035 11.1626 11.1625 11.0351 11.2424 10.8783C11.3333 10.7001 11.3333 10.4667 11.3333 10V4.33333C11.3333 3.86662 11.3333 3.63327 11.2424 3.45501C11.1625 3.29821 11.035 3.17072 10.8782 3.09083C10.7 3 10.4666 3 9.99992 3H5.16659C4.69987 3 4.46652 3 4.28826 3.09083C4.13146 3.17072 4.00397 3.29821 3.92408 3.45501C3.83325 3.63327 3.83325 3.86662 3.83325 4.33333V11.3333ZM11.3333 4.66667H16.6666C17.1333 4.66667 17.3667 4.66667 17.5449 4.75749C17.7017 4.83739 17.8292 4.96487 17.9091 5.12167C17.9999 5.29993 17.9999 5.53329 17.9999 6V11.6667C17.9999 12.1334 17.9999 12.3667 17.9091 12.545C17.8292 12.7018 17.7017 12.8293 17.5449 12.9092C17.3667 13 17.1333 13 16.6666 13H12.6666C12.1999 13 11.9665 13 11.7883 12.9092C11.6315 12.8293 11.504 12.7018 11.4241 12.545C11.3333 12.3667 11.3333 12.1334 11.3333 11.6667V4.66667Z"
+                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -728,8 +849,8 @@
 </section>
 
 <!-- Join Our Collective Intelligence Network Section -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
+<section class="py-16 sm:py-20 bg-gray-50 overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
         <!-- Section Header -->
         <div class="mb-16">
             <h2 class="text-[#006377] text-4xl font-bold mb-6">Join our collective intelligence network for
@@ -738,9 +859,10 @@
         </div>
 
         <!-- Partnership Types Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             <!-- Knowledge Partners -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow group">
+            <div
+                class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2 animate-fade-in-up">
                 <div class="mb-6">
                     <div
                         class="w-16 h-16 bg-[#006377] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -788,7 +910,8 @@
             </div>
 
             <!-- Tool Resource Partners -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow group">
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2 animate-fade-in-up"
+                style="animation-delay: 0.1s">
                 <div class="mb-6">
                     <div
                         class="w-16 h-16 bg-[#006377] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -836,7 +959,8 @@
             </div>
 
             <!-- Implementation Partners -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow group">
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2 animate-fade-in-up"
+                style="animation-delay: 0.2s">
                 <div class="mb-6">
                     <div
                         class="w-16 h-16 bg-[#006377] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -853,19 +977,21 @@
                                 <filter id="filter0_d_58983_6840" x="0.5" y="0.5" width="52" height="52"
                                     filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                                     <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                        result="hardAlpha" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                     <feOffset dy="1" />
                                     <feGaussianBlur stdDeviation="1" />
                                     <feComposite in2="hardAlpha" operator="out" />
                                     <feColorMatrix type="matrix"
                                         values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
-                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_58983_6840" />
-                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6840" result="shape" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                        result="effect1_dropShadow_58983_6840" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6840"
+                                        result="shape" />
                                 </filter>
                             </defs>
                         </svg>
-            
+
                     </div>
                     <h3 class="text-[#006377] text-xl font-bold mb-4">Implementation Partners</h3>
                 </div>
@@ -882,7 +1008,8 @@
             </div>
 
             <!-- Funding Partners -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow group">
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2 animate-fade-in-up"
+                style="animation-delay: 0.3s">
                 <div class="mb-6">
                     <div
                         class="w-16 h-16 bg-[#006377] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -938,8 +1065,8 @@
 </section>
 
 <!-- Partners and Clients Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
+<section class="py-16 sm:py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
         <!-- Title and Description -->
         <div class="max-w-4xl mb-16">
             <h2 class="text-[45px] leading-tight text-gray-800 font-normal mb-8">
@@ -955,43 +1082,46 @@
         <!-- Partners Section -->
         <div class="mb-20">
             <h3 class="text-2xl text-[#006377] font-semibold mb-8">Partners</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
                 {% for partner in partners %}
-                <div class="group relative partner-item" 
-                     data-partner-name="{{ partner.name }}"
-                     data-partner-type="{{ partner.get_partnership_type_display }}"
-                     data-partner-description="{{ partner.description|default:'' }}"
-                     data-partner-website="{{ partner.website|default:'' }}">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer">
+                <div class="group relative partner-item" data-partner-name="{{ partner.name }}"
+                    data-partner-type="{{ partner.get_partnership_type_display }}"
+                    data-partner-description="{{ partner.description|default:'' }}"
+                    data-partner-website="{{ partner.website|default:'' }}">
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer">
                         {% if partner.logo %}
-                            <img src="{% if partner.logo %}{{ partner.logo.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
-                                 alt="{{ partner.name }}" 
-                                 class="w-full h-full object-contain">
+                        <img src="{% if partner.logo %}{{ partner.logo.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}"
+                            alt="{{ partner.name }}" class="w-full h-full object-contain">
                         {% else %}
-                            <!-- Placeholder if no logo -->
-                            <div class="text-gray-400 text-center">
-                                <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                                </svg>
-                                <span class="text-xs">{{ partner.name }}</span>
-                            </div>
+                        <!-- Placeholder if no logo -->
+                        <div class="text-gray-400 text-center">
+                            <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span class="text-xs">{{ partner.name }}</span>
+                        </div>
                         {% endif %}
                     </div>
                     <!-- Hover Popup -->
-                    <div class="partner-popup absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-72 bg-white rounded-lg shadow-lg border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                    <div
+                        class="partner-popup absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-72 bg-white rounded-lg shadow-lg border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                         <div class="text-lg font-semibold text-gray-800 mb-2">{{ partner.name }}</div>
-                        <div class="text-sm text-[#006377] font-medium mb-2">{{ partner.get_partnership_type_display }}</div>
+                        <div class="text-sm text-[#006377] font-medium mb-2">{{ partner.get_partnership_type_display }}
+                        </div>
                         {% if partner.description %}
-                            <div class="text-sm text-gray-600 mb-3">{{ partner.description }}</div>
+                        <div class="text-sm text-gray-600 mb-3">{{ partner.description }}</div>
                         {% endif %}
                         {% if partner.website %}
-                            <a href="{{ partner.website }}" target="_blank" rel="noopener" 
-                               class="inline-flex items-center text-sm text-[#006377] hover:text-[#004d5c] font-medium">
-                                Visit Website
-                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                                </svg>
-                            </a>
+                        <a href="{{ partner.website }}" target="_blank" rel="noopener"
+                            class="inline-flex items-center text-sm text-[#006377] hover:text-[#004d5c] font-medium">
+                            Visit Website
+                            <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
                         {% endif %}
                     </div>
                 </div>
@@ -1002,49 +1132,51 @@
                 {% endfor %}
             </div>
         </div>
-        
+
         <!-- Clients Section -->
         <div>
             <h3 class="text-2xl text-[#006377] font-semibold mb-8">Clients</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
                 {% for client in clients %}
-                <div class="group relative client-item" 
-                     data-client-name="{{ client.name }}"
-                     data-client-industry="{{ client.get_industry_display }}"
-                     data-client-description="{{ client.project_description|default:'' }}"
-                     data-client-website="{{ client.website|default:'' }}"
-                     data-client-year="{{ client.collaboration_year }}">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer">
+                <div class="group relative client-item" data-client-name="{{ client.name }}"
+                    data-client-industry="{{ client.get_industry_display }}"
+                    data-client-description="{{ client.project_description|default:'' }}"
+                    data-client-website="{{ client.website|default:'' }}"
+                    data-client-year="{{ client.collaboration_year }}">
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer">
                         {% if client.logo %}
-                            <img src="{% if client.logo %}{{ client.logo.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
-                                 alt="{{ client.name }}" 
-                                 class="w-full h-full object-contain">
+                        <img src="{% if client.logo %}{{ client.logo.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}"
+                            alt="{{ client.name }}" class="w-full h-full object-contain">
                         {% else %}
-                            <!-- Placeholder if no logo -->
-                            <div class="text-gray-400 text-center">
-                                <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                                </svg>
-                                <span class="text-xs">{{ client.name }}</span>
-                            </div>
+                        <!-- Placeholder if no logo -->
+                        <div class="text-gray-400 text-center">
+                            <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span class="text-xs">{{ client.name }}</span>
+                        </div>
                         {% endif %}
                     </div>
                     <!-- Hover Popup -->
-                    <div class="client-popup absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-72 bg-white rounded-lg shadow-lg border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                    <div
+                        class="client-popup absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-72 bg-white rounded-lg shadow-lg border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                         <div class="text-lg font-semibold text-gray-800 mb-2">{{ client.name }}</div>
                         <div class="text-sm text-[#006377] font-medium mb-1">{{ client.get_industry_display }}</div>
                         <div class="text-xs text-gray-500 mb-3">Collaboration: {{ client.collaboration_year }}</div>
                         {% if client.project_description %}
-                            <div class="text-sm text-gray-600 mb-3">{{ client.project_description }}</div>
+                        <div class="text-sm text-gray-600 mb-3">{{ client.project_description }}</div>
                         {% endif %}
                         {% if client.website %}
-                            <a href="{{ client.website }}" target="_blank" rel="noopener" 
-                               class="inline-flex items-center text-sm text-[#006377] hover:text-[#004d5c] font-medium">
-                                Visit Website
-                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                                </svg>
-                            </a>
+                        <a href="{{ client.website }}" target="_blank" rel="noopener"
+                            class="inline-flex items-center text-sm text-[#006377] hover:text-[#004d5c] font-medium">
+                            Visit Website
+                            <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
                         {% endif %}
                     </div>
                 </div>
@@ -1060,29 +1192,167 @@
 
 <!-- Custom CSS for Partners and Clients Popups -->
 <style>
-/* Ensure popups are positioned correctly and have proper z-index */
-.partner-popup, .client-popup {
-    z-index: 1000;
-    pointer-events: none;
-    transform-origin: bottom center;
-}
-.group:hover .partner-popup,
-.group:hover .client-popup {
-    pointer-events: auto;
-}
-
-/* Prevent horizontal overflow on mobile */
-.partner-popup, .client-popup {
-    max-width: calc(100vw - 2rem);
-}
-
-@media (max-width: 640px) {
-    .partner-popup, .client-popup {
-        width: calc(100vw - 4rem);
-        left: 50%;
-        transform: translateX(-50%);
+    /* Ensure popups are positioned correctly and have proper z-index */
+    .partner-popup,
+    .client-popup {
+        z-index: 1000;
+        pointer-events: none;
+        transform-origin: bottom center;
     }
-}
-</style>
 
+    .group:hover .partner-popup,
+    .group:hover .client-popup {
+        pointer-events: auto;
+    }
+
+    /* Prevent horizontal overflow on mobile */
+    .partner-popup,
+    .client-popup {
+        max-width: calc(100vw - 2rem);
+    }
+
+    @media (max-width: 640px) {
+
+        .partner-popup,
+        .client-popup {
+            width: calc(100vw - 2rem);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Fix container margins on mobile */
+        .container {
+            max-width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+
+        /* Prevent any overflow */
+        section {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+    }
+
+    /* Custom animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes pulseSubtle {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.9;
+        }
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+    .animate-fade-in-right {
+        animation: fadeInRight 0.8s ease-out 0.2s forwards;
+        opacity: 0;
+    }
+
+    .animate-pulse-subtle {
+        animation: pulseSubtle 3s ease-in-out infinite;
+    }
+
+    .animate-stagger-children>* {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .animate-stagger-children>*:nth-child(1) {
+        animation-delay: 0.1s;
+        opacity: 0;
+    }
+
+    .animate-stagger-children>*:nth-child(2) {
+        animation-delay: 0.2s;
+        opacity: 0;
+    }
+
+    .animate-stagger-children>*:nth-child(3) {
+        animation-delay: 0.3s;
+        opacity: 0;
+    }
+
+    .animate-stagger-children>*:nth-child(4) {
+        animation-delay: 0.4s;
+        opacity: 0;
+    }
+
+    .animate-stagger-children>*:nth-child(5) {
+        animation-delay: 0.5s;
+        opacity: 0;
+    }
+
+    .animate-stagger-children>*:nth-child(6) {
+        animation-delay: 0.6s;
+        opacity: 0;
+    }
+
+    /* Ensure no horizontal scroll */
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Mobile-specific fixes */
+    @media (max-width: 768px) {
+
+        /* Ensure grid doesn't cause overflow */
+        .grid {
+            width: 100%;
+        }
+
+        /* Fix any potential margin issues */
+        .container {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+
+        /* Reduce padding on smaller screens */
+        section {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+</style>
 {% endblock %}
