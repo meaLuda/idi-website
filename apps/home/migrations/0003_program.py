@@ -11,37 +11,35 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Program',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('slug', models.SlugField(blank=True, unique=True)),
-                ('program_type', models.CharField(choices=[('fellowship', 'Fellowship'), ('executive', 'Executive Program'), ('bootcamp', 'Bootcamp'), ('course', 'Course'), ('workshop', 'Workshop')], default='fellowship', max_length=20)),
-                ('short_description', models.TextField(help_text='Brief description for card display')),
-                ('full_description', ckeditor_uploader.fields.RichTextUploadingField(blank=True, verbose_name='Full Description')),
-                ('image', models.ImageField(help_text='Program card image', upload_to='uploads/programs/')),
-                ('duration', models.CharField(blank=True, help_text="e.g., '12 weeks', '3 months'", max_length=100)),
-                ('format', models.CharField(blank=True, help_text="e.g., 'Online', 'Hybrid', 'In-person'", max_length=100)),
-                ('target_audience', models.TextField(blank=True, help_text='Who this program is for')),
-                ('application_url', models.URLField(blank=True, help_text='Apply Now link')),
-                ('learn_more_url', models.URLField(blank=True, help_text='Learn More link')),
-                ('brochure', models.FileField(blank=True, null=True, upload_to='uploads/programs/brochures/')),
-                ('is_active', models.BooleanField(default=True)),
-                ('is_featured', models.BooleanField(default=False, help_text='Show in featured programs section')),
-                ('application_open', models.BooleanField(default=True)),
-                ('application_deadline', models.DateTimeField(blank=True, null=True)),
-                ('year', models.IntegerField(default=2025)),
-                ('meta_description', models.TextField(blank=True, max_length=160)),
-                ('meta_keywords', models.CharField(blank=True, max_length=255)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('order', models.IntegerField(default=0, help_text='Display order')),
-            ],
-            options={
-                'verbose_name': 'Program',
-                'verbose_name_plural': 'Programs',
-                'ordering': ['order', '-created_at'],
-            },
+        # Use RunSQL to safely create table only if it doesn't exist
+        migrations.RunSQL(
+            """
+            CREATE TABLE IF NOT EXISTS home_program (
+                id BIGSERIAL PRIMARY KEY,
+                title VARCHAR(200) NOT NULL,
+                slug VARCHAR(50) UNIQUE,
+                program_type VARCHAR(20) DEFAULT 'fellowship' NOT NULL,
+                short_description TEXT NOT NULL,
+                full_description TEXT,
+                image VARCHAR(100) NOT NULL,
+                duration VARCHAR(100),
+                format VARCHAR(100),
+                target_audience TEXT,
+                application_url VARCHAR(200),
+                learn_more_url VARCHAR(200),
+                brochure VARCHAR(100),
+                is_active BOOLEAN DEFAULT TRUE NOT NULL,
+                is_featured BOOLEAN DEFAULT FALSE NOT NULL,
+                application_open BOOLEAN DEFAULT TRUE NOT NULL,
+                application_deadline TIMESTAMP WITH TIME ZONE,
+                year INTEGER DEFAULT 2025 NOT NULL,
+                meta_description TEXT,
+                meta_keywords VARCHAR(255),
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+                updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+                "order" INTEGER DEFAULT 0 NOT NULL
+            );
+            """,
+            reverse_sql="DROP TABLE IF EXISTS home_program;"
         ),
     ]
