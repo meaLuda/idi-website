@@ -52,12 +52,6 @@ fix_media_permissions() {
     find /app/media -type f -exec chmod 644 {} \; 2>/dev/null || true
 }
 
-# Function to run migrations
-run_migrations() {
-    echo "Running database migrations..."
-    python manage.py migrate --noinput
-}
-
 # Function to collect static files
 collect_static() {
     echo "Collecting static files..."
@@ -73,9 +67,6 @@ wait_for_db
 
 # Fix media permissions
 fix_media_permissions
-
-# Run migrations
-run_migrations
 
 # Collect static files (in case of changes)
 collect_static
