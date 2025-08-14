@@ -52,7 +52,7 @@
 </nav>
 
 <!-- Hero Section with improved visual presentation -->
-<section id="cover-{{ program.id }}" class="relative h-[50vh] md:h-[75vh]">
+<section id="cover-{{ program.id }}" class="relative h-[50vh] md:h-[75vh] program-hero-padding">
     <div class="absolute inset-0">
         <img src="{% if program.image %}{{ program.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
              alt="{{ program.title }}" 

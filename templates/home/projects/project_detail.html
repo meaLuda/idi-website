@@ -4,12 +4,6 @@
 {% block content %}
 <!-- Mobile optimization styles -->
 <style>
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-        max-width: 100vw;
-        position: relative;
-    }
     .ck-content {
         overflow-wrap: break-word;
         word-wrap: break-word;
@@ -29,30 +23,8 @@
         word-wrap: break-word;
     }
 </style>
-
-<!-- Breadcrumb Navigation -->
-<nav class="bg-gray-50 py-4 border-b border-gray-100">
-    <div class="container mx-auto px-4">
-        <ol class="flex flex-wrap items-center text-sm text-gray-500">
-            <li class="flex items-center">
-                <a href="{% url 'home:lander' %}" class="hover:text-[#006377] transition-colors">Home</a>
-                <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </li>
-            <li class="flex items-center">
-                <a href="{% url 'home:projects_list' %}" class="hover:text-[#006377] transition-colors">Our Work</a>
-                <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </li>
-            <li class="text-gray-800 font-medium truncate max-w-[200px] md:max-w-xs">{{ project.title }}</li>
-        </ol>
-    </div>
-</nav>
-
 <!-- Hero Section with improved visual presentation -->
-<section id="cover-{{ project.id }}" class="relative h-[50vh] md:h-[75vh]">
+<section id="cover-{{ project.id }}" class="relative min-h-[80vh] flex items-center overflow-hidden mt-[80px] md:mt-[80px]">
     <div class="absolute inset-0">
         <img src="{% if project.thumbnail %}{{ project.thumbnail.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
              alt="{{ project.title }}" 
@@ -331,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Add parallax effect to hero image (subtle) - disabled on mobile for performance
-    const heroSection = document.getElementById('cover-{{ project.id }}');
+    const heroSection = document.getElementById('cover-{{ project.id|escapejs }}');
     if (heroSection && window.innerWidth > 768) {
         const heroImage = heroSection.querySelector('img');
         if (heroImage) {

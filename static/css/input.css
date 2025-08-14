@@ -2,19 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Reset any default margins/padding that could cause layout gaps */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* Add top spacing for pages that need navbar clearance */
+.navbar-spacing {
+  margin-top: 80px;
+}
+
+/* Alternative: padding version for sections that need internal spacing */
+.navbar-padding {
+  padding-top: 80px;
+  z-index: 10; /* Ensure it stays below navbar (z-50) */
+}
+
+/* Mobile-specific navbar padding adjustments */
+@media (max-width: 768px) {
+  .navbar-padding {
+    padding-top: 70px; /* Less padding on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-padding {
+    padding-top: 65px; /* Even less padding on small phones */
+  }
+}
+
+/* Program details page specific spacing */
+.program-hero-padding {
+  padding-top: 80px;
+  z-index: 10; /* Stay below navbar */
+}
+
+@media (max-width: 768px) {
+  .program-hero-padding {
+    padding-top: 70px; /* Less gap on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .program-hero-padding {
+    padding-top: 65px; /* Even less gap on small phones */
+  }
+}
+
+/* Academy page hero section - keep original behavior */
+.academy-hero-padding {
+  padding-top: 80px;
+  z-index: 10; /* Stay below navbar */
+}
+
+/* Academy 2025 Programs grid fixes */
+.academy-programs-grid {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .academy-programs-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1.5rem; /* Reduce gap on mobile */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .academy-programs-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on tablet */
+  }
+}
+
 .slide-container {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 80px); /* Account for navbar height */
   position: relative;
   overflow: hidden;
+  z-index: 10;
+  margin-top: 80px; /* Push below fixed navbar */
+}
+
+/* Mobile-specific fix for slide container */
+@media (max-width: 768px) {
+  .slide-container {
+    margin-top: 70px; /* Slightly less margin on mobile */
+    height: calc(100vh - 70px); /* Adjust height accordingly */
+  }
+}
+
+/* Extra small phones - even less gap */
+@media (max-width: 480px) {
+  .slide-container {
+    margin-top: 65px; /* Even less margin on small phones */
+    height: calc(100vh - 65px); /* Adjust height accordingly */
+  }
 }
 
 .slide {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 
 .slide.active {
@@ -22,26 +123,111 @@
 }
 
 .slide-content {
-  position: absolute;
-  bottom: 20%;
-  left: 10%;
+  text-align: center;
   color: white;
-  z-index: 10;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
-  background-color: #fff;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  margin: 0 4px;
+  background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
-  transition: width 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .dot.active {
-  width: 24px;
-  border-radius: 4px;
+  background-color: #ffd300;
+  transform: scale(1.2);
+}
+
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Partner and Client Popups */
+.partner-popup, .client-popup {
+  z-index: 40;
+  pointer-events: none;
+  transform-origin: bottom center;
+}
+
+.group:hover .partner-popup,
+.group:hover .client-popup {
+  pointer-events: auto;
+}
+
+/* Ensure popups don't go off-screen on mobile */
+@media (max-width: 768px) {
+  .partner-popup, .client-popup {
+    width: 240px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    max-width: calc(100vw - 32px);
+    margin: 0 16px;
+  }
+  
+  /* For cards on the right edge, position popup to the left */
+  .grid > div:nth-child(2n) .client-popup,
+  .grid > div:nth-child(5n) .partner-popup {
+    left: auto !important;
+    right: 0 !important;
+    transform: translateX(0) !important;
+  }
+  
+  /* For cards on the left edge, position popup to the right */
+  .grid > div:nth-child(2n-1) .client-popup,
+  .grid > div:nth-child(5n-4) .partner-popup {
+    left: 0 !important;
+    right: auto !important;
+    transform: translateX(0) !important;
+  }
+}
+
+/* Adjust positioning for items on the edge */
+.partner-item:nth-child(1) .partner-popup,
+.partner-item:nth-child(2) .partner-popup,
+.client-item:nth-child(1) .client-popup,
+.client-item:nth-child(2) .client-popup {
+  left: 0;
+  transform: translateX(0);
+}
+
+.partner-item:nth-last-child(1) .partner-popup,
+.partner-item:nth-last-child(2) .partner-popup,
+.client-item:nth-last-child(1) .client-popup,
+.client-item:nth-last-child(2) .client-popup {
+  right: 0;
+  left: auto;
+  transform: translateX(0);
+}
+
+/* Better shadow for popups */
+.partner-popup, .client-popup {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+/* Smooth hover animations */
+.partner-item:hover, .client-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 640px) {
+  .grid.grid-cols-2.md\:grid-cols-3.lg\:grid-cols-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .grid.grid-cols-2.md\:grid-cols-3.lg\:grid-cols-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .mobile-menu-overlay {

@@ -39,7 +39,7 @@
     style="background-image: url('media/slicer.webp'); background-size: cover;">
 </section>
 <!-- About Us Section -->
-<section id="about-us" class="min-h-screen py-20 relative overflow-hidden bg-cover bg-center bg-fixed"
+<section id="about-us" class="min-h-screen py-20 relative overflow-hidden bg-cover bg-center bg-fixed md:bg-fixed"
     style="background-image: url('media/side_semi_circle.webp')">
     <div class="container mx-auto px-4 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -69,7 +69,7 @@
     style="background-image: url('media/slicer.webp'); background-size: cover;">
 </section>
 <!-- What We Do Section -->
-<section id="what-we-do" class="h-[650px] relative overflow-hidden">
+<section id="what-we-do" class="min-h-[650px] md:h-[650px] relative overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0">
         <img src="{% static 'images/what-we-do-bg.webp' %}" alt="Background"
@@ -321,7 +321,7 @@
         }
 
         .item:last-child {
-            margin-right: 20px;
+            margin-right: 10px;
         }
 
         /* Hide scrollbar for cleaner look */
@@ -544,16 +544,16 @@
 <section class="h-[20px] relative overflow-hidden"
     style="background-image: url('media/slicer.webp'); background-size: cover;">
 </section>
-<!-- Partners and Clients Section (Moved above Team Section) -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
+<!-- Partners and Clients Section -->
+<section class="py-12 sm:py-16 lg:py-20 xl:py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <!-- Title and Description -->
-        <div class="max-w-4xl mb-16">
-            <h2 class="text-[45px] leading-tight text-gray-800 font-normal mb-8">
-                Our partners<br>
-                and clients
+        <div class="max-w-5xl mb-12 sm:mb-16 lg:mb-20">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight text-gray-800 font-normal mb-6 sm:mb-8">
+                Our partners<br class="hidden sm:block">
+                <span class="sm:hidden"> </span>and clients
             </h2>
-            <p class="text-gray-600 text-lg leading-relaxed">
+            <p class="text-gray-600 text-base sm:text-lg lg:text-xl leading-relaxed max-w-4xl">
                 Through collaborative efforts, we craft solutions that effectively address the requirements and
                 ambitions of individuals, communities, businesses, institutions, and the general public with local and
                 global partners and clients.
@@ -561,8 +561,8 @@
         </div>
 
         <!-- Partners Section -->
-        <div class="mb-20">
-            <h3 class="text-2xl text-[#006377] font-semibold mb-8">Partners</h3>
+        <div class="mb-12 sm:mb-16 lg:mb-20">
+            <h3 class="text-xl sm:text-2xl lg:text-3xl text-[#006377] font-semibold mb-6 sm:mb-8">Partners</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 {% for partner in partners %}
                 <div class="group relative partner-item" 
@@ -573,29 +573,29 @@
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer">
                         {% if partner.logo %}
                             <img src="{% if partner.logo %}{{ partner.logo.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
-                                 alt="{{ partner.name }}" 
-                                 class="w-full h-full object-contain">
+                                alt="{{ partner.name }}" 
+                                class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 filter grayscale group-hover:grayscale-0">
                         {% else %}
                             <!-- Placeholder if no logo -->
-                            <div class="text-gray-400 text-center">
-                                <div class="text-2xl mb-2">🤝</div>
-                                <div class="text-sm font-medium">{{ partner.name }}</div>
+                            <div class="text-gray-400 text-center group-hover:text-[#006377] transition-colors">
+                                <div class="text-xl sm:text-2xl mb-2">🤝</div>
+                                <div class="text-xs sm:text-sm font-medium line-clamp-2">{{ partner.name }}</div>
                             </div>
                         {% endif %}
                     </div>
                     
                     <!-- Hover Popup -->
-                    <div class="partner-popup absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-72 bg-white rounded-lg shadow-lg border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                        <div class="text-lg font-semibold text-gray-800 mb-2">{{ partner.name }}</div>
-                        <div class="text-sm text-[#006377] font-medium mb-2">{{ partner.get_partnership_type_display }}</div>
+                    <div class="partner-popup absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-64 sm:w-72 bg-white rounded-lg shadow-xl border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 max-w-[calc(100vw-2rem)]">
+                        <div class="text-base sm:text-lg font-semibold text-gray-800 mb-2 line-clamp-2">{{ partner.name }}</div>
+                        <div class="text-xs sm:text-sm text-[#006377] font-medium mb-2 bg-[#006377]/10 px-2 py-1 rounded-md inline-block">{{ partner.get_partnership_type_display }}</div>
                         {% if partner.description %}
-                            <div class="text-sm text-gray-600 mb-3">{{ partner.description }}</div>
+                            <div class="text-xs sm:text-sm text-gray-600 mb-3 line-clamp-3">{{ partner.description }}</div>
                         {% endif %}
                         {% if partner.website %}
                             <a href="{{ partner.website }}" target="_blank" rel="noopener" 
-                               class="inline-flex items-center text-sm text-[#006377] hover:text-[#004d5c] font-medium">
+                            class="inline-flex items-center text-xs sm:text-sm text-[#006377] hover:text-[#004d5c] font-medium bg-[#006377]/5 hover:bg-[#006377]/10 px-3 py-2 rounded-lg transition-colors">
                                 Visit Website
-                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                                 </svg>
                             </a>
@@ -614,8 +614,8 @@
         
         <!-- Clients Section -->
         <div>
-            <h3 class="text-2xl text-[#006377] font-semibold mb-8">Clients</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <h3 class="text-xl sm:text-2xl lg:text-3xl text-[#006377] font-semibold mb-6 sm:mb-8">Clients</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
                 {% for client in clients %}
                 <div class="group relative client-item"
                      data-client-name="{{ client.name }}"
@@ -623,7 +623,7 @@
                      data-client-year="{{ client.collaboration_year }}"
                      data-client-description="{{ client.project_description|default:'' }}"
                      data-client-website="{{ client.website|default:'' }}">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer">
+                    <div class="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-[#006377]/20 cursor-pointer group">
                         {% if client.logo %}
                             <img src="{% if client.logo %}{{ client.logo.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
                                  alt="{{ client.name }}" 
@@ -638,26 +638,26 @@
                     </div>
                     
                     <!-- Hover Popup -->
-                    <div class="client-popup absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-72 bg-white rounded-lg shadow-lg border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                        <div class="text-lg font-semibold text-gray-800 mb-2">{{ client.name }}</div>
-                        <div class="flex items-center justify-between text-sm mb-3">
-                            <span class="text-[#006377] font-medium">{{ client.get_industry_display }}</span>
-                            <span class="text-gray-500">{{ client.collaboration_year }}</span>
+                    <div class="client-popup absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-64 bg-white rounded-lg shadow-lg border border-gray-200 p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                        <div class="text-sm font-semibold text-gray-800 mb-1 line-clamp-2">{{ client.name }}</div>
+                        <div class="flex items-center justify-between text-xs mb-2">
+                            <span class="text-[#006377] font-medium text-xs bg-[#006377]/10 px-2 py-1 rounded">{{ client.get_industry_display }}</span>
+                            <span class="text-gray-500 text-xs">{{ client.collaboration_year }}</span>
                         </div>
                         {% if client.project_description %}
-                            <div class="text-sm text-gray-600 mb-3">{{ client.project_description }}</div>
+                            <div class="text-xs text-gray-600 mb-2 line-clamp-2">{{ client.project_description }}</div>
                         {% endif %}
                         {% if client.website %}
                             <a href="{{ client.website }}" target="_blank" rel="noopener" 
-                               class="inline-flex items-center text-sm text-[#006377] hover:text-[#004d5c] font-medium">
+                               class="inline-flex items-center text-xs text-[#006377] hover:text-[#004d5c] font-medium bg-[#006377]/5 hover:bg-[#006377]/10 px-2 py-1 rounded transition-colors">
                                 Visit Website
-                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-2 h-2 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                                 </svg>
                             </a>
                         {% endif %}
                         <!-- Arrow pointing down -->
-                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white"></div>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-white"></div>
                     </div>
                 </div>
                 {% empty %}
@@ -768,58 +768,7 @@
     <div class="dot" data-slide="2"></div>
 </div>
 
-<!-- Hero Slider CSS and JavaScript -->
-<style>
-.slide-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slide.active {
-    opacity: 1;
-}
-
-.slide-content {
-    text-align: center;
-    color: white;
-    z-index: 2;
-    max-width: 800px;
-    padding: 0 20px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot.active {
-    background-color: #ffd300;
-    transform: scale(1.2);
-}
-
-.dot:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-}
-</style>
+<!-- Hero Slider JavaScript -->
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -879,90 +828,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Custom CSS for Partners and Clients Popups -->
-<style>
-/* Ensure popups are positioned correctly and have proper z-index */
-.partner-popup, .client-popup {
-    z-index: 1000;
-    pointer-events: none;
-    transform-origin: bottom center;
-}
-
-.group:hover .partner-popup,
-.group:hover .client-popup {
-    pointer-events: auto;
-}
-
-/* Ensure popups don't go off-screen on mobile */
-@media (max-width: 768px) {
-    .partner-popup, .client-popup {
-        width: 280px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        max-width: calc(100vw - 40px);
-    }
-}
-
-/* Adjust positioning for items on the edge */
-.partner-item:nth-child(1) .partner-popup,
-.partner-item:nth-child(2) .partner-popup,
-.client-item:nth-child(1) .client-popup,
-.client-item:nth-child(2) .client-popup {
-    left: 0;
-    transform: translateX(0);
-}
-
-.partner-item:nth-last-child(1) .partner-popup,
-.partner-item:nth-last-child(2) .partner-popup,
-.client-item:nth-last-child(1) .client-popup,
-.client-item:nth-last-child(2) .client-popup {
-    right: 0;
-    left: auto;
-    transform: translateX(0);
-}
-
-/* Adjust arrow position for edge items */
-.partner-item:nth-child(1) .partner-popup::after,
-.partner-item:nth-child(2) .partner-popup::after,
-.client-item:nth-child(1) .client-popup::after,
-.client-item:nth-child(2) .client-popup::after {
-    left: 50px;
-    transform: translateX(0);
-}
-
-.partner-item:nth-last-child(1) .partner-popup::after,
-.partner-item:nth-last-child(2) .partner-popup::after,
-.client-item:nth-last-child(1) .client-popup::after,
-.client-item:nth-last-child(2) .client-popup::after {
-    right: 50px;
-    left: auto;
-    transform: translateX(0);
-}
-
-/* Smooth hover animations */
-.partner-item:hover, .client-item:hover {
-    transform: translateY(-2px);
-}
-
-/* Better shadow for popups */
-.partner-popup, .client-popup {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    backdrop-filter: blur(10px);
-}
-
-/* Responsive grid adjustments */
-@media (max-width: 640px) {
-    .grid.grid-cols-2.md\:grid-cols-3.lg\:grid-cols-5 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-    }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-    .grid.grid-cols-2.md\:grid-cols-3.lg\:grid-cols-5 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-</style>
 
 {% endblock %}
