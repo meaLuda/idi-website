@@ -9,7 +9,7 @@
         <div class="container mx-auto px-4 py-12">
             <!-- Back Button -->
             <div class="mb-8">
-                <a href="{% url 'home:lander' %}#our-team" class="flex items-center text-blue-500 hover:text-blue-700">
+                <a href="{% url 'home:lander' %}#our-team" class="flex items-center text-brand-teal-500 hover:text-brand-orange transition-colors">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
@@ -21,18 +21,18 @@
             <h1 class="text-8xl font-semibold text-gray-300 mb-16">The team</h1>
 
             <!-- Main Content -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl"   style="background-image: url('media/bg-teammember.jpg'); background-size: cover;" >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl">
                 <!-- Left Column - Image and Info -->
                 <div>
                     {% if member.background_shape %}
                         <div class="relative">
                             <div class="absolute -left-4 -top-4 w-72 h-72 -z-10">
-                                <img src="{% if member.background_shape %}{{ member.background_shape.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" alt="" class="w-full h-full object-cover grayscale rounded-xl">
+                                <img src="{% if member.background_shape %}{{ member.background_shape.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" alt="" class="w-full h-full object-cover rounded-xl">
                             </div>
-                            <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" alt="{{ member.name }}" class="w-full h-full object-cover grayscale rounded-xl">
+                            <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" alt="{{ member.name }}" class="w-full h-full object-cover rounded-xl">
                         </div>
                     {% else %}
-                        <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" alt="{{ member.name }}" class="w-full h-full object-cover grayscale rounded-xl">
+                        <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" alt="{{ member.name }}" class="w-full h-full object-cover rounded-xl">
                     {% endif %}
 
                     <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ member.name }}</h2>
@@ -48,16 +48,16 @@
                 <!-- Right Column - Bio -->
                 <div class="relative">
                     <!-- Decorative Circle -->
-                    <div class="absolute right-0 top-0 w-64 h-64">
+                    <div class="absolute right-0 top-0 w-64 h-64 text-brand-orange">
                         <svg viewBox="0 0 100 100" class="w-full h-full">
-                            <circle cx="50" cy="50" r="49" fill="none" stroke="#E6A94E" stroke-width="1" />
+                            <circle cx="50" cy="50" r="49" fill="none" stroke="currentColor" stroke-width="1" />
                         </svg>
                     </div>
 
                     <!-- Square -->
-                    <div class="absolute right-0 bottom-0 w-64 h-64">
+                    <div class="absolute right-0 bottom-0 w-64 h-64 text-brand-teal-800">
                         <svg viewBox="0 0 100 100" class="w-full h-full">
-                            <rect x="0" y="0" width="100" height="100" fill="none" stroke="#333333" stroke-width="1" />
+                            <rect x="0" y="0" width="100" height="100" fill="none" stroke="currentColor" stroke-width="1" />
                         </svg>
                     </div>
 

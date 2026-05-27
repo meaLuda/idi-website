@@ -35,7 +35,11 @@ Capability-building programs in Decision Intelligence Design for senior leaders 
 - Our Work / Case Studies: {{ base }}{% url 'home:projects_list' %}
 - Team: {{ base }}{% url 'home:team_list' %}
 - DIDAcademy: {{ base }}{% url 'home:did-academy' %}
-
+{% if projects %}
+## Case Studies
+{% for project in projects %}
+- [{{ project.title }}]({{ base }}{% url 'home:project_detail' project.slug %}){% if project.challenge %} — {{ project.challenge }}{% endif %}{% if project.headline_stat %} ({{ project.headline_stat }}){% endif %}
+{% endfor %}{% endif %}
 ## Contact
 
 - Email: collectives@idi.africa

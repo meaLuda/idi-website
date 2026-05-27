@@ -62,10 +62,12 @@ fix_media_permissions() {
     fi
 }
 
-# Function to collect static files (WhiteNoise generates hashed + gzip/brotli variants)
+# Function to collect static files (WhiteNoise generates hashed + gzip/brotli variants).
+# NOTE: no --clear. Clearing wipes the target dir first, which on a fresh/wrong-owned
+# named volume triggers a permissions crash-loop. collectstatic is idempotent without it.
 collect_static() {
     echo "Collecting static files..."
-    python manage.py collectstatic --noinput --clear
+    python manage.py collectstatic --noinput
 }
 
 

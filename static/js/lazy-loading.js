@@ -93,40 +93,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Add CSS for smooth transitions
-const style = document.createElement('style');
-style.textContent = `
-    img.lazy {
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
-    
-    img.loaded {
-        opacity: 1;
-    }
-    
-    .lazy-bg {
-        background-image: none !important;
-        transition: background-image 0.3s ease-in-out;
-    }
-    
-    .loaded-bg {
-        /* Background image will be set via JS */
-    }
-    
-    /* Placeholder for loading images */
-    img.lazy::before {
-        content: '';
-        display: block;
-        background: #f0f0f0;
-        background-image: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-        background-size: 200% 100%;
-        animation: loading 1.5s infinite;
-    }
-    
-    @keyframes loading {
-        0% { background-position: 200% 0; }
-        100% { background-position: -200% 0; }
-    }
-`;
-document.head.appendChild(style);
+// Add CSS for smooth transitions — only injected when lazy elements actually exist on
+// the page. We start at opacity:0.01 (never a true 0) so we don't trip the Chromium
+// NO_LCP bug where animating an LCP candidate from opacity:0 suppresses the LCP entry.
+if (document.querySelector('img.lazy, .lazy-bg')) {
+    const style = document.createElement('style');
+    style.textContent = `
+        img.lazy {
+            opacity: 0.01;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        .lazy-bg {
+            background-image: none !important;
+            transition: background-image 0.3s ease-in-out;
+        }
+    `;
+    document.head.appendChild(style);
+}

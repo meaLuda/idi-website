@@ -3,13 +3,13 @@
 
 {% block content %}
     <!-- Divider Section -->
-    <section class="h-[20px] relative overflow-hidden" style="background-image: url('media/slicer.webp'); background-size: cover;">
+    <section class="h-[20px] relative overflow-hidden" style="background-image: url('{% static 'images/slicer.webp' %}'); background-size: cover;">
     </section>
     <!-- Page Header -->
-    <section class="pt-32 pb-16 bg-gradient-to-r from-[#f3f3f3] to-[#e9f5f7]">
+    <section class="pt-32 pb-16 bg-gradient-to-r from-surface-alt to-brand-teal-50">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl">
-                <h1 class="text-5xl font-bold text-[#006377] mb-6">Our Team</h1>
+                <h1 class="text-5xl font-bold text-brand-teal-500 mb-6">Our Team</h1>
                 <p class="text-gray-700 text-xl leading-relaxed">
                     Meet the passionate individuals behind IDI who work together to drive innovation and 
                     create impactful solutions for communities across Africa.
@@ -30,16 +30,16 @@
                     <div class="flex gap-8 items-start">
                         <!-- Member Image -->
                         <a href="{{ member.get_absolute_url }}" class="block">
-                            <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
-                                alt="{{ member.name }}" 
-                                class="w-64 h-64 object-cover grayscale rounded-xl">
+                            <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}"
+                                alt="{{ member.name }}" loading="lazy"
+                                class="w-64 h-64 object-cover rounded-xl transition-all duration-300 hover:scale-[1.02]">
                         </a>
 
                         <!-- Member Info with Background Shape -->
                         <div class="relative pt-4">
                             <!-- Background Shape -->
                             {% if member.background_shape %}
-                            <div class="absolute -left-8 -top-4 w-40 h-40" style="z-index: 1;">
+                            <div class="absolute -left-8 -top-4 w-40 h-40 z-0">
                                 <img src="{% if member.background_shape %}{{ member.background_shape.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
                                     alt="background shape" 
                                     class="w-full h-full object-contain">

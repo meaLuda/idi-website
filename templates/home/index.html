@@ -12,10 +12,11 @@
     <h2 class="text-display-lg font-extrabold uppercase text-ink text-center mb-12 lg:mb-16">How We Work</h2>
     <div class="container mx-auto px-4">
         <div class="gallery-container">
-            <div class="gallery-wrap" x-data="{ isMobile: window.innerWidth < 768 }" x-init="
-                    window.addEventListener('resize', () => { isMobile = window.innerWidth < 768; });
+            <div class="gallery-wrap" x-data="{ mq: window.matchMedia('(max-width: 767px)'), isMobile: false }" x-init="
+                    isMobile = mq.matches;
+                    mq.addEventListener('change', e => { isMobile = e.matches; });
                     if (isMobile) {
-                        document.querySelector('.gallery-wrap').classList.add('mobile-gallery');
+                        $el.classList.add('mobile-gallery');
                     }
                 ">
                 <div class="item item-1 relative transition-transform duration-300 ease-in-out"
@@ -175,27 +176,23 @@
 <!-- Enhanced touch interaction with LONGER display time -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Check if we're on mobile
-        const isMobile = window.innerWidth < 768;
+        // Check if we're on mobile — matchMedia avoids the forced reflow that reading
+        // window.innerWidth would trigger during DOMContentLoaded.
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-        // Preload all images to prevent blank states
-        const imageUrls = [
-            'media/sequence/sequence1.webp',
-            'media/sequence/sequence2.webp',
-            'media/sequence/sequence3.webp',
-            'media/sequence/sequence4.webp',
-            'media/sequence/sequence5.webp',
-            'media/sequence/replacer/2.webp',
-            'media/sequence/replacer/3.webp',
-            'media/sequence/replacer/4.webp',
-            'media/sequence/replacer/5.webp',
-            'media/sequence/replacer/6.webp'
-        ];
-
-        // Preload all images
-        imageUrls.forEach(url => {
-            const img = new Image();
-            img.src = url;
+        // Warm the hover-state ("replacer") images during browser idle time so the swap is
+        // instant on interaction, without blocking initial render / main thread on load.
+        // The default ("sequence") images are already requested by the visible gallery tiles.
+        const idle = window.requestIdleCallback || function (cb) { return setTimeout(cb, 1); };
+        idle(function () {
+            ['media/sequence/replacer/2.webp',
+             'media/sequence/replacer/3.webp',
+             'media/sequence/replacer/4.webp',
+             'media/sequence/replacer/5.webp',
+             'media/sequence/replacer/6.webp'].forEach(function (url) {
+                const img = new Image();
+                img.src = url;
+            });
         });
 
         if (isMobile) {

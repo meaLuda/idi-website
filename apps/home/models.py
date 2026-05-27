@@ -1,6 +1,59 @@
+import io
+import os
+
+from django.core.files.base import ContentFile
 from django.db import models
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
+
+
+def downscale_image_field(image_field, max_edge=1280, quality=82):
+    """Downscale a freshly-uploaded ImageField in place so the longest edge is at most
+    `max_edge` px. Caps oversized CMS uploads (e.g. 2560px) that would otherwise be served
+    at full resolution into small cards. Only runs on not-yet-committed files so re-saving
+    an unchanged model doesn't re-download/re-process the stored image.
+    """
+    if not image_field:
+        return
+    # `_committed` is False only when a new file has been assigned but not yet saved.
+    if getattr(image_field, '_committed', True):
+        return
+
+    try:
+        from PIL import Image
+    except ImportError:
+        return
+
+    try:
+        image_field.open()
+        img = Image.open(image_field)
+        img.load()
+    except Exception:
+        return
+
+    if max(img.size) <= max_edge:
+        return
+
+    fmt = (img.format or '').upper()
+    ext = os.path.splitext(image_field.name)[1].lower()
+    if fmt not in {'JPEG', 'PNG', 'WEBP'}:
+        fmt = 'WEBP' if ext == '.webp' else 'JPEG'
+
+    if fmt == 'JPEG' and img.mode not in ('RGB', 'L'):
+        img = img.convert('RGB')
+
+    img.thumbnail((max_edge, max_edge), Image.LANCZOS)
+
+    buffer = io.BytesIO()
+    save_kwargs = {'format': fmt}
+    if fmt in {'JPEG', 'WEBP'}:
+        save_kwargs['quality'] = quality
+        save_kwargs['optimize'] = True
+    img.save(buffer, **save_kwargs)
+
+    # Replace the field's content without committing yet — the subsequent super().save()
+    # persists it. save=False avoids triggering an extra model save.
+    image_field.save(os.path.basename(image_field.name), ContentFile(buffer.getvalue()), save=False)
 
 class TeamMember(models.Model):
     name = models.CharField(max_length=100)
@@ -15,8 +68,9 @@ class TeamMember(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
+        downscale_image_field(self.image)
         super().save(*args, **kwargs)
-    
+
     @property
     def background_shape_url(self):
         if self.background_shape:
@@ -56,6 +110,7 @@ class Project(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        downscale_image_field(self.thumbnail)
         super().save(*args, **kwargs)
 
     @property
@@ -140,8 +195,9 @@ class Program(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        downscale_image_field(self.image)
         super().save(*args, **kwargs)
-    
+
     def get_absolute_url(self):
         return f'/programs/{self.slug}/'
 
@@ -219,6 +275,10 @@ class Partner(models.Model):
         ordering = ['order', 'name']
         verbose_name = 'Partner'
         verbose_name_plural = 'Partners'
+
+    def save(self, *args, **kwargs):
+        downscale_image_field(self.logo, max_edge=600)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

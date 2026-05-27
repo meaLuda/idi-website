@@ -10,6 +10,6 @@
 {# Sentinel: when scrolled into view, swap itself for the next page appended to the right #}
 <div class="shrink-0 w-px self-center"
      hx-get="{% url 'home:articles' %}?page={{ page.next_page_number }}"
-     hx-trigger="revealed"
+     hx-trigger="revealed once delay:200ms"
      hx-swap="outerHTML"></div>
 {% endif %}

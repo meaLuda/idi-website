@@ -1,0 +1,43 @@
+# Traefik dynamic config — proxy /media/* to the Garage S3 web endpoint and stamp
+# long-lived immutable cache headers on the response.
+#
+# WHY: Django media (Project thumbnails, team photos, etc.) lives in a Garage bucket
+# exposed over its S3 "website" endpoint. We want idi.africa/media/<key> to be served
+# straight from Garage (no Django/gunicorn round-trip) AND to carry an aggressive
+# Cache-Control so browsers/CDN cache it. Garage itself does not set Cache-Control,
+# so Traefik adds it here.
+#
+# Lives on the server at: /opt/traefik/config/dynamic/idi-s3-proxy.yml
+# (committed here only for reproducibility — edit on the server, then sync back.)
+#
+# Garage web endpoint (see README.md for the bucket alias/website setup):
+#   idi-media.s3-web.sintal.africa
+
+http:
+  routers:
+    idi-media:
+      rule: "Host(`idi.africa`) && PathPrefix(`/media/`)"
+      entryPoints:
+        - websecure
+      service: idi-garage-media
+      middlewares:
+        - idi-media-cache
+      tls:
+        certResolver: letsencrypt
+      priority: 100   # win over the catch-all Django router
+
+  middlewares:
+    idi-media-cache:
+      headers:
+        customResponseHeaders:
+          # 1 year, immutable — media keys are content-addressed (resize-on-save +
+          # unique upload names), so a given URL never changes content.
+          Cache-Control: "public, max-age=31536000, immutable"
+
+  services:
+    idi-garage-media:
+      loadBalancer:
+        # Garage serves the bucket when the Host header matches the website alias.
+        passHostHeader: false
+        servers:
+          - url: "http://idi-media.s3-web.sintal.africa"

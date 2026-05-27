@@ -14,15 +14,23 @@
 <meta property="og:url" content="{{ request.build_absolute_uri }}">
 <meta property="og:title" content="{% if page_title %}{{ page_title }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
 <meta property="og:description" content="{% if page_description %}{{ page_description }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
-<meta property="og:image" content="{% if page_image %}{{ request.scheme }}://{{ request.get_host }}{{ page_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/og/idi-og.jpg' %}{% endif %}">
+{% comment %}
+page_image.url may be relative (/media/… local) or already absolute (https://… on S3/
+Garage). Only prefix scheme+host when it is relative — otherwise we'd emit a broken
+"https://host/https://…" og:image that social/AI scrapers can't fetch. The static
+fallback is always relative, so it always gets prefixed. Width/height are only declared
+for the known-size fallback image (1200×630); we don't assert dims for CMS thumbnails.
+{% endcomment %}
+{% if page_image %}<meta property="og:image" content="{% if '://' in page_image.url %}{{ page_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{{ page_image.url }}{% endif %}">
+{% else %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/og/idi-og.jpg' %}">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:height" content="630">{% endif %}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{% if page_title %}{{ page_title }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
 <meta name="twitter:description" content="{% if page_description %}{{ page_description }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
-<meta name="twitter:image" content="{% if page_image %}{{ request.scheme }}://{{ request.get_host }}{{ page_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/og/idi-og.jpg' %}{% endif %}">
+<meta name="twitter:image" content="{% if page_image %}{% if '://' in page_image.url %}{{ page_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{{ page_image.url }}{% endif %}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/og/idi-og.jpg' %}{% endif %}">
 
 <!-- Canonical link -->
 <link rel="canonical" href="{{ request.build_absolute_uri }}">

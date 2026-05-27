@@ -8,7 +8,7 @@
     "@type": "Article",
     "headline": "{{ project.title|escapejs }}",
     "description": "{% if project.challenge %}{{ project.challenge|escapejs }}{% else %}{{ page_description|escapejs }}{% endif %}",
-    {% if project.thumbnail %}"image": "{{ request.scheme }}://{{ request.get_host }}{{ project.thumbnail.url }}",{% endif %}
+    {% if project.thumbnail %}"image": "{% if '://' in project.thumbnail.url %}{{ project.thumbnail.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{{ project.thumbnail.url }}{% endif %}",{% endif %}
     "datePublished": "{{ project.created_at|date:'c' }}",
     "dateModified": "{{ project.updated_at|date:'c' }}",
     "author": {"@type": "Organization", "name": "Institute of Design & Innovation", "url": "{{ request.scheme }}://{{ request.get_host }}/"},
@@ -78,8 +78,9 @@
             </span>
             
             <!-- Tags with improved visual design -->
-            <span class="bg-[#006377]/80 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Design Research</span>
-            <span class="bg-[#006377]/80 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Innovation</span>
+            {% for tag in project.tag_list %}
+            <span class="bg-brand-teal-500/80 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">{{ tag }}</span>
+            {% endfor %}
         </div>
         
         <!-- Project title with refined typography -->
@@ -104,7 +105,7 @@
                 <!-- Project navigation links at bottom -->
                 <div class="mt-16 pt-8 border-t border-gray-200">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                        <a href="{% url 'home:projects_list' %}" class="inline-flex items-center text-[#006377] hover:text-[#f99a00] transition-colors">
+                        <a href="{% url 'home:projects_list' %}" class="inline-flex items-center text-brand-teal-500 hover:text-brand-orange transition-colors">
                             <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
                             </svg>
@@ -113,7 +114,7 @@
                         
                         <div class="flex items-center space-x-2 text-sm text-gray-500">
                             <span>Was this project helpful?</span>
-                            <button class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-[#006377] focus:ring-offset-2" aria-label="Like">
+                            <button class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-teal-500 focus:ring-offset-2" aria-label="Like">
                                 <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905a3.61 3.61 0 01-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
                                 </svg>
@@ -129,7 +130,7 @@
                     <!-- Share project section -->
                     <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
                         <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-[#006377] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 mr-2 text-brand-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
                             </svg>
                             Share
@@ -161,7 +162,7 @@
                     <!-- Project details section -->
                     <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
                         <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-[#006377] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 mr-2 text-brand-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                             Project Details
@@ -171,17 +172,16 @@
                                 <dt class="text-gray-500 mb-1">Date</dt>
                                 <dd class="font-medium text-gray-800">{{ project.created_at|date:"F Y" }}</dd>
                             </div>
-                            <div class="flex flex-col">
-                                <dt class="text-gray-500 mb-1">Client</dt>
-                                <dd class="font-medium text-gray-800"><!-- Client name could be added here --></dd>
-                            </div>
+                            {% if project.tag_list %}
                             <div class="flex flex-col">
                                 <dt class="text-gray-500 mb-1">Tags</dt>
                                 <dd class="font-medium text-gray-800 flex flex-wrap gap-1 mt-1">
-                                    <span class="bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded">Design Research</span>
-                                    <span class="bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded">Innovation</span>
+                                    {% for tag in project.tag_list %}
+                                    <span class="bg-brand-teal-50 text-brand-teal-700 text-xs px-2 py-1 rounded">{{ tag }}</span>
+                                    {% endfor %}
                                 </dd>
                             </div>
+                            {% endif %}
                         </dl>
                     </div>
                 </div>
@@ -195,10 +195,10 @@
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between mb-8 md:mb-12">
             <div class="flex items-center">
-                <span class="w-8 md:w-12 h-1 bg-[#006377] mr-3 md:mr-4 flex-shrink-0"></span>
+                <span class="w-8 md:w-12 h-1 bg-brand-teal-500 mr-3 md:mr-4 flex-shrink-0"></span>
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">More Projects</h2>
             </div>
-            <a href="{% url 'home:projects_list' %}" class="text-[#006377] hover:text-[#f99a00] transition-colors hidden md:block">
+            <a href="{% url 'home:projects_list' %}" class="text-brand-teal-500 hover:text-brand-orange transition-colors hidden md:block">
                 View all projects
                 <span class="ml-1">→</span>
             </a>
@@ -206,7 +206,7 @@
         
         <!-- Mobile-only View All button -->
         <div class="text-center mt-8 md:hidden">
-            <a href="{% url 'home:projects_list' %}" class="inline-flex items-center px-6 py-3 bg-[#006377] text-white rounded-lg hover:bg-[#f99a00] transition-colors">
+            <a href="{% url 'home:projects_list' %}" class="inline-flex items-center px-6 py-3 bg-brand-teal-500 text-white rounded-lg hover:bg-brand-orange transition-colors">
                 View All Projects
                 <svg class="w-5 h-5 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -218,8 +218,8 @@
 
 <!-- Enhanced Back to Top button -->
 <button id="back-to-top" aria-label="Back to top" 
-        class="fixed bottom-6 right-6 bg-[#006377] text-white p-3 rounded-full shadow-lg opacity-0 
-              transition-all duration-300 transform translate-y-10 hover:bg-[#f99a00] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#006377]">
+        class="fixed bottom-6 right-6 bg-brand-teal-500 text-white p-3 rounded-full shadow-lg opacity-0 
+              transition-all duration-300 transform translate-y-10 hover:bg-brand-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-teal-500">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
     </svg>
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add parallax effect to hero image (subtle) - disabled on mobile for performance
     const heroSection = document.getElementById('cover-{{ project.id|escapejs }}');
-    if (heroSection && window.innerWidth > 768) {
+    if (heroSection && window.matchMedia('(min-width: 769px)').matches) {
         const heroImage = heroSection.querySelector('img');
         if (heroImage) {
             window.addEventListener('scroll', function() {

@@ -1,11 +1,11 @@
 {# Single article card. Expects `project`. #}
 <a href="{% url 'home:project_detail' project.slug %}"
-   class="group snap-start shrink-0 w-[260px] sm:w-[280px] bg-white/90 backdrop-blur-md text-ink rounded-2xl overflow-hidden shadow-card hover:bg-white hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300">
+   class="group snap-start shrink-0 w-[260px] sm:w-[280px] bg-white text-ink rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300">
     <div class="aspect-[16/10] overflow-hidden bg-surface-alt">
         {% if project.thumbnail %}
         <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}"
              {% if eager %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
-             width="560" height="350"
+             width="560" height="350" sizes="(min-width: 640px) 280px, 260px"
              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
         {% endif %}
     </div>

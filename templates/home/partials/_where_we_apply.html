@@ -10,9 +10,11 @@
             {% for tile in practices %}
             <article class="bg-gradient-to-br from-[#f4f4f3] to-[#dcdde0] rounded-2xl p-6 lg:p-8">
                 <div class="h-56 flex items-center justify-center mb-6">
-                    <img src="{% static 'images/home/practices/' %}{{ tile.slug }}.webp"
-                         alt="{{ tile.title }}" loading="lazy"
+                    {% with illustration='images/home/practices/'|add:tile.slug|add:'.webp' %}
+                    <img src="{% static illustration %}"
+                         alt="{{ tile.title }}" loading="lazy" width="520" height="520"
                          class="max-h-56 w-auto object-contain">
+                    {% endwith %}
                 </div>
                 <p class="text-eyebrow uppercase tracking-wide text-ink-muted mb-2">Solution &mdash; {{ tile.num }}</p>
                 <h3 class="text-base font-bold uppercase text-brand-teal-500 leading-snug">{{ tile.title }}</h3>

@@ -1,0 +1,31 @@
+# Traefik dynamic config — rewrite legacy WordPress media URLs to the new self-hosted
+# WebP static assets.
+#
+# WHY: The old WordPress site linked images under /wp-content/uploads/.../*.png|*.jpg.
+# Those URLs are still hit by external backlinks, search engines and cached pages. The
+# new Django site ships the same assets, pre-converted to WebP, under
+# /static/images/wp-content/. This router catches the legacy path, swaps the extension
+# to .webp and re-points it at /static/images/..., so old links keep resolving (good
+# for SEO — no 404s on indexed image URLs).
+#
+# Lives on the server at: /opt/traefik/config/dynamic/idi-wpcontent.yml
+
+http:
+  routers:
+    idi-wpcontent:
+      rule: "Host(`idi.africa`) && PathPrefix(`/wp-content/`) && (PathRegexp(`(?i)\\.(png|jpe?g)$`))"
+      entryPoints:
+        - websecure
+      service: idi-app            # served by the Django/WhiteNoise container
+      middlewares:
+        - idi-wpcontent-rewrite
+      tls:
+        certResolver: letsencrypt
+      priority: 110               # must beat the /media and catch-all routers
+
+  middlewares:
+    idi-wpcontent-rewrite:
+      replacePathRegex:
+        # /wp-content/uploads/2024/12/foo.png -> /static/images/wp-content/uploads/2024/12/foo.webp
+        regex: "^/wp-content/(.*)\\.(?i:png|jpe?g)$"
+        replacement: "/static/images/wp-content/${1}.webp"

@@ -171,9 +171,15 @@ class TeamMemberDetailView(DetailView):
 
 
 def llms_txt(request):
-    """LLM-readable site summary (GEO). Served as text/plain at /llms.txt."""
+    """LLM-readable site summary (GEO). Served as text/plain at /llms.txt.
+
+    Includes the live case studies so answer engines can discover and cite individual
+    project pages, not just the section landing pages.
+    """
+    projects = Project.objects.filter(is_active=True).order_by('-created_at')
     return render(request, 'seo/llms.txt',
-                  {'base': request.build_absolute_uri('/').rstrip('/')},
+                  {'base': request.build_absolute_uri('/').rstrip('/'),
+                   'projects': projects},
                   content_type='text/plain; charset=utf-8')
 
 

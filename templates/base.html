@@ -22,14 +22,16 @@
 
     <!-- Stylesheets (all self-hosted) -->
     <link href="{% static 'css/output.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/vendor/poppins.css' %}">
+    <!-- Poppins @font-face declarations are non-critical (font-display:swap handles FOUT),
+         so load them off the critical path to avoid render-blocking first paint / LCP. -->
+    <link rel="stylesheet" href="{% static 'css/vendor/poppins.css' %}" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="{% static 'css/vendor/poppins.css' %}"></noscript>
     <link rel="stylesheet" href="{% static 'css/vendor/swiper-bundle.min.css' %}" media="print" onload="this.media='all'" />
 
-    <!-- Enforce Poppins font throughout the system -->
+    <!-- Set Poppins on the document root and inherit. A single body rule (no universal
+         !important selector) avoids an expensive style recalc over every element. -->
     <style>
-        body, h1, h2, h3, h4, h5, h6, p, a, span, div, li, ul, ol {
-            font-family: 'Poppins', sans-serif !important;
-        }
+        html { font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif; }
     </style>
 
     <!-- Critical Scripts Only (self-hosted) -->
@@ -115,27 +117,29 @@
 <body>
     {% block header %}
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
+    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <a href="{% url 'home:lander' %}" class="flex items-center">
                     <img src="{% static 'images/wp-content/uploads/2024/08/idi-main-logo.webp' %}" alt="IDI Logo"
-                        class="h-10 md:h-12">
+                        width="240" height="86" class="h-10 md:h-12 w-auto">
                 </a>
 
+                {# Current-page detection for nav active-state #}
+                {% with url_name=request.resolver_match.url_name %}
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center space-x-6">
                     <a href="{% url 'home:lander' %}"
-                        class="text-brand-teal-500 font-semibold hover:text-brand-orange transition-colors">About Us</a>
+                        class="transition-colors {% if url_name == 'lander' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %}">About Us</a>
                     <a href="{% url 'home:lander' %}#what-we-do"
                         class="text-ink-muted hover:text-brand-orange transition-colors">Services</a>
                     <a href="{% url 'home:lander' %}#how-we-work"
                         class="text-ink-muted hover:text-brand-orange transition-colors">Approach</a>
                     <a href="{% url 'home:projects_list' %}"
-                        class="text-ink-muted hover:text-brand-orange transition-colors">Insights</a>
+                        class="transition-colors {% if url_name == 'projects_list' or url_name == 'project_detail' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %}">Insights</a>
                     <a href="{% url 'home:did-academy' %}"
-                        class="text-ink-muted hover:text-brand-orange transition-colors">DIDAcademy</a>
+                        class="transition-colors {% if url_name == 'did-academy' or url_name == 'program_detail' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %}">DIDAcademy</a>
 
                     <a href="{% url 'home:lander' %}#start-conversation"
                         class="ml-2 px-6 py-2.5 bg-brand-teal-500 text-white text-sm font-semibold uppercase tracking-wide rounded-full hover:bg-brand-orange transition-colors">Initiate Inquiry</a>
@@ -161,19 +165,20 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
                 <div class="flex flex-col space-y-2">
                     <a href="{% url 'home:lander' %}"
-                        class="block py-2 text-brand-teal-500 font-semibold border-b border-gray-100">About Us</a>
+                        class="block py-2 border-b border-gray-100 {% if url_name == 'lander' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %}">About Us</a>
                     <a href="{% url 'home:lander' %}#what-we-do"
                         class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Services</a>
                     <a href="{% url 'home:lander' %}#how-we-work"
                         class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Approach</a>
                     <a href="{% url 'home:projects_list' %}"
-                        class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Insights</a>
+                        class="block py-2 border-b border-gray-100 {% if url_name == 'projects_list' or url_name == 'project_detail' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %}">Insights</a>
                     <a href="{% url 'home:did-academy' %}"
-                        class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">DIDAcademy</a>
+                        class="block py-2 border-b border-gray-100 {% if url_name == 'did-academy' or url_name == 'program_detail' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %}">DIDAcademy</a>
 
                     <a href="{% url 'home:lander' %}#start-conversation"
                         class="mt-2 block text-center py-2.5 bg-brand-teal-500 text-white text-sm font-semibold uppercase tracking-wide rounded-full hover:bg-brand-orange transition-colors">Initiate Inquiry</a>
                 </div>
+                {% endwith %}
             </div>
         </div>
     </nav>
@@ -194,7 +199,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <!-- Logo and About Column -->
                 <div class="space-y-4">
-                    <img src="{% static 'images/wp-content/uploads/2024/08/idi-main-logo.webp' %}" alt="IDI Logo" class="h-12 mb-4 bg-white p-2 rounded">
+                    <img src="{% static 'images/wp-content/uploads/2024/08/idi-main-logo.webp' %}" alt="IDI Logo" width="240" height="86" class="h-12 w-auto mb-4 bg-white p-2 rounded">
                     <p class="text-gray-300 text-sm">IDI is a leading institute focused on design thinking and innovation, helping organizations and individuals transform ideas into impactful solutions.</p>
                 </div>
 
@@ -330,11 +335,13 @@
                 document.head.appendChild(swiperScript);
             }
             
-            // Load Alpine.js
-            const alpineScript = document.createElement('script');
-            alpineScript.src = "{% static 'js/vendor/alpine.min.js' %}";
-            alpineScript.defer = true;
-            document.head.appendChild(alpineScript);
+            // Load Alpine.js only when the page actually uses it (an [x-data] element exists).
+            if (document.querySelector('[x-data]')) {
+                const alpineScript = document.createElement('script');
+                alpineScript.src = "{% static 'js/vendor/alpine.min.js' %}";
+                alpineScript.defer = true;
+                document.head.appendChild(alpineScript);
+            }
         });
         
         function initSwiper() {

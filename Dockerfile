@@ -30,6 +30,10 @@ FROM python:3.12-slim AS production
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+# Give the non-root django user a writable HOME so tools that touch ~/.cache/.config
+# (e.g. fontconfig via Pillow, matplotlib) don't crash when /home isn't writable on
+# a fresh volume. /tmp is always writable in the container.
+ENV HOME=/tmp
 
 # Install runtime dependencies only (curl is used by the compose healthcheck)
 RUN apt-get update && apt-get install -y \
