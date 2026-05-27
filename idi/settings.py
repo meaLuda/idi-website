@@ -191,7 +191,8 @@ if USE_S3:
     AWS_S3_CUSTOM_DOMAIN = os.getenv('AWS_S3_CUSTOM_DOMAIN') or None  # optional CDN/custom media host
     STORAGES['default'] = {
         'BACKEND': 'storages.backends.s3.S3Storage',
-        'OPTIONS': {'location': 'media'},   # uploads live under the bucket's media/ prefix
+        # No location prefix: object keys mirror the on-disk media layout (uploads/...),
+        # so an existing local media tree syncs to the bucket root 1:1.
     }
 
 # File upload settings - ensure proper permissions

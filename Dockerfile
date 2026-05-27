@@ -1,5 +1,5 @@
 # Multi-stage build for optimized production image
-FROM python:3.12-slim as builder
+FROM python:3.12-slim AS builder
 
 # Install uv for faster package installation
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
@@ -25,15 +25,16 @@ COPY requirements.txt .
 RUN uv pip install --system --no-cache -r requirements.txt
 
 # Production stage
-FROM python:3.12-slim as production
+FROM python:3.12-slim AS production
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Install runtime dependencies only
+# Install runtime dependencies only (curl is used by the compose healthcheck)
 RUN apt-get update && apt-get install -y \
     libpq5 \
+    curl \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
