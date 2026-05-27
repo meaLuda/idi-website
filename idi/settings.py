@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",  # new
     "django.contrib.sitemaps",  # new 
     'compressor',
+    'storages',
     'ckeditor',
     'ckeditor_uploader',
     # internal apps
@@ -173,6 +174,26 @@ STORAGES = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Media storage on Garage (S3-compatible object storage) when USE_S3=True.
+# Static files stay on WhiteNoise; only user-uploaded media goes to S3.
+USE_S3 = os.getenv('USE_S3', 'False').lower() == 'true'
+if USE_S3:
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_ENDPOINT_URL = os.getenv('AWS_S3_ENDPOINT_URL')          # e.g. https://garage.example.com
+    AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', 'garage')
+    AWS_S3_ADDRESSING_STYLE = 'path'        # Garage requires path-style, not virtual-host
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_FILE_OVERWRITE = False           # keep distinct uploads with the same name
+    AWS_QUERYSTRING_AUTH = False            # public media -> clean, unsigned URLs
+    AWS_DEFAULT_ACL = None                  # Garage: manage access via bucket policy, not per-object ACLs
+    AWS_S3_CUSTOM_DOMAIN = os.getenv('AWS_S3_CUSTOM_DOMAIN') or None  # optional CDN/custom media host
+    STORAGES['default'] = {
+        'BACKEND': 'storages.backends.s3.S3Storage',
+        'OPTIONS': {'location': 'media'},   # uploads live under the bucket's media/ prefix
+    }
+
 # File upload settings - ensure proper permissions
 FILE_UPLOAD_PERMISSIONS = 0o644
 FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
@@ -243,6 +264,9 @@ SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
+    # Health checks (Docker/orchestrators) probe over plain HTTP — exempt them
+    # from the HTTPS redirect so they get 200 instead of a 301.
+    SECURE_REDIRECT_EXEMPT = [r'^health/$']
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
