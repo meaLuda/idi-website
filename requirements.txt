@@ -7,3 +7,5 @@ python-dotenv
 django-compressor
 psycopg2-binary
 requests
+django-storages == 1.14.2
+boto3 == 1.34.0
