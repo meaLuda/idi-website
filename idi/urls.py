@@ -21,18 +21,34 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
 from django.views.decorators.http import require_GET
+from django.views.decorators.cache import cache_control
 from django.views.static import serve
+
+# Uploaded media rarely changes; let browsers/CDN cache it for 30 days.
+cached_media_serve = cache_control(max_age=2592000, public=True)(serve)
 from apps.home.sitemap import StaticSitemap, ProjectSitemap, TeamMemberSitemap
-from apps.home.views import custom_bad_request, custom_page_not_found, custom_permission_denied, custom_server_error
+from apps.home.views import custom_bad_request, custom_page_not_found, custom_permission_denied, custom_server_error, llms_txt
+
+# AI answer-engine crawlers we explicitly welcome (GEO). They get the same
+# access as everyone else: all public content, nothing under /admin/.
+AI_CRAWLERS = [
+    "GPTBot", "OAI-SearchBot", "ChatGPT-User",   # OpenAI / ChatGPT
+    "ClaudeBot", "Claude-Web", "anthropic-ai",   # Anthropic / Claude
+    "PerplexityBot", "Perplexity-User",          # Perplexity
+    "Google-Extended", "GoogleOther",            # Gemini / Google AI
+    "Applebot-Extended",                         # Apple Intelligence
+    "Amazonbot", "Bytespider", "CCBot",          # Amazon, TikTok, Common Crawl
+]
+
 
 @require_GET
 def robots_txt(request):
-    lines = [
-        "User-agent: *",
-        "Allow: /",
-        "Disallow: /admin/",
-        "",
+    lines = ["User-agent: *", "Allow: /", "Disallow: /admin/", ""]
+    for bot in AI_CRAWLERS:
+        lines += [f"User-agent: {bot}", "Allow: /", "Disallow: /admin/", ""]
+    lines += [
         f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
+        f"# LLM-readable summary: {request.build_absolute_uri('/llms.txt')}",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
@@ -63,9 +79,10 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', robots_txt, name='robots_txt'),
+    path('llms.txt', llms_txt, name='llms_txt'),
     
     # THIS IS THE KEY FIX - Always serve media files regardless of DEBUG setting
-    path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),
+    path('media/<path:path>', cached_media_serve, {'document_root': settings.MEDIA_ROOT}),
 ]
 
 # Static files handling

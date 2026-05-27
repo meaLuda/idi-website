@@ -20,3 +20,13 @@ node_modules
 cache
 .claude
 CACHE
+
+# Build artifacts & local data — regenerated in the image / provided by volumes
+staticfiles
+media
+*.sqlite3
+db.sqlite3
+
+# Secrets — provide via compose `environment:` or runtime, never bake into the image
+.env
+.env.*

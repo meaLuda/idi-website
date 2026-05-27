@@ -1,0 +1,15 @@
+{% comment %}A page of article cards. Expects `page` (a Paginator page). `first_page` (optional) eager-loads the first 3 cards (above the fold in the hero).{% endcomment %}
+{% for project in page %}
+{% if first_page and forloop.counter <= 3 %}
+{% include "home/partials/_article_card.html" with project=project eager=True %}
+{% else %}
+{% include "home/partials/_article_card.html" with project=project %}
+{% endif %}
+{% endfor %}
+{% if page.has_next %}
+{# Sentinel: when scrolled into view, swap itself for the next page appended to the right #}
+<div class="shrink-0 w-px self-center"
+     hx-get="{% url 'home:articles' %}?page={{ page.next_page_number }}"
+     hx-trigger="revealed"
+     hx-swap="outerHTML"></div>
+{% endif %}

@@ -1,0 +1,23 @@
+{% load static %}
+{# WHERE WE APPLY IT — static section. 6 practice tiles (masked brand-shape art). #}
+<section id="where-we-apply" class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-display-lg font-extrabold uppercase text-brand-teal-500 text-center mb-12 lg:mb-16">
+            Where We Apply It
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {% for tile in practices %}
+            <article class="bg-gradient-to-br from-[#f4f4f3] to-[#dcdde0] rounded-2xl p-6 lg:p-8">
+                <div class="h-56 flex items-center justify-center mb-6">
+                    <img src="{% static 'images/home/practices/' %}{{ tile.slug }}.webp"
+                         alt="{{ tile.title }}" loading="lazy"
+                         class="max-h-56 w-auto object-contain">
+                </div>
+                <p class="text-eyebrow uppercase tracking-wide text-ink-muted mb-2">Solution &mdash; {{ tile.num }}</p>
+                <h3 class="text-base font-bold uppercase text-brand-teal-500 leading-snug">{{ tile.title }}</h3>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>

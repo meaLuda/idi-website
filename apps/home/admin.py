@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Project, TeamMember, Testimonial, Program, Partner, Client
+from .models import Project, TeamMember, Testimonial, Program, Partner, Client, HomeStat, ServicePillar
 
 @admin.register(TeamMember)
 class TeamMemberAdmin(admin.ModelAdmin):
@@ -20,10 +20,44 @@ class TeamMemberAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'is_active', 'created_at')
-    list_filter = ('is_active', 'created_at')
-    search_fields = ('title', 'content')
+    list_display = ('title', 'tags', 'is_featured', 'is_active', 'order', 'created_at')
+    list_filter = ('is_active', 'is_featured', 'created_at')
+    search_fields = ('title', 'content', 'tags')
+    list_editable = ('is_featured', 'is_active', 'order')
     prepopulated_fields = {'slug': ('title',)}
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('title', 'slug', 'thumbnail', 'content')
+        }),
+        ('Article Card', {
+            'fields': ('tags', 'challenge', 'headline_stat'),
+            'description': "Shown on the homepage article cards.",
+        }),
+        ('Display Settings', {
+            'fields': ('is_featured', 'is_active', 'order')
+        }),
+    )
+
+
+@admin.register(HomeStat)
+class HomeStatAdmin(admin.ModelAdmin):
+    list_display = ('value', 'label', 'order', 'is_active')
+    list_editable = ('label', 'order', 'is_active')
+
+
+@admin.register(ServicePillar)
+class ServicePillarAdmin(admin.ModelAdmin):
+    list_display = ('title', 'type_label', 'output_label', 'order', 'is_active')
+    list_editable = ('order', 'is_active')
+    prepopulated_fields = {'slug': ('title',)}
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'description', 'cta_url'),
+            'description': "Illustration is a static asset at static/images/home/services/{slug}.webp",
+        }),
+        ('Card pill', {'fields': ('type_label', 'output_label')}),
+        ('Display', {'fields': ('order', 'is_active')}),
+    )
 
 
 @admin.register(Testimonial)

@@ -1,5 +1,4 @@
 <!-- templates/index.html -->
-{% load compress %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -17,29 +16,15 @@
     <!-- Favicon -->
     <link rel="icon" href="{% static 'favicon/favicon.webp' %}" type="image/x-icon" style="border-radius: 10%;">
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <!-- Preload critical fonts (CSS is handled by the compressed <link> below) -->
+    <link rel="preload" href="{% static 'fonts/poppins/pxiEyp8kv8JHgFVrJJfecg.woff2' %}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{% static 'fonts/poppins/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2' %}" as="font" type="font/woff2" crossorigin>
 
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="{% static 'css/output.css' %}" as="style">
-    <link rel="preload" href="{% static 'js/jquery-3.6.0.min.js' %}" as="script">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
-
-    <!-- Stylesheets -->
-    {% compress css %}
+    <!-- Stylesheets (all self-hosted) -->
     <link href="{% static 'css/output.css' %}" rel="stylesheet">
-    {% endcompress %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="{% static 'css/vendor/poppins.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/swiper-bundle.min.css' %}" media="print" onload="this.media='all'" />
 
-    <!-- Google Fonts - Optimized -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet"
-        media="print" onload="this.media='all'"
-    >
-    
     <!-- Enforce Poppins font throughout the system -->
     <style>
         body, h1, h2, h3, h4, h5, h6, p, a, span, div, li, ul, ol {
@@ -47,9 +32,9 @@
         }
     </style>
 
-    <!-- Critical Scripts Only -->
-    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
-    <script src="{% static 'js/lazy-loading.js' %}"></script>
+    <!-- Critical Scripts Only (self-hosted) -->
+    <script src="{% static 'js/lazy-loading.js' %}" defer></script>
+    <script src="{% static 'js/vendor/htmx.min.js' %}" defer></script>
     <!-- JSON-LD Schema Markup -->
     <script type="application/ld+json">
         {
@@ -58,7 +43,7 @@
             "name": "Institute of Design & Innovation",
             "alternateName": "IDI",
             "url": "{{ request.build_absolute_uri }}",
-            "logo": "{% static 'images/logo.webp' %}",
+            "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/wp-content/uploads/2024/12/idi-main-logo_webp_512x512-300x300.webp' %}",
             "sameAs": [
                 "https://www.facebook.com/IDIorg",
                 "https://www.twitter.com/IDIorg",
@@ -70,30 +55,61 @@
                 "@type": "PostalAddress",
                 "streetAddress": "Dennis Pritt Rd, Kilimani",
                 "addressLocality": "Nairobi",
-                "addressRegion": "East Africa",
-                "postalCode": "P.O. Box 103609-00100 Nairobi",
-                "addressCountry": "Kenya"
+                "addressRegion": "Nairobi",
+                "postalCode": "00100",
+                "addressCountry": "KE"
             },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -1.2921,
+                "longitude": 36.8219
+            },
+            "areaServed": {
+                "@type": "Place",
+                "name": "Africa"
+            },
+            "knowsAbout": [
+                "Decision Intelligence Design",
+                "Public Service Delivery",
+                "Responsible AI",
+                "Sustainability",
+                "Food Systems",
+                "Innovation Ecosystems"
+            ],
             "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+254 708 291 098",
                 "contactType": "customer service",
-                "email": "collectives@idi.africa"
+                "email": "collectives@idi.africa",
+                "areaServed": "Africa",
+                "availableLanguage": ["en"]
             }
         }
     </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "IDI Africa",
+            "alternateName": "Institute of Design & Innovation",
+            "url": "{{ request.scheme }}://{{ request.get_host }}/",
+            "description": "Decision Intelligence Design in Africa - transforming complexity into actionable solutions.",
+            "inLanguage": "en"
+        }
+    </script>
 
-    <!-- Google Analytics (Optional) -->
-    {% if not debug %}
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA4-ID"></script>
+    <!-- Google Analytics 4 — only when configured and not in debug -->
+    {% if ga_measurement_id and not site_debug %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_measurement_id }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'YOUR-GA4-ID');
+        gtag('config', '{{ ga_measurement_id }}');
     </script>
     {% endif %}
+
+    {% block extra_head %}{% endblock %}
 </head>
 
 <body>
@@ -109,44 +125,20 @@
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center space-x-1">
-                    <a href="{% url 'home:lander' %}#about-us"
-                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">About
-                        Us</a>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="{% url 'home:lander' %}"
+                        class="text-brand-teal-500 font-semibold hover:text-brand-orange transition-colors">About Us</a>
                     <a href="{% url 'home:lander' %}#what-we-do"
-                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">What
-                        We Do</a>
-                    <a href="{% url 'home:lander' %}#our-approach"
-                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">Our
-                        Approach</a>
+                        class="text-ink-muted hover:text-brand-orange transition-colors">Services</a>
+                    <a href="{% url 'home:lander' %}#how-we-work"
+                        class="text-ink-muted hover:text-brand-orange transition-colors">Approach</a>
                     <a href="{% url 'home:projects_list' %}"
-                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">Our
-                        Work</a>
-                    <a href="{% url 'home:team_list' %}"
-                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">Our
-                        Team</a>
+                        class="text-ink-muted hover:text-brand-orange transition-colors">Insights</a>
                     <a href="{% url 'home:did-academy' %}"
-                        class="px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">DID Academy</a>
-                    <!-- Fellowship Dropdown 
-                    <div class="relative" id="fellowship-dropdown">
-                        <button
-                            class="flex items-center px-3 py-2 rounded-lg text-[#006377] hover:text-[#f99a00] hover:bg-gray-50 transition-colors">
-                            <span>DID Academy</span>
-                            <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
+                        class="text-ink-muted hover:text-brand-orange transition-colors">DIDAcademy</a>
 
-                        <div class="dropdown-menu absolute hidden bg-white shadow-lg mt-2 w-56 rounded-md py-1 z-50">
-                            <a href=""
-                                class="block px-4 py-2 text-sm text-[#006377] hover:text-[#f99a00] hover:bg-gray-50">DID Academy</a>
-                        </div>
-                    </div>-->
-
-                    <a href="{% url 'home:lander' %}#contact"
-                        class="ml-2 px-5 py-2 bg-[#006377] text-white rounded-lg hover:bg-[#f99a00] transition-colors">Contact
-                        Us</a>
+                    <a href="{% url 'home:lander' %}#start-conversation"
+                        class="ml-2 px-6 py-2.5 bg-brand-teal-500 text-white text-sm font-semibold uppercase tracking-wide rounded-full hover:bg-brand-orange transition-colors">Initiate Inquiry</a>
                 </div>
 
                 <!-- Mobile Menu Toggle -->
@@ -168,40 +160,19 @@
         <div id="mobile-menu" class="hidden bg-white border-t border-gray-200 lg:hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
                 <div class="flex flex-col space-y-2">
-                    <a href="{% url 'home:lander' %}#about-us"
-                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">About Us</a>
+                    <a href="{% url 'home:lander' %}"
+                        class="block py-2 text-brand-teal-500 font-semibold border-b border-gray-100">About Us</a>
                     <a href="{% url 'home:lander' %}#what-we-do"
-                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">What We Do</a>
-                    <a href="{% url 'home:lander' %}#our-approach"
-                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">Our Approach</a>
+                        class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Services</a>
+                    <a href="{% url 'home:lander' %}#how-we-work"
+                        class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Approach</a>
                     <a href="{% url 'home:projects_list' %}"
-                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">Our Work</a>
-                    <a href="{% url 'home:team_list' %}"
-                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">Our Team</a>
+                        class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Insights</a>
                     <a href="{% url 'home:did-academy' %}"
-                        class="block py-2 text-[#006377] hover:text-[#f99a00] border-b border-gray-100">DID Academy</a>
+                        class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">DIDAcademy</a>
 
-                    <!-- Mobile Fellowship Dropdown 
-                    <div class="py-2 border-b border-gray-100">
-                        <button id="fellowship-mobile-button"
-                            class="flex justify-between items-center w-full text-[#006377] hover:text-[#f99a00]">
-                            <span>DID Academy</span>
-                            <svg id="fellowship-icon" class="w-5 h-5" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div id="fellowship-submenu" class="hidden pl-4 mt-2 space-y-2">
-                            <a href=""
-                                class="block py-2 text-[#006377] hover:text-[#f99a00]">DID Academy</a>
-                        </div>
-                    </div>-->
-
-                    <a href="{% url 'home:lander' %}#contact"
-                        class="mt-2 block text-center py-2 bg-[#006377] text-white rounded-lg hover:bg-[#f99a00] transition-colors">Contact
-                        Us</a>
+                    <a href="{% url 'home:lander' %}#start-conversation"
+                        class="mt-2 block text-center py-2.5 bg-brand-teal-500 text-white text-sm font-semibold uppercase tracking-wide rounded-full hover:bg-brand-orange transition-colors">Initiate Inquiry</a>
                 </div>
             </div>
         </div>
@@ -352,7 +323,7 @@
             // Load Swiper for project carousel
             if (document.querySelector('.projectSwiper')) {
                 const swiperScript = document.createElement('script');
-                swiperScript.src = "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js";
+                swiperScript.src = "{% static 'js/vendor/swiper-bundle.min.js' %}";
                 swiperScript.onload = function() {
                     initSwiper();
                 };
@@ -361,7 +332,7 @@
             
             // Load Alpine.js
             const alpineScript = document.createElement('script');
-            alpineScript.src = "https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js";
+            alpineScript.src = "{% static 'js/vendor/alpine.min.js' %}";
             alpineScript.defer = true;
             document.head.appendChild(alpineScript);
         });
@@ -434,32 +405,36 @@
         }
     </script>
     
-    {% compress js %}
     <script>
-        $(document).ready(function () {
-            // Critical interactions only
-            $('#mobile-menu-button').click(function () {
-                $('#mobile-menu').slideToggle(300);
-                $('#open-icon, #close-icon').toggleClass('hidden');
+        // Mobile menu (vanilla JS — no jQuery dependency)
+        (function () {
+            var btn = document.getElementById('mobile-menu-button');
+            var menu = document.getElementById('mobile-menu');
+            var openIcon = document.getElementById('open-icon');
+            var closeIcon = document.getElementById('close-icon');
+            if (!btn || !menu) return;
+            function toggleIcons() {
+                openIcon && openIcon.classList.toggle('hidden');
+                closeIcon && closeIcon.classList.toggle('hidden');
+            }
+            function close() {
+                menu.classList.add('hidden');
+                openIcon && openIcon.classList.remove('hidden');
+                closeIcon && closeIcon.classList.add('hidden');
+            }
+            btn.addEventListener('click', function () {
+                menu.classList.toggle('hidden');
+                toggleIcons();
             });
-
-            $('#mobile-menu a').click(function () {
-                $('#mobile-menu').slideUp(300);
-                $('#close-icon').addClass('hidden');
-                $('#open-icon').removeClass('hidden');
+            menu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', close);
             });
-
-            $(window).resize(function () {
-                if ($(window).width() >= 1024) {
-                    $('#mobile-menu').hide();
-                    $('#close-icon').addClass('hidden');
-                    $('#open-icon').removeClass('hidden');
-                }
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 1024) close();
             });
-        });
+        })();
     </script>
-    {% endcompress %}
-    
+
     {% block extra_js %}
     {% endblock %}
 

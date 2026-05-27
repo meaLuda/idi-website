@@ -1,0 +1,44 @@
+# IDI — Institute of Design & Innovation
+
+> IDI pioneers Decision Intelligence Design (DID) in Africa: research, strategy, and implementation that transform how services are designed and delivered. We turn complex public and social challenges into systems, tools, and capability that work in real contexts.
+
+Based in Nairobi, Kenya. Working across {{ countries|default:"14" }} African countries.
+
+## What We Do
+
+Three integrated service pillars:
+
+- **Insights & Data (Diagnostic → Synthesis)**: We uncover what is true, what matters, and what works — evidence, diagnostics, and research synthesis.
+- **Strategy & Design (Systems → Blueprint)**: We design systems, services, and pathways that enable meaningful progress.
+- **Implementation & Scale (Enablement → Toolkit)**: We turn strategy into action, adoption, and long-term capability.
+
+## Where We Apply It
+
+- Governance & Public Service Delivery
+- Responsible / Sovereign AI
+- Sustainability Practice
+- Venture Building & Innovation Ecosystems
+- Community & Public Service Delivery
+- Food Systems & Health Practice
+
+## DIDAcademy
+
+Capability-building programs in Decision Intelligence Design for senior leaders (Executive), practitioners and young professionals (Emerging Talent), and ecosystem partners.
+
+## Track Record
+
+120+ projects delivered, 35+ institutional partners, 8 focus practices, 98.4% placement rate for strategic implementations.
+
+## Key Pages
+
+- Home: {{ base }}/
+- Our Work / Case Studies: {{ base }}{% url 'home:projects_list' %}
+- Team: {{ base }}{% url 'home:team_list' %}
+- DIDAcademy: {{ base }}{% url 'home:did-academy' %}
+
+## Contact
+
+- Email: collectives@idi.africa
+- Phone: +254 708 291 098
+- Address: Dennis Pritt Rd, Kilimani, Nairobi, Kenya
+- Sitemap: {{ base }}/sitemap.xml

@@ -37,6 +37,14 @@ class Project(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     thumbnail = models.ImageField(upload_to='uploads/projects/thumbnails/', help_text="Main image shown in grid")
     content = RichTextUploadingField('Content', config_name='extends')
+    # Homepage article-card fields
+    tags = models.CharField(max_length=120, blank=True,
+                            help_text="Comma-separated topic tags shown as pills, e.g. 'Governance, AI'")
+    challenge = models.CharField(max_length=240, blank=True,
+                                 help_text="One-line challenge summary shown on the card")
+    headline_stat = models.CharField(max_length=120, blank=True,
+                                     help_text="Highlighted outcome stat, e.g. '40% reduction in service delivery time'")
+    is_featured = models.BooleanField(default=False, help_text="Show in the homepage hero card row")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -49,7 +57,11 @@ class Project(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-    
+
+    @property
+    def tag_list(self):
+        return [t.strip() for t in self.tags.split(',') if t.strip()]
+
     def get_absolute_url(self):
         return f'uploads/projects/{self.slug}/'
 
@@ -135,6 +147,49 @@ class Program(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.year})"
+
+
+class ServicePillar(models.Model):
+    """A 'WHAT WE DO' pillar. Illustration is a static brand asset resolved by slug
+    at static/images/home/services/{slug}.webp; copy fields are CMS-editable."""
+    title = models.CharField(max_length=80, help_text="e.g. 'Insights & Data'")
+    slug = models.SlugField(unique=True, blank=True,
+                            help_text="Drives the illustration filename: services/{slug}.webp")
+    description = models.CharField(max_length=200)
+    type_label = models.CharField(max_length=40, blank=True, help_text="e.g. 'Diagnostic'")
+    output_label = models.CharField(max_length=40, blank=True, help_text="e.g. 'Synthesis'")
+    cta_url = models.CharField(max_length=200, blank=True)
+    order = models.PositiveSmallIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['order', 'id']
+        verbose_name = 'Service Pillar'
+        verbose_name_plural = 'Service Pillars'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+
+class HomeStat(models.Model):
+    """A single metric in the homepage stats strip (e.g. '120+' / 'Projects Delivered')."""
+    value = models.CharField(max_length=16, help_text="e.g. '120+', '14', '35+'")
+    label = models.CharField(max_length=80, help_text="e.g. 'Projects Delivered'")
+    order = models.PositiveSmallIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['order', 'id']
+        verbose_name = 'Home Stat'
+        verbose_name_plural = 'Home Stats'
+
+    def __str__(self):
+        return f"{self.value} {self.label}"
 
 
 class Partner(models.Model):

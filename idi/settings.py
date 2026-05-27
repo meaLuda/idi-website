@@ -21,12 +21,19 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h#1=zgzhz&c@g+p9w0b9kr$b-_$8+iyn6g8_0a!js*u12%lonj'
+# Provided via the SECRET_KEY env var in production; the insecure fallback is dev-only.
+SECRET_KEY = os.getenv(
+    'SECRET_KEY',
+    'django-insecure-h#1=zgzhz&c@g+p9w0b9kr$b-_$8+iyn6g8_0a!js*u12%lonj',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost','014b-41-90-68-161.ngrok-free.app']
+ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost','127.0.0.1','.ngrok-free.app','.ngrok.io','.ngrok.app']
+
+# Google Analytics 4 measurement id (e.g. 'G-XXXXXXXXXX'). Empty = analytics off.
+GA_MEASUREMENT_ID = os.getenv('GA_MEASUREMENT_ID', '')
 
 
 # Application definition
@@ -83,6 +90,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.home.context_processors.site',
             ],
         },
     },
@@ -154,8 +162,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-# Static files storage
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Static files storage. Django 5.1+ removed STATICFILES_STORAGE in favour of STORAGES;
+# this is what actually enables WhiteNoise manifest hashing + gzip/brotli compression.
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+}
 
 # Media files configuration
 MEDIA_URL = '/media/'
@@ -225,6 +237,15 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+
+# HTTPS hardening — only enforced in production (DEBUG=False) so local HTTP dev still works.
+# nginx terminates TLS and forwards X-Forwarded-Proto, so trust it for is_secure().
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 # Static Files Optimization
 STATICFILES_FINDERS = [

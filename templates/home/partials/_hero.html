@@ -1,0 +1,86 @@
+{% load static %}
+<section class="relative bg-hero-teal text-white overflow-hidden">
+    {# background: teal wash + faded portrait + faint circuit pattern #}
+    <div class="absolute inset-0 bg-gradient-to-br from-hero-teal via-brand-teal-500 to-brand-teal-700"></div>
+    <div class="absolute inset-0 opacity-[0.12] mix-blend-luminosity bg-cover bg-center"
+         style="background-image:url('{% static 'images/home/hero-portrait.webp' %}');"></div>
+    <div class="absolute inset-0 opacity-[0.06] pointer-events-none"
+         style="background-image:url('{% static 'images/home/hero-pattern.webp' %}'); background-size:520px;"></div>
+
+    <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 pb-8 lg:pt-32">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {# headline + CTA #}
+            <div class="lg:col-span-7">
+                <h1 class="text-display-xl font-bold uppercase leading-[1.05]">
+                    Building the systems and strategies that transform service delivery.
+                </h1>
+                <a href="#what-we-do"
+                   class="inline-flex items-center gap-3 mt-8 pl-6 pr-2 py-2 bg-white/15 backdrop-blur text-white font-semibold rounded-full hover:bg-white hover:text-brand-teal-500 transition-colors group">
+                    Learn More
+                    <span class="grid place-items-center w-9 h-9 rounded-full bg-white text-brand-teal-500 group-hover:bg-brand-orange group-hover:text-white transition-colors">
+                        <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
+                </a>
+            </div>
+
+            {# 98.4% glass stat card #}
+            <div class="lg:col-span-5 lg:justify-self-end w-full max-w-sm">
+                <div class="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-7 lg:p-8 shadow-card-lg">
+                    <div class="text-5xl lg:text-6xl font-bold leading-none">98.4%</div>
+                    <p class="mt-3 text-eyebrow uppercase text-white/75">Placement rate for strategic implementations</p>
+                    <div class="mt-6 pt-5 border-t border-white/20 grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <p class="text-eyebrow uppercase text-white/55">Next Intake</p>
+                            <p class="font-semibold mt-1">SEP 2026</p>
+                        </div>
+                        <div>
+                            <p class="text-eyebrow uppercase text-white/55">Accreditation</p>
+                            <p class="font-semibold mt-1">IDI&mdash;GLOBAL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# article cards row — page 1 server-rendered, further pages loaded via HTMX on scroll #}
+    <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
+        <div class="group/scroller relative">
+            <div id="article-scroller"
+                 class="flex gap-5 overflow-x-auto pb-2 snap-x scroll-smooth
+                        [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-1 px-1">
+                {% include "home/partials/_article_cards.html" with page=article_first_page first_page=True %}
+            </div>
+
+            {# glassy scroll controls #}
+            <button type="button" data-scroll="article-scroller" data-dir="-1" aria-label="Previous articles"
+                    class="hidden md:grid place-items-center absolute left-2 top-[38%] -translate-y-1/2 z-10
+                           w-11 h-11 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white
+                           hover:bg-white hover:text-brand-teal-500 transition-colors shadow-card-lg
+                           opacity-80 hover:opacity-100 focus:opacity-100">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button type="button" data-scroll="article-scroller" data-dir="1" aria-label="Next articles"
+                    class="hidden md:grid place-items-center absolute right-2 top-[38%] -translate-y-1/2 z-10
+                           w-11 h-11 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white
+                           hover:bg-white hover:text-brand-teal-500 transition-colors shadow-card-lg
+                           opacity-80 hover:opacity-100 focus:opacity-100">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        document.querySelectorAll('[data-scroll]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var el = document.getElementById(btn.dataset.scroll);
+                if (!el) return;
+                var card = el.querySelector('a');
+                var step = card ? card.offsetWidth + 20 : 300;
+                el.scrollBy({ left: step * parseInt(btn.dataset.dir, 10), behavior: 'smooth' });
+            });
+        });
+    })();
+    </script>
+</section>

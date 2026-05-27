@@ -7,6 +7,37 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'brand-teal': {
+          50: '#e6f1f3',
+          100: '#b8dadf',
+          200: '#8ac2cb',
+          400: '#2a8a99',
+          500: '#006377',
+          600: '#0c8485',
+          700: '#004d5c',
+          800: '#073a47',
+          900: '#051924',
+        },
+        'hero-teal': '#0c8485',
+        'brand-orange': '#f99a00',
+        'brand-amber': '#ffad00',
+        'brand-yellow': '#ffd300',
+        'brand-sage': '#ccd19c',
+        'surface': '#ffffff',
+        'surface-alt': '#f6f5f0',
+        'ink': '#0b1f24',
+        'ink-muted': '#4b5b60',
+      },
+      fontSize: {
+        'eyebrow': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.12em' }],
+        'display-lg': ['clamp(2rem, 3.5vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
+        'display-xl': ['clamp(2.5rem, 5vw, 4.25rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+      },
+      boxShadow: {
+        'card': '0 4px 16px rgba(5,25,36,0.08)',
+        'card-lg': '0 12px 32px rgba(5,25,36,0.14)',
+      },
       typography: {
         DEFAULT: {
           css: {

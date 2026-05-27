@@ -62,11 +62,10 @@ fix_media_permissions() {
     fi
 }
 
-# Function to collect static files
+# Function to collect static files (WhiteNoise generates hashed + gzip/brotli variants)
 collect_static() {
     echo "Collecting static files..."
     python manage.py collectstatic --noinput --clear
-    python manage.py compress --force
 }
 
 
@@ -75,6 +74,10 @@ echo "Starting IDI Django application..."
 
 # Wait for database
 wait_for_db
+
+# Apply database migrations (idempotent)
+echo "Applying database migrations..."
+python manage.py migrate --noinput
 
 # Fix media permissions
 fix_media_permissions

@@ -2,7 +2,7 @@ pillow
 django
 django-ckeditor
 gunicorn
-whitenoise == 6.5.0
+whitenoise[brotli] == 6.5.0
 python-dotenv
 django-compressor
 psycopg2-binary

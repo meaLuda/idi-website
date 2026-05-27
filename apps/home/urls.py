@@ -10,6 +10,7 @@ def health_check(request):
 
 urlpatterns = [
     path('', views.home, name="lander"),
+    path('articles/', views.articles, name="articles"),
     # path('fellowship/did-fellowships',view=views.fellowships,name="did-fellowships"),
     path('fellowship/did-academy', views.academy, name="did-academy"),
     path('team/<slug:slug>/', views.TeamMemberDetailView.as_view(), name='team_member_detail'),

@@ -1,12 +1,40 @@
 from django.shortcuts import get_object_or_404, render
+from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
-from .models import Project, TeamMember, Testimonial, Program, Partner, Client
+from .models import Project, TeamMember, Testimonial, Program, Partner, Client, HomeStat, ServicePillar
+
+ARTICLE_PAGE_SIZE = 4
+
+# WHERE WE APPLY IT — static content (slug drives the masked tile asset).
+PRACTICE_TILES = [
+    {"num": "01", "slug": "governance-public-service-delivery", "title": "Governance & Public Service Delivery"},
+    {"num": "02", "slug": "responsible-sovereign-ai", "title": "Responsible / Sovereign AI"},
+    {"num": "03", "slug": "sustainability-practice", "title": "Sustainability Practice"},
+    {"num": "04", "slug": "venture-building-innovation-ecosystems", "title": "Venture Building & Innovation Ecosystems"},
+    {"num": "05", "slug": "community-public-service-delivery", "title": "Community & Public Service Delivery"},
+    {"num": "06", "slug": "food-systems-health-practice", "title": "Food Systems & Health Practice"},
+]
+
+
+def article_page(page_number):
+    """A page of published articles (Projects), newest first."""
+    qs = Project.objects.filter(is_active=True).order_by('order', '-created_at')
+    return Paginator(qs, ARTICLE_PAGE_SIZE).get_page(page_number)
+
+
+def articles(request):
+    """HTMX endpoint: return one page of article cards."""
+    return render(request, 'home/partials/_article_cards.html',
+                  {'page': article_page(request.GET.get('page', 1))})
 
 # Create your views here.
 def home(request):
     # Optimize queries with select_related and prefetch_related
     team_members = TeamMember.objects.select_related().all()[:6]
     projects = Project.objects.filter(is_active=True).select_related()[:6]
+    article_first_page = article_page(1)
+    home_stats = HomeStat.objects.filter(is_active=True)
+    service_pillars = ServicePillar.objects.filter(is_active=True)
     testimonials = Testimonial.objects.filter(is_active=True).select_related()
     partners = Partner.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
     clients = Client.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
@@ -15,6 +43,10 @@ def home(request):
     context = {
         'team_members': team_members,
         'projects': projects,
+        'article_first_page': article_first_page,
+        'home_stats': home_stats,
+        'service_pillars': service_pillars,
+        'practices': PRACTICE_TILES,
         'testimonials': testimonials,
         'partners': partners,
         'clients': clients,
@@ -66,9 +98,10 @@ def project_detail(request, slug):
     context = {
         'project': project,
         'page_title': project.title,
-        'page_description': f'{project.title} - A decision intelligence design project by IDI Africa.',
-        'page_keywords': f'Project, Decision Intelligence Design, {project.title}, Innovation, Africa, Kenya',
+        'page_description': project.challenge or f'{project.title} - A decision intelligence design project by IDI Africa.',
+        'page_keywords': f'{project.tags+", " if project.tags else ""}Decision Intelligence Design, {project.title}, Innovation, Africa, Kenya',
         'page_image': project.thumbnail,
+        'og_type': 'article',
     }
     return render(request, 'home/projects/project_detail.html', context)
 
@@ -135,6 +168,13 @@ class TeamMemberDetailView(DetailView):
         return context
     
 
+
+
+def llms_txt(request):
+    """LLM-readable site summary (GEO). Served as text/plain at /llms.txt."""
+    return render(request, 'seo/llms.txt',
+                  {'base': request.build_absolute_uri('/').rstrip('/')},
+                  content_type='text/plain; charset=utf-8')
 
 
 def custom_page_not_found(request, exception):
