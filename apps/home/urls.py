@@ -19,5 +19,7 @@ urlpatterns = [
     # New URL paths
     path('projects/', views.projects_list, name='projects_list'),
     path('team/', views.team_list, name='team_list'),
+    path('governance-public-service-delivery/', views.governance_public_service_delivery, name='governance_public_service_delivery'),
+    path('responsible-sovereign-ai/', views.responsible_sovereign_ai, name='responsible_sovereign_ai'),
     path('health/', health_check, name='health_check'),
 ]

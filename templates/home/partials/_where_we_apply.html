@@ -8,15 +8,29 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {% for tile in practices %}
-            <article class="bg-gradient-to-br from-[#f4f4f3] to-[#dcdde0] rounded-2xl p-6 lg:p-8">
-                <div class="h-56 flex items-center justify-center mb-6">
-                    <img src="{% static 'images/home/practices/' %}{{ tile.slug }}.webp"
-                         alt="{{ tile.title }}" loading="lazy"
-                         class="max-h-56 w-auto object-contain">
-                </div>
-                <p class="text-eyebrow uppercase tracking-wide text-ink-muted mb-2">Solution &mdash; {{ tile.num }}</p>
-                <h3 class="text-base font-bold uppercase text-brand-teal-500 leading-snug">{{ tile.title }}</h3>
-            </article>
+            {% if tile.slug == 'governance-public-service-delivery' %}
+            <a href="{% url 'home:governance_public_service_delivery' %}" class="block group h-full">
+            {% elif tile.slug == 'responsible-sovereign-ai' %}
+            <a href="{% url 'home:responsible_sovereign_ai' %}" class="block group h-full">
+            {% else %}
+            <div class="block h-full">
+            {% endif %}
+                <article class="bg-gradient-to-br from-[#f4f4f3] to-[#dcdde0] rounded-2xl p-6 lg:p-8 h-full transition-all duration-300 {% if tile.slug == 'governance-public-service-delivery' or tile.slug == 'responsible-sovereign-ai' %}hover:-translate-y-1.5 hover:shadow-card hover:cursor-pointer{% endif %} flex flex-col justify-between">
+                    <div>
+                        <div class="h-56 flex items-center justify-center mb-6">
+                            <img src="{% static 'images/home/practices/' %}{{ tile.slug }}.webp"
+                                 alt="{{ tile.title }}" loading="lazy"
+                                 class="max-h-56 w-auto object-contain transition-transform duration-300 {% if tile.slug == 'governance-public-service-delivery' or tile.slug == 'responsible-sovereign-ai' %}group-hover:scale-105{% endif %}">
+                        </div>
+                        <p class="text-eyebrow uppercase tracking-wide text-ink-muted mb-2">Solution &mdash; {{ tile.num }}</p>
+                        <h3 class="text-base font-bold uppercase text-brand-teal-500 leading-snug">{{ tile.title }}</h3>
+                    </div>
+                </article>
+            {% if tile.slug == 'governance-public-service-delivery' or tile.slug == 'responsible-sovereign-ai' %}
+            </a>
+            {% else %}
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>

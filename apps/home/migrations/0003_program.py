@@ -4,6 +4,74 @@ import ckeditor_uploader.fields
 from django.db import migrations, models
 
 
+def create_program_table(apps, schema_editor):
+    connection = schema_editor.connection
+    if connection.vendor == 'postgresql':
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS home_program (
+                    id BIGSERIAL PRIMARY KEY,
+                    title VARCHAR(200) NOT NULL,
+                    slug VARCHAR(50) UNIQUE,
+                    program_type VARCHAR(20) DEFAULT 'fellowship' NOT NULL,
+                    short_description TEXT NOT NULL,
+                    full_description TEXT,
+                    image VARCHAR(100) NOT NULL,
+                    duration VARCHAR(100),
+                    format VARCHAR(100),
+                    target_audience TEXT,
+                    application_url VARCHAR(200),
+                    learn_more_url VARCHAR(200),
+                    brochure VARCHAR(100),
+                    is_active BOOLEAN DEFAULT TRUE NOT NULL,
+                    is_featured BOOLEAN DEFAULT FALSE NOT NULL,
+                    application_open BOOLEAN DEFAULT TRUE NOT NULL,
+                    application_deadline TIMESTAMP WITH TIME ZONE,
+                    year INTEGER DEFAULT 2025 NOT NULL,
+                    meta_description TEXT,
+                    meta_keywords VARCHAR(255),
+                    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+                    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+                    "order" INTEGER DEFAULT 0 NOT NULL
+                );
+            """)
+    else:
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS home_program (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title VARCHAR(200) NOT NULL,
+                    slug VARCHAR(50) UNIQUE,
+                    program_type VARCHAR(20) DEFAULT 'fellowship' NOT NULL,
+                    short_description TEXT NOT NULL,
+                    full_description TEXT,
+                    image VARCHAR(100) NOT NULL,
+                    duration VARCHAR(100),
+                    format VARCHAR(100),
+                    target_audience TEXT,
+                    application_url VARCHAR(200),
+                    learn_more_url VARCHAR(200),
+                    brochure VARCHAR(100),
+                    is_active BOOLEAN DEFAULT TRUE NOT NULL,
+                    is_featured BOOLEAN DEFAULT FALSE NOT NULL,
+                    application_open BOOLEAN DEFAULT TRUE NOT NULL,
+                    application_deadline datetime,
+                    year INTEGER DEFAULT 2025 NOT NULL,
+                    meta_description TEXT,
+                    meta_keywords VARCHAR(255),
+                    created_at datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                    updated_at datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                    "order" INTEGER DEFAULT 0 NOT NULL
+                );
+            """)
+
+
+def reverse_create_program_table(apps, schema_editor):
+    connection = schema_editor.connection
+    with connection.cursor() as cursor:
+        cursor.execute("DROP TABLE IF EXISTS home_program;")
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -11,35 +79,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # Use RunSQL to safely create table only if it doesn't exist
-        migrations.RunSQL(
-            """
-            CREATE TABLE IF NOT EXISTS home_program (
-                id BIGSERIAL PRIMARY KEY,
-                title VARCHAR(200) NOT NULL,
-                slug VARCHAR(50) UNIQUE,
-                program_type VARCHAR(20) DEFAULT 'fellowship' NOT NULL,
-                short_description TEXT NOT NULL,
-                full_description TEXT,
-                image VARCHAR(100) NOT NULL,
-                duration VARCHAR(100),
-                format VARCHAR(100),
-                target_audience TEXT,
-                application_url VARCHAR(200),
-                learn_more_url VARCHAR(200),
-                brochure VARCHAR(100),
-                is_active BOOLEAN DEFAULT TRUE NOT NULL,
-                is_featured BOOLEAN DEFAULT FALSE NOT NULL,
-                application_open BOOLEAN DEFAULT TRUE NOT NULL,
-                application_deadline TIMESTAMP WITH TIME ZONE,
-                year INTEGER DEFAULT 2025 NOT NULL,
-                meta_description TEXT,
-                meta_keywords VARCHAR(255),
-                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
-                updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
-                "order" INTEGER DEFAULT 0 NOT NULL
-            );
-            """,
-            reverse_sql="DROP TABLE IF EXISTS home_program;"
+        migrations.RunPython(
+            create_program_table,
+            reverse_create_program_table
         ),
     ]

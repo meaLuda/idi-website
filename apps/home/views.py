@@ -223,3 +223,27 @@ def custom_bad_request(request, exception):
         'page_keywords': 'error, 400, bad request, IDI Africa',
     }
     return render(request, '404.html', context, status=400)
+
+
+def governance_public_service_delivery(request):
+    """
+    View for the Governance & Public Service Delivery practice page.
+    """
+    context = {
+        'page_title': 'Governance & Public Service Delivery',
+        'page_description': 'Designing systems that govern effectively—and deliver where it matters. IDI Africa works at the intersection of decision intelligence and public service delivery.',
+        'page_keywords': 'Governance, Public Service Delivery, Decision Intelligence, System Design, Africa, Innovation',
+    }
+    return render(request, 'home/governance_public_service_delivery.html', context)
+
+
+def responsible_sovereign_ai(request):
+    """
+    View for the Responsible / Sovereign AI practice page.
+    """
+    context = {
+        'page_title': 'Responsible & Sovereign AI',
+        'page_description': 'Designing AI systems that are trusted, context-aware, and built for long-term public value. IDI Africa pioneers representational and ethical AI architectures.',
+        'page_keywords': 'Sovereign AI, Responsible AI, AI Ethics, Civic Tech, Machine Learning, Africa, Innovation',
+    }
+    return render(request, 'home/responsible_sovereign_ai.html', context)
