@@ -1936,6 +1936,10 @@ video {
   height: 80px;
 }
 
+.h-\[150px\] {
+  height: 150px;
+}
+
 .max-h-40 {
   max-height: 10rem;
 }
@@ -5661,6 +5665,10 @@ svg {
 
   .sm\:h-\[90px\] {
     height: 90px;
+  }
+
+  .sm\:h-\[180px\] {
+    height: 180px;
   }
 
   .sm\:min-h-\[220px\] {
