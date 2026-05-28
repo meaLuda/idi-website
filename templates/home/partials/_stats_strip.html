@@ -13,7 +13,7 @@
             {% for stat in home_stats %}
             <div class="flex-1 flex flex-col items-center justify-center text-center px-1 sm:px-3 md:px-6">
                 <!-- Responsively scaled large bold metric number -->
-                <div class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-black tracking-tight leading-none mb-2 md:mb-3">
+                <div class="stat-counter text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-black tracking-tight leading-none mb-2 md:mb-3">
                     {{ stat.value }}
                 </div>
                 <!-- Responsively scaled elegant brand teal uppercase label -->
@@ -24,5 +24,82 @@
             {% endfor %}
         </div>
     </div>
+
+    <script>
+    (function () {
+        function initCounters() {
+            var counters = document.querySelectorAll('.stat-counter');
+            if (!counters.length) return;
+
+            var observer = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            counters.forEach(function (counter) {
+                var originalText = counter.innerText.trim();
+                counter.setAttribute('data-value', originalText);
+
+                // Set initial state to 0 with suffix to prevent sudden layout shifts
+                var match = originalText.match(/^([\d.]+)(.*)$/);
+                if (match) {
+                    var suffix = match[2] || "";
+                    counter.innerText = "0" + suffix;
+                }
+
+                observer.observe(counter);
+            });
+        }
+
+        function animateCounter(el) {
+            var rawValue = el.getAttribute('data-value');
+            var match = rawValue.match(/^([\d.]+)(.*)$/);
+            if (!match) {
+                el.innerText = rawValue;
+                return;
+            }
+
+            var targetVal = parseFloat(match[1]);
+            var suffix = match[2] || "";
+            var startVal = 0;
+            var duration = 2000; // 2 seconds of elegant, smooth build-up
+            var startTime = null;
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var elapsed = timestamp - startTime;
+                var progress = Math.min(elapsed / duration, 1);
+
+                // Cubic ease-out curve for highly premium decelerating effect
+                var easeProgress = 1 - Math.pow(1 - progress, 3);
+                var currentVal = startVal + (targetVal - startVal) * easeProgress;
+
+                if (Number.isInteger(targetVal)) {
+                    el.innerText = Math.floor(currentVal) + suffix;
+                } else {
+                    el.innerText = currentVal.toFixed(1) + suffix;
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.innerText = rawValue;
+                }
+            }
+
+            requestAnimationFrame(step);
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initCounters);
+        } else {
+            initCounters();
+        }
+    })();
+    </script>
 </section>
 {% endif %}
