@@ -1,0 +1,211 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- 1. Hero Section -->
+<section class="bg-[#FCFBF8] pt-32 pb-24 relative overflow-hidden">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            <!-- Left Content -->
+            <div class="lg:col-span-6 z-10 pr-0 lg:pr-8">
+                <span class="inline-block bg-[#ffecd1] text-[#ffa700] text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-6">CASE STUDY</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#006377] leading-[1.1] mb-6">
+                    Reimagining <br>Youth Opportunity <br>Systems
+                </h1>
+                <p class="text-lg text-gray-600 font-light leading-relaxed mb-12 max-w-xl">
+                    A unified, API-node architected framework for digitizing knowledge economies across major recent government investments.
+                </p>
+                
+                <div class="grid grid-cols-3 gap-6 pt-6 border-t border-gray-200">
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mb-1 font-medium">Sector</p>
+                        <p class="text-sm font-bold text-[#006377]">Government</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mb-1 font-medium">Timeline</p>
+                        <p class="text-sm font-bold text-[#006377]">2023</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mb-1 font-medium">Category</p>
+                        <p class="text-sm font-bold text-[#006377]">Civic Literacy</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Content (Image) -->
+            <div class="lg:col-span-6 relative mt-12 lg:mt-0">
+                <div class="rounded-3xl overflow-hidden shadow-2xl relative aspect-[4/3] lg:aspect-auto lg:h-[550px]">
+                    <img src="{% static 'images/food/case1.png' %}" alt="Students in classroom" class="w-full h-full object-cover">
+                </div>
+                <!-- Overlapping floating card -->
+                <div class="absolute -bottom-8 -left-8 lg:-bottom-12 lg:-left-12 bg-white rounded-2xl shadow-xl p-6 lg:p-8 max-w-xs border border-gray-100">
+                    <p class="text-sm text-gray-700 font-medium leading-relaxed">
+                        The challenge was translating a massive national mandate into community-usable tools in days.
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- 2. The Challenge -->
+<section class="bg-white py-20 lg:py-32 overflow-hidden relative">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7">
+                <h2 class="text-3xl font-extrabold text-[#006377] mb-8">The Challenge</h2>
+                <div class="space-y-6 text-gray-600 font-light leading-relaxed">
+                    <p>
+                        In early 2023, the national digital transformation initiative was tasked with building a unified registry for employment, ensuring digital records mapped accurately onto vocational training pathways. Traditional approaches proved too slow and bureaucratic, heavily relying on disparate data siloes and legacy security protocols.
+                    </p>
+                    <p>
+                        The fragmented ID structure prevented citizens from easily verifying credentials or navigating public services without undergoing redundant registration processes. The state required a central, secure infrastructure that bypassed traditional bureaucracy while drastically reducing the time-to-value for the average citizen.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
+                <!-- Large decorative circle -->
+                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-[16px] border-[#FCFBF8] bg-transparent shadow-sm"></div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- 3. Strategic Approach -->
+<section class="bg-[#FCFBF8] py-20 lg:py-32">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <h2 class="text-3xl font-extrabold text-[#006377] text-center mb-16">Strategic Approach</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Card 1 -->
+            <div class="bg-white rounded-3xl p-10 shadow-lg border border-gray-100 flex flex-col items-start transition-transform hover:-translate-y-1">
+                <div class="w-10 h-10 mb-8 text-[#006377]">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-full h-full"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-[#006377] mb-4 leading-tight">Forensic <br>Discovery</h3>
+                <p class="text-sm text-gray-500 leading-relaxed font-light">
+                    Mapped 400+ distinct data routing mechanisms in the legacy configuration and mapped endpoints out across the tech stack.
+                </p>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="bg-[#006377] rounded-3xl p-10 shadow-xl flex flex-col items-start transition-transform hover:-translate-y-1">
+                <div class="w-10 h-10 mb-8 text-[#5bd5e2]">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-full h-full"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-4 leading-tight">Rapid <br>Prototyping</h3>
+                <p class="text-sm text-white/80 leading-relaxed font-light">
+                    Deployed functional MVP models within days, utilizing a decoupled front-end structure that allowed backend operations to scale seamlessly.
+                </p>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="bg-white rounded-3xl p-10 shadow-lg border border-gray-100 flex flex-col items-start transition-transform hover:-translate-y-1">
+                <div class="w-10 h-10 mb-8 text-[#006377]">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-full h-full"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-[#006377] mb-4 leading-tight">Architectural <br>Refinement</h3>
+                <p class="text-sm text-gray-500 leading-relaxed font-light">
+                    Structured policy frameworks through standard operational nodes to ensure security controls were baked into the core functionality.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- 4. The Solution -->
+<section class="bg-white py-20 lg:py-24">
+    <div class="container mx-auto px-4 max-w-6xl text-center">
+        <h2 class="text-3xl font-extrabold text-[#006377] mb-4">The Solution</h2>
+        <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold mb-12">A structured, accessible logic driving national inclusion.</p>
+        
+        <div class="rounded-3xl overflow-hidden shadow-2xl w-full aspect-[21/9] lg:aspect-[2.5/1]">
+            <img src="{% static 'images/food/city_slice.png' %}" alt="City Skyline at Sunset" class="w-full h-full object-cover">
+        </div>
+    </div>
+</section>
+
+<!-- 5. Impact Metrics -->
+<section class="bg-[#006377] py-20 lg:py-28 relative">
+    <!-- Subtle background geometric pattern could go here -->
+    <div class="container mx-auto px-4 max-w-6xl relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
+            
+            <!-- Left Side -->
+            <div class="lg:col-span-5 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-widest text-white/70 mb-4">IMPACT METRICS</p>
+                <h2 class="text-3xl lg:text-4xl font-extrabold leading-tight mb-8">
+                    Quantifying <br>Structural <br>Transformation.
+                </h2>
+                <a href="#" class="inline-block bg-[#ffecd1] text-black font-bold text-sm px-8 py-3 rounded-full hover:bg-white transition-colors text-center min-w-[160px]">
+                    Download <br>Report
+                </a>
+            </div>
+            
+            <!-- Right Side (Stats) -->
+            <div class="lg:col-span-7 space-y-10">
+                
+                <div class="border-b border-[#117688] pb-6">
+                    <h3 class="text-5xl lg:text-6xl font-extrabold text-white mb-2">40%</h3>
+                    <p class="text-xs font-bold uppercase tracking-widest text-white/80">REDUCTION IN WORKFLOW DELAYS</p>
+                </div>
+                
+                <div class="border-b border-[#117688] pb-6">
+                    <h3 class="text-5xl lg:text-6xl font-extrabold text-white mb-2">8.2M</h3>
+                    <p class="text-xs font-bold uppercase tracking-widest text-white/80">VERIFIED CITIZENS REGISTERED</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-5xl lg:text-6xl font-extrabold text-white mb-2">100%</h3>
+                    <p class="text-xs font-bold uppercase tracking-widest text-white/80">POLICY INTEGRATION COMPLETED</p>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- 6. Testimonial -->
+<section class="bg-white py-24 lg:py-32">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+        <!-- Quote Icon -->
+        <div class="w-12 h-12 mx-auto text-[#ffa700] mb-8">
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-full h-full"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path></svg>
+        </div>
+        
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#006377] leading-relaxed mb-8">
+            "The Architectural Strategist didn't just build a portal; they re-engineered our digital constitution. The framework is now the bedrock of our digital nation."
+        </h2>
+        
+        <p class="text-sm font-bold text-gray-900 mb-1">Dr. Elena Rostova</p>
+        <p class="text-xs text-gray-500 uppercase tracking-widest">DIRECTOR OF CIVIC DEVELOPMENT</p>
+    </div>
+</section>
+
+<!-- 7. Bottom CTA -->
+<section class="bg-[#006377] relative overflow-hidden">
+    <!-- Geometric patterned bar at top of CTA -->
+    <div class="h-6 w-full absolute top-0 left-0 bg-cover bg-center" style="background-image: url('{% static 'images/slicer.webp' %}');"></div>
+    
+    <div class="container mx-auto px-4 max-w-6xl py-16 mt-6">
+        <div class="flex flex-col md:flex-row justify-between items-center bg-white rounded-full p-2 pl-8 shadow-xl">
+            <div class="mb-4 md:mb-0">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#ffa700] block mb-1">UP NEXT</span>
+                <h3 class="text-2xl font-extrabold text-[#006377]">AI Ethics & Governance Toolkit</h3>
+            </div>
+            
+            <a href="#" class="bg-[#006377] text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-[#051924] transition-colors flex items-center shrink-0">
+                Explore Case Study <span class="ml-2">➔</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from .models import Project, TeamMember, Testimonial, Program, Partner, Client, HomeStat, ServicePillar
 
-ARTICLE_PAGE_SIZE = 4
+ARTICLE_PAGE_SIZE = 5
 
 # WHERE WE APPLY IT — static content (slug drives the masked tile asset).
 PRACTICE_TILES = [
@@ -57,15 +57,6 @@ def home(request):
     return render(request, "home/index.html", context)
 
 
-# def fellowships(request):
-#     # SEO metadata
-#     context = {
-#         'page_title': 'Decision Intelligence Design Fellowships',
-#         'page_description': 'Transform complexity into actionable solutions through our immersive fellowship programs designed for impact across sectors in Africa.',
-#         'page_keywords': 'Fellowships, Decision Intelligence Design, Innovation, Public Sector, Research, Emerging Leaders, Kenya, Africa',
-#     }
-#     return render(request, "home/fellowship/fellowship.html", context)
-
 
 def academy(request):
     # Get featured programs for the current year with optimized query
@@ -103,6 +94,9 @@ def project_detail(request, slug):
         'page_image': project.thumbnail,
         'og_type': 'article',
     }
+    if slug == 'the-mombasa-county-plastics-prize':
+        return render(request, 'home/projects/mombasa_plastics.html', context)
+        
     return render(request, 'home/projects/project_detail.html', context)
 
 
@@ -123,12 +117,58 @@ def program_detail(request, slug):
 def projects_list(request):
     projects = Project.objects.filter(is_active=True).select_related().order_by('-created_at')
     
+    mock_articles = [
+        {
+            "category": "Policy",
+            "title": "The Future of Public Service Delivery",
+            "excerpt": "How decision intelligence design is transforming public service delivery across Africa.",
+            "tags": ["Governance", "Public Service Delivery"],
+            "date": "January 2026",
+        },
+        {
+            "category": "AI",
+            "title": "Building Inclusive AI Governance Frameworks",
+            "excerpt": "Designing AI architectures that are trusted, context-aware, and built for long-term public value.",
+            "tags": ["AI", "Governance", "Design"],
+            "date": "December 2025",
+        },
+        {
+            "category": "Toolkit",
+            "title": "Sustainability Toolkit: Measurement Frameworks",
+            "excerpt": "Practical tools for tracking and measuring sustainability impacts across public initiatives.",
+            "tags": ["Sustainability", "Measurement", "Toolkit"],
+            "date": "December 2025",
+        },
+        {
+            "category": "Ecosystems",
+            "title": "Venture Ecosystem Rapid Assessment",
+            "excerpt": "A comprehensive framework for evaluating and developing local venture building ecosystems.",
+            "tags": ["Venture", "Ecosystem", "Innovation"],
+            "date": "November 2025",
+        },
+        {
+            "category": "Health",
+            "title": "The Role of Design in Health Systems",
+            "excerpt": "Why service design is critical to building resilient, responsive, and patient-centric healthcare systems.",
+            "tags": ["Health", "Design", "Systems"],
+            "date": "November 2025",
+        },
+        {
+            "category": "Playbook",
+            "title": "Innovation Challenges: Implementation Playbook",
+            "excerpt": "A step-by-step guide to designing, launching, and managing public sector innovation challenges.",
+            "tags": ["Innovation", "Design", "Implementation"],
+            "date": "October 2025",
+        }
+    ]
+    
     # SEO metadata
     context = {
         'projects': projects,
-        'page_title': 'Our Work',
-        'page_description': 'Explore our portfolio of decision intelligence design projects across various sectors in Africa.',
-        'page_keywords': 'Projects, Decision Intelligence Design, Innovation, Case Studies, Portfolio, Africa, Kenya',
+        'mock_articles': mock_articles,
+        'page_title': 'Insights',
+        'page_description': 'Research, thought leadership, and tools. Bringing context, representation, and deep decision intelligence to structural transitions.',
+        'page_keywords': 'Insights, Decision Intelligence Design, Research, Whitepapers, Africa, Innovation',
     }
     return render(request, 'home/projects/projects_list.html', context)
 
@@ -247,3 +287,55 @@ def responsible_sovereign_ai(request):
         'page_keywords': 'Sovereign AI, Responsible AI, AI Ethics, Civic Tech, Machine Learning, Africa, Innovation',
     }
     return render(request, 'home/responsible_sovereign_ai.html', context)
+
+
+def community_public_service_delivery(request):
+    """
+    View for the Community & Public Service Delivery practice page.
+    """
+    context = {
+        'page_title': 'Community & Public Service Delivery',
+        'page_description': 'Designing for relevance. We build frameworks, strategy, and products that respect and reflect community context, knowledge, and sovereignty.',
+        'page_keywords': 'Community Service, Public Service Delivery, Participatory Design, Civic Trust, Decision Intelligence, Africa, Innovation',
+    }
+    return render(request, 'home/community_public_service_delivery.html', context)
+
+
+def food_systems_health_practice(request):
+    """
+    View for the Food Systems & Health Practice practice page.
+    """
+    context = {
+        'page_title': 'Food Systems & Health Practice',
+        'page_description': 'Designing for relevance. We build frameworks, strategy, and products that respect and reflect community context, knowledge, and sovereignty within food systems.',
+        'page_keywords': 'Food Systems, Health Practice, Nutrition, Agricultural Decision Systems, Public Health, Decision Intelligence, Africa, Innovation',
+    }
+    return render(request, 'home/food_systems_health_practice.html', context)
+
+
+def reimagining_youth(request):
+    """
+    View for the Reimagining Youth Opportunity Systems case study page.
+    """
+    context = {
+        'page_title': 'Reimagining Youth Opportunity Systems',
+        'page_description': 'A case study on digitizing knowledge economies and civic engagement within government frameworks.',
+        'page_keywords': 'Youth Opportunity, Government, Civic Literacy, Decision Intelligence, Case Study',
+    }
+    return render(request, 'home/projects/reimagining_youth.html', context)
+
+
+def services(request):
+    """
+    View for the dedicated Services page.
+    """
+    service_pillars = ServicePillar.objects.filter(is_active=True)
+    
+    # SEO metadata
+    context = {
+        'service_pillars': service_pillars,
+        'page_title': 'Services',
+        'page_description': 'Decision Intelligence Design for modern structural transitions. Discover our service pillars across Strategy & Design, Insights & Data, and Implementation & Scale.',
+        'page_keywords': 'Services, Strategy, Design, Insights, Data, Implementation, Scale, Decision Intelligence, Africa, Innovation',
+    }
+    return render(request, 'home/services.html', context)
