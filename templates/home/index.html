@@ -104,6 +104,39 @@
     }
 </style>
 
+<!-- ═══════════════════════════════════════════════
+     7. PARTNERS & COLLABORATORS LOGO MARQUEE — Premium infinite horizontal scrolling
+═══════════════════════════════════════════════ -->
+<style>
+    @keyframes logo-marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    
+    .logo-marquee-container {
+        overflow: hidden;
+        user-select: none;
+        display: flex;
+        position: relative;
+        mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%);
+        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%);
+    }
+    
+    .logo-marquee-track {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 5rem;
+        min-width: 100%;
+        animation: logo-marquee 30s linear infinite;
+    }
+    
+    .logo-marquee-container:hover .logo-marquee-track {
+        animation-play-state: paused;
+    }
+</style>
+
 <section class="bg-surface-alt py-12 md:py-16 border-t border-gray-200/50 overflow-hidden">
     <div class="container mx-auto px-4 max-w-7xl">
         <!-- Optional eyebrow header -->
@@ -115,7 +148,7 @@
             <!-- First Track -->
             <div class="logo-marquee-track">
                 <!-- Logo 1: USAID -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#002F6C] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#002F6C] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0" y="2" width="6" height="22" fill="#BA0C2F" />
                         <text x="12" y="16" font-family="system-ui, sans-serif" font-weight="900" font-size="14" letter-spacing="-0.5">USAID</text>
@@ -124,7 +157,7 @@
                 </div>
                 
                 <!-- Logo 2: Mastercard Foundation -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#FF5F00] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#FF5F00] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 160 35" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="17" r="11" fill="currentColor" fill-opacity="0.2" />
                         <circle cx="28" cy="17" r="11" fill="currentColor" fill-opacity="0.3" />
@@ -134,7 +167,7 @@
                 </div>
                 
                 <!-- Logo 3: Challenge Works -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-brand-orange transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-brand-orange transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 160 35" xmlns="http://www.w3.org/2000/svg">
                         <rect x="6" y="11" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
                         <path d="M12 7 V11 M12 23 V27 M6 17 H10 M20 17 H24" stroke="currentColor" stroke-width="2" />
@@ -144,7 +177,7 @@
                 </div>
                 
                 <!-- Logo 4: World Bank -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#0072C6] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#0072C6] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 160 35" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="18" cy="17" r="12" stroke="currentColor" stroke-width="1.5" fill="none" />
                         <path d="M6 17 H30 M18 5 V29 M9 10 A 13 13 0 0 0 9 24 M27 10 A 13 13 0 0 1 27 24" stroke="currentColor" stroke-width="1" fill="none" />
@@ -154,7 +187,7 @@
                 </div>
                 
                 <!-- Logo 5: United Nations -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#009EDB] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#009EDB] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 140 35" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 6 L18 6 L18 20 A 4 4 0 0 1 10 20 Z" stroke="currentColor" stroke-width="1.5" fill="none" />
                         <text x="28" y="18" font-family="system-ui, sans-serif" font-weight="900" font-size="13">UNITED NATIONS</text>
@@ -163,7 +196,7 @@
                 </div>
                 
                 <!-- Logo 6: Safaricom / M-Pesa -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#4A9B2D] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#4A9B2D] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 150 35" xmlns="http://www.w3.org/2000/svg">
                         <path d="M 6 17 A 11 11 0 0 1 24 10" stroke="currentColor" stroke-width="2.5" fill="none" />
                         <circle cx="21" cy="21" r="5" fill="currentColor" />
@@ -173,7 +206,7 @@
                 </div>
                 
                 <!-- Logo 7: Mombasa County -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-brand-teal-500 transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-brand-teal-500 transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 180 35" xmlns="http://www.w3.org/2000/svg">
                         <polygon points="18,6 27,15 24,27 12,27 9,15" stroke="currentColor" stroke-width="1.5" fill="none" />
                         <text x="36" y="18" font-family="system-ui, sans-serif" font-weight="900" font-size="11">MOMBASA COUNTY</text>
@@ -185,7 +218,7 @@
             <!-- Second Track (Seamless Duplicate) -->
             <div class="logo-marquee-track" aria-hidden="true">
                 <!-- Logo 1: USAID -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#002F6C] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#002F6C] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0" y="2" width="6" height="22" fill="#BA0C2F" />
                         <text x="12" y="16" font-family="system-ui, sans-serif" font-weight="900" font-size="14" letter-spacing="-0.5">USAID</text>
@@ -194,7 +227,7 @@
                 </div>
                 
                 <!-- Logo 2: Mastercard Foundation -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#FF5F00] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#FF5F00] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 160 35" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="17" r="11" fill="currentColor" fill-opacity="0.2" />
                         <circle cx="28" cy="17" r="11" fill="currentColor" fill-opacity="0.3" />
@@ -204,7 +237,7 @@
                 </div>
                 
                 <!-- Logo 3: Challenge Works -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-brand-orange transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-brand-orange transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 160 35" xmlns="http://www.w3.org/2000/svg">
                         <rect x="6" y="11" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
                         <path d="M12 7 V11 M12 23 V27 M6 17 H10 M20 17 H24" stroke="currentColor" stroke-width="2" />
@@ -214,7 +247,7 @@
                 </div>
                 
                 <!-- Logo 4: World Bank -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#0072C6] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#0072C6] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 160 35" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="18" cy="17" r="12" stroke="currentColor" stroke-width="1.5" fill="none" />
                         <path d="M6 17 H30 M18 5 V29 M9 10 A 13 13 0 0 0 9 24 M27 10 A 13 13 0 0 1 27 24" stroke="currentColor" stroke-width="1" fill="none" />
@@ -224,7 +257,7 @@
                 </div>
                 
                 <!-- Logo 5: United Nations -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#009EDB] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#009EDB] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 140 35" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 6 L18 6 L18 20 A 4 4 0 0 1 10 20 Z" stroke="currentColor" stroke-width="1.5" fill="none" />
                         <text x="28" y="18" font-family="system-ui, sans-serif" font-weight="900" font-size="13">UNITED NATIONS</text>
@@ -233,7 +266,7 @@
                 </div>
                 
                 <!-- Logo 6: Safaricom / M-Pesa -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-[#4A9B2D] transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-[#4A9B2D] transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 150 35" xmlns="http://www.w3.org/2000/svg">
                         <path d="M 6 17 A 11 11 0 0 1 24 10" stroke="currentColor" stroke-width="2.5" fill="none" />
                         <circle cx="21" cy="21" r="5" fill="currentColor" />
@@ -243,7 +276,7 @@
                 </div>
                 
                 <!-- Logo 7: Mombasa County -->
-                <div class="h-16 flex items-center text-ink-muted/50 hover:text-brand-teal-500 transition-colors duration-300">
+                <div class="h-16 flex items-center text-black/80 hover:text-brand-teal-500 transition-colors duration-300">
                     <svg class="h-12 w-auto fill-current" viewBox="0 0 180 35" xmlns="http://www.w3.org/2000/svg">
                         <polygon points="18,6 27,15 24,27 12,27 9,15" stroke="currentColor" stroke-width="1.5" fill="none" />
                         <text x="36" y="18" font-family="system-ui, sans-serif" font-weight="900" font-size="11">MOMBASA COUNTY</text>

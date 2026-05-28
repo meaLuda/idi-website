@@ -4142,6 +4142,10 @@ video {
   color: rgb(0 99 119 / 0.6);
 }
 
+.text-black\/80 {
+  color: rgb(0 0 0 / 0.8);
+}
+
 .placeholder-ink-muted\/50::-moz-placeholder {
   color: rgb(75 91 96 / 0.5);
 }
