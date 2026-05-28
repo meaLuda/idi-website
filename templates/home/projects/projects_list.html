@@ -202,10 +202,10 @@
         </div>
 
         <!-- Article list -->
-        <div class="divide-y divide-gray-100" id="articles-list">
+        <div class="flex flex-col gap-6" id="articles-list">
 
             <!-- ── ITEM 1 ── -->
-            <article class="article-item py-6 sm:py-7 grid grid-cols-[1fr_auto] gap-4 sm:gap-8 hover:bg-gray-50/60 -mx-3 px-3 rounded-lg transition-colors"
+            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
                      data-type="Articles" data-topics="governance public-service-delivery policy">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
@@ -232,7 +232,7 @@
             </article>
 
             <!-- ── ITEM 2 ── -->
-            <article class="article-item py-6 sm:py-7 grid grid-cols-[1fr_auto] gap-4 sm:gap-8 hover:bg-gray-50/60 -mx-3 px-3 rounded-lg transition-colors"
+            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
                      data-type="Articles" data-topics="ai governance design artificial-intelligence">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
@@ -259,7 +259,7 @@
             </article>
 
             <!-- ── ITEM 3 ── -->
-            <article class="article-item py-6 sm:py-7 grid grid-cols-[1fr_auto] gap-4 sm:gap-8 hover:bg-gray-50/60 -mx-3 px-3 rounded-lg transition-colors"
+            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
                      data-type="Toolkits" data-topics="sustainability measurement toolkit">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
@@ -291,7 +291,7 @@
             </article>
 
             <!-- ── ITEM 4 ── -->
-            <article class="article-item py-6 sm:py-7 grid grid-cols-[1fr_auto] gap-4 sm:gap-8 hover:bg-gray-50/60 -mx-3 px-3 rounded-lg transition-colors"
+            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
                      data-type="Articles" data-topics="venture ecosystem innovation">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
@@ -319,7 +319,7 @@
             </article>
 
             <!-- ── ITEM 5 ── -->
-            <article class="article-item py-6 sm:py-7 grid grid-cols-[1fr_auto] gap-4 sm:gap-8 hover:bg-gray-50/60 -mx-3 px-3 rounded-lg transition-colors"
+            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
                      data-type="Articles" data-topics="health design systems medical">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
@@ -351,7 +351,7 @@
             </article>
 
             <!-- ── ITEM 6 ── -->
-            <article class="article-item py-6 sm:py-7 grid grid-cols-[1fr_auto] gap-4 sm:gap-8 hover:bg-gray-50/60 -mx-3 px-3 rounded-lg transition-colors"
+            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
                      data-type="Toolkits" data-topics="innovation design implementation playbook">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
@@ -382,7 +382,7 @@
 
             <!-- Dynamic DB projects -->
             {% for project in projects %}
-            <article class="article-item py-6 sm:py-7 grid grid-cols-[1fr_auto] gap-4 sm:gap-8 hover:bg-gray-50/60 -mx-3 px-3 rounded-lg transition-colors"
+            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
                      data-type="Articles" data-topics="{% if project.tags %}{{ project.tags|lower }}{% else %}case-study{% endif %}">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
