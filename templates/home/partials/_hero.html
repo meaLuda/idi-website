@@ -81,6 +81,7 @@
 
     <script>
     (function () {
+        // 1. Manual arrow controls
         document.querySelectorAll('[data-scroll]').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var el = document.getElementById(btn.dataset.scroll);
@@ -90,6 +91,65 @@
                 el.scrollBy({ left: step * parseInt(btn.dataset.dir, 10), behavior: 'smooth' });
             });
         });
+
+        // 2. Premium Butter-Smooth Auto-Scroll
+        var scroller = document.getElementById('article-scroller');
+        if (!scroller) return;
+
+        var scrollSpeed = 0.6; // Scroll speed in pixels per step (very slow & elegant)
+        var scrollInterval = 30; // Milliseconds per step (approx 33fps for smoothness)
+        var active = true;
+        var timer = null;
+        var lastScrollLeft = -1;
+
+        function stepAutoScroll() {
+            if (!active) return;
+            
+            // Advance scroll position
+            scroller.scrollLeft += scrollSpeed;
+            
+            // Check if we hit the end of the scroll width
+            var maxScroll = scroller.scrollWidth - scroller.clientWidth;
+            
+            // If the position hasn't changed (e.g. hit end of list) or is past max scroll
+            if (scroller.scrollLeft >= maxScroll - 1 || scroller.scrollLeft === lastScrollLeft) {
+                // Smoothly loop back to start
+                scroller.scrollLeft = 0;
+            }
+            
+            lastScrollLeft = scroller.scrollLeft;
+        }
+
+        function startAutoScroll() {
+            if (timer) clearInterval(timer);
+            timer = setInterval(stepAutoScroll, scrollInterval);
+        }
+
+        // Pause on mouse hover (desktop)
+        scroller.addEventListener('mouseenter', function () {
+            active = false;
+        });
+        
+        scroller.addEventListener('mouseleave', function () {
+            active = true;
+        });
+
+        // Pause on touch interactions (mobile-friendly)
+        var touchTimeout = null;
+        scroller.addEventListener('touchstart', function () {
+            active = false;
+            if (touchTimeout) clearTimeout(touchTimeout);
+        }, { passive: true });
+
+        scroller.addEventListener('touchend', function () {
+            // Resume scrolling after 3.5 seconds of inactivity
+            touchTimeout = setTimeout(function () {
+                active = true;
+            }, 3500);
+        }, { passive: true });
+
+        // Initialize auto-scroll
+        startAutoScroll();
     })();
     </script>
 </section>
