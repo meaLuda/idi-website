@@ -92,32 +92,36 @@
             });
         });
 
-        // 2. Premium Butter-Smooth Auto-Scroll
+        // 2. Premium 100% Seamless Infinite Auto-Scroll
         var scroller = document.getElementById('article-scroller');
         if (!scroller) return;
 
-        var scrollSpeed = 0.6; // Scroll speed in pixels per step (very slow & elegant)
-        var scrollInterval = 30; // Milliseconds per step (approx 33fps for smoothness)
+        // Capture original width before cloning
+        var originalScrollWidth = scroller.scrollWidth;
+
+        // Clone cards for seamless looping
+        var cards = Array.from(scroller.querySelectorAll('a.group'));
+        cards.forEach(function (card) {
+            scroller.appendChild(card.cloneNode(true));
+        });
+
+        var scrollSpeed = 0.8; // Continuous elegant glide speed
+        var scrollInterval = 16; // ~60fps step for extreme smoothness
+        var currentScroll = 0;
         var active = true;
         var timer = null;
-        var lastScrollLeft = -1;
 
         function stepAutoScroll() {
             if (!active) return;
             
-            // Advance scroll position
-            scroller.scrollLeft += scrollSpeed;
+            currentScroll += scrollSpeed;
             
-            // Check if we hit the end of the scroll width
-            var maxScroll = scroller.scrollWidth - scroller.clientWidth;
-            
-            // If the position hasn't changed (e.g. hit end of list) or is past max scroll
-            if (scroller.scrollLeft >= maxScroll - 1 || scroller.scrollLeft === lastScrollLeft) {
-                // Smoothly loop back to start
-                scroller.scrollLeft = 0;
+            // Seamless mathematical wrap-around
+            if (currentScroll >= originalScrollWidth) {
+                currentScroll -= originalScrollWidth;
             }
             
-            lastScrollLeft = scroller.scrollLeft;
+            scroller.scrollLeft = Math.floor(currentScroll);
         }
 
         function startAutoScroll() {
@@ -148,7 +152,7 @@
             }, 3500);
         }, { passive: true });
 
-        // Initialize auto-scroll
+        // Initialize
         startAutoScroll();
     })();
     </script>
