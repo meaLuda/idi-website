@@ -180,6 +180,35 @@
 </section>
 
 <!-- 5. An experiential learning approach -->
+<style>
+    .image-accordion-item {
+        transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s ease, filter 0.6s ease;
+        flex: 1;
+        cursor: pointer;
+    }
+    
+    @media (hover: hover) {
+        .image-accordion-container:hover .image-accordion-item {
+            flex: 0.6;
+            filter: grayscale(20%) brightness(90%);
+        }
+        .image-accordion-container:hover .image-accordion-item:hover {
+            flex: 2.2;
+            filter: none;
+        }
+    }
+    
+    /* Touch / Click persistent states */
+    .image-accordion-item.active {
+        flex: 2.2 !important;
+        filter: none !important;
+    }
+    .image-accordion-container.has-active .image-accordion-item:not(.active) {
+        flex: 0.6;
+        filter: grayscale(20%) brightness(90%);
+    }
+</style>
+
 <section class="py-16 md:py-24 bg-[#FAF3E0]">
     <div class="container mx-auto px-4 max-w-6xl">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -201,13 +230,13 @@
                 </div>
             </div>
             
-            <div class="order-1 lg:order-2 flex gap-3 h-[400px] md:h-[500px]">
+            <div class="order-1 lg:order-2 flex gap-3 h-[400px] md:h-[500px] image-accordion-container">
                 <!-- Vertical Image 1 -->
-                <div class="w-1/4 h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-4">
+                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-4" onclick="activateAccordionItem(this)">
                     <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Learning 1">
                 </div>
                 <!-- Vertical Image 2 with Play Button -->
-                <div class="w-1/4 h-full rounded-2xl overflow-hidden shadow-lg relative transform -translate-y-2">
+                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg relative transform -translate-y-2" onclick="activateAccordionItem(this)">
                     <img src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Learning 2">
                     <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
                         <div class="w-12 h-12 bg-[#2D68FF] rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform">
@@ -216,11 +245,11 @@
                     </div>
                 </div>
                 <!-- Vertical Image 3 -->
-                <div class="w-1/4 h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-6">
+                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-6" onclick="activateAccordionItem(this)">
                     <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Learning 3">
                 </div>
                 <!-- Vertical Image 4 -->
-                <div class="w-1/4 h-full rounded-2xl overflow-hidden shadow-lg transform -translate-y-4">
+                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform -translate-y-4" onclick="activateAccordionItem(this)">
                     <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Learning 4">
                 </div>
             </div>
@@ -228,6 +257,27 @@
         </div>
     </div>
 </section>
+
+<script>
+    function activateAccordionItem(el) {
+        const container = el.parentElement;
+        
+        // Remove active class from all sibling items
+        container.querySelectorAll('.image-accordion-item').forEach(item => {
+            if (item !== el) item.classList.remove('active');
+        });
+        
+        // Toggle the clicked one
+        el.classList.toggle('active');
+        
+        // Toggle the has-active class on the container
+        if (container.querySelector('.image-accordion-item.active')) {
+            container.classList.add('has-active');
+        } else {
+            container.classList.remove('has-active');
+        }
+    }
+</script>
 
 <!-- 6. Join our collective intelligence network -->
 <section id="join" class="py-16 md:py-24 bg-[#FAF3E0]">
