@@ -5,14 +5,13 @@ from .models import Project, TeamMember, Testimonial, Program, Partner, Client, 
 
 ARTICLE_PAGE_SIZE = 5
 
-# WHERE WE APPLY IT — static content (slug drives the masked tile asset).
 PRACTICE_TILES = [
-    {"num": "01", "slug": "governance-public-service-delivery", "title": "Governance & Public Service Delivery"},
-    {"num": "02", "slug": "responsible-sovereign-ai", "title": "Responsible / Sovereign AI"},
-    {"num": "03", "slug": "sustainability-practice", "title": "Sustainability Practice"},
-    {"num": "04", "slug": "venture-building-innovation-ecosystems", "title": "Venture Building & Innovation Ecosystems"},
-    {"num": "05", "slug": "community-public-service-delivery", "title": "Community & Public Service Delivery"},
-    {"num": "06", "slug": "food-systems-health-practice", "title": "Food Systems & Health Practice"},
+    {"num": "01", "slug": "food-systems-health-practice", "title": "FOOD SYSTEMS PRACTICE"},
+    {"num": "02", "slug": "sustainability-practice", "title": "HEALTH"},
+    {"num": "03", "slug": "community-public-service-delivery", "title": "environment"},
+    {"num": "04", "slug": "responsible-sovereign-ai", "title": "Responsible / Sovereign AI"},
+    {"num": "05", "slug": "governance-public-service-delivery", "title": "Governance & Public Service Delivery"},
+    {"num": "06", "slug": "venture-building-innovation-ecosystems", "title": "Venture Building & Innovation Ecosystems"},
 ]
 
 
@@ -82,6 +81,18 @@ def academy(request):
     return render(request, "home/fellowship/academy.html", context)
 
 
+def civic_innovation_fellowship(request):
+    """
+    View for the Democratic Futures Civic Innovation Fellowship page.
+    """
+    context = {
+        'page_title': 'Democratic Futures Civic Innovation Fellowship 2026',
+        'page_description': "Building Kenya's Next Generation of Public Innovators. A fellowship to cultivate professionals who bridge technology, governance, and civic responsibility.",
+        'page_keywords': 'Civic Innovation, Fellowship, Kenya, Public Innovators, Digital Governance, Decision Intelligence',
+    }
+    return render(request, 'home/fellowship/civic_innovation.html', context)
+
+
 def project_detail(request, slug):
     project = get_object_or_404(Project, slug=slug, is_active=True)
     
@@ -96,6 +107,10 @@ def project_detail(request, slug):
     }
     if slug == 'the-mombasa-county-plastics-prize':
         return render(request, 'home/projects/mombasa_plastics.html', context)
+    elif slug == 'space-ai':
+        return render(request, 'home/projects/space_ai.html', context)
+    elif slug == 'be-green':
+        return render(request, 'home/projects/be_green.html', context)
         
     return render(request, 'home/projects/project_detail.html', context)
 
@@ -339,3 +354,45 @@ def services(request):
         'page_keywords': 'Services, Strategy, Design, Insights, Data, Implementation, Scale, Decision Intelligence, Africa, Innovation',
     }
     return render(request, 'home/services.html', context)
+
+
+def sustainability_practice(request):
+    """
+    View for the Health (formerly Sustainability) practice page.
+    """
+    context = {
+        'page_title': 'Health',
+        'page_description': 'Designing for health and resilience. We build custom decision intelligence frameworks for healthcare systems across Africa.',
+        'page_keywords': 'Health, Decision Intelligence, Healthcare, Africa, Innovation',
+    }
+    return render(request, 'home/sustainability_practice.html', context)
+
+
+def venture_building(request):
+    """
+    View for the Venture Building & Innovation Ecosystems practice page.
+    """
+    context = {
+        'page_title': 'Venture Building & Innovation Ecosystems',
+        'page_description': 'Accelerating growth and building robust innovation ecosystems across the African continent.',
+        'page_keywords': 'Venture Building, Innovation, Ecosystems, Startups, Scale, Africa',
+    }
+    return render(request, 'home/venture_building.html', context)
+
+
+def contact(request):
+    """
+    View for the dedicated Contact Us page.
+    """
+    success = False
+    if request.method == "POST":
+        # Process visual inquiry submission
+        success = True
+        
+    context = {
+        'success': success,
+        'page_title': 'Contact Us',
+        'page_description': 'Get in touch with IDI Africa. Whether you want to partner with us, join our fellowship, or initiate an inquiry, we would love to hear from you.',
+        'page_keywords': 'Contact, Inquiry, Partnership, Decision Intelligence, Africa, Kenya, Nairobi',
+    }
+    return render(request, "home/contact.html", context)

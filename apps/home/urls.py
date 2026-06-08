@@ -13,6 +13,7 @@ urlpatterns = [
     path('articles/', views.articles, name="articles"),
     # New URL paths
     path('fellowship/did-academy', views.academy, name="did-academy"),
+    path('fellowship/democratic-futures-civic-innovation/', views.civic_innovation_fellowship, name='civic_innovation_fellowship'),
     path('team/<slug:slug>/', views.TeamMemberDetailView.as_view(), name='team_member_detail'),
     path('projects/<slug:slug>/', views.project_detail, name='project_detail'),
     path('programs/<slug:slug>/', views.program_detail, name='program_detail'),
@@ -24,6 +25,9 @@ urlpatterns = [
     path('community-public-service-delivery/', views.community_public_service_delivery, name='community_public_service_delivery'),
     path('case-studies/reimagining-youth-opportunity-systems/', views.reimagining_youth, name='reimagining_youth'),
     path('food-systems-health-practice/', views.food_systems_health_practice, name='food_systems_health_practice'),
+    path('health-practice/', views.sustainability_practice, name='sustainability_practice'),
+    path('venture-building-innovation-ecosystems/', views.venture_building, name='venture_building'),
     path('services/', views.services, name='services'),
+    path('contact/', views.contact, name='contact'),
     path('health/', health_check, name='health_check'),
 ]

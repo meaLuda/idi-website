@@ -2,17 +2,49 @@
 {% load static %}
 
 {% block title %}Insights — Research, Thought Leadership &amp; Tools | IDI{% endblock %}
-{% block meta_description %}Research, thought leadership, and tools from IDI Africa. Bringing context, representation, and deep decision intelligence to structural transitions.{% endblock %}
+{% block meta_description %}Research, thought leadership, and tools from IDI Africa. Bringing context, representation,
+and deep decision intelligence to structural transitions.{% endblock %}
 
 {% block content %}
 <style>
-    .article-item { transition: background 0.15s ease; }
-    .type-badge-articles  { background:#e6f3f5; color:#006377; border:1px solid #b8dadf; }
-    .type-badge-toolkits  { background:#f0f3e6; color:#4a6741; border:1px solid #ccd19c; }
-    .type-badge-books     { background:#f5f0e6; color:#7a5c2a; border:1px solid #d4c09a; }
-    .type-badge-memoriam  { background:#f0e6f0; color:#6a3a6a; border:1px solid #c09ac0; }
-    .type-filter-btn.active { border-color:#006377; box-shadow:0 0 0 3px rgba(0,99,119,0.12); }
-    .topic-pill.active { background:#006377; color:#fff; border-color:#006377; }
+    .article-item {
+        transition: background 0.15s ease;
+    }
+
+    .type-badge-articles {
+        background: #e6f3f5;
+        color: #006377;
+        border: 1px solid #b8dadf;
+    }
+
+    .type-badge-toolkits {
+        background: #f0f3e6;
+        color: #4a6741;
+        border: 1px solid #ccd19c;
+    }
+
+    .type-badge-books {
+        background: #f5f0e6;
+        color: #7a5c2a;
+        border: 1px solid #d4c09a;
+    }
+
+    .type-badge-memoriam {
+        background: #f0e6f0;
+        color: #6a3a6a;
+        border: 1px solid #c09ac0;
+    }
+
+    .type-filter-btn.active {
+        border-color: #006377;
+        box-shadow: 0 0 0 3px rgba(0, 99, 119, 0.12);
+    }
+
+    .topic-pill.active {
+        background: #006377;
+        color: #fff;
+        border-color: #006377;
+    }
 </style>
 
 <!-- ═══════════════════════════════════════════════
@@ -25,24 +57,25 @@
             <!-- LEFT: two stacked teal-tinted images -->
             <div class="flex-shrink-0 flex flex-col gap-2">
                 <!-- Circle image (top) -->
-                <div class="w-[110px] h-[110px] sm:w-[130px] sm:h-[130px] rounded-full overflow-hidden relative shadow-md flex-shrink-0">
-                    <img src="{% static 'images/governance/board1.png' %}"
-                         alt="IDI Insights"
-                         class="w-full h-full object-cover">
+                <div
+                    class="w-[110px] h-[110px] sm:w-[130px] sm:h-[130px] rounded-full overflow-hidden relative shadow-md flex-shrink-0">
+                    <img src="{% static 'images/governance/board1.png' %}" alt="IDI Insights"
+                        class="w-full h-full object-cover" loading="lazy">
                     <div class="absolute inset-0 bg-brand-teal-700/60 mix-blend-multiply"></div>
                 </div>
                 <!-- Rectangle image (bottom) -->
-                <div class="w-[110px] h-[150px] sm:w-[130px] sm:h-[180px] rounded-none overflow-hidden relative shadow-md flex-shrink-0">
-                    <img src="{% static 'images/governance/case1.png' %}"
-                         alt="IDI field work"
-                         class="w-full h-full object-cover">
+                <div
+                    class="w-[110px] h-[150px] sm:w-[130px] sm:h-[180px] rounded-none overflow-hidden relative shadow-md flex-shrink-0">
+                    <img src="{% static 'images/governance/case1.png' %}" alt="IDI field work"
+                        class="w-full h-full object-cover" loading="lazy">
                     <div class="absolute inset-0 bg-brand-teal-700/60 mix-blend-multiply"></div>
                 </div>
             </div>
 
             <!-- RIGHT: title, subtitle, button -->
             <div class="flex-grow">
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-teal-700 leading-tight mb-4 tracking-tight">
+                <h1
+                    class="text-5xl sm:text-6xl lg:text-7xl font-normal text-brand-teal-700 leading-tight mb-4 tracking-tight">
                     Insights
                 </h1>
                 <p class="text-ink-muted text-sm sm:text-base leading-relaxed max-w-lg mb-6 font-normal">
@@ -50,8 +83,8 @@
                     see, the solutions we design, and the lessons we learn.
                 </p>
                 <a href="#subscribe-section"
-                   onclick="document.getElementById('subscribe-section').scrollIntoView({behavior:'smooth'}); return false;"
-                   class="inline-block bg-brand-teal-700 text-white text-sm font-semibold px-7 py-3 rounded-full hover:bg-brand-teal-500 transition-colors duration-200 shadow-sm">
+                    onclick="document.getElementById('subscribe-section').scrollIntoView({behavior:'smooth'}); return false;"
+                    class="inline-block bg-brand-teal-700 text-white text-sm font-semibold px-7 py-3 rounded-full hover:bg-brand-teal-500 transition-colors duration-200 shadow-sm">
                     Subscribe for Updates
                 </a>
             </div>
@@ -66,20 +99,19 @@
 <section class="relative overflow-hidden border-b border-gray-200">
     <!-- Full-bleed warm amber/brown background photo -->
     <div class="absolute inset-0">
-        <img src="{% static 'images/teamDecionIntelligence.webp' %}"
-             alt="Featured Insight Background"
-             class="w-full h-full object-cover">
-        <!-- Warm amber tint overlay -->
-        <div class="absolute inset-0" style="background-color: rgba(160, 90, 0, 0.72);"></div>
+        <img src="{% static 'images/teamDecionIntelligence.webp' %}" alt="Featured Insight Background"
+            class="w-full h-full object-cover" loading="lazy">
+        <!-- Warm amber tint overlay (darkened) -->
+        <div class="absolute inset-0" style="background-color: rgba(120, 60, 0, 0.85);"></div>
     </div>
 
     <!-- Content -->
     <div class="relative z-10 container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-        <!-- Section label -->
-        <p class="text-white font-bold text-sm sm:text-base mb-6 text-center">Featured Insight</p>
+        <!-- Section label aligned to the start of the box -->
+        <p class="text-white font-bold text-base sm:text-lg mb-6 text-left max-w-5xl mx-auto">Featured Insight</p>
 
         <!-- White floating card -->
-        <div class="bg-white rounded-2xl p-7 sm:p-10 max-w-3xl shadow-xl mx-auto">
+        <div class="bg-white rounded-2xl p-7 sm:p-10 max-w-5xl shadow-xl mx-auto">
             <!-- BRIEF tag -->
             <p class="text-[11px] font-black uppercase tracking-widest text-brand-teal-600 mb-3">Brief</p>
 
@@ -90,8 +122,10 @@
 
             <!-- Description -->
             <p class="text-ink-muted text-sm leading-relaxed mb-6 font-light">
-                As organizations integrate AI into critical systems, we must move beyond AI ethics and toward AI governance. This brief
-                explores the frameworks and practices needed to design AI systems that are not just responsible, but generative of public
+                As organizations integrate AI into critical systems, we must move beyond AI ethics and toward AI
+                governance. This brief
+                explores the frameworks and practices needed to design AI systems that are not just responsible, but
+                generative of public
                 value.
             </p>
 
@@ -102,11 +136,12 @@
                     <span>8 min read</span>
                 </div>
                 <a href="#"
-                   onclick="alert('Full paper access is limited to subscribers. Subscribe below!'); return false;"
-                   class="text-sm font-bold text-brand-teal-600 hover:text-brand-orange transition-colors duration-200 flex items-center gap-1.5">
+                    onclick="alert('Full paper access is limited to subscribers. Subscribe below!'); return false;"
+                    class="text-sm font-bold text-brand-teal-600 hover:text-brand-orange transition-colors duration-200 flex items-center gap-1.5">
                     Read More
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                 </a>
             </div>
@@ -121,60 +156,76 @@
 <section class="bg-white py-14 lg:py-20 border-b border-gray-100">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h2 class="text-3xl lg:text-4xl font-black uppercase text-ink tracking-tight">Browse by Type</h2>
+            <h2 class="text-3xl lg:text-4xl font-normal text-ink tracking-tight">Browse by Type</h2>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
 
             <!-- Books -->
             <button onclick="filterByType('Books', this)"
-                    class="type-filter-btn text-left bg-white border border-gray-200 rounded-xl p-6 hover:border-brand-teal-300 hover:shadow-card transition-all duration-200 group">
-                <h3 class="text-sm font-extrabold text-ink mb-2 group-hover:text-brand-teal-500 transition-colors">Books</h3>
+                class="type-filter-btn text-left bg-white border border-gray-200 rounded-xl p-6 hover:border-brand-teal-300 hover:shadow-card transition-all duration-200 group">
+                <h3 class="text-sm font-extrabold text-ink mb-2 group-hover:text-brand-teal-500 transition-colors">Books
+                </h3>
                 <p class="text-ink-muted text-xs leading-relaxed mb-5 font-light">
                     Long-form publications, structured guides and reference books for practitioners.
                 </p>
-                <span class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
+                <span
+                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
                     Browse
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
                 </span>
             </button>
 
             <!-- Articles -->
             <button onclick="filterByType('Articles', this)"
-                    class="type-filter-btn text-left bg-white border border-gray-200 rounded-xl p-6 hover:border-brand-teal-300 hover:shadow-card transition-all duration-200 group">
-                <h3 class="text-sm font-extrabold text-ink mb-2 group-hover:text-brand-teal-500 transition-colors">Articles</h3>
+                class="type-filter-btn text-left bg-white border border-gray-200 rounded-xl p-6 hover:border-brand-teal-300 hover:shadow-card transition-all duration-200 group">
+                <h3 class="text-sm font-extrabold text-ink mb-2 group-hover:text-brand-teal-500 transition-colors">
+                    Articles</h3>
                 <p class="text-ink-muted text-xs leading-relaxed mb-5 font-light">
                     In-depth essays, analytical research pieces and thought leadership writing.
                 </p>
-                <span class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
+                <span
+                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
                     Browse
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
                 </span>
             </button>
 
             <!-- Toolkits -->
             <button onclick="filterByType('Toolkits', this)"
-                    class="type-filter-btn text-left bg-white border border-gray-200 rounded-xl p-6 hover:border-brand-teal-300 hover:shadow-card transition-all duration-200 group">
-                <h3 class="text-sm font-extrabold text-ink mb-2 group-hover:text-brand-teal-500 transition-colors">Toolkits</h3>
+                class="type-filter-btn text-left bg-white border border-gray-200 rounded-xl p-6 hover:border-brand-teal-300 hover:shadow-card transition-all duration-200 group">
+                <h3 class="text-sm font-extrabold text-ink mb-2 group-hover:text-brand-teal-500 transition-colors">
+                    Toolkits</h3>
                 <p class="text-ink-muted text-xs leading-relaxed mb-5 font-light">
                     Practical templates, frameworks, checklists and methodologies for use.
                 </p>
-                <span class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
+                <span
+                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
                     Browse
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
                 </span>
             </button>
 
             <!-- In-Memoriam Posts -->
             <button onclick="filterByType('In-Memoriam', this)"
-                    class="type-filter-btn text-left bg-white border border-gray-200 rounded-xl p-6 hover:border-brand-teal-300 hover:shadow-card transition-all duration-200 group">
-                <h3 class="text-sm font-extrabold text-ink mb-2 group-hover:text-brand-teal-500 transition-colors">In-Memoriam Posts</h3>
+                class="type-filter-btn text-left bg-white border border-gray-200 rounded-xl p-6 hover:border-brand-teal-300 hover:shadow-card transition-all duration-200 group">
+                <h3 class="text-sm font-extrabold text-ink mb-2 group-hover:text-brand-teal-500 transition-colors">
+                    In-Memoriam Posts</h3>
                 <p class="text-ink-muted text-xs leading-relaxed mb-5 font-light">
                     Tributes honouring the legacy and contributions of key thinkers in the field.
                 </p>
-                <span class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
+                <span
+                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
                     Browse
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
                 </span>
             </button>
 
@@ -189,192 +240,247 @@
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         <div class="text-center mb-12">
-            <h2 class="text-3xl lg:text-4xl font-black uppercase text-ink tracking-tight">Latest Content</h2>
+            <h2 class="text-3xl lg:text-4xl font-normal text-ink tracking-tight">Latest Content</h2>
         </div>
 
         <!-- Active filter indicator -->
-        <div id="active-filter-banner" class="hidden mb-8 flex items-center justify-between bg-brand-teal-50 border border-brand-teal-100 rounded-xl px-5 py-3">
+        <div id="active-filter-banner"
+            class="hidden mb-8 flex items-center justify-between bg-brand-teal-50 border border-brand-teal-100 rounded-xl px-5 py-3">
             <p class="text-sm font-semibold text-brand-teal-900 flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-brand-orange inline-block"></span>
                 Filter: <span id="active-filter-name" class="text-brand-orange uppercase ml-1"></span>
             </p>
-            <button onclick="clearFilter()" class="text-xs font-bold text-ink-muted hover:text-brand-orange uppercase">Clear ✕</button>
+            <button onclick="clearFilter()"
+                class="text-xs font-bold text-ink-muted hover:text-brand-orange uppercase">Clear ✕</button>
         </div>
 
         <!-- Article list -->
         <div class="flex flex-col gap-6" id="articles-list">
 
             <!-- ── ITEM 1 ── -->
-            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                     data-type="Articles" data-topics="governance public-service-delivery policy">
+            <article
+                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
+                data-type="Articles" data-topics="governance public-service-delivery policy">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
+                        <span
+                            class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
                         <span class="text-ink-muted text-[11px]">Policy</span>
                     </div>
-                    <h3 class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#" onclick="alert('Full access is limited to subscribers. Subscribe below!'); return false;">
+                    <h3
+                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
+                        <a href="#"
+                            onclick="alert('Full access is limited to subscribers. Subscribe below!'); return false;">
                             The Future of Public Service Delivery
                         </a>
                     </h3>
                     <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        How decision intelligence design is transforming public service delivery and civic capacity across Africa's structural transitions.
+                        How decision intelligence design is transforming public service delivery and civic capacity
+                        across Africa's structural transitions.
                     </p>
                     <div class="flex flex-wrap gap-1.5">
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Governance</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Public Service Delivery</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Governance</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Public
+                            Service Delivery</span>
                     </div>
                 </div>
-                <div class="text-right flex flex-col items-end justify-start gap-1 pt-0.5 flex-shrink-0">
+                <div
+                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
                     <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Jan 2026</span>
                     <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">6 min read</span>
                 </div>
             </article>
 
             <!-- ── ITEM 2 ── -->
-            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                     data-type="Articles" data-topics="ai governance design artificial-intelligence">
+            <article
+                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
+                data-type="Articles" data-topics="ai governance design artificial-intelligence">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
+                        <span
+                            class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
                         <span class="text-ink-muted text-[11px]">AI</span>
                     </div>
-                    <h3 class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#" onclick="alert('Full access is limited to subscribers. Subscribe below!'); return false;">
+                    <h3
+                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
+                        <a href="#"
+                            onclick="alert('Full access is limited to subscribers. Subscribe below!'); return false;">
                             Building Inclusive AI Governance Frameworks
                         </a>
                     </h3>
                     <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        Designing AI architectures that are trusted, context-aware, and built for long-term sovereign public value in developmental contexts.
+                        Designing AI architectures that are trusted, context-aware, and built for long-term sovereign
+                        public value in developmental contexts.
                     </p>
                     <div class="flex flex-wrap gap-1.5">
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">AI</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Design</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">AI</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Design</span>
                     </div>
                 </div>
-                <div class="text-right flex flex-col items-end justify-start gap-1 pt-0.5 flex-shrink-0">
+                <div
+                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
                     <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Dec 2025</span>
                     <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">8 min read</span>
                 </div>
             </article>
 
             <!-- ── ITEM 3 ── -->
-            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                     data-type="Toolkits" data-topics="sustainability measurement toolkit">
+            <article
+                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
+                data-type="Toolkits" data-topics="sustainability measurement toolkit">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span class="type-badge-toolkits text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Toolkits</span>
+                        <span
+                            class="type-badge-toolkits text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Toolkits</span>
                         <span class="text-ink-muted text-[11px]">Sustainability</span>
                         <span class="text-ink-muted/40 text-[11px]">•</span>
                         <span class="text-ink-muted text-[11px]">Measurement</span>
                         <span class="text-ink-muted/40 text-[11px]">•</span>
                         <span class="text-ink-muted text-[11px]">Tools</span>
                     </div>
-                    <h3 class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#" onclick="alert('Subscribers get complete toolkit repository access. Join now!'); return false;">
+                    <h3
+                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
+                        <a href="#"
+                            onclick="alert('Subscribers get complete toolkit repository access. Join now!'); return false;">
                             Sustainability Toolkit: Measurement Frameworks
                         </a>
                     </h3>
                     <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        Practical guidelines and structured metrics for tracking and assessing sustainability outcomes across public initiative execution.
+                        Practical guidelines and structured metrics for tracking and assessing sustainability outcomes
+                        across public initiative execution.
                     </p>
                     <div class="flex flex-wrap gap-1.5">
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Sustainability</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Measurement</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Toolkit</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Sustainability</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Measurement</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Toolkit</span>
                     </div>
                 </div>
-                <div class="text-right flex flex-col items-end justify-start gap-1 pt-0.5 flex-shrink-0">
+                <div
+                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
                     <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Dec 2025</span>
                     <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">5 min read</span>
                 </div>
             </article>
 
             <!-- ── ITEM 4 ── -->
-            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                     data-type="Articles" data-topics="venture ecosystem innovation">
+            <article
+                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
+                data-type="Articles" data-topics="venture ecosystem innovation">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
+                        <span
+                            class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
                         <span class="text-ink-muted text-[11px]">Ecosystems</span>
                     </div>
-                    <h3 class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#" onclick="alert('Subscribers get complete repository access. Join now!'); return false;">
+                    <h3
+                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
+                        <a href="#"
+                            onclick="alert('Subscribers get complete repository access. Join now!'); return false;">
                             Venture Ecosystem Rapid Assessment
                         </a>
                     </h3>
                     <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        A multi-dimensional diagnostic matrix for auditing and expanding local venture building ecosystems across emerging technology clusters.
+                        A multi-dimensional diagnostic matrix for auditing and expanding local venture building
+                        ecosystems across emerging technology clusters.
                     </p>
                     <div class="flex flex-wrap gap-1.5">
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Venture</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Innovation</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Research</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Venture</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Innovation</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Research</span>
                     </div>
                 </div>
-                <div class="text-right flex flex-col items-end justify-start gap-1 pt-0.5 flex-shrink-0">
+                <div
+                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
                     <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Nov 2025</span>
                     <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">7 min read</span>
                 </div>
             </article>
 
             <!-- ── ITEM 5 ── -->
-            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                     data-type="Articles" data-topics="health design systems medical">
+            <article
+                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
+                data-type="Articles" data-topics="health design systems medical">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
+                        <span
+                            class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
                         <span class="text-ink-muted text-[11px]">Health</span>
                         <span class="text-ink-muted/40 text-[11px]">•</span>
                         <span class="text-ink-muted text-[11px]">Design</span>
                         <span class="text-ink-muted/40 text-[11px]">•</span>
                         <span class="text-ink-muted text-[11px]">Systems</span>
                     </div>
-                    <h3 class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#" onclick="alert('Subscribers get complete repository access. Join now!'); return false;">
+                    <h3
+                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
+                        <a href="#"
+                            onclick="alert('Subscribers get complete repository access. Join now!'); return false;">
                             The Role of Design in Health Systems
                         </a>
                     </h3>
                     <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        Analyzing why human-centric design thinking is fundamental to engineering adaptive, resilient and accessible health ecosystems.
+                        Analyzing why human-centric design thinking is fundamental to engineering adaptive, resilient
+                        and accessible health ecosystems.
                     </p>
                     <div class="flex flex-wrap gap-1.5">
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Health</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Design</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Systems</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Health</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Design</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Systems</span>
                     </div>
                 </div>
-                <div class="text-right flex flex-col items-end justify-start gap-1 pt-0.5 flex-shrink-0">
+                <div
+                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
                     <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Nov 2025</span>
                     <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">9 min read</span>
                 </div>
             </article>
 
             <!-- ── ITEM 6 ── -->
-            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                     data-type="Toolkits" data-topics="innovation design implementation playbook">
+            <article
+                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
+                data-type="Toolkits" data-topics="innovation design implementation playbook">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span class="type-badge-toolkits text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Toolkits</span>
+                        <span
+                            class="type-badge-toolkits text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Toolkits</span>
                         <span class="text-ink-muted text-[11px]">Innovation</span>
                         <span class="text-ink-muted/40 text-[11px]">•</span>
                         <span class="text-ink-muted text-[11px]">Implementation</span>
                     </div>
-                    <h3 class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#" onclick="alert('Subscribers get complete playbook repository. Join now!'); return false;">
+                    <h3
+                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
+                        <a href="#"
+                            onclick="alert('Subscribers get complete playbook repository. Join now!'); return false;">
                             Innovation Challenges: Implementation Playbook
                         </a>
                     </h3>
                     <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        An end-to-end framework outlining the tactical steps for launching, framing, and administering strategic innovation processes.
+                        An end-to-end framework outlining the tactical steps for launching, framing, and administering
+                        strategic innovation processes.
                     </p>
                     <div class="flex flex-wrap gap-1.5">
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Innovation</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Design</span>
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Implementation</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Innovation</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Design</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Implementation</span>
                     </div>
                 </div>
-                <div class="text-right flex flex-col items-end justify-start gap-1 pt-0.5 flex-shrink-0">
+                <div
+                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
                     <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Oct 2025</span>
                     <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">11 min read</span>
                 </div>
@@ -382,29 +488,42 @@
 
             <!-- Dynamic DB projects -->
             {% for project in projects %}
-            <article class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                     data-type="Articles" data-topics="{% if project.tags %}{{ project.tags|lower }}{% else %}case-study{% endif %}">
+            <article
+                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
+                data-type="Articles"
+                data-topics="{% if project.tags %}{{ project.tags|lower }}{% else %}case-study{% endif %}">
                 <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
+                        <span
+                            class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
                         <span class="text-ink-muted text-[11px]">Case Study</span>
                     </div>
-                    <h3 class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
+                    <h3
+                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
                         <a href="{% url 'home:project_detail' project.slug %}">{{ project.title }}</a>
                     </h3>
                     <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        {% if project.challenge %}{{ project.challenge|truncatewords:20 }}{% else %}{{ project.excerpt|default:"Decision intelligence solutions for complex structural contexts."|truncatewords:20 }}{% endif %}
+                        {% if project.challenge %}{{ project.challenge|truncatewords:20 }}{% else %}{{
+                        project.excerpt|default:"Decision intelligence solutions for complex structural
+                        contexts."|truncatewords:20 }}{% endif %}
                     </p>
                     <div class="flex flex-wrap gap-1.5">
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Project</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Project</span>
                         {% if project.tags %}
-                        <span class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">{{ project.tags }}</span>
+                        <span
+                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">{{
+                            project.tags }}</span>
                         {% endif %}
                     </div>
                 </div>
-                <div class="text-right flex flex-col items-end justify-start gap-1 pt-0.5 flex-shrink-0">
-                    <span class="text-xs text-ink-muted font-medium whitespace-nowrap">{{ project.created_at|date:"M Y" }}</span>
-                    <a href="{% url 'home:project_detail' project.slug %}" class="text-[11px] font-bold text-brand-teal-500 hover:text-brand-orange whitespace-nowrap transition-colors">Read →</a>
+                <div
+                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
+                    <span class="text-xs text-ink-muted font-medium whitespace-nowrap">{{ project.created_at|date:"M Y"
+                        }}</span>
+                    <a href="{% url 'home:project_detail' project.slug %}"
+                        class="text-[11px] font-bold text-brand-teal-500 hover:text-brand-orange whitespace-nowrap transition-colors">Read
+                        →</a>
                 </div>
             </article>
             {% endfor %}
@@ -419,21 +538,42 @@
 <section class="bg-[#f6f5f0] py-14 lg:py-20 border-b border-gray-200/60">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10">
-            <h2 class="text-3xl lg:text-4xl font-black uppercase text-ink tracking-tight">Topics</h2>
+            <h2 class="text-3xl lg:text-4xl font-normal text-ink tracking-tight">Topics</h2>
         </div>
         <div class="flex flex-wrap justify-center gap-2.5">
-            <button onclick="filterByTopic('governance',this)"         class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Governance</button>
-            <button onclick="filterByTopic('ai',this)"                 class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">In the Age of AI</button>
-            <button onclick="filterByTopic('measurement',this)"        class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Basic Validity</button>
-            <button onclick="filterByTopic('implementation',this)"     class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Non-State Compliance</button>
-            <button onclick="filterByTopic('health',this)"             class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Health Systems</button>
-            <button onclick="filterByTopic('food',this)"               class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Food Systems</button>
-            <button onclick="filterByTopic('community',this)"          class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Civic Mobility</button>
-            <button onclick="filterByTopic('venture',this)"            class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">ag innovation</button>
-            <button onclick="filterByTopic('design',this)"             class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Design Management</button>
-            <button onclick="filterByTopic('systems',this)"            class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Systems Thinking</button>
-            <button onclick="filterByTopic('design',this)"             class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Design</button>
-            <button onclick="filterByTopic('research',this)"           class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Research</button>
+            <button onclick="filterByTopic('governance',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Governance</button>
+            <button onclick="filterByTopic('ai',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">In
+                the Age of AI</button>
+            <button onclick="filterByTopic('measurement',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Basic
+                Validity</button>
+            <button onclick="filterByTopic('implementation',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Non-State
+                Compliance</button>
+            <button onclick="filterByTopic('health',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Health
+                Systems</button>
+            <button onclick="filterByTopic('food',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Food
+                Systems</button>
+            <button onclick="filterByTopic('community',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Civic
+                Mobility</button>
+            <button onclick="filterByTopic('venture',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">ag
+                innovation</button>
+            <button onclick="filterByTopic('design',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Design
+                Management</button>
+            <button onclick="filterByTopic('systems',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Systems
+                Thinking</button>
+            <button onclick="filterByTopic('design',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Design</button>
+            <button onclick="filterByTopic('research',this)"
+                class="topic-pill px-4 py-2 text-xs font-semibold text-ink bg-white border border-gray-200 rounded-full hover:bg-brand-teal-500 hover:text-white hover:border-brand-teal-500 transition-all duration-200">Research</button>
         </div>
     </div>
 </section>
@@ -443,8 +583,7 @@
 ═══════════════════════════════════════════════ -->
 <section class="bg-white py-20 lg:py-28 text-center border-b border-gray-100" id="subscribe-section">
     <div class="container mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight mb-4"
-            style="color:#006377;">
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight mb-4" style="color:#006377;">
             Stay Connected
         </h2>
         <p class="text-ink-muted text-sm font-light leading-relaxed mb-8 max-w-sm mx-auto">
@@ -452,17 +591,12 @@
         </p>
 
         <div id="nl-form-wrap">
-            <form id="newsletter-form"
-                  class="flex flex-col sm:flex-row items-center gap-3 justify-center">
+            <form id="newsletter-form" class="flex flex-col sm:flex-row items-center gap-3 justify-center">
                 <label for="nl-email" class="sr-only">Email address</label>
-                <input type="email"
-                       id="nl-email"
-                       name="email"
-                       required
-                       placeholder="Enter your email..."
-                       class="w-full sm:w-auto flex-grow bg-white border border-gray-300 focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100 rounded-full px-5 py-3 text-sm text-ink placeholder-ink-muted/50 focus:outline-none transition-all duration-200">
+                <input type="email" id="nl-email" name="email" required placeholder="Enter your email..."
+                    class="w-full sm:w-auto flex-grow bg-white border border-gray-300 focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100 rounded-full px-5 py-3 text-sm text-ink placeholder-ink-muted/50 focus:outline-none transition-all duration-200">
                 <button type="submit"
-                        class="flex-shrink-0 px-7 py-3 bg-brand-teal-500 text-white text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange transition-all duration-300 shadow-card whitespace-nowrap">
+                    class="flex-shrink-0 px-7 py-3 bg-brand-teal-500 text-white text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange transition-all duration-300 shadow-card whitespace-nowrap">
                     Subscribe
                 </button>
             </form>
@@ -518,7 +652,7 @@
     }
 
     // Newsletter submit
-    document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+    document.getElementById('newsletter-form').addEventListener('submit', function (e) {
         e.preventDefault();
         document.getElementById('nl-form-wrap').style.display = 'none';
         document.getElementById('newsletter-success').classList.remove('hidden');

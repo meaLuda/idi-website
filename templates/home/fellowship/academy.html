@@ -5,22 +5,30 @@
 <!-- 1. Hero Section -->
 <section class="relative bg-[#006377] min-h-screen flex items-center pt-32 pb-24">
     <div class="absolute inset-0">
-        <img src="{% static 'images/engagment_bg.webp' %}" class="w-full h-full object-cover opacity-20" alt="Hero Background" onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'">
+        <img src="{% static 'images/engagment_bg.webp' %}" class="w-full h-full object-cover opacity-20"
+            alt="Hero Background"
+            onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'" loading="lazy">
         <div class="absolute inset-0 bg-[#006377]/70 mix-blend-multiply"></div>
     </div>
     <div class="container mx-auto px-4 relative z-10 text-white max-w-5xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight tracking-wide">
-            Decision Intelligence Design Academy (DIDAcademy)
-        </h1>
+        <p class="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight mb-6 leading-tight">
+            Decision Intelligence <br class="hidden sm:inline">Design Academy <br class="hidden sm:inline">(DIDAcademy)
+        </p>
         <p class="text-lg md:text-xl text-white/90 mb-10 max-w-3xl leading-relaxed">
-            Developing Africa's capacity for design-, tech- & data-driven decision-making for social, business and public innovation.
+            Developing Africa's capacity for design-, tech- & data-driven decision-making for social, business and
+            public innovation.
         </p>
         <div class="flex flex-wrap gap-4">
-            <a href="#join" class="bg-white text-[#006377] px-8 py-3 rounded-full font-medium flex items-center hover:bg-gray-100 transition-colors shadow-lg">
-                Join the network 
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <a href="#join"
+                class="bg-white text-[#006377] px-8 py-3 rounded-full font-medium flex items-center hover:bg-gray-100 transition-colors shadow-lg">
+                Join the network
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                    </path>
+                </svg>
             </a>
-            <a href="#programs" class="bg-transparent border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition-colors">
+            <a href="#programs"
+                class="bg-transparent border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition-colors">
                 Explore programs
             </a>
         </div>
@@ -33,19 +41,26 @@
         <div class="flex justify-center mb-8 opacity-40">
             <!-- DIDA Logo SVG from existing -->
             <svg width="150" height="45" viewBox="0 0 207 59" fill="#000" xmlns="http://www.w3.org/2000/svg">
-                <path d="M178.326 0.699627V34.7059H151.123V27.9037C151.123 12.8788 163.302 0.699627 178.326 0.699627Z" />
+                <path
+                    d="M178.326 0.699627V34.7059H151.123V27.9037C151.123 12.8788 163.302 0.699627 178.326 0.699627Z" />
                 <path d="M178.326 58.3004H151.123V36.3203H178.326V58.3004Z" />
                 <path d="M207 33.0574V58.3004H179.796V5.85333C194.821 5.85333 207 18.0335 207 33.0574Z" />
-                <path d="M54.0887 28.0296H3.75002C3.16757 28.0296 2.69629 27.5574 2.69629 26.9759V1.88021C2.69629 1.29775 3.16757 0.825523 3.75002 0.825523H28.993C43.4354 0.825523 55.1424 12.5334 55.1424 26.9759C55.1424 27.5574 54.6711 28.0296 54.0887 28.0296Z" />
-                <path d="M86.7573 4.3308V54.6694C86.7573 55.2519 86.2851 55.7232 85.7036 55.7232H60.6079C60.0255 55.7232 59.5542 55.2519 59.5542 54.6694V29.4265C59.5542 14.984 71.2611 3.27707 85.7036 3.27707C86.2851 3.27707 86.7573 3.74835 86.7573 4.3308Z" />
+                <path
+                    d="M54.0887 28.0296H3.75002C3.16757 28.0296 2.69629 27.5574 2.69629 26.9759V1.88021C2.69629 1.29775 3.16757 0.825523 3.75002 0.825523H28.993C43.4354 0.825523 55.1424 12.5334 55.1424 26.9759C55.1424 27.5574 54.6711 28.0296 54.0887 28.0296Z" />
+                <path
+                    d="M86.7573 4.3308V54.6694C86.7573 55.2519 86.2851 55.7232 85.7036 55.7232H60.6079C60.0255 55.7232 59.5542 55.2519 59.5542 54.6694V29.4265C59.5542 14.984 71.2611 3.27707 85.7036 3.27707C86.2851 3.27707 86.7573 3.74835 86.7573 4.3308Z" />
                 <path d="M25.243 56.7037H0V29.4996H52.4461C52.4461 44.5246 40.2669 56.7037 25.243 56.7037Z" />
-                <path d="M146.728 28.0296H96.3897C95.8072 28.0296 95.3359 27.5574 95.3359 26.9759V1.88021C95.3359 1.29775 95.8072 0.825523 96.3897 0.825523H121.633C136.075 0.825523 147.782 12.5334 147.782 26.9759C147.782 27.5574 147.311 28.0296 146.728 28.0296Z" />
+                <path
+                    d="M146.728 28.0296H96.3897C95.8072 28.0296 95.3359 27.5574 95.3359 26.9759V1.88021C95.3359 1.29775 95.8072 0.825523 96.3897 0.825523H121.633C136.075 0.825523 147.782 12.5334 147.782 26.9759C147.782 27.5574 147.311 28.0296 146.728 28.0296Z" />
                 <path d="M117.883 56.7037H92.6396V29.4996H145.087C145.087 44.5246 132.907 56.7037 117.883 56.7037Z" />
             </svg>
         </div>
-        <h2 class="text-2xl md:text-3xl font-bold text-[#006377] mb-6">What is Decision Intelligence?</h2>
-        <p class="text-gray-600 text-lg leading-relaxed text-center font-light">
-            Decision intelligence blends data, design and behavioral insights to turn information into transformative action through emerging technologies. It is a unifying framework that enables cross-functional teams to tackle complex challenges responsibly, scale innovations, and ensure sustainable public, private and civic development.
+        <p class="text-display-lg font-normal text-[#006377] mb-6">What is Decision Intelligence?</p>
+        <p class="text-ink-muted text-lg leading-relaxed text-center font-light">
+            Decision intelligence blends data, design and behavioral insights to turn information into transformative
+            action through emerging technologies. It is a unifying framework that enables cross-functional teams to
+            tackle complex challenges responsibly, scale innovations, and ensure sustainable public, private and civic
+            development.
         </p>
     </div>
 </section>
@@ -53,32 +68,35 @@
 <!-- 3. About the Academy -->
 <section class="py-16 md:py-24 bg-[#FAF3E0]">
     <div class="container mx-auto px-4 max-w-7xl">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-                <h2 class="text-3xl md:text-4xl font-bold text-[#006377] mb-6">About the Academy</h2>
-                <p class="text-[#006377]/90 text-lg leading-relaxed font-medium">
-                    The Decision Intelligence Design Academy (DIDAcademy) is Africa's leading capacity-development ecosystem for decision-intelligent governance, leadership and innovation. We weave leadership and talent development with rigorous training in design, data, AI and emerging technologies—cultivating shared vocabularies, interoperable frameworks, value-driven solutions, and cross-program networks to accelerate responsible, high-impact AI literacy and adoption across public, private, and civic sectors.
-                </p>
+        <div class="max-w-4xl mx-auto text-center mb-12">
+            <p class="text-display-lg font-normal text-ink mb-4">About the Academy</p>
+            <p class="text-ink-muted text-base leading-relaxed font-light">
+                The Decision Intelligence Design Academy (DIDAcademy) is Africa's leading capacity-development
+                ecosystem for decision-intelligent governance, leadership and innovation. We weave leadership and
+                talent development with rigorous training in design, data, AI and emerging technologies—cultivating
+                shared vocabularies, interoperable frameworks, value-driven solutions, and cross-program networks to
+                accelerate responsible, high-impact AI literacy and adoption across public, private, and civic
+                sectors.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <div class="bg-white rounded-2xl p-6 flex items-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-white border border-[#f99a00] rounded-lg flex items-center justify-center flex-shrink-0 text-[#f99a00] mr-5">
+                    <span class="font-bold text-lg leading-none">A</span>
+                </div>
+                <p class="text-[#006377] font-semibold text-[15px]"><span class="font-bold">Integrity-first, life-centered design:</span> Ethics, care and sustainable decision practices</p>
             </div>
-            <div class="space-y-4">
-                <div class="bg-white rounded-2xl p-6 flex items-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-white border border-[#f99a00] rounded-lg flex items-center justify-center flex-shrink-0 text-[#f99a00] mr-5">
-                        <span class="font-bold text-lg leading-none">A</span>
-                    </div>
-                    <p class="text-[#006377] font-semibold text-[15px]"><span class="font-bold">Integrity-first, life-centered design:</span> Ethics, care and sustainable decision practices</p>
+            <div class="bg-white rounded-2xl p-6 flex items-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-white border border-[#f99a00] rounded-lg flex items-center justify-center flex-shrink-0 text-[#f99a00] mr-5">
+                    <span class="font-bold text-lg leading-none">B</span>
                 </div>
-                <div class="bg-white rounded-2xl p-6 flex items-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-white border border-[#f99a00] rounded-lg flex items-center justify-center flex-shrink-0 text-[#f99a00] mr-5">
-                        <span class="font-bold text-lg leading-none">B</span>
-                    </div>
-                    <p class="text-[#006377] font-semibold text-[15px]"><span class="font-bold">Interoperable, cross-sector frameworks:</span> Shared methodologies from pilots to enterprise</p>
+                <p class="text-[#006377] font-semibold text-[15px]"><span class="font-bold">Interoperable, cross-sector frameworks:</span> Shared methodologies from pilots to enterprise</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 flex items-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-white border border-[#f99a00] rounded-lg flex items-center justify-center flex-shrink-0 text-[#f99a00] mr-5">
+                    <span class="font-bold text-lg leading-none">C</span>
                 </div>
-                <div class="bg-white rounded-2xl p-6 flex items-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-white border border-[#f99a00] rounded-lg flex items-center justify-center flex-shrink-0 text-[#f99a00] mr-5">
-                        <span class="font-bold text-lg leading-none">C</span>
-                    </div>
-                    <p class="text-[#006377] font-bold text-[15px]">Leadership + Design + Data + AI + Cross-program networks</p>
-                </div>
+                <p class="text-[#006377] font-semibold text-[15px]">Leadership + Design + Data + AI + Cross-program networks</p>
             </div>
         </div>
     </div>
@@ -87,22 +105,27 @@
 <!-- 4. Decision Intelligence programs -->
 <section id="programs" class="py-16 md:py-24 relative overflow-hidden bg-[#006377]">
     <div class="absolute inset-0">
-        <img src="{% static 'images/governance/hero_bg.png' %}" class="w-full h-full object-cover opacity-20" alt="Programs Background" onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'">
+        <img src="{% static 'images/governance/hero_bg.png' %}" class="w-full h-full object-cover opacity-20"
+            alt="Programs Background"
+            onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'" loading="lazy">
         <div class="absolute inset-0 bg-[#006377]/70 mix-blend-multiply"></div>
     </div>
     <div class="container mx-auto px-4 relative z-10 max-w-6xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Decision Intelligence programs</h2>
-        
+        <p class="text-display-lg font-normal text-white text-center mb-12">Decision Intelligence Programs
+        </p>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- EXECUTIVE -->
-            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 lg:p-10 text-white relative">
+            <div
+                class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 lg:p-10 text-white relative">
                 <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
-                    <div class="w-5 h-5 border-2 border-[#f99a00] rounded-sm transform rotate-45 flex items-center justify-center">
+                    <div
+                        class="w-5 h-5 border-2 border-[#f99a00] rounded-sm transform rotate-45 flex items-center justify-center">
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full"></div>
                     </div>
                 </div>
-                <h3 class="text-xl font-bold tracking-widest mb-8">EXECUTIVE</h3>
-                
+                <p class="text-xl font-normal tracking-widest mb-8">Executive</p>
+
                 <ul class="space-y-6 text-sm lg:text-base text-white/90">
                     <li class="flex items-start">
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -115,62 +138,71 @@
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         <div>
                             <span class="font-bold">Objective:</span><br>
-                            <span class="font-light">Equip leadership with frameworks to scale innovation from pilots to enterprise</span>
+                            <span class="font-light">Equip leadership with frameworks to scale innovation from pilots to
+                                enterprise</span>
                         </div>
                     </li>
                     <li class="flex items-start">
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         <div>
                             <span class="font-bold">Approach:</span><br>
-                            <span class="font-light">Case studies, diagnostics, innovation labs, roadmap sprints and executive coaching</span>
+                            <span class="font-light">Case studies, diagnostics, innovation labs, roadmap sprints and
+                                executive coaching</span>
                         </div>
                     </li>
                     <li class="flex items-start">
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         <div>
                             <span class="font-bold">Outcomes:</span><br>
-                            <span class="font-light">Agile governance, organizational capability and networks that reduce digital and human risk</span>
+                            <span class="font-light">Agile governance, organizational capability and networks that
+                                reduce digital and human risk</span>
                         </div>
                     </li>
                 </ul>
             </div>
-            
+
             <!-- EMERGING TALENT -->
-            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 lg:p-10 text-white relative">
+            <div
+                class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 lg:p-10 text-white relative">
                 <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
-                    <div class="w-5 h-5 border-2 border-[#f99a00] rounded-sm transform rotate-45 flex items-center justify-center">
+                    <div
+                        class="w-5 h-5 border-2 border-[#f99a00] rounded-sm transform rotate-45 flex items-center justify-center">
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full"></div>
                     </div>
                 </div>
-                <h3 class="text-xl font-bold tracking-widest mb-8">EMERGING TALENT</h3>
-                
+                <p class="text-xl font-normal tracking-widest mb-8">Emerging Talent</p>
+
                 <ul class="space-y-6 text-sm lg:text-base text-white/90">
                     <li class="flex items-start">
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         <div>
                             <span class="font-bold">Audience:</span><br>
-                            <span class="font-light">Early- and mid-career professionals, innovators, designers and researchers</span>
+                            <span class="font-light">Early- and mid-career professionals, innovators, designers and
+                                researchers</span>
                         </div>
                     </li>
                     <li class="flex items-start">
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         <div>
                             <span class="font-bold">Objective:</span><br>
-                            <span class="font-light">Cultivate cross-disciplinary talent for end-to-end and data-driven innovation</span>
+                            <span class="font-light">Cultivate cross-disciplinary talent for end-to-end and data-driven
+                                innovation</span>
                         </div>
                     </li>
                     <li class="flex items-start">
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         <div>
                             <span class="font-bold">Approach:</span><br>
-                            <span class="font-light">Opportunity mapping, rapid prototyping, hands-on training and accelerated apprenticeships</span>
+                            <span class="font-light">Opportunity mapping, rapid prototyping, hands-on training and
+                                accelerated apprenticeships</span>
                         </div>
                     </li>
                     <li class="flex items-start">
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         <div>
                             <span class="font-bold">Outcomes:</span><br>
-                            <span class="font-light">Portfolio development, case strategy, visualization and real-world application readiness</span>
+                            <span class="font-light">Portfolio development, case strategy, visualization and real-world
+                                application readiness</span>
                         </div>
                     </li>
                 </ul>
@@ -214,7 +246,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             <div class="order-2 lg:order-1">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#006377] mb-6 leading-tight">An experiential<br>learning approach</h2>
+                <p class="text-3xl md:text-4xl font-normal text-[#006377] mb-6 leading-tight">An experiential<br>learning approach</p>
                 <p class="text-[#006377]/90 text-lg mb-8 max-w-md">
                     Our expert-led, experiential model employs flexible modules so partners can co-create participant-focused outcomes:
                 </p>
@@ -233,24 +265,19 @@
             <div class="order-1 lg:order-2 flex gap-3 h-[400px] md:h-[500px] image-accordion-container">
                 <!-- Vertical Image 1 -->
                 <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-4" onclick="activateAccordionItem(this)">
-                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Learning 1">
+                    <img src="{% static 'images/core_principles/2J7A4415.jpg' %}" class="w-full h-full object-cover" alt="Learning 1" loading="lazy">
                 </div>
-                <!-- Vertical Image 2 with Play Button -->
+                <!-- Vertical Image 2 -->
                 <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg relative transform -translate-y-2" onclick="activateAccordionItem(this)">
-                    <img src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Learning 2">
-                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
-                        <div class="w-12 h-12 bg-[#2D68FF] rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform">
-                            <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                    </div>
+                    <img src="{% static 'images/core_principles/2J7A4334.jpg' %}" class="w-full h-full object-cover" alt="Learning 2" loading="lazy">
                 </div>
                 <!-- Vertical Image 3 -->
                 <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-6" onclick="activateAccordionItem(this)">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Learning 3">
+                    <img src="{% static 'images/core_principles/2J7A4124.jpg' %}" class="w-full h-full object-cover" alt="Learning 3" loading="lazy">
                 </div>
                 <!-- Vertical Image 4 -->
                 <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform -translate-y-4" onclick="activateAccordionItem(this)">
-                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Learning 4">
+                    <img src="{% static 'images/core_principles/2J7A4203.jpg' %}" class="w-full h-full object-cover" alt="Learning 4" loading="lazy">
                 </div>
             </div>
             
@@ -282,64 +309,75 @@
 <!-- 6. Join our collective intelligence network -->
 <section id="join" class="py-16 md:py-24 bg-[#FAF3E0]">
     <div class="container mx-auto px-4 max-w-5xl">
-        <h2 class="text-2xl md:text-3xl font-bold text-[#006377] text-center mb-12 max-w-2xl mx-auto leading-tight">
-            Join our collective intelligence network for talent-driven impact
-        </h2>
-        
+        <p
+            class="text-2xl md:text-3xl font-normal text-[#006377] text-center mb-8 max-w-2xl mx-auto leading-tight">
+            Join Our Collective Intelligence Network for Talent-Driven Impact
+        </p>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             <!-- 01 Knowledge Partners -->
             <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
+                <div
+                    class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
                     01
                 </div>
-                <h3 class="text-[#006377] font-bold text-lg mb-3">Knowledge Partners</h3>
+                <p class="text-[#006377] font-normal text-lg mb-3">Knowledge Partners</p>
                 <p class="text-[#006377]/80 text-sm leading-relaxed">
                     Universities, research centers, thought leaders, institutions and foundations
                 </p>
             </div>
-            
+
             <!-- 02 Tech Resource Partners -->
             <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
+                <div
+                    class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
                     02
                 </div>
-                <h3 class="text-[#006377] font-bold text-lg mb-3">Tech Resource Partners</h3>
+                <p class="text-[#006377] font-normal text-lg mb-3">Tech Resource Partners</p>
                 <p class="text-[#006377]/80 text-sm leading-relaxed">
                     Cloud platforms and data providers, AI hubs, open source/civic tech
                 </p>
             </div>
-            
+
             <!-- 03 Implementation Partners -->
             <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
+                <div
+                    class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
                     03
                 </div>
-                <h3 class="text-[#006377] font-bold text-lg mb-3">Implementation Partners</h3>
+                <p class="text-[#006377] font-normal text-lg mb-3">Implementation Partners</p>
                 <p class="text-[#006377]/80 text-sm leading-relaxed">
                     Public sector agencies, civil society networks, private sector practitioners
                 </p>
             </div>
-            
+
             <!-- 04 Funding Partners -->
             <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
+                <div
+                    class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
                     04
                 </div>
-                <h3 class="text-[#006377] font-bold text-lg mb-3">Funding Partners</h3>
+                <p class="text-[#006377] font-normal text-lg mb-3">Funding Partners</p>
                 <p class="text-[#006377]/80 text-sm leading-relaxed">
                     Foundations, grants, philanthropy, impact investors, bilateral development
                 </p>
             </div>
         </div>
-        
+
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="#" class="bg-[#006377] text-white px-8 py-3 rounded-full font-medium flex items-center hover:bg-[#004e5e] transition-colors">
+            <a href="#"
+                class="bg-[#006377] text-white px-8 py-3 rounded-full font-medium flex items-center hover:bg-[#004e5e] transition-colors">
                 Become a partner
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
             </a>
-            <a href="#" class="bg-transparent border border-[#006377] text-[#006377] px-8 py-3 rounded-full font-medium flex items-center hover:bg-[#006377]/5 transition-colors">
+            <a href="#"
+                class="bg-transparent border border-[#006377] text-[#006377] px-8 py-3 rounded-full font-medium flex items-center hover:bg-[#006377]/5 transition-colors">
                 Co-design a program
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
             </a>
         </div>
     </div>
@@ -353,72 +391,81 @@
     <!-- Main Content -->
     <div class="container mx-auto px-4 max-w-6xl py-16">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-            
+
             <!-- Left: Get in touch Form -->
             <div>
-                <h3 class="text-[22px] font-bold mb-6 tracking-wide">Get in touch</h3>
+                <p class="text-[22px] font-normal mb-6 tracking-wide">Get in touch</p>
                 <form class="space-y-4">
                     <div>
-                        <input type="email" placeholder="Your email address" class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#ffa700] focus:bg-white/20 transition-all text-[15px]">
+                        <input type="email" placeholder="Your email address"
+                            class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#ffa700] focus:bg-white/20 transition-all text-[15px]">
                     </div>
                     <div>
-                        <textarea placeholder="Your inquiry" rows="4" class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#ffa700] focus:bg-white/20 transition-all text-[15px] resize-none"></textarea>
+                        <textarea placeholder="Your inquiry" rows="4"
+                            class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#ffa700] focus:bg-white/20 transition-all text-[15px] resize-none"></textarea>
                     </div>
                     <div class="flex items-start gap-3 mt-4">
-                        <input type="checkbox" id="terms" class="mt-1 flex-shrink-0 w-4 h-4 rounded border-0 bg-white text-[#ffa700] focus:ring-[#ffa700]">
+                        <input type="checkbox" id="terms"
+                            class="mt-1 flex-shrink-0 w-4 h-4 rounded border-0 bg-white text-[#ffa700] focus:ring-[#ffa700]">
                         <label for="terms" class="text-sm text-white/90 leading-relaxed">
-                            I agree to the <span class="font-bold text-white">Terms & Conditions</span> and consent to DIDC processing my data for communication purposes.
+                            I agree to the <span class="font-bold text-white">Terms & Conditions</span> and consent to
+                            DIDC processing my data for communication purposes.
                         </label>
                     </div>
                     <div class="pt-2">
-                        <button type="submit" class="w-full bg-[#ffa700] text-white font-bold px-8 py-3 rounded-full hover:bg-[#e69600] transition-colors text-[16px]">
+                        <button type="submit"
+                            class="w-full bg-[#ffa700] text-white font-bold px-8 py-3 rounded-full hover:bg-[#e69600] transition-colors text-[16px]">
                             Send message
                         </button>
                     </div>
                 </form>
             </div>
-            
+
             <!-- Right: Let's build what works -->
             <div class="lg:pt-0 pt-8">
-                <h3 class="text-[22px] font-bold mb-6 tracking-wide">Let's build what works</h3>
+                <p class="text-[22px] font-normal mb-6 tracking-wide">Let's build what works</p>
                 <p class="text-white/90 text-[15px] mb-8 leading-relaxed max-w-lg">
-                    A social, public and business strategy and innovation firm operating across the African continent and globally.
+                    A social, public and business strategy and innovation firm operating across the African continent
+                    and globally.
                 </p>
                 <div class="grid grid-cols-2 gap-y-5 gap-x-8 text-[15px]">
-                    <a href="#" class="text-white/90 hover:text-white transition-colors">About Us</a>
-                    <a href="#" class="text-white/90 hover:text-white transition-colors">Impact</a>
-                    <a href="#" class="text-white/90 hover:text-white transition-colors">Our Work</a>
-                    <a href="#" class="text-white/90 hover:text-white transition-colors">DIDA Academy</a>
-                    <a href="#" class="text-white/90 hover:text-white transition-colors">Partners</a>
-                    <a href="#" class="text-white/90 hover:text-white transition-colors">Contact</a>
+                    <a href="{% url 'home:lander' %}" class="text-white/90 hover:text-white transition-colors">About Us</a>
+                    <a href="{% url 'home:projects_list' %}" class="text-white/90 hover:text-white transition-colors">Impact</a>
+                    <a href="{% url 'home:projects_list' %}" class="text-white/90 hover:text-white transition-colors">Our Work</a>
+                    <a href="{% url 'home:did-academy' %}" class="text-white/90 hover:text-white transition-colors">DIDA Academy</a>
+                    <a href="{% url 'home:lander' %}#partners" class="text-white/90 hover:text-white transition-colors">Partners</a>
+                    <a href="{% url 'home:contact' %}" class="text-white/90 hover:text-white transition-colors">Contact</a>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Bottom Bar -->
     <div class="border-t border-white/10">
-        <div class="container mx-auto px-4 max-w-6xl py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/80">
+        <div
+            class="container mx-auto px-4 max-w-6xl py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/80">
             <!-- Logo -->
             <div class="flex items-center">
-                <img src="{% static 'images/wp-content/uploads/2024/08/idi-main-logo.webp' %}" alt="IDI Logo" class="h-10" onerror="this.style.display='none'">
+                <img src="{% static 'images/wp-content/uploads/2024/08/idi-logo-white.png' %}" alt="IDI Logo"
+                    class="h-8 md:h-10" onerror="this.style.display='none'" loading="lazy">
             </div>
-            
+
             <!-- Middle Links -->
             <div class="flex items-center gap-2">
                 <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                 <span class="text-white/50 mx-1">|</span>
                 <a href="#" class="hover:text-white transition-colors">Terms & Conditions</a>
             </div>
-            
+
             <!-- Copyright -->
             <div>
                 &copy; 2026 IDI. All rights reserved.
             </div>
         </div>
     </div>
-    
+
     <!-- Decorative Pattern -->
-    <div class="h-6 w-full bg-repeat-x bg-left" style="background-image: url('/static/images/home/divider-mosaic.png'); background-size: auto 100%;"></div>
+    <div class="h-6 w-full bg-repeat-x bg-left"
+        style="background-image: url('/static/images/home/divider-mosaic.png'); background-size: auto 100%;"></div>
 </footer>
 {% endblock %}

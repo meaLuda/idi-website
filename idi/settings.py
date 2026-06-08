@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost','127.0.0.1','.ngrok-free.app','.ngrok.io','.ngrok.app','.ngrok-free.dev','.ngrok.dev']
+ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost','127.0.0.1','.ngrok-free.app','.ngrok.io','.ngrok.app','.ngrok-free.dev','.ngrok.dev', '.localtunnel.me', '.loca.lt']
 
 # Google Analytics 4 measurement id (e.g. 'G-XXXXXXXXXX'). Empty = analytics off.
 GA_MEASUREMENT_ID = os.getenv('GA_MEASUREMENT_ID', '')
@@ -72,7 +72,7 @@ MIDDLEWARE = [
 # CSRF settings
 CSRF_COOKIE_SECURE = True  # Only send CSRF cookie over HTTPS
 CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to access the CSRF cookie
-CSRF_TRUSTED_ORIGINS = ['https://idi.africa', 'https://www.idi.africa','http://localhost', 'http://127.0.0.1','http://170.187.145.60','https://*.ngrok-free.app','https://*.ngrok.io','https://*.ngrok.app','https://*.ngrok.dev']  # Trusted origins that can submit forms
+CSRF_TRUSTED_ORIGINS = ['https://idi.africa', 'https://www.idi.africa','http://localhost', 'http://127.0.0.1','http://170.187.145.60','https://*.ngrok-free.app','https://*.ngrok-free.dev','https://*.ngrok.io','https://*.ngrok.app','https://*.ngrok.dev', 'https://*.localtunnel.me', 'https://*.loca.lt']  # Trusted origins that can submit forms
 
 # Session settings
 SESSION_COOKIE_SECURE = True  # Only send session cookie over HTTPS

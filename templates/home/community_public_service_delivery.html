@@ -3,72 +3,162 @@
 
 {% block content %}
 <!-- 1. Hero Section -->
-<section class="relative bg-[#004d5c] text-white overflow-hidden navbar-spacing">
-    <img src="{% static 'images/community/hero_bg.png' %}" alt="" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60 pointer-events-none">
-    <div class="absolute inset-0 bg-gradient-to-r from-brand-teal-900/90 via-brand-teal-800/80 to-transparent"></div>
-    <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 flex items-center min-h-[300px] lg:min-h-[400px]">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.1] max-w-4xl">
-            Community & <br class="hidden sm:inline">Public Service <br class="hidden sm:inline">Delivery
-        </h1>
+<section class="relative text-white overflow-hidden navbar-spacing py-12 lg:py-20"
+         style="background-image: linear-gradient(to right, rgba(0, 77, 92, 0.96) 0%, rgba(0, 77, 92, 0.82) 55%, rgba(0, 0, 0, 0.40) 100%), url({% static 'images/home/practices/community-public-service-delivery.webp' %});
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;">
+    <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center min-h-[220px] lg:min-h-[320px]">
+        <div class="max-w-4xl">
+            <!-- Eyebrow label -->
+            <span class="inline-block text-brand-yellow text-xs font-bold uppercase tracking-[0.18em] mb-4">Environmental Intelligence</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.1] mb-6">
+                Turning environmental data into intelligence for climate resilience, ecosystem action, and long-term public value.
+            </h1>
+            <p class="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-2xl">
+                Africa is data-rich, but too often decision-poor. Climate forecasts, ecological indicators, community observations, institutional records, and financing mechanisms remain fragmented across systems. We design Environmental Intelligence capabilities that connect these signals into practical foresight — helping institutions, communities, and innovators anticipate change, coordinate action, and build resilient systems across East Africa and the broader continent.
+            </p>
+        </div>
     </div>
 </section>
 
-<!-- 2. Centered Introduction -->
-<section class="bg-white py-16 lg:py-24">
-    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl lg:text-4xl font-extrabold text-ink leading-tight mb-8">
-            Designing for Relevance
-        </h2>
-        <p class="text-lg text-ink-muted leading-relaxed font-light mb-6">
-            Good services are local. We build frameworks, strategy, and products that respect and reflect community context, knowledge, and sovereignty. We believe public service is not just about raw scale—it's about the depth of civic trust.
-        </p>
+<!-- Decorative Mosaic Strip -->
+<div class="h-6 w-full bg-repeat-x bg-left"
+     style="background-image: url('{% static 'images/home/divider-mosaic.png' %}'); background-size: auto 100%;"
+     role="presentation" aria-hidden="true"></div>
+
+<!-- 2. Principles Section -->
+<section class="bg-white py-16 lg:py-24 border-b border-gray-100">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-ink leading-tight mb-4">
+                Designing Environmental Intelligence for Resilience, Trust, and Action
+            </h2>
+            <p class="text-base sm:text-lg text-ink-muted max-w-3xl mx-auto font-light mb-8">
+                We design Environmental Intelligence systems that are:
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-12">
+            <!-- Principle 1 -->
+            <div class="bg-surface-alt rounded-xl p-5 border border-gray-200/50 flex flex-col items-center text-center">
+                <span class="w-10 h-10 rounded-full bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-4 text-lg font-bold">1</span>
+                <p class="text-sm text-ink-muted font-medium">Grounded in existing institutions and mandates</p>
+            </div>
+            <!-- Principle 2 -->
+            <div class="bg-surface-alt rounded-xl p-5 border border-gray-200/50 flex flex-col items-center text-center">
+                <span class="w-10 h-10 rounded-full bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-4 text-lg font-bold">2</span>
+                <p class="text-sm text-ink-muted font-medium">Built on trusted environmental and community data</p>
+            </div>
+            <!-- Principle 3 -->
+            <div class="bg-surface-alt rounded-xl p-5 border border-gray-200/50 flex flex-col items-center text-center">
+                <span class="w-10 h-10 rounded-full bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-4 text-lg font-bold">3</span>
+                <p class="text-sm text-ink-muted font-medium">Governed through responsible data-sharing models</p>
+            </div>
+            <!-- Principle 4 -->
+            <div class="bg-surface-alt rounded-xl p-5 border border-gray-200/50 flex flex-col items-center text-center">
+                <span class="w-10 h-10 rounded-full bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-4 text-lg font-bold">4</span>
+                <p class="text-sm text-ink-muted font-medium">Useful for real decisions, not just reporting</p>
+            </div>
+            <!-- Principle 5 -->
+            <div class="bg-surface-alt rounded-xl p-5 border border-gray-200/50 flex flex-col items-center text-center">
+                <span class="w-10 h-10 rounded-full bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-4 text-lg font-bold">5</span>
+                <p class="text-sm text-ink-muted font-medium">Designed for public value, local ownership, and long-term resilience</p>
+            </div>
+        </div>
+
+        <div class="bg-brand-teal-50/40 border border-brand-teal-100 rounded-2xl p-6 md:p-8 text-center max-w-4xl mx-auto">
+            <p class="text-sm sm:text-base text-brand-teal-900 leading-relaxed font-light italic">
+                "The EI Programme materials define Environmental Intelligence as a way of combining climate, environmental, community, and institutional data to support better decisions before, during, and after climate-related events."
+            </p>
+        </div>
     </div>
 </section>
 
 <!-- 3. Shifts We Enable Section -->
-<section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
+<section class="bg-surface-alt py-16 lg:py-24 border-b border-gray-100">
     <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Shifts Towards the Future We're Building</h2>
-            <p class="text-base text-ink-muted max-w-2xl mx-auto">True transformation requires shifting from legacy models to agile, community-centric systems.</p>
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Shifts We Enable</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">These shifts reflect how we rethink environmental innovation across African systems.</p>
         </div>
         
         <div class="bg-white rounded-2xl border border-gray-200/80 shadow-card overflow-hidden">
-            <div class="grid grid-cols-2 bg-brand-teal-500 text-white px-6 py-4 text-sm font-bold uppercase tracking-wider">
+            <div class="hidden md:grid grid-cols-2 bg-brand-teal-500 text-white px-6 py-4 text-sm font-bold uppercase tracking-wider">
                 <div>From</div>
                 <div class="pl-8 sm:pl-12">To</div>
             </div>
             <div class="divide-y divide-gray-100">
                 <!-- Row 1 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-4 md:gap-0 items-center relative">
-                    <div class="text-ink-muted font-medium text-base">Top-down governance</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Fragmented environmental data</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
                     <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
                         <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
-                        Participatory governance
+                        Integrated environmental intelligence
                     </div>
                 </div>
                 <!-- Row 2 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-4 md:gap-0 items-center relative">
-                    <div class="text-ink-muted font-medium text-base">Generic templates</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Hazard monitoring</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
                     <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
                         <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
-                        Context-specific systems
+                        Impact-based foresight
                     </div>
                 </div>
                 <!-- Row 3 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-4 md:gap-0 items-center relative">
-                    <div class="text-ink-muted font-medium text-base">Imported systems</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">One-off dashboards</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
                     <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
                         <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
-                        Sovereign local models
+                        Governed decision-support systems
                     </div>
                 </div>
                 <!-- Row 4 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-4 md:gap-0 items-center relative">
-                    <div class="text-ink-muted font-medium text-base">Transactional relations</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Passive communities</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
                     <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
                         <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
-                        Deep community trust
+                        Community intelligence networks
+                    </div>
+                </div>
+                <!-- Row 5 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Donor-dependent pilots</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Sustainable environmental infrastructure
+                    </div>
+                </div>
+                <!-- Row 6 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Climate risk as response</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Climate resilience as anticipation
+                    </div>
+                </div>
+                <!-- Row 7 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Data as reporting</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Data as public value
+                    </div>
+                </div>
+                <!-- Row 8 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Innovation in isolation</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Open environmental intelligence ecosystems
                     </div>
                 </div>
             </div>
@@ -84,9 +174,9 @@
             <div class="lg:col-span-6 bg-gradient-to-br from-[#005263] to-[#003845] rounded-3xl p-8 lg:p-12 text-white flex flex-col justify-between shadow-card-lg relative overflow-hidden min-h-[400px]">
                 <div>
                     <span class="inline-block text-[11px] font-bold uppercase tracking-widest bg-brand-orange text-white px-3 py-1 rounded-full mb-6">Program</span>
-                    <h3 class="text-3xl lg:text-4xl font-extrabold leading-tight mb-6">Designing for the edges of Healthcare</h3>
+                    <h3 class="text-3xl lg:text-4xl font-extrabold leading-tight mb-6">Environmental Intelligence</h3>
                     <p class="text-base text-white/90 leading-relaxed font-light mb-6">
-                        An immersive, multi-disciplinary residency program focused on co-designing services and technology with communities that are underrepresented or historically marginalized.
+                        We help institutions transform environmental, climate, ecological, and community data into usable intelligence for resilience, adaptation, and sustainable development.
                     </p>
                 </div>
                 <div class="flex space-x-2 mt-8">
@@ -97,10 +187,10 @@
             <!-- Images Collage (6 cols) -->
             <div class="lg:col-span-6 grid grid-cols-12 gap-4">
                 <div class="col-span-8 rounded-3xl overflow-hidden shadow-card relative h-[350px] lg:h-auto">
-                    <img src="{% static 'images/community/program_team.png' %}" alt="Designers working together" class="w-full h-full object-cover">
+                    <img src="{% static 'images/community/program_team.png' %}" alt="Designers working together" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <div class="col-span-4 rounded-3xl overflow-hidden shadow-card relative h-[350px] lg:h-auto">
-                    <img src="{% static 'images/community/city_slice.png' %}" alt="Skyline" class="w-full h-full object-cover">
+                    <img src="{% static 'images/community/city_slice.png' %}" alt="Skyline" class="w-full h-full object-cover" loading="lazy">
                 </div>
             </div>
         </div>
@@ -111,8 +201,8 @@
 <section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">A Holistic Approach to Innovation</h2>
-            <p class="text-base text-ink-muted max-w-2xl mx-auto">Three key pillars that form our innovation toolkit, supporting system transformation at every layer.</p>
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">A Holistic Approach to Environmental Intelligence</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">Our work moves across three interconnected pillars.</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -124,15 +214,14 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
                     </div>
                     <h3 class="text-2xl font-bold text-ink mb-2">Learn</h3>
-                    <p class="text-brand-teal-600/80 text-xs font-semibold uppercase tracking-wider mb-4">Systems mapping & fieldwork</p>
-                    <p class="text-ink-muted text-sm leading-relaxed mb-6">We study existing system dynamics to expose systemic bottlenecks and understand civic patterns.</p>
+                    <p class="text-brand-teal-600/80 text-xs font-semibold uppercase tracking-wider mb-4">We uncover what is true, what matters, and what will work</p>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6">Environmental Intelligence begins with understanding the system before designing the intervention. We study the environmental, institutional, technical, financial, and community realities that shape a problem — identifying what already exists, where the gaps are, and what decisions need to be improved.</p>
                 </div>
                 <div class="bg-brand-teal-50/50 rounded-xl p-5 border border-brand-teal-50">
                     <ul class="space-y-2.5 text-sm text-brand-teal-900 font-medium">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Community led audits</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Co-design workshops</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Contextual research</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Behavioral mapping</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Understand environmental systems, stakeholder ecosystems, and institutional mandates</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Assess data landscapes, policies, governance structures, and implementation conditions</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Surface community insights, opportunities, risks, and assumptions that shape what will work</li>
                     </ul>
                 </div>
             </div>
@@ -145,14 +234,14 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                     </div>
                     <h3 class="text-2xl font-bold text-ink mb-2">Create</h3>
-                    <p class="text-brand-teal-600/80 text-xs font-semibold uppercase tracking-wider mb-4">Service design & system prototyping</p>
-                    <p class="text-ink-muted text-sm leading-relaxed mb-6">We design and co-develop tailored public service systems, ensuring policy and execution align.</p>
+                    <p class="text-brand-teal-600/80 text-xs font-semibold uppercase tracking-wider mb-4">We design the systems, services, and pathways needed to move forward</p>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6">We translate insight into practical Environmental Intelligence architectures — the strategies, governance models, service designs, data flows, decision loops, and implementation pathways that help institutions move from fragmented information to coordinated action.</p>
                 </div>
                 <div class="bg-brand-teal-50/50 rounded-xl p-5 border border-brand-teal-50">
                     <ul class="space-y-2.5 text-sm text-brand-teal-900 font-medium">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Service blueprint mapping</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Prototyping community tools</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Designing participatory models</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Co-design data models and service architectures</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Formulate governance strategies and data policies</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Map decision loops and sustainable program pathways</li>
                     </ul>
                 </div>
             </div>
@@ -165,15 +254,14 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
                     <h3 class="text-2xl font-bold text-ink mb-2">Empower</h3>
-                    <p class="text-brand-teal-600/80 text-xs font-semibold uppercase tracking-wider mb-4">Capacity building & stewardship</p>
-                    <p class="text-ink-muted text-sm leading-relaxed mb-6">We support public institutions to build long-term internal capacity, making changes sustainable.</p>
+                    <p class="text-brand-teal-600/80 text-xs font-semibold uppercase tracking-wider mb-4">We turn strategy into adoption, capability, and long-term resilience</p>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6">Environmental Intelligence only matters if people and institutions can use it, govern it, and sustain it. We work with partners to test, embed, and scale solutions — building the capability, ownership, and feedback loops needed for systems to survive beyond our involvement.</p>
                 </div>
                 <div class="bg-brand-teal-50/50 rounded-xl p-5 border border-brand-teal-50">
                     <ul class="space-y-2.5 text-sm text-brand-teal-900 font-medium">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Capacity training</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Stewardship frameworks</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Implementation playbooks</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Continuous evaluation</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Design and test pilots through co-creation, prototyping, and implementation support</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Build institutional capacity and support partners to adopt new ways of working</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Capture learning, adapt what works, and create pathways for replication and scale</li>
                     </ul>
                 </div>
             </div>
@@ -181,124 +269,48 @@
     </div>
 </section>
 
-<!-- 6. Project Team Section (8 members) -->
-<section class="bg-white py-16 lg:py-24">
+<!-- 6. Project Team Section -->
+<section class="bg-white py-16 lg:py-24 border-b border-gray-100">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Meet our project team</h2>
-            <p class="text-base text-ink-muted max-w-2xl mx-auto">A diverse group of seasoned professionals dedicated to guiding our strategic direction and civic impact.</p>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">A multidisciplinary team working across environmental research, climate innovation &amp; Data Governance.</p>
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             <!-- Arthur Oyako -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/community/team1.png' %}" alt="Arthur Oyako" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/community/team1.png' %}" alt="Arthur Oyako" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Arthur Oyako</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Project Director</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Dominic Lwande -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/community/team2.png' %}" alt="Dominic Lwande" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/community/team2.png' %}" alt="Dominic Lwande" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Dominic Lwande</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Lead Researcher</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Diana Zoro -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/community/team3.png' %}" alt="Diana Zoro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/community/team3.png' %}" alt="Diana Zoro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Diana Zoro</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Civic Designer</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Eli Otieno -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/community/team4.png' %}" alt="Eli Otieno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/community/team4.png' %}" alt="Eli Otieno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Eli Otieno</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Joshua Kemei -->
-            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/community/team5.png' %}" alt="Joshua Kemei" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
-                    <h4 class="text-xl font-bold text-white mb-1">Joshua Kemei</h4>
-                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Data Scientist</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Job Kamunge -->
-            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/community/team6.png' %}" alt="Job Kamunge" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
-                    <h4 class="text-xl font-bold text-white mb-1">Job Kamunge</h4>
-                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Amina Moyo -->
-            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/community/team7.png' %}" alt="Amina Moyo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
-                    <h4 class="text-xl font-bold text-white mb-1">Amina Moyo</h4>
-                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Community Liaison</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Edith Waweru -->
-            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/community/team8.png' %}" alt="Edith Waweru" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
-                    <h4 class="text-xl font-bold text-white mb-1">Edith Waweru</h4>
-                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">UX Researcher</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -306,93 +318,24 @@
 </section>
 
 <!-- 7. Case Studies Section -->
-<section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
+<section class="bg-surface-alt py-16 lg:py-24 border-b border-gray-100">
     <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Case Studies</h2>
-            <p class="text-base text-ink-muted max-w-2xl mx-auto">Real-world impact showing how participatory systems shape delivery.</p>
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-2">Case Studies</h2>
+            <p class="text-base text-ink-muted font-bold uppercase tracking-wider">Our Work in Action</p>
         </div>
         
         <div class="space-y-8">
             <!-- Case Study 1 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
                 <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/community/case1.png' %}" alt="Citizen data workshop" class="w-full h-full object-cover">
+                    <img src="{% static 'images/community/case1.png' %}" alt="transboundary environmental resilience" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
                     <div>
-                        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-teal-600 mb-2 block">COMMUNITY DESIGN</span>
-                        <h3 class="text-2xl font-bold text-ink mb-4">Co-Designing with Community Data Repositories</h3>
-                        <p class="text-ink-muted text-sm leading-relaxed mb-6">We co-designed representational databases with community data trusts, ensuring local information remains owned and managed locally.</p>
-                        <ul class="space-y-2 text-sm text-ink-muted/90 font-medium mb-6">
-                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Increased community engagement index by 65%</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
-                            READ CASE STUDY <span class="ml-1.5">➔</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Case Study 2 -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
-                <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/community/case2.png' %}" alt="Municipal service portal workshop" class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
-                    <div>
-                        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-teal-600 mb-2 block">PUBLIC SERVICE DESIGN</span>
-                        <h3 class="text-2xl font-bold text-ink mb-4">Redesigning Municipal Service Portals</h3>
-                        <p class="text-ink-muted text-sm leading-relaxed mb-6">We co-designed an adaptive municipal service portal with neighborhood committees, reducing complaint resolution times from weeks to hours.</p>
-                        <ul class="space-y-2 text-sm text-ink-muted/90 font-medium mb-6">
-                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> 78% reduction in complaint routing delay</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
-                            READ CASE STUDY <span class="ml-1.5">➔</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Case Study 3 -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
-                <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/community/case3.png' %}" alt="Farmers agricultural model" class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
-                    <div>
-                        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-teal-600 mb-2 block">DECISION SYSTEMS</span>
-                        <h3 class="text-2xl font-bold text-ink mb-4">Designing Systems That Support Local Farmers</h3>
-                        <p class="text-ink-muted text-sm leading-relaxed mb-6">We built localized context models supporting rural farming cooperatives with real-time agronomic insights adapted to regional soil variations.</p>
-                        <ul class="space-y-2 text-sm text-ink-muted/90 font-medium mb-6">
-                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Co-designed with 5,000 smallholder farmers</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
-                            READ CASE STUDY <span class="ml-1.5">➔</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Case Study 4 -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
-                <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/community/case4.png' %}" alt="Agile governance workshop" class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
-                    <div>
-                        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-teal-600 mb-2 block">AGILE GOVERNANCE</span>
-                        <h3 class="text-2xl font-bold text-ink mb-4">Scaling Agile Governance Frameworks</h3>
-                        <p class="text-ink-muted text-sm leading-relaxed mb-6">We structured a cross-functional inter-agency program delivery protocol for high-priority national developmental projects, bypassing standard bureaucratic silos.</p>
-                        <ul class="space-y-2 text-sm text-ink-muted/90 font-medium mb-6">
-                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Shortened regulatory clearance cycles by 50%</li>
-                        </ul>
+                        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-teal-600 mb-2 block">Case Study 01</span>
+                        <h3 class="text-2xl font-bold text-ink mb-4">Designing Data Governance for Transboundary Environmental Resilience</h3>
+                        <p class="text-ink-muted text-sm leading-relaxed mb-6">A NATIONWIDE OPPORTUNITIES PLAN FOR SUSTAINABLE AI ADOPTION</p>
                     </div>
                     <div>
                         <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
@@ -406,68 +349,47 @@
 </section>
 
 <!-- 8. What We're Learning Section -->
-<section class="bg-white py-16 lg:py-24">
+<section class="bg-white py-16 lg:py-24 border-b border-gray-100">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">what we're learning</h2>
-            <p class="text-base text-ink-muted max-w-2xl mx-auto">Latest thoughts, whitepapers, and guides from our team of designers.</p>
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-2">what we're learning</h2>
+            <p class="text-base text-ink-muted font-bold uppercase tracking-wider">Insights</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Insight 1 -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
+            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 p-6 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300 h-full">
                 <div>
-                    <div class="h-52 overflow-hidden bg-gray-100">
-                        <img src="{% static 'images/community/insight1.png' %}" alt="When Users Say No" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">DESIGN</span>
-                        <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">When Users Say No: Design the Edge of Innovation</h3>
-                        <p class="text-ink-muted text-sm leading-relaxed line-clamp-3">Understanding resistance to change in community projects and how co-design builds trust.</p>
-                    </div>
-                </div>
-                <div class="px-6 pb-6 pt-2">
-                    <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
-                        Read Article <span class="ml-1">➔</span>
-                    </a>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#ffa700] mb-2 block">Insight 01</span>
+                    <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">Environmental Data Is Not Enough</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed">Africa is not short of environmental data. The deeper challenge is turning fragmented signals into trusted intelligence that institutions can act on. Environmental Intelligence must connect ecological, climate, socioeconomic, and community data into a shared decision-making layer.</p>
                 </div>
             </div>
             
             <!-- Insight 2 -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
+            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 p-6 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300 h-full">
                 <div>
-                    <div class="h-52 overflow-hidden bg-gray-100">
-                        <img src="{% static 'images/community/insight2.png' %}" alt="Co-Creation in Practice" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">SYSTEMS</span>
-                        <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">Co-Creation in Practice: From Insights to Stewardship</h3>
-                        <p class="text-ink-muted text-sm leading-relaxed line-clamp-3">A structural playbook on building transparency indicators into modern public service procurement platforms.</p>
-                    </div>
-                </div>
-                <div class="px-6 pb-6 pt-2">
-                    <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
-                        Read Article <span class="ml-1">➔</span>
-                    </a>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#ffa700] mb-2 block">Insight 02</span>
+                    <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">Build on Existing Systems, Not Around Them</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed">Regional climate and environmental institutions already hold critical infrastructure, mandates, and trust. The most useful innovation often comes from connecting and strengthening what exists — not building parallel platforms.</p>
                 </div>
             </div>
             
             <!-- Insight 3 -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
+            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 p-6 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300 h-full">
                 <div>
-                    <div class="h-52 overflow-hidden bg-gray-100">
-                        <img src="{% static 'images/community/insight3.png' %}" alt="Designing Systems" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">POLICY</span>
-                        <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">Designing Systems, Not Just Services</h3>
-                        <p class="text-ink-muted text-sm leading-relaxed line-clamp-3">Understanding how civic workers interface with automated public scorecards and the importance of legible design.</p>
-                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#ffa700] mb-2 block">Insight 03</span>
+                    <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">Community Intelligence Is Infrastructure</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed">Local actors are not just recipients of environmental information. They observe ecosystem change, validate risk signals, report field conditions, and help close the gap between data and action.</p>
                 </div>
-                <div class="px-6 pb-6 pt-2">
-                    <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
-                        Read Article <span class="ml-1">➔</span>
-                    </a>
+            </div>
+            
+            <!-- Insight 4 -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 p-6 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300 h-full">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#ffa700] mb-2 block">Insight 04</span>
+                    <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">Innovation Needs Reliable Environmental Rails</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed">Climate startups cannot build strong products without trusted environmental data. An open Environmental Intelligence layer can become the infrastructure on which innovators can build.</p>
                 </div>
             </div>
         </div>
@@ -475,14 +397,14 @@
 </section>
 
 <!-- 9. Bottom CTA -->
-<section class="bg-white pb-20 px-4 sm:px-6 lg:px-8">
+<section class="bg-white py-20 px-4 sm:px-6 lg:px-8">
     <div class="container mx-auto max-w-5xl">
         <div class="bg-gradient-to-br from-[#051924] to-[#073a47] rounded-3xl p-10 lg:p-16 text-center text-white shadow-card-lg relative overflow-hidden">
             <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="--bg-url: url({% static 'images/home/hero-pattern.webp' %}); background-image: var(--bg-url); background-size: 300px 300px;"></div>
-            <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Let's Design the Future—Together</h2>
-            <p class="text-base text-white/80 max-w-2xl mx-auto mb-10">Whether you're a public leader, civic agency, or technology partner, let's partner to co-design systems that govern effectively and deliver tangible results.</p>
-            <a href="#contact" class="inline-block px-10 py-3.5 bg-white text-brand-teal-900 text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-card">
-                Initiate Inquiry
+            <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Interested in Environmental Intelligence?</h2>
+            <p class="text-base text-white/80 max-w-2xl mx-auto mb-10">Let's explore how we can partner to drive meaningful impact.</p>
+            <a href="{% url 'home:contact' %}" class="inline-block px-10 py-3.5 bg-white text-brand-teal-900 text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-card">
+                Partner with us
             </a>
         </div>
     </div>

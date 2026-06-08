@@ -10,7 +10,7 @@
     <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center min-h-[400px] lg:min-h-[500px]">
         <!-- Globe image with glow shadow -->
         <div class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-[0_0_80px_rgba(6,182,212,0.18)] mb-8 flex items-center justify-center relative bg-black/50 border border-white/5">
-            <img src="{% static 'images/sovereign/hero_globe.png' %}" alt="Sovereign AI Globe" class="w-full h-full object-cover">
+            <img src="{% static 'images/sovereign/hero_globe.png' %}" alt="Sovereign AI Globe" class="w-full h-full object-cover" loading="lazy">
         </div>
         <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none bg-gradient-to-r from-cyan-400 via-teal-300 to-fuchsia-400 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
             Sovereign AI
@@ -42,38 +42,42 @@
         </div>
         
         <div class="bg-white rounded-2xl border border-gray-200/80 shadow-card overflow-hidden">
-            <div class="grid grid-cols-2 bg-brand-teal-500 text-white px-6 py-4 text-sm font-bold uppercase tracking-wider">
+            <div class="hidden md:grid grid-cols-2 bg-brand-teal-500 text-white px-6 py-4 text-sm font-bold uppercase tracking-wider">
                 <div>From</div>
                 <div class="pl-8 sm:pl-12">To</div>
             </div>
             <div class="divide-y divide-gray-100">
                 <!-- Row 1 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-4 md:gap-0 items-center relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-2 md:gap-0 items-center relative">
                     <div class="text-ink-muted font-medium text-base">Imported black-box models</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
                     <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
                         <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
                         Context-aware local systems
                     </div>
                 </div>
                 <!-- Row 2 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-4 md:gap-0 items-center relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-2 md:gap-0 items-center relative">
                     <div class="text-ink-muted font-medium text-base">Monopolized AI infrastructure</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
                     <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
                         <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
                         Federated, sovereign architecture
                     </div>
                 </div>
                 <!-- Row 3 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-4 md:gap-0 items-center relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-2 md:gap-0 items-center relative">
                     <div class="text-ink-muted font-medium text-base">Biased generic systems</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
                     <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
                         <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
                         Representational civic models
                     </div>
                 </div>
                 <!-- Row 4 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-4 md:gap-0 items-center relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-2 md:gap-0 items-center relative">
                     <div class="text-ink-muted font-medium text-base">Resource depletion</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
                     <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
                         <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
                         Green, localized compute
@@ -116,10 +120,10 @@
             <!-- Images Collage (6 cols) -->
             <div class="lg:col-span-6 grid grid-cols-12 gap-4">
                 <div class="col-span-8 rounded-3xl overflow-hidden shadow-card relative h-[350px] lg:h-auto">
-                    <img src="{% static 'images/sovereign/program_team.png' %}" alt="AI developers working together" class="w-full h-full object-cover">
+                    <img src="{% static 'images/sovereign/program_team.png' %}" alt="AI developers working together" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <div class="col-span-4 rounded-3xl overflow-hidden shadow-card relative h-[350px] lg:h-auto">
-                    <img src="{% static 'images/sovereign/city_slice.png' %}" alt="Nairobi skyline slice" class="w-full h-full object-cover">
+                    <img src="{% static 'images/sovereign/city_slice.png' %}" alt="Nairobi skyline slice" class="w-full h-full object-cover" loading="lazy">
                 </div>
             </div>
         </div>
@@ -207,7 +211,7 @@
             <!-- Row 1 -->
             <!-- Member 1: Arthur Oyako -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team1.png' %}" alt="Arthur Oyako" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/sovereign/team1.png' %}" alt="Arthur Oyako" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Arthur Oyako</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Project Director</p>
@@ -221,7 +225,7 @@
             
             <!-- Member 2: Dominic Lwande -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team2.png' %}" alt="Dominic Lwande" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/sovereign/team2.png' %}" alt="Dominic Lwande" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Dominic Lwande</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Lead Researcher</p>
@@ -235,7 +239,7 @@
             
             <!-- Member 3: Diana Zoro -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team3.png' %}" alt="Diana Zoro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/sovereign/team3.png' %}" alt="Diana Zoro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Diana Zoro</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Civic Designer</p>
@@ -249,7 +253,7 @@
             
             <!-- Member 4: Eli Otieno -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team4.png' %}" alt="Eli Otieno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/sovereign/team4.png' %}" alt="Eli Otieno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Eli Otieno</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
@@ -264,7 +268,7 @@
             <!-- Row 2 -->
             <!-- Member 5: Joshua Kemei -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team5.png' %}" alt="Joshua Kemei" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/sovereign/team5.png' %}" alt="Joshua Kemei" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Joshua Kemei</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Data Scientist</p>
@@ -278,7 +282,7 @@
             
             <!-- Member 6: Job Kamunge -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team6.png' %}" alt="Job Kamunge" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/sovereign/team6.png' %}" alt="Job Kamunge" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Job Kamunge</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
@@ -292,7 +296,7 @@
             
             <!-- Member 7: Amina Moyo -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team7.png' %}" alt="Amina Moyo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/sovereign/team7.png' %}" alt="Amina Moyo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Amina Moyo</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Community Liaison</p>
@@ -306,7 +310,7 @@
             
             <!-- Member 8: Edith Waweru -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team8.png' %}" alt="Edith Waweru" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="{% static 'images/sovereign/team8.png' %}" alt="Edith Waweru" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Edith Waweru</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">UX Researcher</p>
@@ -333,7 +337,7 @@
             <!-- Case Study 1 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
                 <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/sovereign/case1.png' %}" alt="Citizen data workshop" class="w-full h-full object-cover">
+                    <img src="{% static 'images/sovereign/case1.png' %}" alt="Citizen data workshop" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
                     <div>
@@ -356,7 +360,7 @@
             <!-- Case Study 2 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
                 <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/sovereign/case2.png' %}" alt="Agricultural Decision Systems" class="w-full h-full object-cover">
+                    <img src="{% static 'images/sovereign/case2.png' %}" alt="Agricultural Decision Systems" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
                     <div>
@@ -379,7 +383,7 @@
             <!-- Case Study 3 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
                 <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/sovereign/case3.png' %}" alt="Language models" class="w-full h-full object-cover">
+                    <img src="{% static 'images/sovereign/case3.png' %}" alt="Language models" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
                     <div>
@@ -402,7 +406,7 @@
             <!-- Case Study 4 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
                 <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/sovereign/case4.png' %}" alt="Algorithmic Transparency" class="w-full h-full object-cover">
+                    <img src="{% static 'images/sovereign/case4.png' %}" alt="Algorithmic Transparency" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
                     <div>
@@ -438,7 +442,7 @@
             <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
                 <div>
                     <div class="h-52 overflow-hidden bg-gray-100">
-                        <img src="{% static 'images/sovereign/insight1.png' %}" alt="AI and profit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <img src="{% static 'images/sovereign/insight1.png' %}" alt="AI and profit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                     </div>
                     <div class="p-6">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">Insights</span>
@@ -457,7 +461,7 @@
             <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
                 <div>
                     <div class="h-52 overflow-hidden bg-gray-100">
-                        <img src="{% static 'images/sovereign/insight2.png' %}" alt="Local Data Metaphors" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <img src="{% static 'images/sovereign/insight2.png' %}" alt="Local Data Metaphors" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                     </div>
                     <div class="p-6">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">Insights</span>
@@ -476,7 +480,7 @@
             <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
                 <div>
                     <div class="h-52 overflow-hidden bg-gray-100">
-                        <img src="{% static 'images/sovereign/insight3.png' %}" alt="Designing Algorithms Users" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <img src="{% static 'images/sovereign/insight3.png' %}" alt="Designing Algorithms Users" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
                     </div>
                     <div class="p-6">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">Insights</span>
@@ -501,7 +505,7 @@
             <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="--bg-url: url({% static 'images/home/hero-pattern.webp' %}); background-image: var(--bg-url); background-size: 300px 300px;"></div>
             <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Interested in Sovereign AI?</h2>
             <p class="text-base text-white/80 max-w-2xl mx-auto mb-10">Whether you're a public leader, technology partner, or research collective, let's partner to co-design AI systems adapted to your context.</p>
-            <a href="#contact" class="inline-block px-10 py-3.5 bg-white text-brand-teal-900 text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-card">
+            <a href="{% url 'home:contact' %}" class="inline-block px-10 py-3.5 bg-white text-brand-teal-900 text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-card">
                 Get In Touch
             </a>
         </div>

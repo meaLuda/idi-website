@@ -64,7 +64,7 @@
                 "https://www.facebook.com/IDIorg",
                 "https://www.twitter.com/IDIorg",
                 "https://www.linkedin.com/company/idiafrica",
-                "https://www.instagram.com/idi_org"
+                "https://www.instagram.com/idi.africa/"
             ],
             "description": "IDI is a leading institute focused on design thinking and innovation, helping organizations and individuals transform ideas into impactful solutions.",
             "address": {
@@ -137,25 +137,27 @@
                 <!-- Logo -->
                 <a href="{% url 'home:lander' %}" class="flex items-center">
                     <img src="{% static 'images/wp-content/uploads/2024/08/idi-main-logo.webp' %}" alt="IDI Logo"
-                        class="h-10 md:h-12">
+                        class="h-10 md:h-12" loading="lazy">
                 </a>
 
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center space-x-6">
+                    {% with url_name=request.resolver_match.url_name %}
                     <a href="{% url 'home:lander' %}"
-                        class="text-brand-teal-500 font-semibold hover:text-brand-orange transition-colors">About Us</a>
+                        class="{% if url_name == 'lander' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} transition-colors">About Us</a>
                     <a href="{% url 'home:services' %}"
-                        class="text-ink-muted hover:text-brand-orange transition-colors">Services</a>
+                        class="{% if url_name == 'services' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} transition-colors">Services</a>
                     <a href="{% url 'home:lander' %}#how-we-work"
                         class="text-ink-muted hover:text-brand-orange transition-colors">Approach</a>
                     <a href="{% url 'home:projects_list' %}"
-                        class="text-ink-muted hover:text-brand-orange transition-colors">Insights</a>
+                        class="{% if url_name == 'projects_list' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} transition-colors">Insights</a>
                     <a href="{% url 'home:did-academy' %}"
-                        class="text-ink-muted hover:text-brand-orange transition-colors">DIDAcademy</a>
+                        class="{% if url_name == 'did-academy' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} transition-colors">DIDAcademy</a>
 
-                    <a href="{% url 'home:lander' %}#start-conversation"
+                    <a href="{% url 'home:contact' %}"
                         class="ml-2 px-6 py-2.5 bg-brand-teal-500 text-white text-sm font-semibold uppercase tracking-wide rounded-full hover:bg-brand-orange transition-colors">Initiate
                         Inquiry</a>
+                    {% endwith %}
                 </div>
 
                 <!-- Mobile Menu Toggle -->
@@ -177,24 +179,28 @@
         <div id="mobile-menu" class="hidden bg-white border-t border-gray-200 lg:hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
                 <div class="flex flex-col space-y-2">
+                    {% with url_name=request.resolver_match.url_name %}
                     <a href="{% url 'home:lander' %}"
-                        class="block py-2 text-brand-teal-500 font-semibold border-b border-gray-100">About Us</a>
+                        class="block py-2 {% if url_name == 'lander' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} border-b border-gray-100">About Us</a>
                     <a href="{% url 'home:services' %}"
-                        class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Services</a>
+                        class="block py-2 {% if url_name == 'services' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} border-b border-gray-100">Services</a>
                     <a href="{% url 'home:lander' %}#how-we-work"
                         class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Approach</a>
                     <a href="{% url 'home:projects_list' %}"
-                        class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Insights</a>
+                        class="block py-2 {% if url_name == 'projects_list' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} border-b border-gray-100">Insights</a>
                     <a href="{% url 'home:did-academy' %}"
-                        class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">DIDAcademy</a>
+                        class="block py-2 {% if url_name == 'did-academy' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} border-b border-gray-100">DIDAcademy</a>
 
-                    <a href="{% url 'home:lander' %}#start-conversation"
+                    <a href="{% url 'home:contact' %}"
                         class="mt-2 block text-center py-2.5 bg-brand-teal-500 text-white text-sm font-semibold uppercase tracking-wide rounded-full hover:bg-brand-orange transition-colors">Initiate
                         Inquiry</a>
+                    {% endwith %}
                 </div>
             </div>
         </div>
     </nav>
+    <!-- Mobile Menu Backdrop Overlay -->
+    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/50 z-40 lg:hidden"></div>
     {% endblock %}
 
 
@@ -213,11 +219,11 @@
                 <div class="flex flex-col lg:px-8 first:lg:pl-0 space-y-4">
                     <h3 class="text-sm font-bold uppercase tracking-widest text-[#ffa700] mb-2">COMPANY</h3>
                     <ul class="space-y-3 text-sm font-medium text-white/80">
-                        <li><a href="{% url 'home:lander' %}#start-conversation"
-                                class="hover:text-white transition-colors">About & Contact</a></li>
+                        <li><a href="{% url 'home:contact' %}"
+                                class="hover:text-white transition-colors">Contact</a></li>
                         <li><a href="{% url 'home:team_list' %}" class="hover:text-white transition-colors">Team</a>
                         </li>
-                        <li><a href="{% url 'home:lander' %}" class="hover:text-white transition-colors">Partners</a>
+                        <li><a href="{% url 'home:lander' %}#partners" class="hover:text-white transition-colors">Partners</a>
                         </li>
                     </ul>
                 </div>
@@ -281,8 +287,8 @@
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                     <!-- Left: Logo -->
                     <div class="flex items-center">
-                        <img src="{% static 'images/wp-content/uploads/2024/08/idi-main-logo.webp' %}" alt="IDI Logo"
-                            class="h-10 md:h-12 bg-transparent">
+                        <img src="{% static 'images/wp-content/uploads/2024/08/idi-logo-white.png' %}" alt="IDI Logo"
+                            class="h-8 md:h-10 bg-transparent" loading="lazy">
                     </div>
                     <!-- Right: Copyright -->
                     <div class="text-xs md:text-sm text-white/80 font-medium">
@@ -411,23 +417,46 @@
             var menu = document.getElementById('mobile-menu');
             var openIcon = document.getElementById('open-icon');
             var closeIcon = document.getElementById('close-icon');
+            var overlay = document.getElementById('mobile-menu-overlay');
             if (!btn || !menu) return;
+            
             function toggleIcons() {
                 openIcon && openIcon.classList.toggle('hidden');
                 closeIcon && closeIcon.classList.toggle('hidden');
             }
+            
             function close() {
                 menu.classList.add('hidden');
-                openIcon && openIcon.classList.remove('hidden');
-                closeIcon && closeIcon.classList.add('hidden');
+                document.body.classList.remove('menu-open');
+                if (overlay) overlay.classList.add('hidden');
+                if (openIcon && closeIcon) {
+                    openIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
             }
+            
             btn.addEventListener('click', function () {
-                menu.classList.toggle('hidden');
+                var isOpening = menu.classList.contains('hidden');
+                if (isOpening) {
+                    menu.classList.remove('hidden');
+                    document.body.classList.add('menu-open');
+                    if (overlay) overlay.classList.remove('hidden');
+                } else {
+                    menu.classList.add('hidden');
+                    document.body.classList.remove('menu-open');
+                    if (overlay) overlay.classList.add('hidden');
+                }
                 toggleIcons();
             });
+            
+            if (overlay) {
+                overlay.addEventListener('click', close);
+            }
+            
             menu.querySelectorAll('a').forEach(function (a) {
                 a.addEventListener('click', close);
             });
+            
             window.addEventListener('resize', function () {
                 if (window.innerWidth >= 1024) close();
             });
@@ -437,6 +466,53 @@
     {% block extra_js %}
     {% endblock %}
 
+    <script>
+        // Active Navigation Highlight Logic
+        (function() {
+            function updateActiveNav() {
+                var currentPath = window.location.pathname;
+                var currentHash = window.location.hash;
+                
+                var navLinks = document.querySelectorAll('nav a');
+                navLinks.forEach(function(link) {
+                    // Skip the "Initiate Inquiry" or other specifically styled buttons
+                    if(link.classList.contains('bg-brand-teal-500') || link.querySelector('img')) return;
+                    
+                    try {
+                        var linkUrl = new URL(link.href, window.location.origin);
+                        var isPathMatch = linkUrl.pathname === currentPath;
+                        var isHashMatch = linkUrl.hash === currentHash;
+                        
+                        // Reset all links to default
+                        link.classList.remove('text-brand-teal-500', 'font-semibold');
+                        link.classList.add('text-ink-muted');
+                        
+                        var isActive = false;
+                        if (linkUrl.hash) {
+                            // If link has a hash (e.g. Approach), path and hash must match exactly
+                            isActive = isPathMatch && isHashMatch;
+                        } else {
+                            // If link has no hash (e.g. About Us), path must match and there must be NO hash in current URL
+                            isActive = isPathMatch && !currentHash;
+                        }
+                        
+                        // Apply active styling
+                        if (isActive) {
+                            link.classList.remove('text-ink-muted');
+                            link.classList.add('text-brand-teal-500', 'font-semibold');
+                        }
+                    } catch (e) {
+                        // ignore invalid URLs
+                    }
+                });
+            }
+
+            // Run on initial load
+            document.addEventListener('DOMContentLoaded', updateActiveNav);
+            // Run on hash changes (when user clicks an anchor link)
+            window.addEventListener('hashchange', updateActiveNav);
+        })();
+    </script>
 </body>
 
 </html>
