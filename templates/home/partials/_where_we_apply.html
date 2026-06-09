@@ -59,9 +59,11 @@
                                                         </div>
                                                     </div>
                                                     {% else %}
-                                                     <img src="{% static 'images/home/practices/' %}{{ tile.slug }}.webp"
+                                                     {% with practice_img='images/home/practices/'|add:tile.slug|add:'.webp' %}
+                                                     <img src="{% static practice_img %}"
                                                           alt="{{ tile.title }}" loading="lazy"
                                                           class="max-h-48 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                                                     {% endwith %}
                                                     {% endif %}
                                                 </div>
                                                 <p class="text-eyebrow uppercase tracking-wide text-ink-muted mb-2">
