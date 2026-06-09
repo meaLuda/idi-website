@@ -3,16 +3,15 @@ from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from .models import Project, TeamMember, Testimonial, Program, Partner, Client, HomeStat, ServicePillar
 
-ARTICLE_PAGE_SIZE = 4
+ARTICLE_PAGE_SIZE = 5
 
-# WHERE WE APPLY IT — static content (slug drives the masked tile asset).
 PRACTICE_TILES = [
-    {"num": "01", "slug": "governance-public-service-delivery", "title": "Governance & Public Service Delivery"},
-    {"num": "02", "slug": "responsible-sovereign-ai", "title": "Responsible / Sovereign AI"},
-    {"num": "03", "slug": "sustainability-practice", "title": "Sustainability Practice"},
-    {"num": "04", "slug": "venture-building-innovation-ecosystems", "title": "Venture Building & Innovation Ecosystems"},
-    {"num": "05", "slug": "community-public-service-delivery", "title": "Community & Public Service Delivery"},
-    {"num": "06", "slug": "food-systems-health-practice", "title": "Food Systems & Health Practice"},
+    {"num": "01", "slug": "food-systems-health-practice", "title": "FOOD SYSTEMS PRACTICE"},
+    {"num": "02", "slug": "sustainability-practice", "title": "HEALTH"},
+    {"num": "03", "slug": "community-public-service-delivery", "title": "environment"},
+    {"num": "04", "slug": "responsible-sovereign-ai", "title": "Responsible / Sovereign AI"},
+    {"num": "05", "slug": "governance-public-service-delivery", "title": "Governance & Public Service Delivery"},
+    {"num": "06", "slug": "venture-building-innovation-ecosystems", "title": "Venture Building & Innovation Ecosystems"},
 ]
 
 
@@ -57,15 +56,6 @@ def home(request):
     return render(request, "home/index.html", context)
 
 
-# def fellowships(request):
-#     # SEO metadata
-#     context = {
-#         'page_title': 'Decision Intelligence Design Fellowships',
-#         'page_description': 'Transform complexity into actionable solutions through our immersive fellowship programs designed for impact across sectors in Africa.',
-#         'page_keywords': 'Fellowships, Decision Intelligence Design, Innovation, Public Sector, Research, Emerging Leaders, Kenya, Africa',
-#     }
-#     return render(request, "home/fellowship/fellowship.html", context)
-
 
 def academy(request):
     # Get featured programs for the current year with optimized query
@@ -91,6 +81,18 @@ def academy(request):
     return render(request, "home/fellowship/academy.html", context)
 
 
+def civic_innovation_fellowship(request):
+    """
+    View for the Democratic Futures Civic Innovation Fellowship page.
+    """
+    context = {
+        'page_title': 'Democratic Futures Civic Innovation Fellowship 2026',
+        'page_description': "Building Kenya's Next Generation of Public Innovators. A fellowship to cultivate professionals who bridge technology, governance, and civic responsibility.",
+        'page_keywords': 'Civic Innovation, Fellowship, Kenya, Public Innovators, Digital Governance, Decision Intelligence',
+    }
+    return render(request, 'home/fellowship/civic_innovation.html', context)
+
+
 def project_detail(request, slug):
     project = get_object_or_404(Project, slug=slug, is_active=True)
     
@@ -103,6 +105,13 @@ def project_detail(request, slug):
         'page_image': project.thumbnail,
         'og_type': 'article',
     }
+    if slug == 'the-mombasa-county-plastics-prize':
+        return render(request, 'home/projects/mombasa_plastics.html', context)
+    elif slug == 'space-ai':
+        return render(request, 'home/projects/space_ai.html', context)
+    elif slug == 'be-green':
+        return render(request, 'home/projects/be_green.html', context)
+        
     return render(request, 'home/projects/project_detail.html', context)
 
 
@@ -123,12 +132,58 @@ def program_detail(request, slug):
 def projects_list(request):
     projects = Project.objects.filter(is_active=True).select_related().order_by('-created_at')
     
+    mock_articles = [
+        {
+            "category": "Policy",
+            "title": "The Future of Public Service Delivery",
+            "excerpt": "How decision intelligence design is transforming public service delivery across Africa.",
+            "tags": ["Governance", "Public Service Delivery"],
+            "date": "January 2026",
+        },
+        {
+            "category": "AI",
+            "title": "Building Inclusive AI Governance Frameworks",
+            "excerpt": "Designing AI architectures that are trusted, context-aware, and built for long-term public value.",
+            "tags": ["AI", "Governance", "Design"],
+            "date": "December 2025",
+        },
+        {
+            "category": "Toolkit",
+            "title": "Sustainability Toolkit: Measurement Frameworks",
+            "excerpt": "Practical tools for tracking and measuring sustainability impacts across public initiatives.",
+            "tags": ["Sustainability", "Measurement", "Toolkit"],
+            "date": "December 2025",
+        },
+        {
+            "category": "Ecosystems",
+            "title": "Venture Ecosystem Rapid Assessment",
+            "excerpt": "A comprehensive framework for evaluating and developing local venture building ecosystems.",
+            "tags": ["Venture", "Ecosystem", "Innovation"],
+            "date": "November 2025",
+        },
+        {
+            "category": "Health",
+            "title": "The Role of Design in Health Systems",
+            "excerpt": "Why service design is critical to building resilient, responsive, and patient-centric healthcare systems.",
+            "tags": ["Health", "Design", "Systems"],
+            "date": "November 2025",
+        },
+        {
+            "category": "Playbook",
+            "title": "Innovation Challenges: Implementation Playbook",
+            "excerpt": "A step-by-step guide to designing, launching, and managing public sector innovation challenges.",
+            "tags": ["Innovation", "Design", "Implementation"],
+            "date": "October 2025",
+        }
+    ]
+    
     # SEO metadata
     context = {
         'projects': projects,
-        'page_title': 'Our Work',
-        'page_description': 'Explore our portfolio of decision intelligence design projects across various sectors in Africa.',
-        'page_keywords': 'Projects, Decision Intelligence Design, Innovation, Case Studies, Portfolio, Africa, Kenya',
+        'mock_articles': mock_articles,
+        'page_title': 'Insights',
+        'page_description': 'Research, thought leadership, and tools. Bringing context, representation, and deep decision intelligence to structural transitions.',
+        'page_keywords': 'Insights, Decision Intelligence Design, Research, Whitepapers, Africa, Innovation',
     }
     return render(request, 'home/projects/projects_list.html', context)
 
@@ -229,3 +284,121 @@ def custom_bad_request(request, exception):
         'page_keywords': 'error, 400, bad request, IDI Africa',
     }
     return render(request, '404.html', context, status=400)
+
+
+def governance_public_service_delivery(request):
+    """
+    View for the Governance & Public Service Delivery practice page.
+    """
+    context = {
+        'page_title': 'Governance & Public Service Delivery',
+        'page_description': 'Designing systems that govern effectively—and deliver where it matters. IDI Africa works at the intersection of decision intelligence and public service delivery.',
+        'page_keywords': 'Governance, Public Service Delivery, Decision Intelligence, System Design, Africa, Innovation',
+    }
+    return render(request, 'home/governance_public_service_delivery.html', context)
+
+
+def responsible_sovereign_ai(request):
+    """
+    View for the Responsible / Sovereign AI practice page.
+    """
+    context = {
+        'page_title': 'Responsible & Sovereign AI',
+        'page_description': 'Designing AI systems that are trusted, context-aware, and built for long-term public value. IDI Africa pioneers representational and ethical AI architectures.',
+        'page_keywords': 'Sovereign AI, Responsible AI, AI Ethics, Civic Tech, Machine Learning, Africa, Innovation',
+    }
+    return render(request, 'home/responsible_sovereign_ai.html', context)
+
+
+def community_public_service_delivery(request):
+    """
+    View for the Community & Public Service Delivery practice page.
+    """
+    context = {
+        'page_title': 'Community & Public Service Delivery',
+        'page_description': 'Designing for relevance. We build frameworks, strategy, and products that respect and reflect community context, knowledge, and sovereignty.',
+        'page_keywords': 'Community Service, Public Service Delivery, Participatory Design, Civic Trust, Decision Intelligence, Africa, Innovation',
+    }
+    return render(request, 'home/community_public_service_delivery.html', context)
+
+
+def food_systems_health_practice(request):
+    """
+    View for the Food Systems & Health Practice practice page.
+    """
+    context = {
+        'page_title': 'Food Systems & Health Practice',
+        'page_description': 'Designing for relevance. We build frameworks, strategy, and products that respect and reflect community context, knowledge, and sovereignty within food systems.',
+        'page_keywords': 'Food Systems, Health Practice, Nutrition, Agricultural Decision Systems, Public Health, Decision Intelligence, Africa, Innovation',
+    }
+    return render(request, 'home/food_systems_health_practice.html', context)
+
+
+def reimagining_youth(request):
+    """
+    View for the Reimagining Youth Opportunity Systems case study page.
+    """
+    context = {
+        'page_title': 'Reimagining Youth Opportunity Systems',
+        'page_description': 'A case study on digitizing knowledge economies and civic engagement within government frameworks.',
+        'page_keywords': 'Youth Opportunity, Government, Civic Literacy, Decision Intelligence, Case Study',
+    }
+    return render(request, 'home/projects/reimagining_youth.html', context)
+
+
+def services(request):
+    """
+    View for the dedicated Services page.
+    """
+    service_pillars = ServicePillar.objects.filter(is_active=True)
+    
+    # SEO metadata
+    context = {
+        'service_pillars': service_pillars,
+        'page_title': 'Services',
+        'page_description': 'Decision Intelligence Design for modern structural transitions. Discover our service pillars across Strategy & Design, Insights & Data, and Implementation & Scale.',
+        'page_keywords': 'Services, Strategy, Design, Insights, Data, Implementation, Scale, Decision Intelligence, Africa, Innovation',
+    }
+    return render(request, 'home/services.html', context)
+
+
+def sustainability_practice(request):
+    """
+    View for the Health (formerly Sustainability) practice page.
+    """
+    context = {
+        'page_title': 'Health',
+        'page_description': 'Designing for health and resilience. We build custom decision intelligence frameworks for healthcare systems across Africa.',
+        'page_keywords': 'Health, Decision Intelligence, Healthcare, Africa, Innovation',
+    }
+    return render(request, 'home/sustainability_practice.html', context)
+
+
+def venture_building(request):
+    """
+    View for the Venture Building & Innovation Ecosystems practice page.
+    """
+    context = {
+        'page_title': 'Venture Building & Innovation Ecosystems',
+        'page_description': 'Accelerating growth and building robust innovation ecosystems across the African continent.',
+        'page_keywords': 'Venture Building, Innovation, Ecosystems, Startups, Scale, Africa',
+    }
+    return render(request, 'home/venture_building.html', context)
+
+
+def contact(request):
+    """
+    View for the dedicated Contact Us page.
+    """
+    success = False
+    if request.method == "POST":
+        # Process visual inquiry submission
+        success = True
+        
+    context = {
+        'success': success,
+        'page_title': 'Contact Us',
+        'page_description': 'Get in touch with IDI Africa. Whether you want to partner with us, join our fellowship, or initiate an inquiry, we would love to hear from you.',
+        'page_keywords': 'Contact, Inquiry, Partnership, Decision Intelligence, Africa, Kenya, Nairobi',
+    }
+    return render(request, "home/contact.html", context)

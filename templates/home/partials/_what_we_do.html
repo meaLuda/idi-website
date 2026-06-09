@@ -1,28 +1,42 @@
 {% load static %}
 {% if service_pillars %}
-<section id="what-we-do" class="bg-[#F3F2EF] py-16 lg:py-24">
+<section id="what-we-do" class="bg-[#F7F7F7] py-16 lg:py-24 border-b border-gray-100">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-display-lg font-extrabold uppercase text-ink text-center mb-12 lg:mb-16">What We Do</h2>
+        <!-- Bold Centered Title -->
+        <div class="text-center mb-12 lg:mb-16">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-black uppercase text-black tracking-tight">What We Do</h2>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <!-- 3-Column Responsive Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
             {% for pillar in service_pillars %}
-            <article class="bg-white rounded-2xl p-8 lg:p-10 shadow-card flex flex-col">
-                <div class="h-40 mb-8 flex items-end">
+            <article class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-gray-100 flex flex-col items-center text-center transition-all duration-500 ease-out hover:shadow-[0_20px_50px_rgba(0,99,119,0.08)] hover:-translate-y-2 group">
+                <!-- Premium Centered Illustration Container -->
+                <div class="h-44 mb-8 flex items-center justify-center w-full">
+                    {# Build the full path then pass to the static tag so ManifestStaticFilesStorage
+                       resolves a hashed, immutable-cached URL. Concatenating a static prefix
+                       with a variable slug outside the static tag bypasses hashing -> max-age=60. #}
                     {% with illustration='images/home/services/'|add:pillar.slug|add:'.webp' %}
                     <img src="{% static illustration %}"
                          alt="{{ pillar.title }} illustration"
                          loading="lazy" width="240" height="200"
-                         class="max-h-40 w-auto object-contain"
+                         class="max-h-40 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                          onerror="this.style.visibility='hidden'">
                     {% endwith %}
                 </div>
-                <h3 class="text-2xl font-bold text-brand-teal-500 mb-4">{{ pillar.title }}</h3>
-                <p class="text-brand-teal-500/80 text-base leading-relaxed mb-8 flex-1">{{ pillar.description }}</p>
+
+                <!-- Pillar Title -->
+                <h3 class="text-2xl font-extrabold text-[#006377] mb-3 tracking-tight">{{ pillar.title }}</h3>
+
+                <!-- Description -->
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8 flex-1 max-w-xs">{{ pillar.description }}</p>
+
+                <!-- Symmetrical Type/Output Pill Tag -->
                 {% if pillar.type_label or pillar.output_label %}
-                <div class="inline-flex self-start items-center text-[11px] uppercase tracking-wide text-ink-muted border border-brand-teal-200 rounded-full px-4 py-1.5">
-                    <span>Type:&nbsp;</span><span class="font-bold text-brand-teal-500">{{ pillar.type_label }}</span>
-                    <span class="mx-2 text-gray-300">|</span>
-                    <span>Output:&nbsp;</span><span class="font-bold text-brand-teal-500">{{ pillar.output_label }}</span>
+                <div class="inline-flex items-center text-[10px] md:text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200/80 bg-gray-50/50 rounded-full px-5 py-2 mt-auto">
+                    <span>Type:&nbsp;</span><span class="font-bold text-[#006377]">{{ pillar.type_label }}</span>
+                    <span class="mx-3 text-gray-300">|</span>
+                    <span>Output:&nbsp;</span><span class="font-bold text-[#006377]">{{ pillar.output_label }}</span>
                 </div>
                 {% endif %}
             </article>

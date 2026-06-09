@@ -1,0 +1,417 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Space AI Case Study",
+    "description": "How SpaceAI Is Helping Kenyan Farmers Build a Smarter Dairy Industry.",
+    "author": {"@type": "Organization", "name": "IDI Africa", "url": "{{ request.scheme }}://{{ request.get_host }}/"},
+    "publisher": {
+        "@type": "Organization",
+        "name": "IDI Africa",
+        "logo": {"@type": "ImageObject", "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/wp-content/uploads/2024/12/idi-main-logo_webp_512x512-300x300.webp' %}"}
+    },
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "{{ request.build_absolute_uri }}"}
+}
+</script>
+<style>
+    /* Premium micro-interactions & visual enhancements */
+    .btn-shadow-teal {
+        box-shadow: 0 4px 14px rgba(0, 99, 119, 0.3);
+    }
+    .btn-shadow-teal:hover {
+        box-shadow: 0 6px 20px rgba(0, 99, 119, 0.4);
+    }
+    .hover-card-up {
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hover-card-up:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 38px rgba(0, 99, 119, 0.08);
+    }
+    /* Wave connector classes */
+    .step-connector {
+        background-image: radial-gradient(circle, #006377 1px, transparent 1px);
+        background-size: 8px 8px;
+        background-repeat: repeat-x;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Container Wrapper -->
+<div class="bg-white min-h-screen pt-28 pb-16">
+    <div class="container mx-auto px-4 max-w-7xl">
+
+        <!-- 1. HERO SECTION (Rounded Block Layout) -->
+        <section class="bg-[#F4F7F6] rounded-[2rem] p-8 lg:p-14 mb-16 shadow-sm border border-[#e8eeec]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-7 flex flex-col items-start text-left">
+                    <div class="flex flex-wrap gap-2 items-center mb-6">
+                        <span class="bg-[#e2ebe9] text-[#006377] text-[10px] font-black tracking-widest px-4 py-1.5 rounded-full uppercase">
+                            Agriculture & Tech
+                        </span>
+                        <span class="inline-flex items-center bg-white border border-[#e2ebe9] text-[#7c8f94] text-[10px] font-bold px-3.5 py-1.5 rounded-full">
+                            <svg class="w-3 h-3 mr-1.5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            Ongoing
+                        </span>
+                    </div>
+
+                    <h1 class="text-4xl md:text-5xl lg:text-[54px] font-black text-[#006377] leading-[1.05] mb-6 tracking-tight">
+                        Space AI
+                    </h1>
+
+                    <p class="text-base md:text-lg text-[#4a585a] font-normal leading-relaxed mb-8 max-w-xl">
+                        How SpaceAI Is Helping Kenyan Farmers Build a Smarter Dairy Industry
+                    </p>
+
+                    <a href="#summary" class="inline-flex items-center justify-center bg-[#006377] hover:bg-[#004d5c] text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all duration-300 btn-shadow-teal mb-10">
+                        Case Study
+                    </a>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+                    <div class="rounded-3xl overflow-hidden shadow-card-lg aspect-[4/3] w-full border-4 border-white bg-[#006377]/10 flex items-center justify-center">
+                        <img src="{% static 'images/space_ai/img3.webp' %}" alt="Dairy Farmer" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PROJECT SUMMARY SECTION -->
+        <section id="summary" class="py-12 lg:py-16 scroll-mt-28">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <!-- Left circular quartered design -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="grid grid-cols-2 grid-rows-2 w-72 h-72 rounded-full overflow-hidden gap-1.5 bg-[#F4F7F6] p-1 border-2 border-gray-100 shadow-md">
+                        <!-- Top-Left: Rounded TL -->
+                        <div class="rounded-tl-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/space_ai/img1.webp' %}" alt="Teamwork" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <!-- Top-Right: Rounded TR -->
+                        <div class="rounded-tr-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/space_ai/img2.webp' %}" alt="Field work" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <!-- Bottom-Left: Rounded BL -->
+                        <div class="rounded-bl-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/space_ai/img3.webp' %}" alt="Learning" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <!-- Bottom-Right: Rounded BR -->
+                        <div class="rounded-br-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/space_ai/img4.webp' %}" alt="Innovation" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Description -->
+                <div class="lg:col-span-7 text-left">
+                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">Project Summary</span>
+                    <h2 class="text-3xl font-extrabold text-[#006377] mb-6 tracking-tight">
+                        Unlocking Opportunity Through Dairy
+                    </h2>
+                    <div class="space-y-6 text-[#4a585a] font-normal leading-relaxed text-base">
+                        <p>
+                            Kenya's dairy industry is one of the largest in Africa, contributing 3.8% to the national GDP and providing livelihoods for millions of smallholder farmers. Every day, more than 5 billion liters of milk move through a complex network of farmers, cooperatives, processors, and retailers.
+                        </p>
+                        <p>
+                            Yet behind the scale and success, many farmers struggle with unpredictable milk supply, low market prices, and limited financial services. SpaceAI is changing that story.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. KEY INSIGHT BAR -->
+        <section class="my-16">
+            <div class="relative bg-[#0b1f24] rounded-3xl overflow-hidden py-16 px-8 lg:p-20 shadow-xl border border-white/5">
+                <style>.bg-insight-img { background-image: url('{% static "images/executive-boardroom.webp" %}'); }</style>
+                <div class="absolute inset-0 opacity-[0.22] bg-cover bg-center mix-blend-luminosity bg-insight-img"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#051924] via-[#051924]/90 to-transparent"></div>
+                <div class="relative z-10 max-w-3xl text-left">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-orange mb-3 block">Farmer Feedback</span>
+                    <p class="text-lg md:text-xl lg:text-2xl font-normal text-white leading-snug tracking-tight">
+                        "Now, I know exactly how much milk I deliver, and I get paid fairly. It has changed everything."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. THE PROBLEM SECTION -->
+        <section class="py-12 lg:py-16 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#006377] mb-6 tracking-tight">The Problem</h2>
+            <p class="text-lg md:text-xl lg:text-2xl font-normal text-black max-w-3xl mx-auto mb-16 tracking-tight">
+                Many farmers struggle with unpredictable milk supply, low market prices, and limited financial services.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-md flex flex-col items-start text-left hover-card-up">
+                    <div class="w-12 h-12 mb-6 rounded-2xl bg-[#f0f6f4] flex items-center justify-center text-[#006377]">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#006377] mb-4 leading-tight">Unpredictable Milk Supply</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed font-light">
+                        Farmers lack the tools to accurately track and manage their dairy production, leading to inconsistencies.
+                    </p>
+                </div>
+
+                <!-- Card 2 (High Highlight) -->
+                <div class="bg-[#006377] text-white rounded-3xl p-8 shadow-xl border border-transparent flex flex-col items-start text-left hover-card-up">
+                    <div class="w-12 h-12 mb-6 rounded-2xl bg-white/10 flex items-center justify-center text-[#5bd5e2]">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-4 leading-tight">Low Market Prices & Transparency</h3>
+                    <p class="text-sm text-white/80 leading-relaxed font-light">
+                        Without clear data, farmers are often victims of middlemen taking hidden cuts and unfair pricing.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-md flex flex-col items-start text-left hover-card-up">
+                    <div class="w-12 h-12 mb-6 rounded-2xl bg-[#f0f6f4] flex items-center justify-center text-[#006377]">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#006377] mb-4 leading-tight">Limited Financial Services</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed font-light">
+                        Smallholder farmers struggle to access credit and banking services without verifiable production records.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. OUR APPROACH SECTION -->
+        <section class="bg-[#f0f6f4] rounded-[2rem] p-8 lg:p-14 my-16 text-center border border-[#d6e5e1] relative">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#006377] mb-6 tracking-tight">
+                A New Approach: Digital Trust
+            </h2>
+            <p class="text-base md:text-lg text-gray-600 font-light max-w-3xl mx-auto mb-16">
+                SpaceAI is pioneering a simple but powerful digital trust platform that helps dairy farmers unlock the true value of their work.
+            </p>
+
+            <div class="flex flex-wrap md:flex-nowrap items-start justify-center gap-y-8 md:gap-x-8 lg:gap-x-12">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center flex-1 min-w-[130px] max-w-[200px]">
+                    <div class="w-16 h-16 rounded-full bg-white border border-[#006377]/10 flex items-center justify-center text-[#006377] shadow-md hover:scale-105 transition-transform duration-300 mb-4 relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-700 leading-normal">
+                        Easy-to-use<br>WhatsApp Interface
+                    </p>
+                </div>
+
+                <!-- Arrow 1 -->
+                <div class="hidden md:flex items-center justify-center self-start pt-6 text-[#88b9af]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center flex-1 min-w-[130px] max-w-[200px]">
+                    <div class="w-16 h-16 rounded-full bg-white border border-[#006377]/10 flex items-center justify-center text-[#006377] shadow-md hover:scale-105 transition-transform duration-300 mb-4 relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-700 leading-normal">
+                        Record Milk<br>Deliveries
+                    </p>
+                </div>
+
+                <!-- Arrow 2 -->
+                <div class="hidden md:flex items-center justify-center self-start pt-6 text-[#88b9af]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center flex-1 min-w-[130px] max-w-[200px]">
+                    <div class="w-16 h-16 rounded-full bg-white border border-[#006377]/10 flex items-center justify-center text-[#006377] shadow-md hover:scale-105 transition-transform duration-300 mb-4 relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-700 leading-normal">
+                        Receive Payments<br>Easily
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-base text-gray-600 font-light max-w-2xl mx-auto mt-12">
+                By embedding transparency and real-time data into every step of the dairy value chain, SpaceAI is helping farmers earn more — and plan for a better future.
+            </p>
+        </section>
+
+    </div>
+</div>
+
+<!-- 6. OUTPUTS & RESULTS (Full-Width Section) -->
+<section class="bg-[#006477] py-20 lg:py-28 text-white relative">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="text-center mb-16">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#5bd5e2] mb-3 block">Early Signs of Impact</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+                From Milk to Education
+            </h2>
+            <p class="text-white/70 max-w-2xl mx-auto mt-4 font-light text-base">
+                In Nandi County, where SpaceAI first launched, the impact has been immediate and transforming lives.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Stat Card 1 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">10,000</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">farmers onboarded</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        In just the first three months, demonstrating high demand and trust in the platform.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/space_ai/img4.webp' %}" alt="Farmers" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Stat Card 2 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">156%</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">increase in milk supply</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Driven by better tracking, incentives, and real-time market access for smallholder farmers.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/space_ai/img1.webp' %}" alt="Milk production" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Stat Card 3 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">Fair Payments</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">reaching farmers directly</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Farmers now track every liter they deliver and see the earnings they are owed—no more guesswork or hidden cuts.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/space_ai/img2.webp' %}" alt="Payments" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+            
+            <!-- Stat Card 4 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">$0.01</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">per kilogram of milk</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        A low-cost, scalable model that works even in areas with poor internet connectivity.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/space_ai/img3.webp' %}" alt="Pricing" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Stat Card 5 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">130,000</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">farmers target in 2 years</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Supported by government efforts to digitize agriculture, poised for rapid growth across Kenya.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/space_ai/img4.webp' %}" alt="Scale" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Stat Card 6 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">Expansion</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Beyond Dairy</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Expanding the successful model to other key crops like tea, coffee, and horticulture.
+                    </p>
+                </div>
+                <div class="h-44 w-full bg-[#d6e5e1]"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. MEASURING SUCCESS SECTION -->
+<div class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Left Info -->
+            <div class="lg:col-span-8 text-left">
+                <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">The Future</span>
+                <h2 class="text-3xl font-extrabold text-[#006377] mb-6 tracking-tight">
+                    Built on Data, Trust, and Opportunity
+                </h2>
+                <p class="text-base text-[#4a585a] font-normal leading-relaxed max-w-3xl mb-4">
+                    Beyond just boosting incomes, SpaceAI's platform is building climate resilience, improving risk management, and laying the foundation for smarter, more sustainable farming.
+                </p>
+                <p class="text-base text-[#4a585a] font-normal leading-relaxed max-w-3xl">
+                    By helping farmers turn each liter of milk into opportunity, SpaceAI is not just transforming Kenya's dairy sector — it's helping build stronger families, thriving communities, and a future where no dream is out of reach.
+                </p>
+            </div>
+
+            <!-- Right Circular Image -->
+            <div class="lg:col-span-4 flex justify-center lg:justify-end">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-[#F4F7F6] shadow-lg bg-[#006377]/10">
+                    <img src="{% static 'images/space_ai/img3.webp' %}" alt="Sustainability" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 8. INTERESTED IN WORKING WITH US (Bottom CTA) -->
+<section class="bg-white pb-16">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="bg-[#006377] rounded-[2rem] p-8 md:py-10 md:px-12 text-white relative overflow-hidden shadow-xl">
+            <style>.bg-cta-pattern { background-image:url('{% static "images/home/hero-pattern.webp" %}'); background-size:520px; }</style>
+            <div class="absolute inset-0 opacity-[0.08] pointer-events-none bg-cta-pattern"></div>
+            <div class="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8 text-left">
+                <!-- Portrait with Organic Leaf Shape -->
+                <div class="w-36 h-28 shrink-0 overflow-hidden rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-[1.2rem] rounded-bl-[1.2rem] border border-white/20 shadow-md">
+                    <img src="{% static 'images/home/hero-portrait.webp' %}" alt="Smiling team member" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                
+                <!-- Text Content -->
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-2">Interested in working with us?</h3>
+                    <p class="text-white/85 text-sm md:text-base font-light">
+                        Let's collaborate on your next project and create impactful solutions that drive positive change.
+                    </p>
+                </div>
+                
+                <!-- Thin Outline Pill Button -->
+                <div class="shrink-0 mt-4 md:mt-0">
+                    <a href="{% url 'home:contact' %}" class="inline-block border border-white/70 hover:bg-white hover:text-[#006377] hover:border-transparent transition-all duration-300 text-white font-semibold text-sm px-8 py-3.5 rounded-full min-w-[140px] text-center">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

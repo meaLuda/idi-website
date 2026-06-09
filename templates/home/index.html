@@ -3,7 +3,7 @@
 
 {% block content %}
 {% include "home/partials/_hero.html" %}
-{% include "home/partials/_brand_divider.html" %}
+{# {% include "home/partials/_brand_divider.html" %} #}
 {% include "home/partials/_stats_strip.html" %}
 {% include "home/partials/_what_we_do.html" %}
 {% include "home/partials/_where_we_apply.html" %}
@@ -12,11 +12,10 @@
     <h2 class="text-display-lg font-extrabold uppercase text-ink text-center mb-12 lg:mb-16">How We Work</h2>
     <div class="container mx-auto px-4">
         <div class="gallery-container">
-            <div class="gallery-wrap" x-data="{ mq: window.matchMedia('(max-width: 767px)'), isMobile: false }" x-init="
-                    isMobile = mq.matches;
-                    mq.addEventListener('change', e => { isMobile = e.matches; });
+            <div class="gallery-wrap" x-data="{ isMobile: window.innerWidth < 768 }" x-init="
+                    window.addEventListener('resize', () => { isMobile = window.innerWidth < 768; });
                     if (isMobile) {
-                        $el.classList.add('mobile-gallery');
+                        document.querySelector('.gallery-wrap').classList.add('mobile-gallery');
                     }
                 ">
                 <div class="item item-1 relative transition-transform duration-300 ease-in-out"
@@ -24,7 +23,7 @@
                     @mouseleave="!isMobile && (hover = false)" @touchstart="isMobile && (hover = true)"
                     @touchend="isMobile && setTimeout(() => hover = false, 3000)" :class="{ 'scale-110 z-10': hover }">
                     <div class="bg-image"
-                        :style="hover ? 'background-image: url(\'media/sequence/replacer/2.webp\')' : 'background-image: url(\'media/sequence/sequence1.webp\')'">
+                        :style="hover ? 'background-image: url(\'/media/sequence/replacer/2.webp\')' : 'background-image: url(\'/media/sequence/sequence1.webp\')'">
                     </div>
                 </div>
 
@@ -33,7 +32,7 @@
                     @mouseleave="!isMobile && (hover = false)" @touchstart="isMobile && (hover = true)"
                     @touchend="isMobile && setTimeout(() => hover = false, 3000)" :class="{ 'scale-110 z-10': hover }">
                     <div class="bg-image"
-                        :style="hover ? 'background-image: url(\'media/sequence/replacer/4.webp\')' : 'background-image: url(\'media/sequence/sequence3.webp\')'">
+                        :style="hover ? 'background-image: url(\'/media/sequence/replacer/4.webp\')' : 'background-image: url(\'/media/sequence/sequence3.webp\')'">
                     </div>
                 </div>
 
@@ -42,7 +41,7 @@
                     @mouseleave="!isMobile && (hover = false)" @touchstart="isMobile && (hover = true)"
                     @touchend="isMobile && setTimeout(() => hover = false, 3000)" :class="{ 'scale-110 z-10': hover }">
                     <div class="bg-image"
-                        :style="hover ? 'background-image: url(\'media/sequence/replacer/3.webp\')' : 'background-image: url(\'media/sequence/sequence2.webp\')'">
+                        :style="hover ? 'background-image: url(\'/media/sequence/replacer/3.webp\')' : 'background-image: url(\'/media/sequence/sequence2.webp\')'">
                     </div>
                 </div>
 
@@ -51,7 +50,7 @@
                     @mouseleave="!isMobile && (hover = false)" @touchstart="isMobile && (hover = true)"
                     @touchend="isMobile && setTimeout(() => hover = false, 3000)" :class="{ 'scale-110 z-10': hover }">
                     <div class="bg-image"
-                        :style="hover ? 'background-image: url(\'media/sequence/replacer/5.webp\')' : 'background-image: url(\'media/sequence/sequence4.webp\')'">
+                        :style="hover ? 'background-image: url(\'/media/sequence/replacer/5.webp\')' : 'background-image: url(\'/media/sequence/sequence4.webp\')'">
                     </div>
                 </div>
 
@@ -60,12 +59,191 @@
                     @mouseleave="!isMobile && (hover = false)" @touchstart="isMobile && (hover = true)"
                     @touchend="isMobile && setTimeout(() => hover = false, 3000)" :class="{ 'scale-110 z-10': hover }">
                     <div class="bg-image"
-                        :style="hover ? 'background-image: url(\'media/sequence/replacer/6.webp\')' : 'background-image: url(\'media/sequence/sequence5.webp\')'">
+                        :style="hover ? 'background-image: url(\'/media/sequence/replacer/6.webp\')' : 'background-image: url(\'/media/sequence/sequence5.webp\')'">
                     </div>
                 </div>
             </div>
         </div>
         <p class="text-center text-gray-500 italic text-sm mt-6 md:hidden">Swipe to see more • Tap to view details</p>
+    </div>
+</section>
+
+{% include "home/partials/_join_academy.html" %}
+{% include "home/partials/_start_conversation.html" %}
+
+<!-- ═══════════════════════════════════════════════
+     7. PARTNERS & COLLABORATORS LOGO MARQUEE — Premium infinite horizontal scrolling
+═══════════════════════════════════════════════ -->
+<style>
+    @keyframes logo-marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .logo-marquee-container {
+        overflow: hidden;
+        user-select: none;
+        display: flex;
+        position: relative;
+        mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+    }
+
+    .logo-marquee-track {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 5rem;
+        min-width: 100%;
+        animation: logo-marquee 30s linear infinite;
+    }
+
+    .logo-marquee-container:hover .logo-marquee-track {
+        animation-play-state: paused;
+    }
+</style>
+
+<!-- ═══════════════════════════════════════════════
+     7. PARTNERS & COLLABORATORS LOGO MARQUEE — Premium infinite horizontal scrolling
+═══════════════════════════════════════════════ -->
+<style>
+    @keyframes logo-marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .logo-marquee-container {
+        overflow: hidden;
+        user-select: none;
+        display: flex;
+        position: relative;
+        mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 15%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%);
+        -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 15%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .logo-marquee-track {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 5rem;
+        min-width: 100%;
+        animation: logo-marquee 30s linear infinite;
+    }
+
+    .logo-marquee-container:hover .logo-marquee-track {
+        animation-play-state: paused;
+    }
+</style>
+
+<section id="partners" class="bg-surface-alt py-12 md:py-16 border-t border-gray-200/50 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <!-- Optional eyebrow header -->
+
+        <div class="logo-marquee-container flex items-center">
+            <!-- First Track -->
+            <div class="logo-marquee-track">
+                <img src="{% static 'images/partners/action-lab.webp' %}" alt="Action Lab"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/breaking-dreams.webp' %}" alt="Breaking Dreams"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/challenge-works.webp' %}" alt="Challenge Works"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/ddi.webp' %}" alt="DDI"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/e4impact.webp' %}" alt="E4Impact"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/founders-factory.webp' %}" alt="Founders Factory"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/proportion.webp' %}" alt="Proportion"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/regional-center.webp' %}" alt="Regional Center"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/space-ai.webp' %}" alt="Space AI"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/special-envoy.webp' %}" alt="Special Envoy"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/under-your-skin.webp' %}" alt="Under Your Skin"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/unep-seeklogo.png' %}" alt="UNEP"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/unep.webp' %}" alt="UNEP Webp"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/unicef.webp' %}" alt="UNICEF"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+            </div>
+
+            <!-- Second Track (Seamless Duplicate) -->
+            <div class="logo-marquee-track" aria-hidden="true">
+                <img src="{% static 'images/partners/action-lab.webp' %}" alt="Action Lab"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/breaking-dreams.webp' %}" alt="Breaking Dreams"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/challenge-works.webp' %}" alt="Challenge Works"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/ddi.webp' %}" alt="DDI"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/e4impact.webp' %}" alt="E4Impact"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/founders-factory.webp' %}" alt="Founders Factory"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/proportion.webp' %}" alt="Proportion"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/regional-center.webp' %}" alt="Regional Center"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/space-ai.webp' %}" alt="Space AI"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/special-envoy.webp' %}" alt="Special Envoy"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/under-your-skin.webp' %}" alt="Under Your Skin"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/unep-seeklogo.png' %}" alt="UNEP"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/unep.webp' %}" alt="UNEP Webp"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+                <img src="{% static 'images/partners/unicef.webp' %}" alt="UNICEF"
+                    class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy">
+            </div>
+        </div>
     </div>
 </section>
 
@@ -176,23 +354,27 @@
 <!-- Enhanced touch interaction with LONGER display time -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Check if we're on mobile — matchMedia avoids the forced reflow that reading
-        // window.innerWidth would trigger during DOMContentLoaded.
-        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+        // Check if we're on mobile
+        const isMobile = window.innerWidth < 768;
 
-        // Warm the hover-state ("replacer") images during browser idle time so the swap is
-        // instant on interaction, without blocking initial render / main thread on load.
-        // The default ("sequence") images are already requested by the visible gallery tiles.
-        const idle = window.requestIdleCallback || function (cb) { return setTimeout(cb, 1); };
-        idle(function () {
-            ['media/sequence/replacer/2.webp',
-             'media/sequence/replacer/3.webp',
-             'media/sequence/replacer/4.webp',
-             'media/sequence/replacer/5.webp',
-             'media/sequence/replacer/6.webp'].forEach(function (url) {
-                const img = new Image();
-                img.src = url;
-            });
+        // Preload all images to prevent blank states
+        const imageUrls = [
+            '/media/sequence/sequence1.webp',
+            '/media/sequence/sequence2.webp',
+            '/media/sequence/sequence3.webp',
+            '/media/sequence/sequence4.webp',
+            '/media/sequence/sequence5.webp',
+            '/media/sequence/replacer/2.webp',
+            '/media/sequence/replacer/3.webp',
+            '/media/sequence/replacer/4.webp',
+            '/media/sequence/replacer/5.webp',
+            '/media/sequence/replacer/6.webp'
+        ];
+
+        // Preload all images
+        imageUrls.forEach(url => {
+            const img = new Image();
+            img.src = url;
         });
 
         if (isMobile) {
@@ -240,7 +422,7 @@
                         // Get hover image URL
                         const defaultImagePath = bgImage.dataset.defaultImage;
                         const sequenceNumber = defaultImagePath.match(/sequence(\d+)\.webp/)[1];
-                        const hoverImageUrl = `url('media/sequence/replacer/${parseInt(sequenceNumber) + 1}.webp')`;
+                        const hoverImageUrl = `url('/media/sequence/replacer/${parseInt(sequenceNumber) + 1}.webp')`;
 
                         // Set the hover image
                         bgImage.style.backgroundImage = hoverImageUrl;

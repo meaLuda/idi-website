@@ -1,1026 +1,209 @@
-<!-- templates/academy/academy.html -->
 {% extends '../../base.html' %}
 {% load static %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="relative min-h-[80vh] flex items-center overflow-hidden academy-hero-padding">
-    <!-- Background Image with Overlay -->
+<!-- 1. Hero Section -->
+<section class="relative bg-[#006377] min-h-screen flex items-center pt-32 pb-24">
     <div class="absolute inset-0">
-        <img src="{% static 'images/engagment_bg.webp' %}" alt="Background Image"
-            class="w-full h-full object-cover scale-y-100">
-        <!-- Teal Overlay -->
-       <div class="absolute inset-0 bg-gradient-to-br from-brand-teal-500/50 via-brand-teal-500/30 to-transparent"></div>
+        <img src="{% static 'images/engagment_bg.webp' %}" class="w-full h-full object-cover opacity-20"
+            alt="Hero Background"
+            onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'" loading="lazy">
+        <div class="absolute inset-0 bg-[#006377]/70 mix-blend-multiply"></div>
     </div>
-
-    <!-- Content -->
-    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 max-w-7xl">
-        <div class="max-w-4xl lg:max-w-5xl">
-            <!-- DIDA Logo/Brand -->
-            <div class="mb-6">
-                <svg width="207" height="59" viewBox="0 0 207 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M178.326 0.699627V34.7059H151.123V27.9037C151.123 12.8788 163.302 0.699627 178.326 0.699627Z"
-                        fill="#F6F9FD" />
-                    <path d="M178.326 58.3004H151.123V36.3203H178.326V58.3004Z" fill="#F6F9FD" />
-                    <path d="M207 33.0574V58.3004H179.796V5.85333C194.821 5.85333 207 18.0335 207 33.0574Z"
-                        fill="#F6F9FD" />
-                    <path
-                        d="M54.0887 28.0296H3.75002C3.16757 28.0296 2.69629 27.5574 2.69629 26.9759V1.88021C2.69629 1.29775 3.16757 0.825523 3.75002 0.825523H28.993C43.4354 0.825523 55.1424 12.5334 55.1424 26.9759C55.1424 27.5574 54.6711 28.0296 54.0887 28.0296Z"
-                        fill="#F6F9FD" />
-                    <path
-                        d="M86.7573 4.3308V54.6694C86.7573 55.2519 86.2851 55.7232 85.7036 55.7232H60.6079C60.0255 55.7232 59.5542 55.2519 59.5542 54.6694V29.4265C59.5542 14.984 71.2611 3.27707 85.7036 3.27707C86.2851 3.27707 86.7573 3.74835 86.7573 4.3308Z"
-                        fill="#F6F9FD" />
-                    <path d="M25.243 56.7037H0V29.4996H52.4461C52.4461 44.5246 40.2669 56.7037 25.243 56.7037Z"
-                        fill="#F6F9FD" />
-                    <path
-                        d="M146.728 28.0296H96.3897C95.8072 28.0296 95.3359 27.5574 95.3359 26.9759V1.88021C95.3359 1.29775 95.8072 0.825523 96.3897 0.825523H121.633C136.075 0.825523 147.782 12.5334 147.782 26.9759C147.782 27.5574 147.311 28.0296 146.728 28.0296Z"
-                        fill="#F6F9FD" />
-                    <path d="M117.883 56.7037H92.6396V29.4996H145.087C145.087 44.5246 132.907 56.7037 117.883 56.7037Z"
-                        fill="#F6F9FD" />
+    <div class="container mx-auto px-4 relative z-10 text-white max-w-5xl">
+        <p class="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight mb-6 leading-tight">
+            Decision Intelligence <br class="hidden sm:inline">Design Academy <br class="hidden sm:inline">(DIDAcademy)
+        </p>
+        <p class="text-lg md:text-xl text-white/90 mb-10 max-w-3xl leading-relaxed">
+            Developing Africa's capacity for design-, tech- & data-driven decision-making for social, business and
+            public innovation.
+        </p>
+        <div class="flex flex-wrap gap-4">
+            <a href="#join"
+                class="bg-white text-[#006377] px-8 py-3 rounded-full font-medium flex items-center hover:bg-gray-100 transition-colors shadow-lg">
+                Join the network
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                    </path>
                 </svg>
-            </div>
-            <!-- Description -->
-            <div class="mb-8 sm:mb-10 lg:mb-12">
-                <h1 class="text-white text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight tracking-tight">
-                    Decision Intelligence Design Academy
-                </h1>
-                <p class="text-white/90 text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-relaxed mt-4 sm:mt-6 font-light">
-                    Institute of Design and Innovation • Nairobi, Kenya
-                </p>
-                <p class="text-white/85 text-base sm:text-lg lg:text-xl xl:text-2xl leading-relaxed mt-3 sm:mt-4 max-w-4xl">
-                    Developing Africa's capacity for design-, tech- & data-driven decision-making for social, business
-                    and public innovation.
-                </p>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up">
-                <button
-                    class="bg-white text-brand-teal-500 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-50 hover:shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center group text-sm sm:text-base lg:text-lg">
-                    <svg width="20" height="21" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        class="mr-2 sm:mr-3 group-hover:scale-110 transition-transform duration-200">
-                        <path
-                            d="M12 22.8004C17.5228 22.8004 22 18.3233 22 12.8004C22 7.27757 17.5228 2.80042 12 2.80042C6.47715 2.80042 2 7.27757 2 12.8004C2 18.3233 6.47715 22.8004 12 22.8004Z"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path
-                            d="M9.5 9.76575C9.5 9.28846 9.5 9.04982 9.59974 8.91659C9.68666 8.80049 9.81971 8.72785 9.96438 8.71752C10.1304 8.70566 10.3311 8.83471 10.7326 9.0928L15.4532 12.1275C15.8016 12.3514 15.9758 12.4634 16.0359 12.6058C16.0885 12.7302 16.0885 12.8706 16.0359 12.995C15.9758 13.1374 15.8016 13.2494 15.4532 13.4734L10.7326 16.508C10.3311 16.7661 10.1304 16.8952 9.96438 16.8833C9.81971 16.873 9.68666 16.8003 9.59974 16.6842C9.5 16.551 9.5 16.3124 9.5 15.8351V9.76575Z"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Join the network
-                </button>
-                <a href="#programs"
-                    class="border-2 border-white/80 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-brand-teal-500 hover:border-white hover:shadow-lg active:scale-95 transition-all duration-200 backdrop-blur-sm text-sm sm:text-base lg:text-lg">
-                    Explore programs
-                </a>
-            </div>
+            </a>
+            <a href="#programs"
+                class="bg-transparent border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition-colors">
+                Explore programs
+            </a>
         </div>
     </div>
 </section>
-<!-- Divider Section -->
-<section class="h-[20px] relative overflow-hidden"
-    style="background-image: url('{% static 'images/slicer.webp' %}'); background-size: cover;">
-</section>
-<!-- About the Academy Section -->
-<section class="min-h-screen py-16 sm:py-20 relative overflow-hidden bg-[#F8F9FB] bg-center bg-fixed">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-            <!-- Left Column - Text Content -->
-            <div class="space-y-8">
-                <h2 class="text-brand-teal-500 text-4xl font-bold mb-8">About the Academy</h2>
 
-                <div class="space-y-6">
-                    <p class="text-gray-700 text-lg leading-relaxed">
-                        The Decision Intelligence Design Academy (DIDA) is Africa's leading capacity-development
-                        ecosystem for decision-intelligent governance, leadership and innovation. We weave leadership
-                        and talent development with rigorous training in design, data, AI and emerging
-                        technologies—cultivating shared vocabularies, interoperable frameworks, value-driven solutions,
-                        and cross-program networks to accelerate responsible, high-impact AI literacy and adoption
-                        across public, private, and civic sectors.
-                    </p>
-                </div>
-
-                <!-- Feature Boxes -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 animate-fade-in-up">
-                    <div
-                        class="bg-brand-orange text-white p-6 rounded-lg shadow-lg transform rotate-1 border-2 border-brand-orange">
-                        <h3 class="font-bold text-lg mb-2">Integrity-first, life-centered design</h3>
-                        <p class="text-sm text-white/90">
-                            Ethics, care and sustainable decision practices
-                        </p>
-                    </div>
-
-                    <div
-                        class="bg-brand-sage text-brand-teal-500 p-6 rounded-lg shadow-lg transform rotate-1 border-2 border-brand-sage">
-                        <h3 class="font-bold text-lg mb-2">Interoperable, cross-sector frameworks</h3>
-                        <p class="text-sm text-brand-teal-500/90">
-                            Shared methodologies from pilots to enterprise
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column - Image with Overlays -->
-            <div class="relative animate-fade-in-right">
-                <!-- Main Image -->
-                <div class="relative rounded-2xl overflow-hidden">
-                    <img src="{% static 'images/mamaDigital.webp' %}" alt="Academy participants"
-                        class="w-full h-[500px] object-cover">
-
-                    <!-- Overlay Boxes -->
-                    <div
-                        class="absolute inset-0 flex flex-col justify-center items-center space-y-4 animate-pulse-subtle">
-                        <!-- Leadership Box -->
-                        <div
-                            class="bg-white/30 text-white px-6 py-4 rounded-lg backdrop-blur-md w-3/4 text-center shadow-lg">
-                            <h4 class="font-bold text-lg">Leadership</h4>
-                        </div>
-
-                        <!-- Design + Data + AI Box -->
-                        <div
-                            class="bg-white/30 text-white px-6 py-4 rounded-lg backdrop-blur-md w-3/4 text-center shadow-lg">
-                            <h4 class="font-bold text-lg">Design + Data + AI</h4>
-                        </div>
-
-                        <!-- Cross Program Networks Box -->
-                        <div
-                            class="bg-white/30 text-white px-6 py-4 rounded-lg backdrop-blur-md w-3/4 text-center shadow-lg">
-                            <h4 class="font-bold text-lg">Cross-Program Networks</h4>
-                        </div>
-                    </div>
-                </div>
-                <!-- Decorative geometric shape -->
-                <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-brand-orange rounded-lg transform rotate-12 z-10">
-                </div>
-                <div class="absolute -top-4 -right-4 w-16 h-16 bg-brand-sage rounded-lg transform -rotate-12 z-10"></div>
-            </div>
+<!-- 2. What is Decision Intelligence? -->
+<section class="py-16 md:py-24 bg-white text-center">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="flex justify-center mb-8 opacity-40">
+            <!-- DIDA Logo SVG from existing -->
+            <svg width="150" height="45" viewBox="0 0 207 59" fill="#000" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M178.326 0.699627V34.7059H151.123V27.9037C151.123 12.8788 163.302 0.699627 178.326 0.699627Z" />
+                <path d="M178.326 58.3004H151.123V36.3203H178.326V58.3004Z" />
+                <path d="M207 33.0574V58.3004H179.796V5.85333C194.821 5.85333 207 18.0335 207 33.0574Z" />
+                <path
+                    d="M54.0887 28.0296H3.75002C3.16757 28.0296 2.69629 27.5574 2.69629 26.9759V1.88021C2.69629 1.29775 3.16757 0.825523 3.75002 0.825523H28.993C43.4354 0.825523 55.1424 12.5334 55.1424 26.9759C55.1424 27.5574 54.6711 28.0296 54.0887 28.0296Z" />
+                <path
+                    d="M86.7573 4.3308V54.6694C86.7573 55.2519 86.2851 55.7232 85.7036 55.7232H60.6079C60.0255 55.7232 59.5542 55.2519 59.5542 54.6694V29.4265C59.5542 14.984 71.2611 3.27707 85.7036 3.27707C86.2851 3.27707 86.7573 3.74835 86.7573 4.3308Z" />
+                <path d="M25.243 56.7037H0V29.4996H52.4461C52.4461 44.5246 40.2669 56.7037 25.243 56.7037Z" />
+                <path
+                    d="M146.728 28.0296H96.3897C95.8072 28.0296 95.3359 27.5574 95.3359 26.9759V1.88021C95.3359 1.29775 95.8072 0.825523 96.3897 0.825523H121.633C136.075 0.825523 147.782 12.5334 147.782 26.9759C147.782 27.5574 147.311 28.0296 146.728 28.0296Z" />
+                <path d="M117.883 56.7037H92.6396V29.4996H145.087C145.087 44.5246 132.907 56.7037 117.883 56.7037Z" />
+            </svg>
         </div>
-
-        <!-- Core Values Section - Now Below Both Columns -->
-        <div class="mt-16">
-            <h3 class="text-brand-teal-500 text-2xl font-bold mb-8 animate-fade-in-up">Built on Core Values</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-stagger-children">
-                <!-- Collaboration -->
-                <div
-                    class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-teal-500 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-brand-teal-500 rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-brand-teal-500 mb-2">Collaboration</h4>
-                            <p class="text-gray-700 text-sm leading-relaxed">
-                                We believe in the power of collective intelligence, fostering cross-sector partnerships
-                                and co-creation to drive systemic change.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Empowerment -->
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-orange hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up [animation-delay:100ms]">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-brand-orange rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-brand-teal-500 mb-2">Empowerment</h4>
-                            <p class="text-gray-700 text-sm leading-relaxed">
-                                We equip individuals and organizations with the knowledge and tools to navigate
-                                complexity and lead innovation in their respective fields.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Adaptability -->
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-sage hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up [animation-delay:200ms]">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-brand-sage rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-brand-teal-500 mb-2">Adaptability</h4>
-                            <p class="text-gray-700 text-sm leading-relaxed">
-                                We embrace a growth mindset, continuously refining our programs and methodologies to
-                                align with evolving global and local challenges.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Data-Driven Decision-Making -->
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-teal-500 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up [animation-delay:300ms]">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-brand-teal-500 rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-brand-teal-500 mb-2">Data-Driven Decision-Making</h4>
-                            <p class="text-gray-700 text-sm leading-relaxed">
-                                We champion the use of empirical data, behavioral science, and AI to enhance governance,
-                                business strategy, and social innovation.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sustainability -->
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-sage hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up [animation-delay:400ms]">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-brand-sage rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-brand-teal-500 mb-2">Sustainability</h4>
-                            <p class="text-gray-700 text-sm leading-relaxed">
-                                We advocate for long-term, scalable impact by integrating circular economy principles
-                                and sustainable development goals into our programs.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ethical Integrity -->
-                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-orange hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up [animation-delay:500ms]">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-brand-orange rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-brand-teal-500 mb-2">Ethical Integrity</h4>
-                            <p class="text-gray-700 text-sm leading-relaxed">
-                                Our initiatives align with responsible AI adoption, ensuring transparency, inclusivity,
-                                and fairness in all decision-making processes.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <p class="text-display-lg font-normal text-[#006377] mb-6">What is Decision Intelligence?</p>
+        <p class="text-ink-muted text-lg leading-relaxed text-center font-light">
+            Decision intelligence blends data, design and behavioral insights to turn information into transformative
+            action through emerging technologies. It is a unifying framework that enables cross-functional teams to
+            tackle complex challenges responsibly, scale innovations, and ensure sustainable public, private and civic
+            development.
+        </p>
     </div>
 </section>
-<!-- Vision Section -->
-<section class="py-16 sm:py-20 bg-white overflow-hidden">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
-        <!-- Section Header -->
-        <div class="mb-16">
-            <h2 class="text-brand-teal-500 text-4xl font-bold mb-4">Vision</h2>
-            <p class="text-gray-600 text-xl">Scale Resilience and Prosperity through Decision & Innovation Intelligence
+
+<!-- 3. About the Academy -->
+<section class="py-16 md:py-24 bg-[#FAF3E0]">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+            <p class="text-display-lg font-normal text-ink mb-4">About the Academy</p>
+            <p class="text-ink-muted text-base leading-relaxed font-light">
+                The Decision Intelligence Design Academy (DIDAcademy) is Africa's leading capacity-development
+                ecosystem for decision-intelligent governance, leadership and innovation. We weave leadership and
+                talent development with rigorous training in design, data, AI and emerging technologies—cultivating
+                shared vocabularies, interoperable frameworks, value-driven solutions, and cross-program networks to
+                accelerate responsible, high-impact AI literacy and adoption across public, private, and civic
+                sectors.
             </p>
         </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <!-- Left Column - Image with Modal -->
-            <div class="relative">
-                <img src="{% static 'images/teamDecionIntelligence.webp' %}" alt="Team working on decision intelligence"
-                    class="w-full h-[550px] object-cover rounded-2xl">
-
-                <!-- Modal/Popup Box -->
-                <div
-                    class="bg-white/55 text-white px-6 py-4 rounded-lg backdrop-blur-md absolute bottom-8 left-8 right-8 rounded-lg shadow-xl p-6 border border-gray-200">
-                    <div class="flex items-start space-x-3">
-                        <div class="flex-shrink-0 mt-1">
-                            <svg class="w-6 h-6 text-brand-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-lg mb-2">What is Decision Intelligence?</h4>
-                            <p class="text-black text-sm leading-relaxed">
-                                Decision intelligence blends data, design and behavioural insights to turn information
-                                into transformative action through emerging technologies, and thinks of decision as a
-                                Design Intelligence framework that empowers networks with stakeholder engagement and
-                                enable communities to thrive.
-                            </p>
-                        </div>
-                    </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <div class="bg-white rounded-2xl p-6 flex items-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-white border border-[#f99a00] rounded-lg flex items-center justify-center flex-shrink-0 text-[#f99a00] mr-5">
+                    <span class="font-bold text-lg leading-none">A</span>
                 </div>
+                <p class="text-[#006377] font-semibold text-[15px]"><span class="font-bold">Integrity-first, life-centered design:</span> Ethics, care and sustainable decision practices</p>
             </div>
-
-            <!-- Right Column - Benefits List -->
-            <div class="space-y-8">
-                <p class="text-gray-700 text-lg leading-relaxed mb-8 border border-gray-200 p-4 rounded-lg shadow-sm">
-                    Decision intelligence sits at the intersection of strategy and impact, empowering teams to thrive in
-                    volatile, uncertain, complex and ambiguous contexts. By embedding a culture of innovation,
-                    collaboration and ethical leadership, DI-DI drives lasting positive change.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Left Column Benefits -->
-                    <div class="space-y-6">
-                        <div
-                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 flex-shrink-0">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
-                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
-                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800 mb-1">Shaping the Future of Work with data-driven
-                                    decision strategies</h4>
-                            </div>
-                        </div>
-
-                        <div
-                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 flex-shrink-0">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
-                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
-                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800 mb-1">Enhancing Resilience & Adaptability to
-                                    anticipate change and respond with agility</h4>
-                            </div>
-                        </div>
-
-                        <div
-                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 flex-shrink-0">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
-                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
-                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800 mb-1">Developing Cross-Sector Competencies with
-                                    lab-saving workforces</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Column Benefits -->
-                    <div class="space-y-6">
-                        <div
-                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 flex-shrink-0">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
-                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
-                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800 mb-1">Advancing Ethical & Inclusive practices
-                                    centered on sustainability and equity</h4>
-                            </div>
-                        </div>
-
-                        <div
-                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 flex-shrink-0">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
-                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
-                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800 mb-1">Driving Economic Growth by unlocking new
-                                    markets and revenue streams</h4>
-                            </div>
-                        </div>
-
-                        <div
-                            class="flex items-start space-x-3 border border-gray-200 p-4 rounded-lg shadow-sm h-[100px]">
-                            <div class="w-2 h-2 flex-shrink-0">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M6.99181 15.7777C9.90742 15.7777 12.271 13.4141 12.271 10.4985C12.271 7.58292 9.90742 5.21936 6.99181 5.21936C4.07621 5.21936 1.71265 7.58292 1.71265 10.4985C1.71265 13.4141 4.07621 15.7777 6.99181 15.7777Z"
-                                        stroke="#E0982D" stroke-width="1.05583" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M5.40796 10.4986L6.46395 11.5546L8.57593 9.44263" stroke="#E0982D"
-                                        stroke-width="1.05583" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800 mb-1">Fostering Cross-Industry Collaboration to
-                                    co-innovate across sectors</h4>
-                            </div>
-                        </div>
-                    </div>
+            <div class="bg-white rounded-2xl p-6 flex items-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-white border border-[#f99a00] rounded-lg flex items-center justify-center flex-shrink-0 text-[#f99a00] mr-5">
+                    <span class="font-bold text-lg leading-none">B</span>
                 </div>
+                <p class="text-[#006377] font-semibold text-[15px]"><span class="font-bold">Interoperable, cross-sector frameworks:</span> Shared methodologies from pilots to enterprise</p>
             </div>
-        </div>
-    </div>
-</section>
-<!-- Core Offerings Section -->
-<section class="py-16 sm:py-20 bg-gray-50 overflow-hidden">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
-        <!-- Section Header -->
-        <div class="mb-16 text-left">
-            <h2 class="text-brand-teal-500 text-4xl font-bold mb-4">Core Offerings: Decision Intelligence Programs</h2>
-            <div class="w-64 h-2 bg-brand-orange mb-4 mt-3"></div>
-
-            <p class="text-gray-600 text-xl max-w-3xl">
-                Positioning Africa's integrative ecosystem for decision-intelligent capacity.
-            </p>
-        </div>
-
-        <!-- Programs Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Executive Program -->
-            <div class="bg-white rounded-2xl shadow-lg p-6">
-                <!-- Image Island -->
-                <div class="mb-6">
-                    <div class="rounded-xl overflow-hidden shadow-md">
-                        <img src="{% static 'images/executive-boardroom.webp' %}" alt="Executive boardroom meeting"
-                            class="w-full h-64 object-cover">
-                    </div>
+            <div class="bg-white rounded-2xl p-6 flex items-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-white border border-[#f99a00] rounded-lg flex items-center justify-center flex-shrink-0 text-[#f99a00] mr-5">
+                    <span class="font-bold text-lg leading-none">C</span>
                 </div>
-
-                <!-- Content Island -->
-                <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
-                    <h3 class="text-brand-teal-500 text-2xl font-bold mb-4">Executive</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        A modular set of fellowships, masterclasses, micro-courses, and strategic lens designed for
-                        executives and senior decision-makers.
-                    </p>
-
-                    <!-- Details List -->
-                    <div class="space-y-4">
-                        <div>
-                            <span class="font-semibold text-gray-800">Objective:</span>
-                            <span class="text-gray-600 ml-2">Equip leadership with frameworks to scale innovation from
-                                pilots to enterprise.</span>
-                        </div>
-
-                        <div>
-                            <span class="font-semibold text-gray-800">Need:</span>
-                            <span class="text-gray-600 ml-2">Address gaps in systems thinking and clear roadmaps for
-                                responsible adoption.</span>
-                        </div>
-
-                        <div>
-                            <span class="font-semibold text-gray-800">Approach:</span>
-                            <span class="text-gray-600 ml-2">Case studies, diagnostics, innovation labs, roadmap sprints
-                                and executive coaching.</span>
-                        </div>
-
-                        <div>
-                            <span class="font-semibold text-gray-800">Outcomes:</span>
-                            <span class="text-gray-600 ml-2">Agile governance, organisational capability and networks
-                                that reduce digital and human risk.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Emerging Talent Program -->
-            <div class="bg-white rounded-2xl shadow-lg p-6">
-                <!-- Image Island -->
-                <div class="mb-6">
-                    <div class="rounded-xl overflow-hidden shadow-md">
-                        <img src="{% static 'images/emerging-talent-collaboration.webp' %}"
-                            alt="Young professionals collaborating" class="w-full h-64 object-cover">
-                    </div>
-                </div>
-
-                <!-- Content Island -->
-                <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
-                    <h3 class="text-brand-teal-500 text-2xl font-bold mb-4">Emerging Talent</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Bootcamps, bootcamps, courses and hackathons for early- and mid-career professionals,
-                        innovators, designers and researchers.
-                    </p>
-
-                    <!-- Details List -->
-                    <div class="space-y-4">
-                        <div>
-                            <span class="font-semibold text-gray-800">Objective:</span>
-                            <span class="text-gray-600 ml-2">Cultivate cross-disciplinary talent for end-to-end and
-                                data-driven innovation.</span>
-                        </div>
-
-                        <div>
-                            <span class="font-semibold text-gray-800">Need:</span>
-                            <span class="text-gray-600 ml-2">Bridge deep expertise across innovation gaps with a
-                                structured journey to deployment.</span>
-                        </div>
-
-                        <div>
-                            <span class="font-semibold text-gray-800">Approach:</span>
-                            <span class="text-gray-600 ml-2">Opportunity mapping, rapid prototyping, hands-on training
-                                and accelerated apprenticeships.</span>
-                        </div>
-
-                        <div>
-                            <span class="font-semibold text-gray-800">Outcomes:</span>
-                            <span class="text-gray-600 ml-2">Portfolio development, case strategy, visualization and
-                                real-world application readiness.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- 2025 Programs Section -->
-<section id="programs" class="py-16 sm:py-20 bg-brand-teal-500 relative overflow-hidden">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <!-- Section Header -->
-        <div class="mb-16">
-            <h2 class="text-white text-5xl font-bold mb-4">2025 Programs</h2>
-            <div class="w-32 h-1 bg-brand-orange rounded-full"></div>
-        </div>
-
-        <!-- Programs Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 academy-programs-grid">
-            {% for program in featured_programs %}
-            <div class="transform hover:scale-105 transition-all duration-300 hover:shadow-xl animate-fade-in-up">
-                <!-- Image Island -->
-                <div class="mb-6">
-                    <div class="rounded-xl overflow-hidden shadow-md">
-                        <img src="{% if program.image %}{{ program.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}"
-                            alt="{{ program.title }}" class="w-full h-48 object-cover">
-                    </div>
-                </div>
-
-                <!-- Content Island -->
-                <div class="rounded-xl p-4 shadow-sm">
-                    <h3 class="text-white text-xl font-bold mb-4 leading-tight">{{ program.title }}</h3>
-                    <p class="text-white text-sm leading-relaxed mb-6">
-                        {{ program.short_description }}
-                    </p>
-
-                    <!-- Action Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="{% url 'home:program_detail' program.slug %}"
-                            class="flex-1 bg-white border-2 border-brand-orange text-brand-teal-500 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-brand-teal-500 hover:text-white transition-colors text-center flex items-center justify-center">
-                            Read More
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a>
-
-                        {% if program.learn_more_url %}
-                        <a href="{{ program.learn_more_url }}"
-                            class="flex-1 bg-transparent border-2 border-white text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white hover:text-brand-teal-500 transition-colors text-center flex items-center justify-center">
-                            Learn More
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </a>
-                        {% endif %}
-
-                        {% if program.application_url and program.application_open %}
-                        <a href="{{ program.application_url }}"
-                            class="flex-1 bg-brand-teal-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-brand-orange transition-colors text-center">
-                            Apply Now
-                        </a>
-                        {% elif not program.application_open %}
-                        <span
-                            class="flex-1 bg-gray-400 text-white px-4 py-2 rounded-lg text-sm font-semibold text-center cursor-not-allowed">
-                            Applications Closed
-                        </span>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            {% empty %}
-            <!-- Fallback content if no programs -->
-            <div class="col-span-full">
-                <div class="bg-white rounded-xl p-12 text-center shadow-sm">
-                    <div class="text-gray-400 mb-4">
-                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Programs Coming Soon</h3>
-                    <p class="text-gray-500">Our 2025 programs are currently being finalized. Check back soon for
-                        updates!</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-<!-- Divider Section -->
-<section class="h-[20px] relative overflow-hidden"
-    style="background-image: url('{% static 'images/slicer.webp' %}'); background-size: cover;">
-</section>
-<!-- A Tailored Experiential Learning Approach Section -->
-<section class="py-16 sm:py-20 bg-white overflow-hidden">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
-        <!-- Section Header -->
-        <div class="mb-16">
-            <h2 class="text-brand-teal-500 text-4xl font-bold mb-6">A Tailored Experiential Learning Approach</h2>
-            <div class="w-32 h-1 bg-brand-orange rounded-full mb-6"></div>
-            <p class="text-gray-600 text-lg max-w-3xl">
-                Our expert-led, experiential model employs flexible modules so partners can co-create
-                participant-focused outcomes.
-            </p>
-        </div>
-
-        <!-- Learning Methods Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            <!-- Row 1 -->
-            <div class="relative group">
-                <div
-                    class="bg-gray-100 text-brand-teal-500 px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-brand-teal-700 hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
-                    <span class="font-semibold">Masterclasses</span>
-                    <div class="w-8 h-8 rounded flex items-center justify-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M18.8332 18V16.3333C18.8332 14.7801 17.7709 13.4751 16.3332 13.105M13.4165 3.2423C14.6381 3.73679 15.4998 4.93443 15.4998 6.33333C15.4998 7.73224 14.6381 8.92988 13.4165 9.42437M14.6665 18C14.6665 16.4469 14.6665 15.6703 14.4128 15.0577C14.0745 14.241 13.4255 13.592 12.6088 13.2537C11.9962 13 11.2196 13 9.6665 13H7.1665C5.61337 13 4.8368 13 4.22423 13.2537C3.40747 13.592 2.75855 14.241 2.42024 15.0577C2.1665 15.6703 2.1665 16.4469 2.1665 18M11.7498 6.33333C11.7498 8.17428 10.2575 9.66667 8.4165 9.66667C6.57555 9.66667 5.08317 8.17428 5.08317 6.33333C5.08317 4.49238 6.57555 3 8.4165 3C10.2575 3 11.7498 4.49238 11.7498 6.33333Z"
-                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative group">
-                <div
-                    class="bg-gray-100 text-brand-teal-500 px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-brand-teal-700 hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
-                    <span class="font-semibold">Use Case Clinics</span>
-                    <div class="w-8 h-8  rounded flex items-center justify-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12.1667 17.1665C12.1667 18.087 11.4205 18.8332 10.5 18.8332C9.57953 18.8332 8.83333 18.087 8.83333 17.1665M12.1667 17.1665C12.1667 16.246 11.4205 15.4998 10.5 15.4998M12.1667 17.1665H18M8.83333 17.1665C8.83333 16.246 9.57953 15.4998 10.5 15.4998M8.83333 17.1665H3M10.5 15.4998V12.1665M18 4.6665C18 6.04722 14.6421 7.1665 10.5 7.1665C6.35786 7.1665 3 6.04722 3 4.6665M18 4.6665C18 3.28579 14.6421 2.1665 10.5 2.1665C6.35786 2.1665 3 3.28579 3 4.6665M18 4.6665V9.6665C18 11.0498 14.6667 12.1665 10.5 12.1665M3 4.6665V9.6665C3 11.0498 6.33333 12.1665 10.5 12.1665"
-                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative group">
-                <div
-                    class="bg-gray-100 text-brand-teal-500 px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-brand-teal-700 hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
-                    <span class="font-semibold">Design Sprints</span>
-                    <div class="w-8 h-8  rounded flex items-center justify-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_58983_2021)">
-                                <path
-                                    d="M13.0001 6.33317L7.86214 7.80115C7.60805 7.87375 7.481 7.91005 7.37606 7.97828C7.28316 8.03869 7.20324 8.11701 7.14097 8.20867C7.07063 8.31222 7.03177 8.4385 6.95406 8.69107L3.83341 18.8332M3.83341 18.8332L13.9755 15.7125C14.2281 15.6348 14.3544 15.596 14.4579 15.5256C14.5496 15.4634 14.6279 15.3834 14.6883 15.2905C14.7565 15.1856 14.7928 15.0585 14.8654 14.8044L16.3334 9.6665M3.83341 18.8332L9.32175 13.3448M4.66675 7.1665V2.1665M2.16675 4.6665H7.16675M18.7239 7.05703L15.6096 3.94265C15.2795 3.61263 15.1145 3.44763 14.9243 3.3858C14.7569 3.33142 14.5766 3.33142 14.4092 3.3858C14.219 3.44763 14.054 3.61263 13.7239 3.94265L13.1096 4.55703C12.7795 4.88704 12.6145 5.05205 12.5527 5.24232C12.4983 5.40969 12.4983 5.58998 12.5527 5.75735C12.6145 5.94763 12.7795 6.11263 13.1096 6.44265L16.2239 9.55703C16.554 9.88704 16.719 10.0521 16.9092 10.1139C17.0766 10.1683 17.2569 10.1683 17.4243 10.1139C17.6145 10.052 17.7795 9.88704 18.1096 9.55703L18.7239 8.94265C19.054 8.61263 19.219 8.44763 19.2808 8.25735C19.3352 8.08998 19.3352 7.90969 19.2808 7.74232C19.219 7.55205 19.054 7.38704 18.7239 7.05703ZM10.5001 10.4998C11.4206 10.4998 12.1667 11.246 12.1667 12.1665C12.1667 13.087 11.4206 13.8332 10.5001 13.8332C9.57961 13.8332 8.83342 13.087 8.83342 12.1665C8.83341 11.246 9.57961 10.4998 10.5001 10.4998Z"
-                                    stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_58983_2021">
-                                    <rect width="20" height="20" fill="white" transform="translate(0.5 0.5)" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative group">
-                <div
-                    class="bg-gray-100 text-brand-teal-500 px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-brand-teal-700 hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
-                    <span class="font-semibold">Peer Clinics</span>
-                    <div class="w-8 h-8  rounded flex items-center justify-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M3.83343 18.681C4.33558 18.8332 5.01382 18.8332 6.16675 18.8332H14.8334C15.9863 18.8332 16.6646 18.8332 17.1667 18.681M3.83343 18.681C3.72577 18.6484 3.62619 18.6088 3.53177 18.5607C3.06137 18.321 2.67892 17.9386 2.43923 17.4681C2.16675 16.9334 2.16675 16.2333 2.16675 14.8332V6.1665C2.16675 4.76637 2.16675 4.06631 2.43923 3.53153C2.67892 3.06112 3.06137 2.67867 3.53177 2.43899C4.06655 2.1665 4.76662 2.1665 6.16675 2.1665H14.8334C16.2335 2.1665 16.9336 2.1665 17.4684 2.43899C17.9388 2.67867 18.3212 3.06112 18.5609 3.53153C18.8334 4.06631 18.8334 4.76637 18.8334 6.1665V14.8332C18.8334 16.2333 18.8334 16.9334 18.5609 17.4681C18.3212 17.9386 17.9388 18.321 17.4684 18.5607C17.374 18.6088 17.2744 18.6484 17.1667 18.681M3.83343 18.681C3.83371 18.0066 3.83775 17.6497 3.89746 17.3495C4.16049 16.0272 5.19415 14.9936 6.51645 14.7306C6.83844 14.6665 7.22566 14.6665 8.00008 14.6665H13.0001C13.7745 14.6665 14.1617 14.6665 14.4837 14.7306C15.806 14.9936 16.8397 16.0272 17.1027 17.3495C17.1624 17.6497 17.1665 18.0066 17.1667 18.681M13.8334 8.4165C13.8334 10.2575 12.341 11.7498 10.5001 11.7498C8.65913 11.7498 7.16675 10.2575 7.16675 8.4165C7.16675 6.57555 8.65913 5.08317 10.5001 5.08317C12.341 5.08317 13.8334 6.57555 13.8334 8.4165Z"
-                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Row 2 -->
-            <div class="relative group">
-                <div
-                    class="bg-gray-100 text-brand-teal-500 px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-brand-teal-700 hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
-                    <span class="font-semibold">Webinars</span>
-                    <div class="w-8 h-8  rounded flex items-center justify-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10.4998 13.8333V18M10.4998 13.8333L15.4998 18M10.4998 13.8333L5.49984 18M7.1665 6.33333V10.5M10.4998 8V10.5M13.8332 9.66667V10.5M18.8332 3H2.1665M2.99984 3H17.9998V9.83333C17.9998 11.2335 17.9998 11.9335 17.7274 12.4683C17.4877 12.9387 17.1052 13.3212 16.6348 13.5608C16.1 13.8333 15.4 13.8333 13.9998 13.8333H6.99984C5.59971 13.8333 4.89964 13.8333 4.36486 13.5608C3.89446 13.3212 3.512 12.9387 3.27232 12.4683C2.99984 11.9335 2.99984 11.2335 2.99984 9.83333V3Z"
-                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative group">
-                <div
-                    class="bg-gray-100 text-brand-teal-500 px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-brand-teal-700 hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
-                    <span class="font-semibold">Mentorship Streams</span>
-                    <div class="w-8 h-8  rounded flex items-center justify-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M15.5001 13.6974C16.7134 14.3069 17.7536 15.285 18.5128 16.508C18.6632 16.7502 18.7383 16.8713 18.7643 17.039C18.8172 17.3798 18.5841 17.7988 18.2667 17.9336C18.1105 18 17.9348 18 17.5834 18M13.8334 10.1102C15.0682 9.49657 15.9168 8.22238 15.9168 6.75C15.9168 5.27762 15.0682 4.00343 13.8334 3.3898M12.1668 6.75C12.1668 8.82107 10.4878 10.5 8.41678 10.5C6.34571 10.5 4.66678 8.82107 4.66678 6.75C4.66678 4.67893 6.34571 3 8.41678 3C10.4878 3 12.1668 4.67893 12.1668 6.75ZM2.6328 16.282C3.96139 14.2871 6.05792 13 8.41677 13C10.7756 13 12.8722 14.2871 14.2008 16.282C14.4918 16.719 14.6373 16.9375 14.6206 17.2166C14.6075 17.4339 14.4651 17.7 14.2914 17.8313C14.0684 18 13.7616 18 13.1481 18H3.68541C3.07192 18 2.76517 18 2.54214 17.8313C2.36848 17.7 2.22601 17.4339 2.21297 17.2166C2.19622 16.9375 2.34174 16.719 2.6328 16.282Z"
-                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative group">
-                <div
-                    class="bg-gray-100 text-brand-teal-500 px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-brand-teal-700 hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
-                    <span class="font-semibold">Field Excursions</span>
-                    <div class="w-8 h-8  rounded flex items-center justify-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M7.16667 3L13.8333 18M3 14.6667L10.5 10.5M7 18H14C15.4001 18 16.1002 18 16.635 17.7275C17.1054 17.4878 17.4878 17.1054 17.7275 16.635C18 16.1002 18 15.4001 18 14V7C18 5.59987 18 4.8998 17.7275 4.36502C17.4878 3.89462 17.1054 3.51217 16.635 3.27248C16.1002 3 15.4001 3 14 3H7C5.59987 3 4.8998 3 4.36502 3.27248C3.89462 3.51217 3.51217 3.89462 3.27248 4.36502C3 4.8998 3 5.59987 3 7V14C3 15.4001 3 16.1002 3.27248 16.635C3.51217 17.1054 3.89462 17.4878 4.36502 17.7275C4.8998 18 5.59987 18 7 18Z"
-                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative group">
-                <div
-                    class="bg-gray-100 text-brand-teal-500 px-4 sm:px-6 py-4 rounded-lg flex items-center justify-between group hover:bg-brand-teal-700 hover:text-white transition-all duration-300 transform hover:scale-105 animate-fade-in-up cursor-pointer">
-                    <span class="font-semibold">Apprenticeships</span>
-                    <div class="w-8 h-8  rounded flex items-center justify-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M3.83325 18L3.83325 3.83333M3.83325 11.3333H9.99992C10.4666 11.3333 10.7 11.3333 10.8782 11.2425C11.035 11.1626 11.1625 11.0351 11.2424 10.8783C11.3333 10.7001 11.3333 10.4667 11.3333 10V4.33333C11.3333 3.86662 11.3333 3.63327 11.2424 3.45501C11.1625 3.29821 11.035 3.17072 10.8782 3.09083C10.7 3 10.4666 3 9.99992 3H5.16659C4.69987 3 4.46652 3 4.28826 3.09083C4.13146 3.17072 4.00397 3.29821 3.92408 3.45501C3.83325 3.63327 3.83325 3.86662 3.83325 4.33333V11.3333ZM11.3333 4.66667H16.6666C17.1333 4.66667 17.3667 4.66667 17.5449 4.75749C17.7017 4.83739 17.8292 4.96487 17.9091 5.12167C17.9999 5.29993 17.9999 5.53329 17.9999 6V11.6667C17.9999 12.1334 17.9999 12.3667 17.9091 12.545C17.8292 12.7018 17.7017 12.8293 17.5449 12.9092C17.3667 13 17.1333 13 16.6666 13H12.6666C12.1999 13 11.9665 13 11.7883 12.9092C11.6315 12.8293 11.504 12.7018 11.4241 12.545C11.3333 12.3667 11.3333 12.1334 11.3333 11.6667V4.66667Z"
-                                stroke="#FFAD00" stroke-width="1.66667" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-
-                    </div>
-                </div>
+                <p class="text-[#006377] font-semibold text-[15px]">Leadership + Design + Data + AI + Cross-program networks</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Divider Section -->
-<section class="h-[20px] relative overflow-hidden"
-    style="background-image: url('{% static 'images/slicer.webp' %}'); background-size: cover;">
-</section>
+<!-- 4. Decision Intelligence programs -->
+<section id="programs" class="py-16 md:py-24 relative overflow-hidden bg-[#006377]">
+    <div class="absolute inset-0">
+        <img src="{% static 'images/governance/hero_bg.png' %}" class="w-full h-full object-cover opacity-20"
+            alt="Programs Background"
+            onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'" loading="lazy">
+        <div class="absolute inset-0 bg-[#006377]/70 mix-blend-multiply"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10 max-w-6xl">
+        <p class="text-display-lg font-normal text-white text-center mb-12">Decision Intelligence Programs
+        </p>
 
-<!-- Join Our Collective Intelligence Network Section -->
-<section class="py-16 sm:py-20 bg-gray-50 overflow-hidden">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
-        <!-- Section Header -->
-        <div class="mb-16">
-            <h2 class="text-brand-teal-500 text-4xl font-bold mb-6">Join our collective intelligence network for
-                talent-driven impact</h2>
-            <div class="w-32 h-1 bg-brand-orange rounded-full mb-6"></div>
-        </div>
-
-        <!-- Partnership Types Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            <!-- Knowledge Partners -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- EXECUTIVE -->
             <div
-                class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2 animate-fade-in-up">
-                <div class="mb-6">
+                class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 lg:p-10 text-white relative">
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
                     <div
-                        class="w-16 h-16 bg-brand-teal-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g filter="url(#filter0_d_58983_6833)">
-                                <path
-                                    d="M2.5 11.5C2.5 5.97715 6.97715 1.5 12.5 1.5H40.5C46.0229 1.5 50.5 5.97715 50.5 11.5V39.5C50.5 45.0229 46.0228 49.5 40.5 49.5H12.5C6.97715 49.5 2.5 45.0228 2.5 39.5V11.5Z"
-                                    fill="#006477" shape-rendering="crispEdges" />
-                                <path
-                                    d="M26.5 34.5L26.3999 34.3499C25.7053 33.308 25.358 32.787 24.8991 32.4098C24.4929 32.0759 24.0248 31.8254 23.5216 31.6726C22.9533 31.5 22.3271 31.5 21.0748 31.5H19.7C18.5799 31.5 18.0198 31.5 17.592 31.282C17.2157 31.0903 16.9097 30.7843 16.718 30.408C16.5 29.9802 16.5 29.4201 16.5 28.3V19.7C16.5 18.5799 16.5 18.0198 16.718 17.592C16.9097 17.2157 17.2157 16.9097 17.592 16.718C18.0198 16.5 18.5799 16.5 19.7 16.5H20.1C22.3402 16.5 23.4603 16.5 24.316 16.936C25.0686 17.3195 25.6805 17.9314 26.064 18.684C26.5 19.5397 26.5 20.6598 26.5 22.9M26.5 34.5V22.9M26.5 34.5L26.6001 34.3499C27.2947 33.308 27.642 32.787 28.1009 32.4098C28.5071 32.0759 28.9752 31.8254 29.4784 31.6726C30.0467 31.5 30.6729 31.5 31.9252 31.5H33.3C34.4201 31.5 34.9802 31.5 35.408 31.282C35.7843 31.0903 36.0903 30.7843 36.282 30.408C36.5 29.9802 36.5 29.4201 36.5 28.3V19.7C36.5 18.5799 36.5 18.0198 36.282 17.592C36.0903 17.2157 35.7843 16.9097 35.408 16.718C34.9802 16.5 34.4201 16.5 33.3 16.5H32.9C30.6598 16.5 29.5397 16.5 28.684 16.936C27.9314 17.3195 27.3195 17.9314 26.936 18.684C26.5 19.5397 26.5 20.6598 26.5 22.9"
-                                    stroke="#FFAD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </g>
-                            <defs>
-                                <filter id="filter0_d_58983_6833" x="0.5" y="0.5" width="52" height="52"
-                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                    <feColorMatrix in="SourceAlpha" type="matrix"
-                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                    <feOffset dy="1" />
-                                    <feGaussianBlur stdDeviation="1" />
-                                    <feComposite in2="hardAlpha" operator="out" />
-                                    <feColorMatrix type="matrix"
-                                        values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
-                                    <feBlend mode="normal" in2="BackgroundImageFix"
-                                        result="effect1_dropShadow_58983_6833" />
-                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6833"
-                                        result="shape" />
-                                </filter>
-                            </defs>
-                        </svg>
-
+                        class="w-5 h-5 border-2 border-[#f99a00] rounded-sm transform rotate-45 flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full"></div>
                     </div>
-                    <h3 class="text-brand-teal-500 text-xl font-bold mb-4">Knowledge Partners</h3>
                 </div>
-                <ul class="space-y-2 text-gray-600 text-sm">
-                    <li class="flex items-center">
-                        <span class="w-2 h-2 bg-brand-orange rounded-full mr-3"></span>
-                        Facilitators, Coaches, Mentors, Speakers
+                <p class="text-xl font-normal tracking-widest mb-8">Executive</p>
+
+                <ul class="space-y-6 text-sm lg:text-base text-white/90">
+                    <li class="flex items-start">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <span class="font-bold">Audience:</span><br>
+                            <span class="font-light">Executives and senior decision-makers</span>
+                        </div>
                     </li>
-                    <li class="flex items-center">
-                        <span class="w-2 h-2 bg-brand-orange rounded-full mr-3"></span>
-                        Accreditation & Certifications
+                    <li class="flex items-start">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <span class="font-bold">Objective:</span><br>
+                            <span class="font-light">Equip leadership with frameworks to scale innovation from pilots to
+                                enterprise</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <span class="font-bold">Approach:</span><br>
+                            <span class="font-light">Case studies, diagnostics, innovation labs, roadmap sprints and
+                                executive coaching</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <span class="font-bold">Outcomes:</span><br>
+                            <span class="font-light">Agile governance, organizational capability and networks that
+                                reduce digital and human risk</span>
+                        </div>
                     </li>
                 </ul>
             </div>
 
-            <!-- Tool Resource Partners -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2 animate-fade-in-up [animation-delay:100ms]">
-                <div class="mb-6">
+            <!-- EMERGING TALENT -->
+            <div
+                class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 lg:p-10 text-white relative">
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
                     <div
-                        class="w-16 h-16 bg-brand-teal-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g filter="url(#filter0_d_58983_6836)">
-                                <path
-                                    d="M2.5 11.5C2.5 5.97715 6.97715 1.5 12.5 1.5H40.5C46.0229 1.5 50.5 5.97715 50.5 11.5V39.5C50.5 45.0229 46.0228 49.5 40.5 49.5H12.5C6.97715 49.5 2.5 45.0228 2.5 39.5V11.5Z"
-                                    fill="#006477" shape-rendering="crispEdges" />
-                                <path
-                                    d="M20.5 19.5L25 24M20.5 19.5H17.5L16.5 16.5L17.5 15.5L20.5 16.5V19.5ZM33.759 16.241L31.1314 18.8686C30.7354 19.2646 30.5373 19.4627 30.4632 19.691C30.3979 19.8918 30.3979 20.1082 30.4632 20.309C30.5373 20.5373 30.7354 20.7354 31.1314 21.1314L31.3686 21.3686C31.7646 21.7646 31.9627 21.9627 32.191 22.0368C32.3918 22.1021 32.6082 22.1021 32.809 22.0368C33.0373 21.9627 33.2354 21.7646 33.6314 21.3686L36.0893 18.9107C36.354 19.5549 36.5 20.2604 36.5 21C36.5 24.0376 34.0376 26.5 31 26.5C30.6338 26.5 30.2759 26.4642 29.9298 26.3959C29.4436 26.3001 29.2005 26.2521 29.0532 26.2668C28.8965 26.2824 28.8193 26.3059 28.6805 26.3802C28.5499 26.4501 28.419 26.581 28.157 26.843L21 34C20.1716 34.8284 18.8284 34.8284 18 34C17.1716 33.1716 17.1716 31.8284 18 31L25.157 23.843C25.419 23.581 25.5499 23.4501 25.6198 23.3195C25.6941 23.1807 25.7176 23.1035 25.7332 22.9468C25.7479 22.7995 25.6999 22.5564 25.6041 22.0702C25.5358 21.7241 25.5 21.3662 25.5 21C25.5 17.9624 27.9624 15.5 31 15.5C32.0055 15.5 32.948 15.7698 33.759 16.241ZM26.5001 28.4999L32 33.9999C32.8284 34.8283 34.1716 34.8283 35 33.9999C35.8284 33.1715 35.8284 31.8283 35 30.9999L30.4753 26.4753C30.155 26.445 29.8427 26.3872 29.5408 26.3043C29.1517 26.1975 28.7249 26.2751 28.4397 26.5603L26.5001 28.4999Z"
-                                    stroke="#FFAD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </g>
-                            <defs>
-                                <filter id="filter0_d_58983_6836" x="0.5" y="0.5" width="52" height="52"
-                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                    <feColorMatrix in="SourceAlpha" type="matrix"
-                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                    <feOffset dy="1" />
-                                    <feGaussianBlur stdDeviation="1" />
-                                    <feComposite in2="hardAlpha" operator="out" />
-                                    <feColorMatrix type="matrix"
-                                        values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
-                                    <feBlend mode="normal" in2="BackgroundImageFix"
-                                        result="effect1_dropShadow_58983_6836" />
-                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6836"
-                                        result="shape" />
-                                </filter>
-                            </defs>
-                        </svg>
-
+                        class="w-5 h-5 border-2 border-[#f99a00] rounded-sm transform rotate-45 flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full"></div>
                     </div>
-                    <h3 class="text-brand-teal-500 text-xl font-bold mb-4">Tool Resource Partners</h3>
                 </div>
-                <ul class="space-y-2 text-gray-600 text-sm">
-                    <li class="flex items-center">
-                        <span class="w-2 h-2 bg-brand-orange rounded-full mr-3"></span>
-                        Cloud platforms, Data visualization
-                    </li>
-                    <li class="flex items-center">
-                        <span class="w-2 h-2 bg-brand-orange rounded-full mr-3"></span>
-                        AI/ML & Prototyping tools
-                    </li>
-                </ul>
-            </div>
+                <p class="text-xl font-normal tracking-widest mb-8">Emerging Talent</p>
 
-            <!-- Implementation Partners -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2 animate-fade-in-up [animation-delay:200ms]">
-                <div class="mb-6">
-                    <div
-                        class="w-16 h-16 bg-brand-teal-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g filter="url(#filter0_d_58983_6840)">
-                                <path
-                                    d="M2.5 11.5C2.5 5.97715 6.97715 1.5 12.5 1.5H40.5C46.0229 1.5 50.5 5.97715 50.5 11.5V39.5C50.5 45.0229 46.0228 49.5 40.5 49.5H12.5C6.97715 49.5 2.5 45.0228 2.5 39.5V11.5Z"
-                                    fill="#006477" shape-rendering="crispEdges" />
-                                <path
-                                    d="M26.5 16.5H30.7C32.3802 16.5 33.2202 16.5 33.862 16.827C34.4265 17.1146 34.8854 17.5735 35.173 18.138C35.5 18.7798 35.5 19.6198 35.5 21.3V29.7C35.5 31.3802 35.5 32.2202 35.173 32.862C34.8854 33.4265 34.4265 33.8854 33.862 34.173C33.2202 34.5 32.3802 34.5 30.7 34.5H22.3C20.6198 34.5 19.7798 34.5 19.138 34.173C18.5735 33.8854 18.1146 33.4265 17.827 32.862C17.5 32.2202 17.5 31.3802 17.5 29.7V25.5M22.5 26.5V30.5M30.5 24.5V30.5M26.5 20.5V30.5M16.5 18.5L19.5 15.5M19.5 15.5L22.5 18.5M19.5 15.5L19.5 21.5"
-                                    stroke="#FFAD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </g>
-                            <defs>
-                                <filter id="filter0_d_58983_6840" x="0.5" y="0.5" width="52" height="52"
-                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                    <feColorMatrix in="SourceAlpha" type="matrix"
-                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                    <feOffset dy="1" />
-                                    <feGaussianBlur stdDeviation="1" />
-                                    <feComposite in2="hardAlpha" operator="out" />
-                                    <feColorMatrix type="matrix"
-                                        values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
-                                    <feBlend mode="normal" in2="BackgroundImageFix"
-                                        result="effect1_dropShadow_58983_6840" />
-                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6840"
-                                        result="shape" />
-                                </filter>
-                            </defs>
-                        </svg>
-
-                    </div>
-                    <h3 class="text-brand-teal-500 text-xl font-bold mb-4">Implementation Partners</h3>
-                </div>
-                <ul class="space-y-2 text-gray-600 text-sm">
-                    <li class="flex items-center">
-                        <span class="w-2 h-2 bg-brand-orange rounded-full mr-3"></span>
-                        Use cases, Training spaces, Field visits
+                <ul class="space-y-6 text-sm lg:text-base text-white/90">
+                    <li class="flex items-start">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <span class="font-bold">Audience:</span><br>
+                            <span class="font-light">Early- and mid-career professionals, innovators, designers and
+                                researchers</span>
+                        </div>
                     </li>
-                    <li class="flex items-center">
-                        <span class="w-2 h-2 bg-brand-orange rounded-full mr-3"></span>
-                        Networks, Internships, Apprenticeships
+                    <li class="flex items-start">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <span class="font-bold">Objective:</span><br>
+                            <span class="font-light">Cultivate cross-disciplinary talent for end-to-end and data-driven
+                                innovation</span>
+                        </div>
                     </li>
-                </ul>
-            </div>
-
-            <!-- Funding Partners -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2 animate-fade-in-up [animation-delay:300ms]">
-                <div class="mb-6">
-                    <div
-                        class="w-16 h-16 bg-brand-teal-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g filter="url(#filter0_d_58983_6838)">
-                                <path
-                                    d="M2.5 11.5C2.5 5.97715 6.97715 1.5 12.5 1.5H40.5C46.0229 1.5 50.5 5.97715 50.5 11.5V39.5C50.5 45.0229 46.0228 49.5 40.5 49.5H12.5C6.97715 49.5 2.5 45.0228 2.5 39.5V11.5Z"
-                                    fill="#006477" shape-rendering="crispEdges" />
-                                <path
-                                    d="M28.0295 21.8519C27.4571 22.2599 26.7566 22.5 26 22.5C24.067 22.5 22.5 20.933 22.5 19C22.5 17.067 24.067 15.5 26 15.5C27.253 15.5 28.3522 16.1584 28.9705 17.1481M20.5 33.5872H23.1103C23.4506 33.5872 23.7889 33.6277 24.1188 33.7086L26.8769 34.3789C27.4753 34.5247 28.0988 34.5388 28.7035 34.4214L31.753 33.8281C32.5585 33.6712 33.2996 33.2854 33.8803 32.7205L36.0379 30.6217C36.654 30.0234 36.654 29.0524 36.0379 28.4531C35.4832 27.9134 34.6047 27.8527 33.9771 28.3103L31.4626 30.1449C31.1025 30.4081 30.6643 30.5498 30.2137 30.5498H27.7855L29.3311 30.5498C30.2022 30.5498 30.9079 29.8633 30.9079 29.0159V28.7091C30.9079 28.0055 30.4156 27.392 29.7141 27.2219L27.3286 26.6417C26.9404 26.5476 26.5428 26.5 26.1431 26.5C25.1783 26.5 23.4319 27.2988 23.4319 27.2988L20.5 28.5249M34.5 20C34.5 21.933 32.933 23.5 31 23.5C29.067 23.5 27.5 21.933 27.5 20C27.5 18.067 29.067 16.5 31 16.5C32.933 16.5 34.5 18.067 34.5 20ZM16.5 28.1L16.5 33.9C16.5 34.4601 16.5 34.7401 16.609 34.954C16.7049 35.1422 16.8578 35.2951 17.046 35.391C17.2599 35.5 17.5399 35.5 18.1 35.5H18.9C19.4601 35.5 19.7401 35.5 19.954 35.391C20.1422 35.2951 20.2951 35.1422 20.391 34.954C20.5 34.7401 20.5 34.4601 20.5 33.9V28.1C20.5 27.5399 20.5 27.2599 20.391 27.046C20.2951 26.8578 20.1422 26.7049 19.954 26.609C19.7401 26.5 19.4601 26.5 18.9 26.5L18.1 26.5C17.5399 26.5 17.2599 26.5 17.046 26.609C16.8578 26.7049 16.7049 26.8578 16.609 27.046C16.5 27.2599 16.5 27.5399 16.5 28.1Z"
-                                    stroke="#FFAD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </g>
-                            <defs>
-                                <filter id="filter0_d_58983_6838" x="0.5" y="0.5" width="52" height="52"
-                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                    <feColorMatrix in="SourceAlpha" type="matrix"
-                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                    <feOffset dy="1" />
-                                    <feGaussianBlur stdDeviation="1" />
-                                    <feComposite in2="hardAlpha" operator="out" />
-                                    <feColorMatrix type="matrix"
-                                        values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
-                                    <feBlend mode="normal" in2="BackgroundImageFix"
-                                        result="effect1_dropShadow_58983_6838" />
-                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_58983_6838"
-                                        result="shape" />
-                                </filter>
-                            </defs>
-                        </svg>
-
-                    </div>
-                    <h3 class="text-brand-teal-500 text-xl font-bold mb-4">Funding Partners</h3>
-                </div>
-                <ul class="space-y-2 text-gray-600 text-sm">
-                    <li class="flex items-center">
-                        <span class="w-2 h-2 bg-brand-orange rounded-full mr-3"></span>
-                        Sponsorships, Grants, Philanthropy
+                    <li class="flex items-start">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <span class="font-bold">Approach:</span><br>
+                            <span class="font-light">Opportunity mapping, rapid prototyping, hands-on training and
+                                accelerated apprenticeships</span>
+                        </div>
                     </li>
-                    <li class="flex items-center">
-                        <span class="w-2 h-2 bg-brand-orange rounded-full mr-3"></span>
-                        In-kind contributions, Scholarships
+                    <li class="flex items-start">
+                        <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <span class="font-bold">Outcomes:</span><br>
+                            <span class="font-light">Portfolio development, case strategy, visualization and real-world
+                                application readiness</span>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -1028,239 +211,261 @@
     </div>
 </section>
 
-<!-- Divider Section -->
-<section class="h-[20px] relative overflow-hidden"
-    style="background-image: url('{% static 'images/slicer.webp' %}'); background-size: cover;">
-</section>
-
-<!-- Partners and Clients Section -->
-<section class="py-12 sm:py-16 lg:py-20 xl:py-24 bg-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <!-- Title and Description -->
-        <div class="max-w-5xl mb-12 sm:mb-16 lg:mb-20">
-            <h2 class="text-brand-teal-500 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight font-bold mb-6 sm:mb-8">
-                Our partners
-            </h2>
-        </div>
-
-        <!-- Partners Section -->
-        <div class="mb-12 sm:mb-16 lg:mb-20">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-                {% for partner in partners %}
-                <div class="group relative partner-item" 
-                     data-partner-name="{{ partner.name }}"
-                     data-partner-type="{{ partner.get_partnership_type_display }}"
-                     data-partner-description="{{ partner.description|default:'' }}"
-                     data-partner-website="{{ partner.website|default:'' }}">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 aspect-square flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer">
-                        {% if partner.logo %}
-                            <img src="{% if partner.logo %}{{ partner.logo.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}"
-                                alt="{{ partner.name }}" loading="lazy"
-                                class="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 grayscale-0 group-hover:grayscale">
-                        {% else %}
-                            <!-- Placeholder if no logo -->
-                            <div class="text-gray-400 text-center group-hover:text-brand-teal-500 transition-colors">
-                                <svg class="w-7 h-7 sm:w-8 sm:h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                                <div class="text-xs sm:text-sm font-medium line-clamp-2">{{ partner.name }}</div>
-                            </div>
-                        {% endif %}
-                    </div>
-                    
-                    <!-- Hover Popup -->
-                    <div class="partner-popup absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-64 sm:w-72 bg-white rounded-lg shadow-xl border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 max-w-[calc(100vw-2rem)]">
-                        <div class="text-base sm:text-lg font-semibold text-gray-800 mb-2 line-clamp-2">{{ partner.name }}</div>
-                        <div class="text-xs sm:text-sm text-brand-teal-500 font-medium mb-2 bg-brand-teal-500/10 px-2 py-1 rounded-md inline-block">{{ partner.get_partnership_type_display }}</div>
-                        {% if partner.description %}
-                            <div class="text-xs sm:text-sm text-gray-600 mb-3 line-clamp-3">{{ partner.description }}</div>
-                        {% endif %}
-                        {% if partner.website %}
-                            <a href="{{ partner.website }}" target="_blank" rel="noopener" 
-                            class="inline-flex items-center text-xs sm:text-sm text-brand-teal-500 hover:text-brand-teal-700 font-medium bg-brand-teal-500/5 hover:bg-brand-teal-500/10 px-3 py-2 rounded-lg transition-colors">
-                                Visit Website
-                                <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                                </svg>
-                            </a>
-                        {% endif %}
-                        <!-- Arrow pointing down -->
-                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white"></div>
-                    </div>
-                </div>
-                {% empty %}
-                <div class="col-span-full text-center text-gray-500 py-8">
-                    No featured partners available at the moment.
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Custom CSS for Partners and Clients Popups -->
+<!-- 5. An experiential learning approach -->
 <style>
-    /* Ensure popups are positioned correctly and have proper z-index */
-    .partner-popup,
-    .client-popup {
-        z-index: 1000;
-        pointer-events: none;
-        transform-origin: bottom center;
+    .image-accordion-item {
+        transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s ease, filter 0.6s ease;
+        flex: 1;
+        cursor: pointer;
     }
-
-    .group:hover .partner-popup,
-    .group:hover .client-popup {
-        pointer-events: auto;
-    }
-
-    /* Prevent horizontal overflow on mobile */
-    .partner-popup,
-    .client-popup {
-        max-width: calc(100vw - 2rem);
-    }
-
-    @media (max-width: 640px) {
-
-        .partner-popup,
-        .client-popup {
-            width: calc(100vw - 2rem);
-            left: 50%;
-            transform: translateX(-50%);
+    
+    @media (hover: hover) {
+        .image-accordion-container:hover .image-accordion-item {
+            flex: 0.6;
+            filter: grayscale(20%) brightness(90%);
         }
-
-        /* Fix container margins on mobile */
-        .container {
-            max-width: 100% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-        }
-
-        /* Prevent any overflow */
-        section {
-            max-width: 100vw;
-            overflow-x: hidden;
+        .image-accordion-container:hover .image-accordion-item:hover {
+            flex: 2.2;
+            filter: none;
         }
     }
-
-    /* Custom animations */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    
+    /* Touch / Click persistent states */
+    .image-accordion-item.active {
+        flex: 2.2 !important;
+        filter: none !important;
     }
-
-    @keyframes fadeInRight {
-        from {
-            opacity: 0;
-            transform: translateX(30px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes pulseSubtle {
-
-        0%,
-        100% {
-            opacity: 1;
-        }
-
-        50% {
-            opacity: 0.9;
-        }
-    }
-
-    .animate-fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-        opacity: 0;
-    }
-
-    .animate-fade-in-right {
-        animation: fadeInRight 0.8s ease-out 0.2s forwards;
-        opacity: 0;
-    }
-
-    .animate-pulse-subtle {
-        animation: pulseSubtle 3s ease-in-out infinite;
-    }
-
-    .animate-stagger-children>* {
-        animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    .animate-stagger-children>*:nth-child(1) {
-        animation-delay: 0.1s;
-        opacity: 0;
-    }
-
-    .animate-stagger-children>*:nth-child(2) {
-        animation-delay: 0.2s;
-        opacity: 0;
-    }
-
-    .animate-stagger-children>*:nth-child(3) {
-        animation-delay: 0.3s;
-        opacity: 0;
-    }
-
-    .animate-stagger-children>*:nth-child(4) {
-        animation-delay: 0.4s;
-        opacity: 0;
-    }
-
-    .animate-stagger-children>*:nth-child(5) {
-        animation-delay: 0.5s;
-        opacity: 0;
-    }
-
-    .animate-stagger-children>*:nth-child(6) {
-        animation-delay: 0.6s;
-        opacity: 0;
-    }
-
-    /* Ensure no horizontal scroll */
-    html,
-    body {
-        overflow-x: hidden;
-        max-width: 100%;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    /* Mobile-specific fixes */
-    @media (max-width: 768px) {
-
-        /* Ensure grid doesn't cause overflow */
-        .grid {
-            width: 100%;
-        }
-
-        /* Fix any potential margin issues */
-        .container {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-        }
-
-        /* Reduce padding on smaller screens */
-        section {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
+    .image-accordion-container.has-active .image-accordion-item:not(.active) {
+        flex: 0.6;
+        filter: grayscale(20%) brightness(90%);
     }
 </style>
+
+<section class="py-16 md:py-24 bg-[#FAF3E0]">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            <div class="order-2 lg:order-1">
+                <p class="text-3xl md:text-4xl font-normal text-[#006377] mb-6 leading-tight">An experiential<br>learning approach</p>
+                <p class="text-[#006377]/90 text-lg mb-8 max-w-md">
+                    Our expert-led, experiential model employs flexible modules so partners can co-create participant-focused outcomes:
+                </p>
+                <div class="flex flex-wrap gap-3 max-w-lg">
+                    <span class="bg-white text-[#006377] px-6 py-2.5 rounded-full text-sm font-semibold shadow-sm border border-gray-100">Masterclasses</span>
+                    <span class="bg-white text-[#006377] px-6 py-2.5 rounded-full text-sm font-semibold shadow-sm border border-gray-100">Lab Tours</span>
+                    <span class="bg-white text-[#006377] px-6 py-2.5 rounded-full text-sm font-semibold shadow-sm border border-gray-100">Mini projects</span>
+                    <span class="bg-white text-[#006377] px-6 py-2.5 rounded-full text-sm font-semibold shadow-sm border border-gray-100">Sprints</span>
+                    <span class="bg-white text-[#006377] px-6 py-2.5 rounded-full text-sm font-semibold shadow-sm border border-gray-100">Visits</span>
+                    <span class="bg-white text-[#006377] px-6 py-2.5 rounded-full text-sm font-semibold shadow-sm border border-gray-100">Thought Leadership</span>
+                    <span class="bg-white text-[#006377] px-6 py-2.5 rounded-full text-sm font-semibold shadow-sm border border-gray-100">Policy Roundtables</span>
+                    <span class="bg-white text-[#006377] px-6 py-2.5 rounded-full text-sm font-semibold shadow-sm border border-gray-100">Cohort networks</span>
+                </div>
+            </div>
+            
+            <div class="order-1 lg:order-2 flex gap-3 h-[400px] md:h-[500px] image-accordion-container">
+                <!-- Vertical Image 1 -->
+                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-4" onclick="activateAccordionItem(this)">
+                    <img src="{% static 'images/core_principles/2J7A4415.jpg' %}" class="w-full h-full object-cover" alt="Learning 1" loading="lazy">
+                </div>
+                <!-- Vertical Image 2 -->
+                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg relative transform -translate-y-2" onclick="activateAccordionItem(this)">
+                    <img src="{% static 'images/core_principles/2J7A4334.jpg' %}" class="w-full h-full object-cover" alt="Learning 2" loading="lazy">
+                </div>
+                <!-- Vertical Image 3 -->
+                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-6" onclick="activateAccordionItem(this)">
+                    <img src="{% static 'images/core_principles/2J7A4124.jpg' %}" class="w-full h-full object-cover" alt="Learning 3" loading="lazy">
+                </div>
+                <!-- Vertical Image 4 -->
+                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform -translate-y-4" onclick="activateAccordionItem(this)">
+                    <img src="{% static 'images/core_principles/2J7A4203.jpg' %}" class="w-full h-full object-cover" alt="Learning 4" loading="lazy">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<script>
+    function activateAccordionItem(el) {
+        const container = el.parentElement;
+        
+        // Remove active class from all sibling items
+        container.querySelectorAll('.image-accordion-item').forEach(item => {
+            if (item !== el) item.classList.remove('active');
+        });
+        
+        // Toggle the clicked one
+        el.classList.toggle('active');
+        
+        // Toggle the has-active class on the container
+        if (container.querySelector('.image-accordion-item.active')) {
+            container.classList.add('has-active');
+        } else {
+            container.classList.remove('has-active');
+        }
+    }
+</script>
+
+<!-- 6. Join our collective intelligence network -->
+<section id="join" class="py-16 md:py-24 bg-[#FAF3E0]">
+    <div class="container mx-auto px-4 max-w-5xl">
+        <p
+            class="text-2xl md:text-3xl font-normal text-[#006377] text-center mb-8 max-w-2xl mx-auto leading-tight">
+            Join Our Collective Intelligence Network for Talent-Driven Impact
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <!-- 01 Knowledge Partners -->
+            <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                <div
+                    class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
+                    01
+                </div>
+                <p class="text-[#006377] font-normal text-lg mb-3">Knowledge Partners</p>
+                <p class="text-[#006377]/80 text-sm leading-relaxed">
+                    Universities, research centers, thought leaders, institutions and foundations
+                </p>
+            </div>
+
+            <!-- 02 Tech Resource Partners -->
+            <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                <div
+                    class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
+                    02
+                </div>
+                <p class="text-[#006377] font-normal text-lg mb-3">Tech Resource Partners</p>
+                <p class="text-[#006377]/80 text-sm leading-relaxed">
+                    Cloud platforms and data providers, AI hubs, open source/civic tech
+                </p>
+            </div>
+
+            <!-- 03 Implementation Partners -->
+            <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                <div
+                    class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
+                    03
+                </div>
+                <p class="text-[#006377] font-normal text-lg mb-3">Implementation Partners</p>
+                <p class="text-[#006377]/80 text-sm leading-relaxed">
+                    Public sector agencies, civil society networks, private sector practitioners
+                </p>
+            </div>
+
+            <!-- 04 Funding Partners -->
+            <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                <div
+                    class="w-10 h-10 rounded-full bg-[#FFF9E6] text-[#f99a00] font-bold flex items-center justify-center mb-4 text-sm">
+                    04
+                </div>
+                <p class="text-[#006377] font-normal text-lg mb-3">Funding Partners</p>
+                <p class="text-[#006377]/80 text-sm leading-relaxed">
+                    Foundations, grants, philanthropy, impact investors, bilateral development
+                </p>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#"
+                class="bg-[#006377] text-white px-8 py-3 rounded-full font-medium flex items-center hover:bg-[#004e5e] transition-colors">
+                Become a partner
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+            <a href="#"
+                class="bg-transparent border border-[#006377] text-[#006377] px-8 py-3 rounded-full font-medium flex items-center hover:bg-[#006377]/5 transition-colors">
+                Co-design a program
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block footer %}
+<!-- Footer exact match -->
+<footer class="bg-[#006377] text-white">
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 max-w-6xl py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+
+            <!-- Left: Get in touch Form -->
+            <div>
+                <p class="text-[22px] font-normal mb-6 tracking-wide">Get in touch</p>
+                <form class="space-y-4">
+                    <div>
+                        <input type="email" placeholder="Your email address"
+                            class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#ffa700] focus:bg-white/20 transition-all text-[15px]">
+                    </div>
+                    <div>
+                        <textarea placeholder="Your inquiry" rows="4"
+                            class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#ffa700] focus:bg-white/20 transition-all text-[15px] resize-none"></textarea>
+                    </div>
+                    <div class="flex items-start gap-3 mt-4">
+                        <input type="checkbox" id="terms"
+                            class="mt-1 flex-shrink-0 w-4 h-4 rounded border-0 bg-white text-[#ffa700] focus:ring-[#ffa700]">
+                        <label for="terms" class="text-sm text-white/90 leading-relaxed">
+                            I agree to the <span class="font-bold text-white">Terms & Conditions</span> and consent to
+                            DIDC processing my data for communication purposes.
+                        </label>
+                    </div>
+                    <div class="pt-2">
+                        <button type="submit"
+                            class="w-full bg-[#ffa700] text-white font-bold px-8 py-3 rounded-full hover:bg-[#e69600] transition-colors text-[16px]">
+                            Send message
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right: Let's build what works -->
+            <div class="lg:pt-0 pt-8">
+                <p class="text-[22px] font-normal mb-6 tracking-wide">Let's build what works</p>
+                <p class="text-white/90 text-[15px] mb-8 leading-relaxed max-w-lg">
+                    A social, public and business strategy and innovation firm operating across the African continent
+                    and globally.
+                </p>
+                <div class="grid grid-cols-2 gap-y-5 gap-x-8 text-[15px]">
+                    <a href="{% url 'home:lander' %}" class="text-white/90 hover:text-white transition-colors">About Us</a>
+                    <a href="{% url 'home:projects_list' %}" class="text-white/90 hover:text-white transition-colors">Impact</a>
+                    <a href="{% url 'home:projects_list' %}" class="text-white/90 hover:text-white transition-colors">Our Work</a>
+                    <a href="{% url 'home:did-academy' %}" class="text-white/90 hover:text-white transition-colors">DIDA Academy</a>
+                    <a href="{% url 'home:lander' %}#partners" class="text-white/90 hover:text-white transition-colors">Partners</a>
+                    <a href="{% url 'home:contact' %}" class="text-white/90 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-white/10">
+        <div
+            class="container mx-auto px-4 max-w-6xl py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/80">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img src="{% static 'images/wp-content/uploads/2024/08/idi-logo-white.png' %}" alt="IDI Logo"
+                    class="h-8 md:h-10" onerror="this.style.display='none'" loading="lazy">
+            </div>
+
+            <!-- Middle Links -->
+            <div class="flex items-center gap-2">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <span class="text-white/50 mx-1">|</span>
+                <a href="#" class="hover:text-white transition-colors">Terms & Conditions</a>
+            </div>
+
+            <!-- Copyright -->
+            <div>
+                &copy; 2026 IDI. All rights reserved.
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative Pattern -->
+    <div class="h-6 w-full bg-repeat-x bg-left"
+        style="background-image: url('/static/images/home/divider-mosaic.png'); background-size: auto 100%;"></div>
+</footer>
 {% endblock %}

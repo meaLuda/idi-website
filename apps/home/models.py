@@ -118,7 +118,8 @@ class Project(models.Model):
         return [t.strip() for t in self.tags.split(',') if t.strip()]
 
     def get_absolute_url(self):
-        return f'uploads/projects/{self.slug}/'
+        from django.urls import reverse
+        return reverse('home:project_detail', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.title
@@ -199,7 +200,8 @@ class Program(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return f'/programs/{self.slug}/'
+        from django.urls import reverse
+        return reverse('home:program_detail', kwargs={'slug': self.slug})
 
     def __str__(self):
         return f"{self.title} ({self.year})"

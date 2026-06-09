@@ -1,15 +1,105 @@
+{% load static %}
 {# Stats strip: backend-driven metrics, divided by vertical rules on desktop. #}
 {% if home_stats %}
-<section class="bg-white py-12 lg:py-16">
-    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-10 lg:divide-x lg:divide-gray-200">
+<section class="w-full bg-white relative border-b border-gray-100">
+    <!-- IDI brand mosaic band - repeats horizontally at the top of the section -->
+    <div class="h-6 md:h-8 w-full bg-repeat-x bg-left"
+         style="background-image: url('/static/images/home/divider-mosaic.png'); background-size: auto 100%;"
+         role="presentation" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto px-2 py-8 md:py-16">
+        <!-- Responsive grid/flex layout to ensure stats look beautiful on all screen sizes -->
+        <div class="grid grid-cols-2 gap-y-8 gap-x-4 md:flex md:flex-row items-stretch justify-between divide-gray-200 divide-y-0 divide-x-0 md:divide-x w-full">
             {% for stat in home_stats %}
-            <div class="flex flex-col justify-center text-center lg:px-6 lg:min-h-[150px]">
-                <div class="text-5xl lg:text-6xl font-extrabold text-ink leading-none">{{ stat.value }}</div>
-                <p class="mt-3 text-eyebrow uppercase text-brand-teal-500 font-medium tracking-wide">{{ stat.label }}</p>
+            <div class="flex-1 flex flex-col items-center justify-center text-center px-2 sm:px-3 md:px-6">
+                <!-- Responsively scaled large bold metric number -->
+                <div class="stat-counter text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black tracking-tight leading-none mb-2 md:mb-3">
+                    {{ stat.value }}
+                </div>
+                <!-- Responsively scaled elegant brand teal uppercase label -->
+                <p class="text-[10px] sm:text-[11px] md:text-xs font-bold tracking-[0.15em] text-[#006377] uppercase leading-relaxed px-0.5">
+                    {{ stat.label }}
+                </p>
             </div>
             {% endfor %}
         </div>
     </div>
+
+    <script>
+    (function () {
+        function initCounters() {
+            var counters = document.querySelectorAll('.stat-counter');
+            if (!counters.length) return;
+
+            var observer = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            counters.forEach(function (counter) {
+                var originalText = counter.innerText.trim();
+                counter.setAttribute('data-value', originalText);
+
+                // Set initial state to 0 with suffix to prevent sudden layout shifts
+                var match = originalText.match(/^([\d.]+)(.*)$/);
+                if (match) {
+                    var suffix = match[2] || "";
+                    counter.innerText = "0" + suffix;
+                }
+
+                observer.observe(counter);
+            });
+        }
+
+        function animateCounter(el) {
+            var rawValue = el.getAttribute('data-value');
+            var match = rawValue.match(/^([\d.]+)(.*)$/);
+            if (!match) {
+                el.innerText = rawValue;
+                return;
+            }
+
+            var targetVal = parseFloat(match[1]);
+            var suffix = match[2] || "";
+            var startVal = 0;
+            var duration = 2000; // 2 seconds of elegant, smooth build-up
+            var startTime = null;
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var elapsed = timestamp - startTime;
+                var progress = Math.min(elapsed / duration, 1);
+
+                // Cubic ease-out curve for highly premium decelerating effect
+                var easeProgress = 1 - Math.pow(1 - progress, 3);
+                var currentVal = startVal + (targetVal - startVal) * easeProgress;
+
+                if (Number.isInteger(targetVal)) {
+                    el.innerText = Math.floor(currentVal) + suffix;
+                } else {
+                    el.innerText = currentVal.toFixed(1) + suffix;
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.innerText = rawValue;
+                }
+            }
+
+            requestAnimationFrame(step);
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initCounters);
+        } else {
+            initCounters();
+        }
+    })();
+    </script>
 </section>
 {% endif %}

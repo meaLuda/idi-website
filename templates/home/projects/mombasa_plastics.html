@@ -1,0 +1,537 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Mombasa Plastics Prize Case Study",
+    "description": "Initiated to encourage innovation and awareness among aspiring young entrepreneurs (ages 18-25) in Mombasa County, tackling the problem of plastic waste mismanagement.",
+    "datePublished": "2026-01-16T21:36:21Z",
+    "author": {"@type": "Organization", "name": "IDI Africa", "url": "{{ request.scheme }}://{{ request.get_host }}/"},
+    "publisher": {
+        "@type": "Organization",
+        "name": "IDI Africa",
+        "logo": {"@type": "ImageObject", "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/wp-content/uploads/2024/12/idi-main-logo_webp_512x512-300x300.webp' %}"}
+    },
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "{{ request.build_absolute_uri }}"}
+}
+</script>
+<style>
+    /* Premium micro-interactions & visual enhancements */
+    .btn-shadow-teal {
+        box-shadow: 0 4px 14px rgba(0, 99, 119, 0.3);
+    }
+    .btn-shadow-teal:hover {
+        box-shadow: 0 6px 20px rgba(0, 99, 119, 0.4);
+    }
+    .hover-card-up {
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hover-card-up:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 38px rgba(0, 99, 119, 0.08);
+    }
+    /* Wave connector classes */
+    .step-connector {
+        background-image: radial-gradient(circle, #006377 1px, transparent 1px);
+        background-size: 8px 8px;
+        background-repeat: repeat-x;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Container Wrapper -->
+<div class="bg-white min-h-screen pt-28 pb-16">
+    <div class="container mx-auto px-4 max-w-7xl">
+
+        <!-- 1. HERO SECTION (Rounded Block Layout) -->
+        <section class="bg-[#F4F7F6] rounded-[2rem] p-8 lg:p-14 mb-16 shadow-sm border border-[#e8eeec]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-7 flex flex-col items-start text-left">
+                    <div class="flex flex-wrap gap-2 items-center mb-6">
+                        <span class="bg-[#e2ebe9] text-[#006377] text-[10px] font-black tracking-widest px-4 py-1.5 rounded-full uppercase">
+                            Public Services & Policy
+                        </span>
+                        <span class="inline-flex items-center bg-white border border-[#e2ebe9] text-[#7c8f94] text-[10px] font-bold px-3.5 py-1.5 rounded-full">
+                            <svg class="w-3 h-3 mr-1.5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            January 2023
+                        </span>
+                    </div>
+
+                    <h1 class="text-4xl md:text-5xl lg:text-[54px] font-black text-[#006377] leading-[1.05] mb-6 tracking-tight">
+                        Mombasa<br>Plastics Prize
+                    </h1>
+
+                    <p class="text-base md:text-lg text-[#4a585a] font-normal leading-relaxed mb-8 max-w-xl">
+                        Initiated to encourage innovation and awareness among aspiring young entrepreneurs (ages 18-25) in Mombasa County, tackling the problem of plastic waste mismanagement within informal settlements.
+                    </p>
+
+                    <a href="#summary" class="inline-flex items-center justify-center bg-[#006377] hover:bg-[#004d5c] text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all duration-300 btn-shadow-teal mb-10">
+                        Case Study
+                    </a>
+
+                    <!-- Top Partners logos indicator -->
+                    <div class="flex items-center gap-6 pt-6 border-t border-gray-200/60 w-full max-w-md">
+                        <div class="h-8 flex items-center opacity-85">
+                            <!-- High fidelity SVG representing USAID -->
+                            <svg class="h-6 text-[#002F6C] fill-current" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0" y="0" width="8" height="24" fill="#BA0C2F" />
+                                <text x="14" y="18" font-family="Arial, sans-serif" font-weight="900" font-size="16" letter-spacing="-0.5">USAID</text>
+                                <text x="14" y="26" font-family="Arial, sans-serif" font-weight="bold" font-size="6.5" fill="#747679">FROM THE AMERICAN PEOPLE</text>
+                            </svg>
+                        </div>
+                        <div class="h-8 flex items-center opacity-85 border-l border-gray-300 pl-6">
+                            <!-- High fidelity SVG representing Government of Canada -->
+                            <svg class="h-6 text-gray-800 fill-current" viewBox="0 0 140 30" xmlns="http://www.w3.org/2000/svg">
+                                <text x="0" y="18" font-family="Arial, sans-serif" font-weight="900" font-size="14">Canada</text>
+                                <path d="M52 6 L55 10 L60 9 L58 13 L62 16 L57 16 L56 21 L54 21 L53 16 L48 16 L52 13 L50 9 z" fill="#FF0000" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+                    <div class="rounded-3xl overflow-hidden shadow-card-lg aspect-[4/3] w-full border-4 border-white">
+                        <img src="{% static 'images/mamaDigital.webp' %}" alt="Mombasa Beach cleanup activities" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PROJECT SUMMARY SECTION -->
+        <section id="summary" class="py-12 lg:py-16 scroll-mt-28">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <!-- Left circular quartered design -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="grid grid-cols-2 grid-rows-2 w-72 h-72 rounded-full overflow-hidden gap-1.5 bg-[#F4F7F6] p-1 border-2 border-gray-100 shadow-md">
+                        <!-- Top-Left: Rounded TL -->
+                        <div class="rounded-tl-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/emerging-talent-collaboration.webp' %}" alt="Teamwork" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <!-- Top-Right: Rounded TR -->
+                        <div class="rounded-tr-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/mamaDigital.webp' %}" alt="Beach waste sorting" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <!-- Bottom-Left: Rounded BL -->
+                        <div class="rounded-bl-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/executive-boardroom.webp' %}" alt="Classroom learning" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <!-- Bottom-Right: Rounded BR -->
+                        <div class="rounded-br-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/teamDecionIntelligence.webp' %}" alt="Innovation Pitch" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Description -->
+                <div class="lg:col-span-7 text-left">
+                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">Project Summary</span>
+                    <h2 class="text-3xl font-extrabold text-[#006377] mb-6 tracking-tight">
+                        About the prize
+                    </h2>
+                    <div class="space-y-6 text-[#4a585a] font-normal leading-relaxed text-base">
+                        <p>
+                            The Mombasa Plastics Prize was a youth-led innovation challenge designed to tackle plastic waste mismanagement in informal settlements across Mombasa County, Kenya. Delivered by Challenge Works and implemented by IDI and other partners, the challenge supported young people aged 18-25 to create innovative, viable business solutions.
+                        </p>
+                        <p>
+                            The program combined field research, design-led capacity building, and enterprise incubation support to enable participants to convert plastic waste into sustainable products, creating environmental and social impact.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. KEY INSIGHT BAR -->
+        <section class="my-16">
+            <div class="relative bg-[#0b1f24] rounded-3xl overflow-hidden py-16 px-8 lg:p-20 shadow-xl border border-white/5">
+                <div class="absolute inset-0 opacity-[0.22] bg-cover bg-center mix-blend-luminosity" style="background-image: url('{% static 'images/executive-boardroom.webp' %}');"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#051924] via-[#051924]/90 to-transparent"></div>
+                <div class="relative z-10 max-w-3xl text-left">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-orange mb-3 block">Key Insight</span>
+                    <p class="text-lg md:text-xl lg:text-2xl font-normal text-white leading-snug tracking-tight">
+                        "Youth are not the source of the problem, they are the opportunity. They want to lead ownership of the solution in their communities."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. THE PROBLEM SECTION -->
+        <section class="py-12 lg:py-16 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#006377] mb-6 tracking-tight">The Problem</h2>
+            <p class="text-lg md:text-xl lg:text-2xl font-normal text-black max-w-3xl mx-auto mb-16 tracking-tight">
+                Plastic waste mismanagement in informal settlements threatens public health and economic opportunities.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-md flex flex-col items-start text-left hover-card-up">
+                    <div class="w-12 h-12 mb-6 rounded-2xl bg-[#f0f6f4] flex items-center justify-center text-[#006377]">
+                        <!-- Waste/Bin Icon -->
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#006377] mb-4 leading-tight">Limited waste systems & recycling infrastructure</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed font-light">
+                        Inadequate collection points and recycling facilities in high-density informal settlements force illegal dumping and burning.
+                    </p>
+                </div>
+
+                <!-- Card 2 (High Highlight) -->
+                <div class="bg-[#006377] text-white rounded-3xl p-8 shadow-xl border border-transparent flex flex-col items-start text-left hover-card-up">
+                    <div class="w-12 h-12 mb-6 rounded-2xl bg-white/10 flex items-center justify-center text-[#5bd5e2]">
+                        <!-- Behavior/Chat Icon -->
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-4 leading-tight">Low awareness & inconsistent behaviors</h3>
+                    <p class="text-sm text-white/80 leading-relaxed font-light">
+                        Lack of community education on waste segregation, combined with deep-rooted disposal habits, perpetuates trash mismanagement.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-md flex flex-col items-start text-left hover-card-up">
+                    <div class="w-12 h-12 mb-6 rounded-2xl bg-[#f0f6f4] flex items-center justify-center text-[#006377]">
+                        <!-- Target/Rocket Icon -->
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#006377] mb-4 leading-tight">High youth unemployment & limited support</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed font-light">
+                        Bright young leaders lack structured funding, mentorship, and business incubation channels to scale green innovations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. OUR APPROACH SECTION -->
+        <section class="bg-[#f0f6f4] rounded-[2rem] p-8 lg:p-14 my-16 text-center border border-[#d6e5e1] relative">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#006377] mb-6 tracking-tight">
+                Our Approach
+            </h2>
+            <p class="text-base md:text-lg text-gray-600 font-light max-w-3xl mx-auto mb-16">
+                A human-centered innovation process combining research, design thinking, entrepreneurship and incubation support.
+            </p>
+
+            <div class="flex flex-wrap md:flex-nowrap items-start justify-between gap-y-8 md:gap-x-2 lg:gap-x-4">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center flex-1 min-w-[130px]">
+                    <div class="w-16 h-16 rounded-full bg-white border border-[#006377]/10 flex items-center justify-center text-[#006377] shadow-md hover:scale-105 transition-transform duration-300 mb-4 relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-xs lg:text-sm font-semibold text-gray-700 leading-normal max-w-[140px]">
+                        1. Research &<br>Ecosystem<br>Mapping
+                    </p>
+                </div>
+
+                <!-- Arrow 1 -->
+                <div class="hidden md:flex items-center justify-center self-start pt-6 text-[#88b9af]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center flex-1 min-w-[130px]">
+                    <div class="w-16 h-16 rounded-full bg-white border border-[#006377]/10 flex items-center justify-center text-[#006377] shadow-md hover:scale-105 transition-transform duration-300 mb-4 relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-xs lg:text-sm font-semibold text-gray-700 leading-normal max-w-[140px]">
+                        2. Challenge<br>Launch
+                    </p>
+                </div>
+
+                <!-- Arrow 2 -->
+                <div class="hidden md:flex items-center justify-center self-start pt-6 text-[#88b9af]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center flex-1 min-w-[130px]">
+                    <div class="w-16 h-16 rounded-full bg-white border border-[#006377]/10 flex items-center justify-center text-[#006377] shadow-md hover:scale-105 transition-transform duration-300 mb-4 relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-xs lg:text-sm font-semibold text-gray-700 leading-normal max-w-[140px]">
+                        3. Idea<br>Development &<br>Validation
+                    </p>
+                </div>
+
+                <!-- Arrow 3 -->
+                <div class="hidden md:flex items-center justify-center self-start pt-6 text-[#88b9af]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex flex-col items-center text-center flex-1 min-w-[130px]">
+                    <div class="w-16 h-16 rounded-full bg-white border border-[#006377]/10 flex items-center justify-center text-[#006377] shadow-md hover:scale-105 transition-transform duration-300 mb-4 relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-xs lg:text-sm font-semibold text-gray-700 leading-normal max-w-[140px]">
+                        4. Mentorship<br>& Capacity<br>Building
+                    </p>
+                </div>
+
+                <!-- Arrow 4 -->
+                <div class="hidden md:flex items-center justify-center self-start pt-6 text-[#88b9af]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="flex flex-col items-center text-center flex-1 min-w-[130px]">
+                    <div class="w-16 h-16 rounded-full bg-white border border-[#006377]/10 flex items-center justify-center text-[#006377] shadow-md hover:scale-105 transition-transform duration-300 mb-4 relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19V9m0 0a5 5 0 015-5c.75 0 1.5.25 2 .5a6 6 0 01-7 4.5M12 9a5 5 0 00-5-5c-.75 0-1.5.25-2 .5a6 6 0 007 4.5m-5 10h10"></path>
+                        </svg>
+                    </div>
+                    <p class="text-xs lg:text-sm font-semibold text-gray-700 leading-normal max-w-[140px]">
+                        5. Incubation &<br>Scaling<br>Support
+                    </p>
+                </div>
+
+                <!-- Arrow 5 -->
+                <div class="hidden md:flex items-center justify-center self-start pt-6 text-[#88b9af]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="flex flex-col items-center text-center flex-1 min-w-[130px]">
+                    <div class="w-16 h-16 rounded-full bg-white border border-[#006377]/10 flex items-center justify-center text-[#006377] shadow-md hover:scale-105 transition-transform duration-300 mb-4 relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10a2 2 0 01-2 2h-2a2 2 0 01-2-2zm9 0v-8a2 2 0 012-2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-xs lg:text-sm font-semibold text-gray-700 leading-normal max-w-[140px]">
+                        6. Impact<br>Evaluation &<br>Visibility
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<!-- 6. OUTPUTS & RESULTS (Full-Width Section) -->
+<section class="bg-[#006477] py-20 lg:py-28 text-white relative">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="text-center mb-16">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#5bd5e2] mb-3 block">Outputs & Results</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+                Quantified Challenge Impact
+            </h2>
+            <p class="text-white/70 max-w-2xl mx-auto mt-4 font-light text-base">
+                The Mombasa Plastics Prize has delivered meaningful and sustainable impact across high-density informal settlements.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Stat Card 1 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">27535 kilograms</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">of plastic waste collected</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Collected, segregated, and recycled during the challenge period, preventing dumping in fragile marine ecosystems.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/teamDecionIntelligence.webp' %}" alt="Waste collection team sorting plastic" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Stat Card 2 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">57 young innovators</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">fully supported & trained</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Divided into 19 green enterprise teams, receiving mentorship, prototyping stipends, and venture design capability.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/executive-boardroom.webp' %}" alt="Innovators presentation" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Stat Card 3 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">100% of innovators</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">reporting skill growth</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Gained robust understanding of human-centered design, financial bookkeeping, and rapid testing methodologies.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/mamaDigital.webp' %}" alt="Clean beach activities" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Stat Card 4 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">87% of innovators</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">indicated extreme confidence</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Felt prepared to manage a startup, apply for acceleration rounds, and negotiate with waste value-chain partners.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/emerging-talent-collaboration.webp' %}" alt="Workspace discussion" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Stat Card 5 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">51% of innovators</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">are female leaders</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Ensuring robust, diverse, and gender-inclusive representation across leadership roles within all green enterprises.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/wp-content/uploads/2024/12/idi-main-logo_webp_512x512-300x300.webp' %}" alt="Women leaders in waste innovation" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Stat Card 6 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between hover-card-up">
+                <div class="p-8">
+                    <h3 class="text-4xl font-black text-[#006377] leading-none mb-3">More than 730hrs</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">of specialized training</p>
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Delivered through co-design sprints, product-market validation workshops, and one-on-one professional venture coaching.
+                    </p>
+                </div>
+                <div class="h-44 w-full">
+                    <img src="{% static 'images/what-we-do-bg.webp' %}" alt="Classroom workspace training" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. MEASURING SUCCESS SECTION -->
+<div class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Left Info -->
+            <div class="lg:col-span-8 text-left">
+                <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">Evaluation</span>
+                <h2 class="text-3xl font-extrabold text-[#006377] mb-6 tracking-tight">
+                    Measuring Success
+                </h2>
+                <p class="text-base text-[#4a585a] font-normal leading-relaxed max-w-3xl">
+                    Our rigorous monitoring and evaluation framework tracked progress across key indicators—validating enterprise viability, community behavior change, and plastic recovery efficiency to support sustainable growth and continuous improvement.
+                </p>
+            </div>
+
+            <!-- Right Circular Image -->
+            <div class="lg:col-span-4 flex justify-center lg:justify-end">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-[#F4F7F6] shadow-lg">
+                    <img src="{% static 'images/home/hero-portrait.webp' %}" alt="Project Manager Portrait" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 8. INTERESTED IN WORKING WITH US (Bottom CTA) -->
+<section class="bg-white pb-16">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="bg-[#006377] rounded-[2rem] p-8 md:py-10 md:px-12 text-white relative overflow-hidden shadow-xl">
+            <div class="absolute inset-0 opacity-[0.08] pointer-events-none"
+                 style="background-image:url('{% static 'images/home/hero-pattern.webp' %}'); background-size:520px;"></div>
+            <div class="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8 text-left">
+                <!-- Portrait with Organic Leaf Shape -->
+                <div class="w-36 h-28 shrink-0 overflow-hidden rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-[1.2rem] rounded-bl-[1.2rem] border border-white/20 shadow-md">
+                    <img src="{% static 'images/home/hero-portrait.webp' %}" alt="Smiling team member" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                
+                <!-- Text Content -->
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-2">Interested in working with us?</h3>
+                    <p class="text-white/85 text-sm md:text-base font-light">
+                        Let's collaborate on your next project and create impactful solutions that drive positive change.
+                    </p>
+                </div>
+                
+                <!-- Thin Outline Pill Button -->
+                <div class="shrink-0 mt-4 md:mt-0">
+                    <a href="{% url 'home:contact' %}" class="inline-block border border-white/70 hover:bg-white hover:text-[#006377] hover:border-transparent transition-all duration-300 text-white font-semibold text-sm px-8 py-3.5 rounded-full min-w-[140px] text-center">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 9. PARTNERS SECTION -->
+<section class="bg-white py-12 border-t border-gray-100">
+    <div class="container mx-auto px-4 max-w-7xl text-center">
+        <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">Partners</span>
+        <p class="text-sm text-gray-500 mb-10">We worked with a range of world-class partners to deliver the Mombasa Plastics Prize.</p>
+        
+        <div class="flex flex-wrap items-center justify-center gap-10 md:gap-14 opacity-80">
+            <!-- USAID -->
+            <div class="h-8 flex items-center">
+                <svg class="h-6 text-[#002F6C] fill-current" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="8" height="24" fill="#BA0C2F" />
+                    <text x="14" y="18" font-family="Arial, sans-serif" font-weight="900" font-size="16" letter-spacing="-0.5">USAID</text>
+                    <text x="14" y="26" font-family="Arial, sans-serif" font-weight="bold" font-size="6.5" fill="#747679">FROM THE AMERICAN PEOPLE</text>
+                </svg>
+            </div>
+
+            <!-- Government of Canada -->
+            <div class="h-8 flex items-center">
+                <svg class="h-6 text-gray-800 fill-current" viewBox="0 0 140 30" xmlns="http://www.w3.org/2000/svg">
+                    <text x="0" y="18" font-family="Arial, sans-serif" font-weight="900" font-size="14">Canada</text>
+                    <path d="M52 6 L55 10 L60 9 L58 13 L62 16 L57 16 L56 21 L54 21 L53 16 L48 16 L52 13 L50 9 z" fill="#FF0000" />
+                </svg>
+            </div>
+
+            <!-- Challenge Works -->
+            <div class="h-8 flex items-center">
+                <span class="font-extrabold text-gray-800 text-sm tracking-widest uppercase">Challenge Works</span>
+            </div>
+
+            <!-- Climate & Circular Economy Kenya -->
+            <div class="h-8 flex items-center">
+                <span class="font-extrabold text-[#006377] text-sm tracking-wider uppercase">Climate & Circular Economy</span>
+            </div>
+
+            <!-- Blue Globe -->
+            <div class="h-8 flex items-center">
+                <span class="font-extrabold text-blue-900 text-sm tracking-wider uppercase">Blue Globe</span>
+            </div>
+
+            <!-- Proportion -->
+            <div class="h-8 flex items-center">
+                <span class="font-extrabold text-gray-600 text-sm tracking-wider lowercase">proportion</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
