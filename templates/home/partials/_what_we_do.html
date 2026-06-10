@@ -13,7 +13,9 @@
             <article class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-gray-100 flex flex-col items-center text-center transition-all duration-500 ease-out hover:shadow-[0_20px_50px_rgba(0,99,119,0.08)] hover:-translate-y-2 group">
                 <!-- Premium Centered Illustration Container -->
                 <div class="h-44 mb-8 flex items-center justify-center w-full">
-                    {# Build full path then pass to the static tag so ManifestStaticFilesStorage resolves a hashed, immutable URL (concatenating a static prefix with a variable slug bypasses hashing -> max-age=60). #}
+                    <!-- Build the full path then pass it to the static tag so the manifest
+                         storage resolves a hashed, immutable URL. Concatenating a static prefix
+                         with a variable slug bypasses hashing and falls back to max-age=60. -->
                     {% with illustration='images/home/services/'|add:pillar.slug|add:'.webp' %}
                     <img src="{% static illustration %}"
                          alt="{{ pillar.title }} illustration"
