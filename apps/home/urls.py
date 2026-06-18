@@ -18,6 +18,8 @@ urlpatterns = [
     path('projects/<slug:slug>/', views.project_detail, name='project_detail'),
     path('programs/<slug:slug>/', views.program_detail, name='program_detail'),
     # New URL paths
+    path('case-studies/', views.case_studies_list, name='case_studies_list'),
+    path('case-studies/<slug:slug>/', views.case_study_detail, name='case_study_detail'),
     path('projects/', views.projects_list, name='projects_list'),
     path('team/', views.team_list, name='team_list'),
     path('governance-public-service-delivery/', views.governance_public_service_delivery, name='governance_public_service_delivery'),
