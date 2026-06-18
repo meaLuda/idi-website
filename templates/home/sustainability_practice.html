@@ -1,0 +1,276 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- 1. Hero Section -->
+<section class="relative text-white overflow-hidden navbar-spacing py-12 lg:py-20"
+         style="background-image: linear-gradient(to right, rgba(0, 77, 92, 0.96) 0%, rgba(0, 77, 92, 0.82) 55%, rgba(0, 0, 0, 0.40) 100%), url({% static 'images/home/practices/sustainability-practice.webp' %});
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;">
+    <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center min-h-[220px] lg:min-h-[320px]">
+         <div class="max-w-4xl">
+            <!-- Eyebrow label -->
+            <span class="inline-block text-brand-yellow text-xs font-bold uppercase tracking-[0.18em] mb-4">Health Practice</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.1] mb-6">
+                Strengthening health systems from the community up
+            </h1>
+            <p class="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-2xl">
+                We are dedicated to enhancing community health across Kenya through a strategic and multi-faceted approach. Our health practice focuses on how health systems work in practice — especially at the point where households, frontline workers, and public systems meet.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Decorative Mosaic Strip -->
+<div class="h-6 w-full bg-repeat-x bg-left"
+     style="background-image: url('{% static 'images/home/divider-mosaic.png' %}'); background-size: auto 100%;"
+     role="presentation" aria-hidden="true"></div>
+
+<!-- 2. Introduction & Opportunity -->
+<section class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="space-y-6 text-lg text-ink-muted leading-relaxed font-light">
+            <p>
+                Our contribution to Kenya’s AI in Health Opportunities Plan helped shape national thinking on how stronger health systems are built in practice — not through fragmented pilots, but through approaches that improve continuity, strengthen frontline workflows, and close critical service delivery gaps.
+            </p>
+            <p>
+                Building on that foundation, we are particularly interested in the role of Community Health Units (CHUs). CHUs are already embedded in communities, connected to households, and linked to nearby facilities. We see strong potential in strengthening them not only as formal health structures, but as practical, trusted systems that can improve referral closure, generate meaningful community-level intelligence, and support frontline workers more consistently over time.
+            </p>
+            <p class="border-l-4 border-brand-teal-500 pl-6 my-8 italic text-brand-teal-950 font-normal">
+                "For us, the opportunity is in helping CHUs move from form to function — so they work more effectively in practice, create stronger links between households and care, and become a more useful foundation for responsive primary health care."
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 3. Focus Areas Section -->
+<section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-ink mb-4">What We Are Focused On</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto font-light">We focus our energy where households, community networks, and healthcare facilities connect.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Focus Area 1 -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6 font-bold text-lg">01</div>
+                <h3 class="text-xl font-bold text-ink mb-3">Referral closure</h3>
+                <p class="text-ink-muted text-sm leading-relaxed">Strengthening the pathway between households, CHUs, and facilities so referrals are not only issued, but acknowledged, followed up, and completed.</p>
+            </div>
+            
+            <!-- Focus Area 2 -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6 font-bold text-lg">02</div>
+                <h3 class="text-xl font-bold text-ink mb-3">Community intelligence</h3>
+                <p class="text-ink-muted text-sm leading-relaxed">Exploring how CHUs can support the flow of useful, structured information from communities — for health follow-up, local planning, and broader decision-making.</p>
+            </div>
+            
+            <!-- Focus Area 3 -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6 font-bold text-lg">03</div>
+                <h3 class="text-xl font-bold text-ink mb-3">Frontline support</h3>
+                <p class="text-ink-muted text-sm leading-relaxed">Looking at how community health workers can be better supported through practical tools, ongoing reinforcement, and continuous learning built into day-to-day work.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. How We Work / Why It Matters -->
+<section class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-extrabold text-ink leading-tight">How We Work</h2>
+                <p class="text-lg text-ink-muted leading-relaxed font-light">
+                    Our approach combines research, systems thinking, design, and implementation strategy. We work to understand how systems function in real life, where they break down, and what it takes to make them more practical, connected, and responsive.
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-[#005263] to-[#003845] rounded-3xl p-8 md:p-10 text-white shadow-card-lg">
+                <h3 class="text-2xl font-bold mb-4">Why It Matters</h3>
+                <p class="text-base text-white/90 leading-relaxed font-light">
+                    Stronger health systems are built through the everyday connections between communities, frontline workers, and the services people rely on. By strengthening those connections, we can help create health systems that are more responsive, more grounded, and more useful to the people they are meant to serve.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Holistic Pillars of Health Practice -->
+<section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">A Holistic Approach to Health</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">Our work moves across three interconnected pillars.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Learn Card -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300">
+                <div class="mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6">
+                        <!-- Lightbulb SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-ink mb-3">Learn</h3>
+                    <p class="text-[#006377] text-xs font-semibold uppercase tracking-wider mb-4">We generate insights that matter</p>
+                    <p class="text-ink-muted text-sm leading-relaxed">We generate insight that helps make health systems more responsive, grounded, and useful in practice. This includes research, systems mapping, field inquiry, and strategic analysis that surface how care actually works at the community level. Through this work, we help identify the gaps, frictions, and opportunities that shape referral systems, frontline workflows, and the everyday connection between households and services.</p>
+                </div>
+            </div>
+            
+            <!-- Create Card -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300">
+                <div class="mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6">
+                        <!-- Pencil / Ruler SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-ink mb-3">Create</h3>
+                    <p class="text-[#006377] text-xs font-semibold uppercase tracking-wider mb-4">We design practical community solutions</p>
+                    <p class="text-ink-muted text-sm leading-relaxed">We turn insight into practical approaches for stronger community health systems. This includes designing concepts, models, and implementation pathways that help CHUs function more effectively — whether by strengthening referral closure, improving the flow and use of community-level information, or shaping systems that better support frontline workers. Our focus is on creating solutions that are realistic, useful, and rooted in how communities and health systems already operate.</p>
+                </div>
+            </div>
+            
+            <!-- Empower Card -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300">
+                <div class="mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6">
+                        <!-- Gear SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-ink mb-3">Empower</h3>
+                    <p class="text-[#006377] text-xs font-semibold uppercase tracking-wider mb-4">We strengthen people and systems</p>
+                    <p class="text-ink-muted text-sm leading-relaxed">We are interested in strengthening the people and systems that make community health work. This means supporting frontline workers through continuous learning, practical tools, mentorship, and reinforcement built into day-to-day service delivery. It also means helping community-facing structures such as CHUs become more confident, better connected, and more capable of responding to the needs of the households they serve.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. Project Team Section -->
+<section class="bg-white py-16 lg:py-24 border-b border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Meet our project team</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">A multidisciplinary team dedicated to health systems innovation, field research, and strategic design.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <!-- Arthur Oyako -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/food/team1.png' %}" alt="Arthur Oyako" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Arthur Oyako</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Project Director</p>
+                </div>
+            </div>
+            
+            <!-- Dominic Lwande -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/food/team2.png' %}" alt="Dominic Lwande" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Dominic Lwande</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Lead Researcher</p>
+                </div>
+            </div>
+            
+            <!-- Diana Zoro -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/food/team3.png' %}" alt="Diana Zoro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Diana Zoro</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Civic Designer</p>
+                </div>
+            </div>
+            
+            <!-- Eli Otieno -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/food/team4.png' %}" alt="Eli Otieno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Eli Otieno</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. Case Studies Section -->
+<section class="bg-surface-alt py-16 lg:py-24 border-b border-gray-100">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-2">Case Studies</h2>
+            <p class="text-base text-ink-muted font-bold uppercase tracking-wider">Our Work in Action</p>
+        </div>
+        
+        <div class="space-y-8">
+            <!-- Case Study 1 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
+                <div class="md:w-2/5 min-h-[250px] relative">
+                    <img src="{% static 'images/food/case1.png' %}" alt="Shaping Kenya's AI in Health Opportunities Plan" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-widest text-[#006377] mb-2 block">HEALTH INNOVATION</span>
+                        <h3 class="text-2xl font-bold text-ink mb-4 font-extrabold">Shaping Kenya’s AI in Health Opportunities Plan</h3>
+                        <p class="text-ink-muted text-sm leading-relaxed mb-6 font-light">
+                            We contributed research to the development of Kenya’s AI in Health Opportunities Plan, helping shape national thinking on how stronger health systems are built in practice. The work focused on the realities of service delivery across households, community health, facilities, and county systems, and highlighted the need for practical, interoperable, county-implemented approaches that improve continuity, strengthen frontline workflows, and close critical service delivery gaps.
+                        </p>
+                        <p class="text-ink-muted text-sm leading-relaxed font-light">
+                            This work also sharpened our interest in Community Health Units (CHUs) as a key part of the health system’s last-mile interface. It showed that stronger community and primary care systems depend not only on policy and platforms, but on whether community structures can function effectively in practice — especially in referral closure, local information flows, and frontline support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. Insights Section -->
+<section class="bg-white py-16 lg:py-24 border-b border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-2">What We're Learning</h2>
+            <p class="text-base text-ink-muted font-bold uppercase tracking-wider">Top 3 Insights</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Insight 1 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">Insight 1</span>
+                <h3 class="text-xl font-bold text-ink mb-4">Stronger systems start with continuity, not complexity</h3>
+                <p class="text-ink-muted text-sm leading-relaxed font-light">The most urgent need is not more fragmented innovation, but systems that work reliably at the frontline. Referral closure, continuity of care, and practical workflows matter more than adding new layers of complexity.</p>
+            </div>
+            
+            <!-- Insight 2 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">Insight 2</span>
+                <h3 class="text-xl font-bold text-ink mb-4">Community Health Units are a critical last-mile structure</h3>
+                <p class="text-ink-muted text-sm leading-relaxed font-light">CHUs already connect households to nearby facilities and hold trusted relationships within communities. With the right support, they can become stronger systems for referral closure, community intelligence, and frontline coordination.</p>
+            </div>
+            
+            <!-- Insight 3 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">Insight 3</span>
+                <h3 class="text-xl font-bold text-ink mb-4">Frontline realities should shape system design</h3>
+                <p class="text-ink-muted text-sm leading-relaxed font-light">Health systems function or fail in everyday practice. When referrals are not followed through, data is not used, or frontline workers are unsupported, service delivery weakens. Better design starts by understanding those realities and building around them.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 9. CTA Section -->
+<section class="bg-white py-20 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto max-w-5xl">
+        <div class="bg-gradient-to-br from-[#051924] to-[#073a47] rounded-3xl p-10 lg:p-16 text-center text-white shadow-card-lg relative overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="--bg-url: url({% static 'images/home/hero-pattern.webp' %}); background-image: var(--bg-url); background-size: 300px 300px;"></div>
+            <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Interested in the Health Practice?</h2>
+            <p class="text-base text-white/80 max-w-2xl mx-auto mb-10">Let's explore how we can partner to drive meaningful impact.</p>
+            <a href="{% url 'home:contact' %}" class="inline-block px-10 py-3.5 bg-white text-brand-teal-900 text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-card">
+                Partner with us
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

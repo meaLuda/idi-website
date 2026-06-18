@@ -1,4 +1,17 @@
 services:
+  db:
+    image: postgres:15-alpine
+    container_name: idi_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: idi_db
+      POSTGRES_USER: idi_user
+      POSTGRES_PASSWORD: idi_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
   web:
     build: .
     ports:
@@ -14,9 +27,12 @@ services:
       - .env
     environment:
       - DEBUG=False
+      - DB_HOST=db
       # Media settings
       - MEDIA_ROOT=/app/media
       - MEDIA_URL=/media/
+    depends_on:
+      - db
     # Ensure proper user mapping for volume permissions
     # user: "1000:1000"  # Commented out for server deployment - let entrypoint handle permissions
     restart: unless-stopped
@@ -35,3 +51,6 @@ services:
     restart: unless-stopped
     profiles:
       - production
+
+volumes:
+  pgdata:

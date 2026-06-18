@@ -235,7 +235,7 @@ body, html {
   transition: opacity 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   body.menu-open {
     overflow: hidden;
   }
@@ -637,4 +637,11 @@ svg {
   font-family: "Poppins", serif;
   font-weight: 900;
   font-style: italic;
+}
+
+/* Academy Diagonal Shape Responsive Clip-Path */
+@media (min-width: 768px) {
+  .academy-clip-shape {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  }
 }

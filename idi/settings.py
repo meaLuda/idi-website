@@ -28,9 +28,9 @@ SECRET_KEY = os.getenv(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost','127.0.0.1','.ngrok-free.app','.ngrok.io','.ngrok.app']
+ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost','127.0.0.1','.ngrok-free.app','.ngrok.io','.ngrok.app','.ngrok-free.dev','.ngrok.dev', '.localtunnel.me', '.loca.lt']
 
 # Google Analytics 4 measurement id (e.g. 'G-XXXXXXXXXX'). Empty = analytics off.
 GA_MEASUREMENT_ID = os.getenv('GA_MEASUREMENT_ID', '')
@@ -73,7 +73,7 @@ MIDDLEWARE = [
 # CSRF settings
 CSRF_COOKIE_SECURE = True  # Only send CSRF cookie over HTTPS
 CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to access the CSRF cookie
-CSRF_TRUSTED_ORIGINS = ['https://idi.africa', 'https://www.idi.africa','http://localhost', 'http://127.0.0.1','http://170.187.145.60']  # Trusted origins that can submit forms
+CSRF_TRUSTED_ORIGINS = ['https://idi.africa', 'https://www.idi.africa','http://localhost', 'http://127.0.0.1','http://170.187.145.60','https://*.ngrok-free.app','https://*.ngrok-free.dev','https://*.ngrok.io','https://*.ngrok.app','https://*.ngrok.dev', 'https://*.localtunnel.me', 'https://*.loca.lt']  # Trusted origins that can submit forms
 
 # Session settings
 SESSION_COOKIE_SECURE = True  # Only send session cookie over HTTPS
@@ -103,17 +103,25 @@ WSGI_APPLICATION = 'idi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-        'CONN_MAX_AGE': 600
+if os.getenv('DB_NAME'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOST'),
+            'PORT': os.getenv('DB_PORT'),
+            'CONN_MAX_AGE': 600
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 

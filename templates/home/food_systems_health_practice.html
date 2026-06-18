@@ -1,0 +1,506 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- 1. Hero Section -->
+<section class="relative text-white overflow-hidden navbar-spacing py-12 lg:py-20"
+         style="background-image: linear-gradient(to right, rgba(0, 77, 92, 0.96) 0%, rgba(0, 77, 92, 0.82) 55%, rgba(0, 0, 0, 0.40) 100%), url({% static 'images/home/practices/food-systems-health-practice.webp' %});
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;">
+    <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center min-h-[220px] lg:min-h-[320px]">
+        <div class="max-w-4xl">
+            <!-- Eyebrow label -->
+            <span class="inline-block text-brand-yellow text-xs font-bold uppercase tracking-[0.18em] mb-4">Food Systems Practice</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.1] mb-6">
+                From fragmented food-system activity to shared infrastructure for trust, productivity, and resilience.
+            </h1>
+            <p class="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-2xl">
+                Africa’s food systems are not short of activity. Farmers are producing, traders are moving goods, institutions are designing programmes, startups are building tools, and public systems are trying to respond. But too much of this activity remains fragmented, under-verified, poorly coordinated, and invisible to the institutions that need to act.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Decorative Mosaic Strip -->
+<div class="h-6 w-full bg-repeat-x bg-left"
+     style="background-image: url('{% static 'images/home/divider-mosaic.png' %}'); background-size: auto 100%;"
+     role="presentation" aria-hidden="true"></div>
+
+<!-- 2. Designing for Relevance Section -->
+<section class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-7 space-y-6">
+                <h2 class="text-3xl font-extrabold text-ink leading-tight">Designing for relevance</h2>
+                <div class="text-base sm:text-lg text-ink-muted leading-relaxed font-light space-y-4">
+                    <p>
+                        Food systems are complex because they sit at the centre of livelihoods, markets, climate, health, land, infrastructure, and trust. A farmer registry is not just a database. A seed verification tool is not just an SMS code. A crop map is not just a geospatial product. Each one is part of a wider system of incentives, behaviour, institutions, and accountability.
+                    </p>
+                    <p>
+                        IDI brings a life-centred innovation lens to this complexity. We begin with lived realities, then design the structures that help institutions act on what is true.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 bg-brand-teal-50/50 rounded-2xl p-6 md:p-8 border border-brand-teal-100">
+                <h3 class="text-lg font-bold text-brand-teal-950 mb-4">We ask:</h3>
+                <ul class="space-y-4 text-sm text-brand-teal-900 leading-relaxed font-medium">
+                    <li class="flex items-start">
+                        <span class="text-brand-orange mr-3">➔</span>
+                        How do farmers become visible without being overburdened?
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-brand-orange mr-3">➔</span>
+                        How do verification systems protect farmers instead of shifting risk onto them?
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-brand-orange mr-3">➔</span>
+                        How do public and private actors share data without creating extraction or duplication?
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-brand-orange mr-3">➔</span>
+                        How do innovations scale when the underlying system is fragmented?
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-brand-orange mr-3">➔</span>
+                        How do food systems become more resilient before a crisis becomes visible?
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. Shifts Section -->
+<section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Shifts towards the future we’re building</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto font-light">True transformation requires shifting from legacy models to unified systems.</p>
+        </div>
+        
+        <div class="bg-white rounded-2xl border border-gray-200/80 shadow-card overflow-hidden">
+            <div class="hidden md:grid grid-cols-2 bg-brand-teal-500 text-white px-6 py-4 text-sm font-bold uppercase tracking-wider">
+                <div>From</div>
+                <div class="pl-8 sm:pl-12">To</div>
+            </div>
+            <div class="divide-y divide-gray-100">
+                <!-- Row 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">One-off farmer registration</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Living farmer and farm intelligence
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Fragmented agricultural data</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Shared, governed food systems infrastructure
+                    </div>
+                </div>
+                <!-- Row 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Verification as farmer burden</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Verification as system responsibility
+                    </div>
+                </div>
+                <!-- Row 4 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Isolated agritech pilots</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Innovation built on reusable public-interest rails
+                    </div>
+                </div>
+                <!-- Row 5 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Reports and dashboards</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Decision intelligence that changes action
+                    </div>
+                </div>
+                <!-- Row 6 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Programmes as silos</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Programmes that strengthen the same backbone
+                    </div>
+                </div>
+                <!-- Row 7 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Counterfeit detection after harm</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Trusted last-mile reporting and early warning
+                    </div>
+                </div>
+                <!-- Row 8 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-4 md:py-5 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Farmers as data subjects</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Farmers as recognised contributors to system value
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. What We Work On -->
+<section class="bg-white py-16 lg:py-24 border-b border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">What We Work On</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto font-light">We focus on building shared foundations, tracing inputs, and scaling high-impact tools.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Item 1 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-all duration-300">
+                <div>
+                    <h3 class="text-xl font-bold text-ink mb-3">Shared data infrastructure</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6">We support the design of shared infrastructure that makes farmer, farm, production, transaction, and ecosystem signals more visible and useful. The goal is to move from fragmented datasets and one-off registration exercises to living systems that support planning, financing, advisory, market coordination, and innovation.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-4 border border-brand-teal-100 text-xs text-brand-teal-900 font-medium">
+                    <strong class="uppercase text-brand-orange block mb-1">Impact</strong> Food systems become easier to see, coordinate, finance, and serve.
+                </div>
+            </div>
+            
+            <!-- Item 2 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-all duration-300">
+                <div>
+                    <h3 class="text-xl font-bold text-ink mb-3">Farmer registry & continuous intelligence</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6">We help define how farmer and farm records can be strengthened, updated, and connected to production realities over time. This includes foundational farmer data, farm-use data, production updates, field actor contribution models, and governance rules for keeping records current and trusted.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-4 border border-brand-teal-100 text-xs text-brand-teal-900 font-medium">
+                    <strong class="uppercase text-brand-orange block mb-1">Impact</strong> Farmer registries move from static administrative lists to living intelligence systems.
+                </div>
+            </div>
+            
+            <!-- Item 3 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-all duration-300">
+                <div>
+                    <h3 class="text-xl font-bold text-ink mb-3">Agricultural data coordination</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6">Where national or partner-led initiatives are building agricultural data systems, IDI supports coordination, adoption design, institutional alignment, and translation into usable decision pathways. This includes work around geospatial data backbones, crop monitoring, field boundaries, yield forecasting, and downstream adoption by government, insurers, advisory systems, and innovators.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-4 border border-brand-teal-100 text-xs text-brand-teal-900 font-medium">
+                    <strong class="uppercase text-brand-orange block mb-1">Impact</strong> Agricultural data products become useful, adopted, and institutionally embedded.
+                </div>
+            </div>
+            
+            <!-- Item 4 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-all duration-300">
+                <div>
+                    <h3 class="text-xl font-bold text-ink mb-3">Verification, traceability & trust</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6">We design verification pathways that protect farmers, strengthen enforcement, and rebuild trust in the system. This includes moving beyond literacy-dependent scratch-code systems toward multi-channel verification, WhatsApp reporting, inspector verification, product traceability, complaint routing, hotspot detection, and visible follow-through.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-4 border border-brand-teal-100 text-xs text-brand-teal-900 font-medium">
+                    <strong class="uppercase text-brand-orange block mb-1">Impact</strong> Counterfeit products become easier to detect, report, trace, and act against.
+                </div>
+            </div>
+            
+            <!-- Item 5 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-all duration-300">
+                <div>
+                    <h3 class="text-xl font-bold text-ink mb-3">Innovation challenge pathways</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6">We help convert systemic food-system bottlenecks into challenge statements that innovators can build around. Rather than supporting isolated agritech pilots, we frame challenges around shared infrastructure, interoperability, traceability, production intelligence, aggregation, advisory, and market coordination.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-4 border border-brand-teal-100 text-xs text-brand-teal-900 font-medium">
+                    <strong class="uppercase text-brand-orange block mb-1">Impact</strong> Startups build into clearer systems, not around fragmented ones.
+                </div>
+            </div>
+            
+            <!-- Item 6 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-all duration-300">
+                <div>
+                    <h3 class="text-xl font-bold text-ink mb-3">Research & insights</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6">We maintain a live evidence function that tracks food-system developments, identifies reference models, produces briefs and scans, surfaces policy and financing opportunities, and keeps the practice adaptive as new questions emerge.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-4 border border-brand-teal-100 text-xs text-brand-teal-900 font-medium">
+                    <strong class="uppercase text-brand-orange block mb-1">Impact</strong> Food systems work becomes evidence-led, current, and reusable across partners.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Holistic Pillars of Food Practice -->
+<section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">A holistic approach to food systems innovation</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">Our work moves across three interconnected pillars.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Learn Card -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300">
+                <div class="mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-ink mb-3">Learn</h3>
+                    <p class="text-[#006377] text-xs font-semibold uppercase tracking-wider mb-4">We uncover what is happening across the food system</p>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6 font-light">We uncover what is happening across the food system and what decisions the evidence must serve.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-5 border border-brand-teal-50 text-sm font-medium text-brand-teal-900">
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Ecosystem and value-chain mapping</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Farmer, farm, and production diagnostics</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Field research and behavioural insight</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Policy, market, and partner intelligence</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Create Card -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300">
+                <div class="mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-ink mb-3">Create</h3>
+                    <p class="text-[#006377] text-xs font-semibold uppercase tracking-wider mb-4">We translate evidence into usable systems</p>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6 font-light">We translate evidence into systems, services, and infrastructure that can be used.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-5 border border-brand-teal-50 text-sm font-medium text-brand-teal-900">
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Food systems data architecture</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Farmer registry and update models</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Verification and reporting pathways</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Interoperability and standards</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Empower Card -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300">
+                <div class="mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-ink mb-3">Empower</h3>
+                    <p class="text-[#006377] text-xs font-semibold uppercase tracking-wider mb-4">We sustain, adopt and improve systems</p>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6 font-light">We help institutions, partners, and field actors adopt, sustain, and improve the systems.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-5 border border-brand-teal-50 text-sm font-medium text-brand-teal-900">
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Partner coordination and convening</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Capacity building for extension and field actors</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Prototyping feedback and update loops</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Ecosystem activation and challenge pathways</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. Principles Section -->
+<section class="bg-white py-16 lg:py-24 border-b border-gray-100">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-ink mb-4">Principles</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto font-light">How we approach structural transitions across food ecosystems.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Principle 1 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/50 p-6 flex flex-col justify-between h-full">
+                <div>
+                    <h3 class="text-lg font-bold text-ink mb-2">Design from the last mile</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">We start where systems usually fail: the farmer, agro-dealer, extension worker, cooperative, chief, field officer, trader, or local institution trying to make decisions under pressure.</p>
+                </div>
+            </div>
+            <!-- Principle 2 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/50 p-6 flex flex-col justify-between h-full">
+                <div>
+                    <h3 class="text-lg font-bold text-ink mb-2">Make the system legible</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">A food system cannot be coordinated if it cannot see itself. We design ways for farmer activity, production changes, field reports, market signals, and risk patterns to become visible in trusted and usable ways.</p>
+                </div>
+            </div>
+            <!-- Principle 3 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/50 p-6 flex flex-col justify-between h-full">
+                <div>
+                    <h3 class="text-lg font-bold text-ink mb-2">Build trust into the infrastructure</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">Trust cannot be added later through messaging. It must be designed into identity, verification, consent, governance, data stewardship, institutional roles, and follow-through.</p>
+                </div>
+            </div>
+            <!-- Principle 4 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/50 p-6 flex flex-col justify-between h-full">
+                <div>
+                    <h3 class="text-lg font-bold text-ink mb-2">Strengthen what exists</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">We do not begin by replacing existing systems. We map what is already there, identify what is missing, and design improvements that connect, validate, and make existing infrastructure more useful.</p>
+                </div>
+            </div>
+            <!-- Principle 5 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/50 p-6 flex flex-col justify-between h-full">
+                <div>
+                    <h3 class="text-lg font-bold text-ink mb-2">Turn insight into action</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">The work does not end with research. Every insight must point to a decision, a design move, a programme, a tool, a policy choice, or a partner action.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. Current Priorities -->
+<section class="bg-surface-alt py-16 lg:py-24 border-b border-gray-100">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-ink mb-4">Current Priorities</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto font-light">Focus initiatives making direct, tangible impacts today.</p>
+        </div>
+        
+        <div class="space-y-6">
+            <!-- Priority 1 -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-6 md:p-8 shadow-card flex flex-col md:flex-row gap-6 items-start">
+                <div class="text-2xl font-black text-brand-teal-500">01</div>
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-ink">ADAPT-Africa coordination &amp; adoption support</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">IDI’s near-term role is to support coordination and institutional usefulness around the ongoing ADAPT-Africa agricultural data backbone initiative. The initiative is led by Microsoft AI for Good Lab and NASA Harvest, with partners working toward open, standardized, validated, and nationally owned agricultural data layers for Kenya. IDI’s contribution is to help align partners, clarify adoption pathways, support policy and institutional embedding, and translate technical data products into practical use cases for government, private sector, innovators, and development partners.</p>
+                </div>
+            </div>
+            
+            <!-- Priority 2 -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-6 md:p-8 shadow-card flex flex-col md:flex-row gap-6 items-start">
+                <div class="text-2xl font-black text-brand-teal-500">02</div>
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-ink">Food-system verification &amp; counterfeit-input reporting</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">IDI is beginning to shape a new opportunity around seed and input verification. Field research shows that scratch-code verification often fails because it assumes literacy, confidence, and active farmer verification. It also shows that counterfeit networks are outcompeting formal markets through better last-mile reach, retailer incentives, and weak enforcement visibility. The emerging opportunity is to design a trusted, multi-channel verification and reporting layer that can work through WhatsApp, USSD, IVR, dealer-assisted verification, photo evidence, geotagged complaints, inspector verification, and risk-based enforcement routing.</p>
+                </div>
+            </div>
+            
+            <!-- Priority 3 -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-6 md:p-8 shadow-card flex flex-col md:flex-row gap-6 items-start">
+                <div class="text-2xl font-black text-brand-teal-500">03</div>
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-ink">Farmer registry &amp; ACILITY scoping</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">IDI will begin light scoping with ACILITY around the farmer registry and shared food-systems data infrastructure agenda. This includes clarifying what a minimum viable farmer/farm data layer could look like, what continuous production updates may require, and where ACILITY can contribute to architecture, data stewardship, and implementation pathways.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. Project Team Section -->
+<section class="bg-white py-16 lg:py-24 border-b border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Meet our project team</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">A diverse group of seasoned professionals dedicated to guiding our strategic direction and civic impact.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <!-- Arthur Oyako -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/food/team1.png' %}" alt="Arthur Oyako" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Arthur Oyako</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Project Director</p>
+                </div>
+            </div>
+            
+            <!-- Dominic Lwande -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/food/team2.png' %}" alt="Dominic Lwande" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Dominic Lwande</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Lead Researcher</p>
+                </div>
+            </div>
+            
+            <!-- Diana Zoro -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/food/team3.png' %}" alt="Diana Zoro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Diana Zoro</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Civic Designer</p>
+                </div>
+            </div>
+            
+            <!-- Eli Otieno -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/food/team4.png' %}" alt="Eli Otieno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Eli Otieno</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 9. What We're Learning Section -->
+<section class="bg-white py-16 lg:py-24 border-b border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-2">what we're learning</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto font-light">Key insights generated from real-world food systems research and data auditing.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Insight 1 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <h3 class="text-lg font-bold text-ink mb-4">Verification must become a system responsibility</h3>
+                <p class="text-ink-muted text-sm leading-relaxed font-light">Scratch-code systems are present on many seed packages, but farmers often treat the scratch panel itself as proof of authenticity. Literacy, language, SMS access, and digital confidence barriers mean the farmers most exposed to counterfeit risk are often the least protected. Verification must move from a farmer-burdened action to a system-level responsibility supported by traceability, reporting, enforcement, and trusted last-mile channels.</p>
+            </div>
+            
+            <!-- Insight 2 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <h3 class="text-lg font-bold text-ink mb-4">Food-system trust depends on the referee layer</h3>
+                <p class="text-ink-muted text-sm leading-relaxed font-light">Counterfeit inputs are not only a product-quality problem. They expose a deeper trust problem when inspectors, verification channels, and enforcement systems can be impersonated, compromised, or ignored. Rebuilding trust requires verifiable inspectors, auditable enforcement actions, visible follow-through, and reporting systems that farmers and dealers can believe will lead to action.</p>
+            </div>
+            
+            <!-- Insight 3 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <h3 class="text-lg font-bold text-ink mb-4">Resilience is operational, not abstract</h3>
+                <p class="text-ink-muted text-sm leading-relaxed font-light">Farmers are already experiencing climate pressure as daily operational stress: heat damage, water scarcity, unreliable rainfall timing, pest risk, and conflict pressure. Climate intelligence only becomes useful when it translates forecasts into near-term decisions — when to plant, irrigate, protect, delay, spray, or seek support — and when it is delivered through channels farmers and local intermediaries can actually use.</p>
+            </div>
+            
+            <!-- Insight 4 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <h3 class="text-lg font-bold text-ink mb-4">Liquidity shapes farmer behaviour as much as price</h3>
+                <p class="text-ink-muted text-sm leading-relaxed font-light">Farmers do not always choose the highest-value market. Many choose the channel that pays fastest because planting cycles, household needs, and production costs create urgent cash-flow pressure. Brokers often win because they offer immediate liquidity, even where cooperatives or formal buyers may offer better long-term value. Food systems design therefore has to address payment velocity, working capital, cooperative finance, and market access together.</p>
+            </div>
+            
+            <!-- Insight 5 -->
+            <div class="bg-surface-alt rounded-2xl border border-gray-200/60 p-8 shadow-card hover:shadow-card-lg transition-all duration-300">
+                <h3 class="text-lg font-bold text-ink mb-4">Farmer registries must become living systems</h3>
+                <p class="text-ink-muted text-sm leading-relaxed font-light">A registry that captures farmers once is not enough. Food systems need continuous updates on production, farm use, seasonal shifts, and ecosystem activity if they are to support planning, markets, resilience, and fairer service delivery.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 10. Bottom CTA -->
+<section class="bg-white py-20 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto max-w-5xl">
+        <div class="bg-gradient-to-br from-[#051924] to-[#073a47] rounded-3xl p-10 lg:p-16 text-center text-white shadow-card-lg relative overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="--bg-url: url({% static 'images/home/hero-pattern.webp' %}); background-image: var(--bg-url); background-size: 300px 300px;"></div>
+            <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Interested in the Food Systems Practice?</h2>
+            <p class="text-base text-white/80 max-w-2xl mx-auto mb-10">Let's explore how we can partner to drive meaningful impact.</p>
+            <a href="{% url 'home:contact' %}" class="inline-block px-10 py-3.5 bg-white text-brand-teal-900 text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-card">
+                Partner with us
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

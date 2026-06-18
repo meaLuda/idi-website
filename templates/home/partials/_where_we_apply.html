@@ -8,16 +8,71 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {% for tile in practices %}
-            <article class="bg-gradient-to-br from-[#f4f4f3] to-[#dcdde0] rounded-2xl p-6 lg:p-8">
-                <div class="h-56 flex items-center justify-center mb-6">
-                    <img src="{% static 'images/home/practices/' %}{{ tile.slug }}.webp"
-                         alt="{{ tile.title }}" loading="lazy"
-                         class="max-h-56 w-auto object-contain">
-                </div>
-                <p class="text-eyebrow uppercase tracking-wide text-ink-muted mb-2">Solution &mdash; {{ tile.num }}</p>
-                <h3 class="text-base font-bold uppercase text-brand-teal-500 leading-snug">{{ tile.title }}</h3>
-            </article>
-            {% endfor %}
+            {% if tile.slug == 'governance-public-service-delivery' %}
+            <a href="{% url 'home:governance_public_service_delivery' %}" class="block group h-full">
+                {% elif tile.slug == 'responsible-sovereign-ai' %}
+                <a href="{% url 'home:responsible_sovereign_ai' %}" class="block group h-full">
+                    {% elif tile.slug == 'community-public-service-delivery' %}
+                    <a href="{% url 'home:community_public_service_delivery' %}" class="block group h-full">
+                        {% elif tile.slug == 'food-systems-health-practice' %}
+                        <a href="{% url 'home:food_systems_health_practice' %}" class="block group h-full">
+                            {% elif tile.slug == 'sustainability-practice' %}
+                            <a href="{% url 'home:sustainability_practice' %}" class="block group h-full">
+                                {% elif tile.slug == 'venture-building-innovation-ecosystems' %}
+                                <a href="{% url 'home:venture_building' %}" class="block group h-full">
+                                    {% else %}
+                                    <a href="#" class="block group h-full">
+                                        {% endif %}
+                                        <article
+                                            class="bg-gradient-to-br from-[#f4f4f3] to-[#dcdde0] rounded-2xl p-6 lg:p-8 h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card hover:cursor-pointer flex flex-col justify-between">
+                                            <div>
+                                                <div class="h-56 flex items-center justify-center mb-6">
+                                                    {% if tile.slug == 'food-systems-health-practice' %}
+                                                    <!-- Food Systems Practice: Custom CSS split i-shape matching mockup exactly (100px circle & square displaying consecutive top and bottom halves) -->
+                                                    <div class="h-52 flex flex-col items-center justify-center gap-2 transition-transform duration-300 group-hover:scale-105">
+                                                        <div class="rounded-full border-[3px] border-[#b2b5b9] bg-cover shadow-[0_4px_12px_rgba(0,0,0,0.06)]"
+                                                             style="width: 100px; height: 100px; background-image: url('{% static 'images/home/practices/food-systems-health-practice.webp' %}'); background-size: 100% 200%; background-position: center top;">
+                                                        </div>
+                                                        <div class="rounded-md border-[3px] border-[#b2b5b9] bg-cover shadow-[0_4px_12px_rgba(0,0,0,0.06)]"
+                                                             style="width: 100px; height: 100px; background-image: url('{% static 'images/home/practices/food-systems-health-practice.webp' %}'); background-size: 100% 200%; background-position: center bottom;">
+                                                        </div>
+                                                    </div>
+                                                    {% elif tile.slug == 'governance-public-service-delivery' %}
+                                                    <!-- Governance & Public Service Delivery: Perfect Circle Shape -->
+                                                    <div class="h-52 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                                                        <div class="w-52 h-52 rounded-full border-[3px] border-[#b2b5b9] bg-cover bg-center shadow-[0_6px_16px_rgba(0,0,0,0.08)]"
+                                                             style="background-image: url('{% static 'images/home/practices/governance-public-service-delivery.webp' %}');">
+                                                        </div>
+                                                    </div>
+                                                    {% elif tile.slug == 'community-public-service-delivery' %}
+                                                    <!-- Environment: Beautiful Squircle/Rounded Corners Shape -->
+                                                    <div class="h-52 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                                                        <div class="w-48 h-48 rounded-3xl border-[3px] border-[#b2b5b9] bg-cover bg-center shadow-[0_6px_16px_rgba(0,0,0,0.08)]"
+                                                             style="background-image: url('{% static 'images/home/practices/community-public-service-delivery.webp' %}');">
+                                                        </div>
+                                                    </div>
+                                                    {% elif tile.slug == 'sustainability-practice' %}
+                                                    <!-- Health: Half of a Semi Circle (Quadrant) -->
+                                                    <div class="h-52 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                                                        <div class="w-48 h-48 rounded-tl-full border-[3px] border-[#b2b5b9] bg-cover bg-center shadow-[0_6px_16px_rgba(0,0,0,0.08)]"
+                                                             style="background-image: url('{% static 'images/home/practices/sustainability-practice.webp' %}');">
+                                                        </div>
+                                                    </div>
+                                                    {% else %}
+                                                     <img src="{% static 'images/home/practices/' %}{{ tile.slug }}.webp"
+                                                          alt="{{ tile.title }}" loading="lazy"
+                                                          class="max-h-48 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                                                    {% endif %}
+                                                </div>
+                                                <p class="text-eyebrow uppercase tracking-wide text-ink-muted mb-2">
+                                                    Solution &mdash; {{ tile.num }}</p>
+                                                <h3
+                                                    class="text-base font-bold uppercase text-brand-teal-500 leading-snug">
+                                                    {{ tile.title }}</h3>
+                                            </div>
+                                        </article>
+                                    </a>
+                                    {% endfor %}
         </div>
     </div>
 </section>

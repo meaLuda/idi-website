@@ -1,0 +1,523 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}What IDI Does — Services | IDI{% endblock %}
+{% block meta_description %}IDI provides research, strategy, and implementation support across three core service pillars: Learn, Create, and Empower. Discover how we can help you.{% endblock %}
+
+{% block content %}
+
+<!-- ═══════════════════════════════════════════════════════
+     1. HERO SECTION — "WHAT IDI DOES"
+═══════════════════════════════════════════════════════ -->
+<section class="relative text-white overflow-hidden navbar-spacing py-12 lg:py-20"
+         style="--bg-url: url({% static 'images/what-we-do-bg.webp' %});
+                background-image: linear-gradient(to right, rgba(0, 77, 92, 0.96) 0%, rgba(0, 77, 92, 0.82) 55%, rgba(0, 0, 0, 0.40) 100%), var(--bg-url);
+                background-size: cover;
+                background-position: center;">
+    <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center min-h-[220px] lg:min-h-[320px]">
+        <div class="max-w-4xl">
+            <!-- Eyebrow label -->
+            <span class="inline-block text-brand-yellow text-xs font-bold uppercase tracking-[0.18em] mb-4">What We Do</span>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-none mb-6">
+                What IDI Does
+            </h1>
+            <p class="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-2xl">
+                We provide research, strategy, and implementation support across three core service pillars. Whether you need insight into a challenge, design of a system, or help scaling a solution—we've got a pathway for you.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Decorative Mosaic Strip - matches the About Us page pattern exactly -->
+<div class="h-6 w-full bg-repeat-x bg-left"
+     style="background-image: url('/static/images/home/divider-mosaic.png'); background-size: auto 100%;"
+     role="presentation" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     2. OUR SERVICE PILLARS — Learn / Create / Empower
+═══════════════════════════════════════════════════════ -->
+<section class="bg-white py-20 lg:py-28">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Section heading -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-black uppercase text-ink tracking-tight">Our Service Pillars</h2>
+        </div>
+
+        <!-- 3-column pillar cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+
+            <!-- ── LEARN ── -->
+            <article class="bg-white rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-lg transition-all duration-300 p-8 flex flex-col h-full">
+                <div class="flex-grow">
+                    <span class="inline-block text-[11px] font-bold tracking-widest text-brand-teal-500 mb-2">Research &amp; Insight</span>
+                    <h3 class="text-4xl font-black text-brand-teal-500 mb-4 leading-none">Learn</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6 font-light">
+                        We uncover information that matters and make it useful. We map dynamics, analyze programs, and write deep policy.
+                    </p>
+
+                    <!-- Service types box -->
+                    <div class="bg-[#f0f8f9] rounded-2xl p-5 border border-brand-teal-100/60 mb-6">
+                        <h4 class="text-[10px] font-black tracking-wider text-ink mb-3">Service types:</h4>
+                        <ul class="space-y-2 text-xs text-ink-muted font-medium">
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Network Assessments
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Sector Research
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>System Audits
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Ecosystem Mapping
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Product Testing
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Implementation Plans
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Typical outputs footer -->
+                <div class="bg-brand-teal-50/60 border border-brand-teal-100 rounded-2xl p-4 text-[11px] leading-relaxed font-semibold text-brand-teal-800">
+                    <span class="text-brand-teal-500 font-bold block mb-1">Typical outputs:</span>
+                    Research reports, framework documents, policy recommendations
+                </div>
+            </article>
+
+            <!-- ── CREATE ── -->
+            <article class="bg-white rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-lg transition-all duration-300 p-8 flex flex-col h-full">
+                <div class="flex-grow">
+                    <span class="inline-block text-[11px] font-bold tracking-widest text-brand-teal-500 mb-2">Strategy &amp; Design</span>
+                    <h3 class="text-4xl font-black text-brand-teal-500 mb-4 leading-none">Create</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6 font-light">
+                        We model systems, strategy, and pathways to relevant outcomes. We wrap design around products, datasets, and civic blueprints.
+                    </p>
+
+                    <div class="bg-[#f0f8f9] rounded-2xl p-5 border border-brand-teal-100/60 mb-6">
+                        <h4 class="text-[10px] font-black tracking-wider text-ink mb-3">Service types:</h4>
+                        <ul class="space-y-2 text-xs text-ink-muted font-medium">
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Venture Strategy
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Service Design
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Ecosystem Design
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Human-Centered Design
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Program Design
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Communication Strategy
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-brand-teal-50/60 border border-brand-teal-100 rounded-2xl p-4 text-[11px] leading-relaxed font-semibold text-brand-teal-800">
+                    <span class="text-brand-teal-500 font-bold block mb-1">Typical outputs:</span>
+                    Service blueprints, system models, design prototypes
+                </div>
+            </article>
+
+            <!-- ── EMPOWER ── -->
+            <article class="bg-white rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-lg transition-all duration-300 p-8 flex flex-col h-full">
+                <div class="flex-grow">
+                    <span class="inline-block text-[11px] font-bold tracking-widest text-brand-teal-500 mb-2">Implementation &amp; Scale</span>
+                    <h3 class="text-4xl font-black text-brand-teal-500 mb-4 leading-none">Empower</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed mb-6 font-light">
+                        We support early system adoption and long-term capacity. We build internal support structures so transitions are resilient.
+                    </p>
+
+                    <div class="bg-[#f0f8f9] rounded-2xl p-5 border border-brand-teal-100/60 mb-6">
+                        <h4 class="text-[10px] font-black tracking-wider text-ink mb-3">Service types:</h4>
+                        <ul class="space-y-2 text-xs text-ink-muted font-medium">
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Project Management
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Interactive Dashboards
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Operational Plans
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Software Development
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Capacity Building
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 flex-shrink-0"></span>Transition Strategy
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-brand-teal-50/60 border border-brand-teal-100 rounded-2xl p-4 text-[11px] leading-relaxed font-semibold text-brand-teal-800">
+                    <span class="text-brand-teal-500 font-bold block mb-1">Typical outputs:</span>
+                    Implemented systems, operational playbooks, trained teams
+                </div>
+            </article>
+
+        </div><!-- /grid -->
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     3. WHERE WE APPLY THEM — dark teal, 2×3 grid with practice images
+═══════════════════════════════════════════════════════ -->
+<section class="relative bg-brand-teal-800 text-white py-20 lg:py-24 overflow-hidden">
+    <!-- Subtle background pattern overlay -->
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none"
+         style="--bg-url: url({% static 'images/home/hero-pattern.webp' %}); background-image: var(--bg-url); background-size: 250px 250px;"></div>
+
+    <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-black uppercase tracking-tight text-white">Where We Apply Them</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+
+            <!-- Practice 1: Governance & Public Service Delivery -->
+            <a href="{% url 'home:governance_public_service_delivery' %}"
+               class="group block bg-white/[0.06] border border-white/10 backdrop-blur-sm rounded-2xl p-7 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-300">
+                <h3 class="text-sm font-extrabold uppercase tracking-wide text-white mb-3 transition-colors duration-200">
+                    Governance &amp; Public Service Delivery
+                </h3>
+                <p class="text-white/60 text-xs font-light leading-relaxed uppercase tracking-wide">
+                    Specialized knowledge and proven methodologies tailored to this sector's unique challenges and opportunities.
+                </p>
+            </a>
+
+            <!-- Practice 2: Responsible / Sovereign AI -->
+            <a href="{% url 'home:responsible_sovereign_ai' %}"
+               class="group block bg-white/[0.06] border border-white/10 backdrop-blur-sm rounded-2xl p-7 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-300">
+                <h3 class="text-sm font-extrabold uppercase tracking-wide text-white mb-3 transition-colors duration-200">
+                    Responsible &amp; Sovereign AI
+                </h3>
+                <p class="text-white/60 text-xs font-light leading-relaxed uppercase tracking-wide">
+                    Specialized knowledge and proven methodologies tailored to this sector's unique challenges and opportunities.
+                </p>
+            </a>
+
+            <!-- Practice 3: Sustainability Practice -->
+            <a href="{% url 'home:community_public_service_delivery' %}"
+               class="group block bg-white/[0.06] border border-white/10 backdrop-blur-sm rounded-2xl p-7 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-300">
+                <h3 class="text-sm font-extrabold uppercase tracking-wide text-white mb-3 transition-colors duration-200">
+                    Sustainability Practice
+                </h3>
+                <p class="text-white/60 text-xs font-light leading-relaxed uppercase tracking-wide">
+                    Specialized knowledge and proven methodologies tailored to this sector's unique challenges and opportunities.
+                </p>
+            </a>
+
+            <!-- Practice 4: Venture & Innovation Ecosystems -->
+            <a href="{% url 'home:community_public_service_delivery' %}"
+               class="group block bg-white/[0.06] border border-white/10 backdrop-blur-sm rounded-2xl p-7 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-300">
+                <h3 class="text-sm font-extrabold uppercase tracking-wide text-white mb-3 transition-colors duration-200">
+                    Venture &amp; Innovation Ecosystems
+                </h3>
+                <p class="text-white/60 text-xs font-light leading-relaxed uppercase tracking-wide">
+                    Specialized knowledge and proven methodologies tailored to this sector's unique challenges and opportunities.
+                </p>
+            </a>
+
+            <!-- Practice 5: Food Systems Practice -->
+            <a href="{% url 'home:community_public_service_delivery' %}"
+               class="group block bg-white/[0.06] border border-white/10 backdrop-blur-sm rounded-2xl p-7 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-300">
+                <h3 class="text-sm font-extrabold uppercase tracking-wide text-white mb-3 transition-colors duration-200">
+                    Food Systems Practice
+                </h3>
+                <p class="text-white/60 text-xs font-light leading-relaxed uppercase tracking-wide">
+                    Specialized knowledge and proven methodologies tailored to this sector's unique challenges and opportunities.
+                </p>
+            </a>
+
+            <!-- Practice 6: Health Practice -->
+            <a href="{% url 'home:community_public_service_delivery' %}"
+               class="group block bg-white/[0.06] border border-white/10 backdrop-blur-sm rounded-2xl p-7 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-300">
+                <h3 class="text-sm font-extrabold uppercase tracking-wide text-white mb-3 transition-colors duration-200">
+                    Health Practice
+                </h3>
+                <p class="text-white/60 text-xs font-light leading-relaxed uppercase tracking-wide">
+                    Specialized knowledge and proven methodologies tailored to this sector's unique challenges and opportunities.
+                </p>
+            </a>
+
+        </div><!-- /grid -->
+    </div>
+</section>
+
+<!-- Decorative Mosaic Strip - matches the About Us page pattern exactly -->
+<div class="h-6 w-full bg-repeat-x bg-left"
+     style="background-image: url('/static/images/home/divider-mosaic.png'); background-size: auto 100%;"
+     role="presentation" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     4. HOW WE ENGAGE — Custom pastel cards with organic clipped photo frames
+     ═══════════════════════════════════════════════════════ -->
+<!-- Hidden SVG definition for organic peanut clip-path -->
+<svg class="absolute w-0 h-0" width="0" height="0" aria-hidden="true">
+    <defs>
+        <clipPath id="double-ellipse" clipPathUnits="objectBoundingBox">
+            <ellipse cx="0.35" cy="0.5" rx="0.35" ry="0.5" />
+            <ellipse cx="0.65" cy="0.5" rx="0.35" ry="0.5" />
+        </clipPath>
+    </defs>
+</svg>
+
+<section class="bg-[#EAEAEA] py-20 lg:py-28">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 lg:mb-20">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black uppercase text-black tracking-tight">How We Engage</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+
+            <!-- Card 1: Diagnostic Sprint (Pastel Honey/Sand) -->
+            <article class="group bg-[#eed5b3] border border-[#dec197] rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col sm:flex-row items-center sm:items-stretch justify-between gap-6 md:gap-8 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                <!-- Left Column -->
+                <div class="flex-grow flex flex-col justify-between min-h-[220px] md:min-h-[260px] text-center sm:text-left items-center sm:items-start w-full">
+                    <!-- White Arrow Circle Top-Left -->
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#4A23DE] shadow-sm mb-6 flex-shrink-0 mx-auto sm:mx-0">
+                        <svg class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+                        </svg>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#082830] mb-2 leading-tight">Diagnostic Sprint</h3>
+                        <p class="text-[#082830]/85 text-xs sm:text-sm lg:text-base leading-relaxed font-medium max-w-[280px] sm:max-w-[340px] mx-auto sm:mx-0">
+                            Rapid discovery engagement to understand your challenge, opportunity, and organizational readiness.
+                        </p>
+                    </div>
+                    <!-- Caramel Bottom Tag -->
+                    <p class="text-[#a36b31] text-[11px] sm:text-xs font-bold tracking-wide mt-auto leading-relaxed max-w-[280px] sm:max-w-[340px] mx-auto sm:mx-0">
+                        2-4 weeks | Cross-functional team | Actionable insights
+                    </p>
+                </div>
+                <!-- Right Column: Leaf-shaped photo frame (sharp bottom-left, rounded everywhere else) -->
+                <div class="w-28 h-28 xs:w-32 xs:h-32 md:w-40 md:h-40 lg:w-44 lg:h-44 xl:w-48 xl:h-48 rounded-tl-[2.5rem] rounded-tr-[2.5rem] rounded-br-[2.5rem] rounded-bl-none overflow-hidden flex-shrink-0 border-2 border-white shadow-sm self-center">
+                    <img src="{% static 'images/core_principles/2J7A4270.jpg' %}" alt="Diagnostic Sprint" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </article>
+
+            <!-- Card 2: Design & Architecture (Pastel Lavender) -->
+            <article class="group bg-[#eadfff] border border-[#d7c9f8] rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col sm:flex-row items-center sm:items-stretch justify-between gap-6 md:gap-8 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                <!-- Left Column -->
+                <div class="flex-grow flex flex-col justify-between min-h-[220px] md:min-h-[260px] text-center sm:text-left items-center sm:items-start w-full">
+                    <!-- White Arrow Circle Top-Left -->
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#4A23DE] shadow-sm mb-6 flex-shrink-0 mx-auto sm:mx-0">
+                        <svg class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+                        </svg>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#280c4c] mb-2 leading-tight">Design &amp; Architecture</h3>
+                        <p class="text-[#280c4c]/85 text-xs sm:text-sm lg:text-base leading-relaxed font-medium max-w-[280px] sm:max-w-[340px] mx-auto sm:mx-0">
+                            Extended partnership to develop systems, strategies, and roadmaps tailored to your context.
+                        </p>
+                    </div>
+                    <!-- Purple Bottom Tag -->
+                    <p class="text-[#7c5cdb] text-[11px] sm:text-xs font-bold tracking-wide mt-auto leading-relaxed max-w-[280px] sm:max-w-[340px] mx-auto sm:mx-0">
+                        3-6 months | Co-design approach | Blueprint deliverables
+                    </p>
+                </div>
+                <!-- Right Column: Leaf-shaped photo frame (sharp bottom-left, rounded everywhere else) -->
+                <div class="w-28 h-28 xs:w-32 xs:h-32 md:w-40 md:h-40 lg:w-44 lg:h-44 xl:w-48 xl:h-48 rounded-tl-[2.5rem] rounded-tr-[2.5rem] rounded-br-[2.5rem] rounded-bl-none overflow-hidden flex-shrink-0 border-2 border-white shadow-sm self-center">
+                    <img src="{% static 'images/governance/insight2.png' %}" alt="Design & Architecture" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </article>
+
+            <!-- Card 3: Pilot Support (Clean White with Arrow Bottom-Left) -->
+            <article class="group bg-white border border-gray-200 rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col sm:flex-row items-center sm:items-stretch justify-between gap-6 md:gap-8 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                <!-- Left Column -->
+                <div class="flex-grow flex flex-col justify-between min-h-[220px] md:min-h-[260px] text-center sm:text-left items-center sm:items-start w-full">
+                    <div class="mb-4">
+                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#0c2f38] mb-2 leading-tight">Pilot Support</h3>
+                        <p class="text-[#525252] text-xs sm:text-sm lg:text-base leading-relaxed font-medium max-w-[280px] sm:max-w-[340px] mx-auto sm:mx-0">
+                            Hands-on guidance through launch, learning, and iteration of your pilot or initial deployment.
+                        </p>
+                    </div>
+                    <!-- Grey Tag above the arrow -->
+                    <p class="text-[#a3a3a3] text-[11px] sm:text-xs font-bold tracking-wide mb-6 leading-relaxed max-w-[280px] sm:max-w-[340px] mx-auto sm:mx-0">
+                        2-6 months | On-the-ground support | Real-time adaptation
+                    </p>
+                    <!-- White Arrow Circle Bottom-Left -->
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#4A23DE] shadow-sm flex-shrink-0 border border-gray-100 mx-auto sm:mx-0">
+                        <svg class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+                        </svg>
+                    </div>
+                </div>
+                <!-- Right Column: Horizontal Peanut-shaped photo frame using double-ellipse clip-path -->
+                <div class="w-32 h-22 xs:w-36 xs:h-24 sm:w-40 sm:h-28 md:w-44 md:h-30 lg:w-48 lg:h-32 xl:w-52 xl:h-36 overflow-hidden flex-shrink-0 self-center shadow-sm"
+                     style="clip-path: url(#double-ellipse);">
+                    <img src="{% static 'images/core_principles/2J7A4217.jpg' %}" alt="Pilot Support" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </article>
+
+            <!-- Card 4: Capability Partnership (Pastel Sky Blue) -->
+            <article class="group bg-[#CCE6FC] border border-[#b6d7f8] rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col sm:flex-row items-center sm:items-stretch justify-between gap-6 md:gap-8 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                <!-- Left Column -->
+                <div class="flex-grow flex flex-col justify-between min-h-[220px] md:min-h-[260px] text-center sm:text-left items-center sm:items-start w-full">
+                    <!-- White Arrow Circle Top-Left -->
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#4A23DE] shadow-sm mb-6 flex-shrink-0 mx-auto sm:mx-0">
+                        <svg class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+                        </svg>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#08355c] mb-2 leading-tight">Capability Partnership</h3>
+                        <p class="text-[#08355c]/85 text-xs sm:text-sm lg:text-base leading-relaxed font-medium max-w-[280px] sm:max-w-[340px] mx-auto sm:mx-0">
+                            Long-term engagement building your team's skills, confidence, and independence.
+                        </p>
+                    </div>
+                    <!-- Blue Bottom Tag -->
+                    <p class="text-[#2563eb] text-[11px] sm:text-xs font-bold tracking-wide mt-auto leading-relaxed max-w-[280px] sm:max-w-[340px] mx-auto sm:mx-0">
+                        6-18+ months | Training-focused | Knowledge transfer
+                    </p>
+                </div>
+                <!-- Right Column: Symmetrical Circular Frame -->
+                <div class="w-28 h-28 xs:w-32 xs:h-32 md:w-40 md:h-40 lg:w-44 lg:h-44 xl:w-48 xl:h-48 rounded-full overflow-hidden flex-shrink-0 border-2 border-white shadow-sm self-center">
+                    <img src="{% static 'images/core_principles/2J7A4365.jpg' %}" alt="Capability Partnership" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </article>
+
+        </div><!-- /grid -->
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     5. OUR CORE PRINCIPLES — 3×2 image cards
+═══════════════════════════════════════════════════════ -->
+<section class="bg-white py-20 lg:py-28 border-t border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-black uppercase text-ink tracking-tight">Our Core Principles</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+
+            <!-- Principle 1: Human-Centered -->
+            <article class="bg-white rounded-3xl border border-gray-200/60 overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 flex flex-col h-full">
+                <div class="h-52 w-full overflow-hidden bg-gray-100">
+                    <img src="{% static 'images/core_principles/2J7A4415.jpg' %}"
+                         alt="Human-Centered"
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-6 flex-grow">
+                    <h3 class="text-lg font-bold text-brand-teal-500 mb-2 tracking-tight">Human-Centered</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">
+                        We design for real people: their contexts, habits, capabilities, and dynamic safety needs.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Principle 2: Evidence-Led -->
+            <article class="bg-white rounded-3xl border border-gray-200/60 overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 flex flex-col h-full">
+                <div class="h-52 w-full overflow-hidden bg-gray-100">
+                    <img src="{% static 'images/core_principles/2J7A4365.jpg' %}"
+                         alt="Evidence-Led"
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-6 flex-grow">
+                    <h3 class="text-lg font-bold text-brand-teal-500 mb-2 tracking-tight">Evidence-Led</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">
+                        We base our decisions on data, research, field findings, and systematic evaluation of existing dynamics.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Principle 3: Context-Aware -->
+            <article class="bg-white rounded-3xl border border-gray-200/60 overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 flex flex-col h-full">
+                <div class="h-52 w-full overflow-hidden bg-gray-100">
+                    <img src="{% static 'images/core_principles/2J7A4270.jpg' %}"
+                         alt="Context-Aware"
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-6 flex-grow">
+                    <h3 class="text-lg font-bold text-brand-teal-500 mb-2 tracking-tight">Context-Aware</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">
+                        We understand that local systems require context-aware, not boilerplate, solutions.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Principle 4: Responsible -->
+            <article class="bg-white rounded-3xl border border-gray-200/60 overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 flex flex-col h-full">
+                <div class="h-52 w-full overflow-hidden bg-gray-100">
+                    <img src="{% static 'images/core_principles/2J7A4410.jpg' %}"
+                         alt="Responsible"
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-6 flex-grow">
+                    <h3 class="text-lg font-bold text-brand-teal-500 mb-2 tracking-tight">Responsible</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">
+                        We design with ethics, accountability, and environmental stewardship in mind.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Principle 5: Built for Delivery -->
+            <article class="bg-white rounded-3xl border border-gray-200/60 overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 flex flex-col h-full">
+                <div class="h-52 w-full overflow-hidden bg-gray-100">
+                    <img src="{% static 'images/core_principles/2J7A4324.jpg' %}"
+                         alt="Built for Delivery"
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-6 flex-grow">
+                    <h3 class="text-lg font-bold text-brand-teal-500 mb-2 tracking-tight">Built for Delivery</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">
+                        We build systems designed to operate seamlessly under real-world constraints.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Principle 6: Collaborative -->
+            <article class="bg-white rounded-3xl border border-gray-200/60 overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 flex flex-col h-full">
+                <div class="h-52 w-full overflow-hidden bg-gray-100">
+                    <img src="{% static 'images/core_principles/2J7A4417.jpg' %}"
+                         alt="Collaborative"
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                </div>
+                <div class="p-6 flex-grow">
+                    <h3 class="text-lg font-bold text-brand-teal-500 mb-2 tracking-tight">Collaborative</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed font-light">
+                        We partner actively with your team, building shared capacity and alignment.
+                    </p>
+                </div>
+            </article>
+
+        </div><!-- /grid -->
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     6. READY TO EXPLORE — CTA Section
+═══════════════════════════════════════════════════════ -->
+<section class="bg-surface-alt py-20 lg:py-28 border-t border-gray-100 text-center">
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl lg:text-4xl font-black text-brand-teal-500 uppercase tracking-tight mb-4">
+            Ready to Explore?
+        </h2>
+        <p class="text-ink-muted text-base max-w-xl mx-auto mb-10 font-light leading-relaxed">
+            Let's discuss which service pathway best fits your needs and organization.
+        </p>
+        <a href="{% url 'home:contact' %}"
+           class="inline-block px-10 py-3.5 bg-brand-teal-500 text-white text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-card">
+            START THE CONVERSATION
+        </a>
+    </div>
+</section>
+
+{% endblock %}

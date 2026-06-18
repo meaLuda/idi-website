@@ -1,0 +1,514 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- 1. Starry Globe Hero Section -->
+<section class="relative bg-black text-white overflow-hidden navbar-spacing py-20 lg:py-32">
+    <!-- Starry night simulation -->
+    <div class="absolute inset-0 opacity-45 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
+    
+    <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center min-h-[400px] lg:min-h-[500px]">
+        <!-- Globe image with glow shadow -->
+        <div class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-[0_0_80px_rgba(6,182,212,0.18)] mb-8 flex items-center justify-center relative bg-black/50 border border-white/5">
+            <img src="{% static 'images/sovereign/hero_globe.png' %}" alt="Sovereign AI Globe" class="w-full h-full object-cover" loading="lazy">
+        </div>
+        <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none bg-gradient-to-r from-cyan-400 via-teal-300 to-fuchsia-400 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+            Sovereign AI
+        </h1>
+    </div>
+</section>
+
+<!-- 2. Centered Introduction -->
+<section class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl lg:text-4xl font-extrabold text-ink leading-tight mb-8">
+            Designing AI systems that are trusted, context-aware,<br class="hidden md:inline">and built for long-term public value.
+        </h2>
+        <p class="text-lg text-ink-muted leading-relaxed font-light mb-6">
+            AI shouldn't be a generic import. We work with civic leaders and engineering teams to model, build, and deploy localized AI solutions that respect community knowledge, context, and sovereignty.
+        </p>
+        <p class="text-base text-ink-muted/80 leading-relaxed font-light">
+            By implementing federated architecture, ethical trust gates, and localized datasets, we make certain that emerging tech scales representation alongside raw capability.
+        </p>
+    </div>
+</section>
+
+<!-- 3. Shifts We Enable Section -->
+<section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Shifts We Enable</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">True transformation requires shifting from black-box monopolies to trusted, local AI ecosystems.</p>
+        </div>
+        
+        <div class="bg-white rounded-2xl border border-gray-200/80 shadow-card overflow-hidden">
+            <div class="hidden md:grid grid-cols-2 bg-brand-teal-500 text-white px-6 py-4 text-sm font-bold uppercase tracking-wider">
+                <div>From</div>
+                <div class="pl-8 sm:pl-12">To</div>
+            </div>
+            <div class="divide-y divide-gray-100">
+                <!-- Row 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Imported black-box models</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Context-aware local systems
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Monopolized AI infrastructure</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Federated, sovereign architecture
+                    </div>
+                </div>
+                <!-- Row 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Biased generic systems</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Representational civic models
+                    </div>
+                </div>
+                <!-- Row 4 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 px-6 py-5 md:py-6 gap-2 md:gap-0 items-center relative">
+                    <div class="text-ink-muted font-medium text-base">Resource depletion</div>
+                    <span class="text-[#006377] block md:hidden text-left font-bold text-sm my-1">↓</span>
+                    <div class="pl-0 md:pl-12 text-brand-teal-500 font-bold text-base flex items-center">
+                        <span class="text-[#006377] mr-3 font-semibold hidden md:inline">➔</span>
+                        Green, localized compute
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. Collage Grid / Program Section -->
+<section class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <!-- Program Info Card (6 cols) -->
+            <div class="lg:col-span-6 bg-gradient-to-br from-[#005263] to-[#003845] rounded-3xl p-8 lg:p-12 text-white flex flex-col justify-between shadow-card-lg relative overflow-hidden min-h-[400px]">
+                <div>
+                    <span class="inline-block text-[11px] font-bold uppercase tracking-widest bg-brand-orange text-white px-3 py-1 rounded-full mb-6">Program</span>
+                    <h3 class="text-3xl lg:text-4xl font-extrabold leading-tight mb-8">Designing for Trust, <br>Control, and Relevance</h3>
+                    <ul class="space-y-4 text-base text-white/90">
+                        <li class="flex items-center">
+                            <span class="text-brand-orange mr-3">✔</span> 12-week immersive bootcamp
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-brand-orange mr-3">✔</span> Deep-dive technical track
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-brand-orange mr-3">✔</span> Sovereign database setup
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-brand-orange mr-3">✔</span> Verified architectural cert
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex space-x-2 mt-8">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand-orange"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-white/40"></span>
+                </div>
+            </div>
+            <!-- Images Collage (6 cols) -->
+            <div class="lg:col-span-6 grid grid-cols-12 gap-4">
+                <div class="col-span-8 rounded-3xl overflow-hidden shadow-card relative h-[350px] lg:h-auto">
+                    <img src="{% static 'images/sovereign/program_team.png' %}" alt="AI developers working together" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <div class="col-span-4 rounded-3xl overflow-hidden shadow-card relative h-[350px] lg:h-auto">
+                    <img src="{% static 'images/sovereign/city_slice.png' %}" alt="Nairobi skyline slice" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Holistic Approach to Innovation -->
+<section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">A Holistic Approach to Innovation</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">Three key pillars that form our innovation toolkit, supporting system transformation at every layer.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Learn Card -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300">
+                <div class="mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6">
+                        <!-- Search / Eye SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-ink mb-3">Learn</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed">We audit existing algorithms and datasets to expose biases and align representational priorities.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-5 border border-brand-teal-50">
+                    <ul class="space-y-2.5 text-sm text-brand-teal-900 font-medium">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Ethical impact mapping</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Local dataset curation</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Sovereign audit frameworks</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Create Card -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300">
+                <div class="mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6">
+                        <!-- Chip / Database SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-ink mb-3">Create</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed">We design and train sovereign AI systems, ensuring compute models remain locally governed.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-5 border border-brand-teal-50">
+                    <ul class="space-y-2.5 text-sm text-brand-teal-900 font-medium">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Federated database designs</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Local language models</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Civic trust parameters</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Empower Card -->
+            <div class="bg-white rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between shadow-card hover:shadow-card-lg transition-shadow duration-300">
+                <div class="mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-brand-teal-50 flex items-center justify-center text-brand-teal-500 mb-6">
+                        <!-- Trophy / Support SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-ink mb-3">Empower</h3>
+                    <p class="text-ink-muted text-sm leading-relaxed">We support civic teams to manage their AI systems internally, ensuring long-term technical resilience.</p>
+                </div>
+                <div class="bg-brand-teal-50/50 rounded-xl p-5 border border-brand-teal-50">
+                    <ul class="space-y-2.5 text-sm text-brand-teal-900 font-medium">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Technical advisory boards</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Localized deployment plans</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal-500 mr-2.5"></span> Sovereign AI playbooks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. Project Team Section (8 members) -->
+<section class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Meet our project team</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">The passionate designers, researchers, and AI engineers working to bring representational technology to life.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <!-- Row 1 -->
+            <!-- Member 1: Arthur Oyako -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/sovereign/team1.png' %}" alt="Arthur Oyako" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Arthur Oyako</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Project Director</p>
+                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="#" class="text-white hover:text-brand-orange">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Member 2: Dominic Lwande -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/sovereign/team2.png' %}" alt="Dominic Lwande" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Dominic Lwande</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Lead Researcher</p>
+                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="#" class="text-white hover:text-brand-orange">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Member 3: Diana Zoro -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/sovereign/team3.png' %}" alt="Diana Zoro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Diana Zoro</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Civic Designer</p>
+                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="#" class="text-white hover:text-brand-orange">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Member 4: Eli Otieno -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/sovereign/team4.png' %}" alt="Eli Otieno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Eli Otieno</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
+                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="#" class="text-white hover:text-brand-orange">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <!-- Member 5: Joshua Kemei -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/sovereign/team5.png' %}" alt="Joshua Kemei" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Joshua Kemei</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Data Scientist</p>
+                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="#" class="text-white hover:text-brand-orange">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Member 6: Job Kamunge -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/sovereign/team6.png' %}" alt="Job Kamunge" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Job Kamunge</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
+                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="#" class="text-white hover:text-brand-orange">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Member 7: Amina Moyo -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/sovereign/team7.png' %}" alt="Amina Moyo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Amina Moyo</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Community Liaison</p>
+                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="#" class="text-white hover:text-brand-orange">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Member 8: Edith Waweru -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img src="{% static 'images/sovereign/team8.png' %}" alt="Edith Waweru" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
+                    <h4 class="text-xl font-bold text-white mb-1">Edith Waweru</h4>
+                    <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">UX Researcher</p>
+                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="#" class="text-white hover:text-brand-orange">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. Case Studies Section -->
+<section class="bg-surface-alt py-16 lg:py-24 border-t border-b border-gray-100">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">Case Studies</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">Real-world impact showing how sovereign algorithms scale representation.</p>
+        </div>
+        
+        <div class="space-y-8">
+            <!-- Case Study 1 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
+                <div class="md:w-2/5 min-h-[250px] relative">
+                    <img src="{% static 'images/sovereign/case1.png' %}" alt="Citizen data workshop" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-teal-600 mb-2 block">Sovereign AI + Policy</span>
+                        <h3 class="text-2xl font-bold text-ink mb-4">Co-Designing with Community Data Repositories</h3>
+                        <p class="text-ink-muted text-sm leading-relaxed mb-6">We co-designed representational databases with community data trusts, ensuring local information remains owned, managed, and validated locally.</p>
+                        <ul class="space-y-2 text-sm text-ink-muted/90 font-medium mb-6">
+                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Increased data sovereignty index by 65%</li>
+                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Integrates over 45 localized community datasets</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                            READ CASE STUDY <span class="ml-1.5">➔</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Case Study 2 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
+                <div class="md:w-2/5 min-h-[250px] relative">
+                    <img src="{% static 'images/sovereign/case2.png' %}" alt="Agricultural Decision Systems" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-teal-600 mb-2 block">Sovereign AI + Policy</span>
+                        <h3 class="text-2xl font-bold text-ink mb-4">Designing Systems That Support Local Farmers</h3>
+                        <p class="text-ink-muted text-sm leading-relaxed mb-6">We built localized context models supporting rural farming cooperatives with real-time agronomic insights adapted to regional soil variations.</p>
+                        <ul class="space-y-2 text-sm text-ink-muted/90 font-medium mb-6">
+                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Co-designed with 5,000 smallholder farmers</li>
+                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Reduces reliance on generic global database models</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                            READ CASE STUDY <span class="ml-1.5">➔</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Case Study 3 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
+                <div class="md:w-2/5 min-h-[250px] relative">
+                    <img src="{% static 'images/sovereign/case3.png' %}" alt="Language models" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-teal-600 mb-2 block">Sovereign AI + Policy</span>
+                        <h3 class="text-2xl font-bold text-ink mb-4">Creating Context-Aware Language Models</h3>
+                        <p class="text-ink-muted text-sm leading-relaxed mb-6">We trained a lightweight LLM using localized dialects and cultural metaphors, providing accurate legal/medical translations across various public sectors.</p>
+                        <ul class="space-y-2 text-sm text-ink-muted/90 font-medium mb-6">
+                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Supports 8 local language dialects</li>
+                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Zero data leakage to external commercial cloud hosts</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                            READ CASE STUDY <span class="ml-1.5">➔</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Case Study 4 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
+                <div class="md:w-2/5 min-h-[250px] relative">
+                    <img src="{% static 'images/sovereign/case4.png' %}" alt="Algorithmic Transparency" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-widest text-brand-teal-600 mb-2 block">Sovereign AI + Policy</span>
+                        <h3 class="text-2xl font-bold text-ink mb-4">Designing for Algorithmic Transparency</h3>
+                        <p class="text-ink-muted text-sm leading-relaxed mb-6">We deployed open civic trust interfaces that explain AI-assisted public registry allocations to local citizens, bypassing standard opaque scoring systems.</p>
+                        <ul class="space-y-2 text-sm text-ink-muted/90 font-medium mb-6">
+                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Applied verified ethical checkpoints</li>
+                            <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange mr-2"></span> Adopted by central municipal registry regulators</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                            READ CASE STUDY <span class="ml-1.5">➔</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. What We're Learning Section -->
+<section class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-display-lg font-extrabold uppercase text-ink mb-4">what we're learning</h2>
+            <p class="text-base text-ink-muted max-w-2xl mx-auto">Latest thoughts, whitepapers, and guides from our team of AI designers.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Insight 1 -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
+                <div>
+                    <div class="h-52 overflow-hidden bg-gray-100">
+                        <img src="{% static 'images/sovereign/insight1.png' %}" alt="AI and profit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">Insights</span>
+                        <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">Is Artificial Intelligence Part of Profit</h3>
+                        <p class="text-ink-muted text-sm leading-relaxed line-clamp-3">Evaluating commercial incentives in LLM deployment and how open public alternatives secure communal values.</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-2">
+                    <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                        Read Article <span class="ml-1">➔</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Insight 2 -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
+                <div>
+                    <div class="h-52 overflow-hidden bg-gray-100">
+                        <img src="{% static 'images/sovereign/insight2.png' %}" alt="Local Data Metaphors" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">Insights</span>
+                        <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">Local Data and Metaphors in Practice</h3>
+                        <p class="text-ink-muted text-sm leading-relaxed line-clamp-3">A structural framework for embedding linguistic nuances and local metaphors inside neural language processing units.</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-2">
+                    <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                        Read Article <span class="ml-1">➔</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Insight 3 -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
+                <div>
+                    <div class="h-52 overflow-hidden bg-gray-100">
+                        <img src="{% static 'images/sovereign/insight3.png' %}" alt="Designing Algorithms Users" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">Insights</span>
+                        <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-brand-teal-500 transition-colors">Designing Algorithms Users</h3>
+                        <p class="text-ink-muted text-sm leading-relaxed line-clamp-3">Understanding how civic workers interface with automated public scorecards and the importance of legible design.</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-2">
+                    <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                        Read Article <span class="ml-1">➔</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 9. Bottom CTA -->
+<section class="bg-white pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto max-w-5xl">
+        <div class="bg-gradient-to-br from-[#051924] to-[#073a47] rounded-3xl p-10 lg:p-16 text-center text-white shadow-card-lg relative overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="--bg-url: url({% static 'images/home/hero-pattern.webp' %}); background-image: var(--bg-url); background-size: 300px 300px;"></div>
+            <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Interested in Sovereign AI?</h2>
+            <p class="text-base text-white/80 max-w-2xl mx-auto mb-10">Whether you're a public leader, technology partner, or research collective, let's partner to co-design AI systems adapted to your context.</p>
+            <a href="{% url 'home:contact' %}" class="inline-block px-10 py-3.5 bg-white text-brand-teal-900 text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-card">
+                Get In Touch
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

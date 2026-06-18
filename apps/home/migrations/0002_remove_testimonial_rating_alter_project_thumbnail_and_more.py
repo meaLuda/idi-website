@@ -6,6 +6,8 @@ from django.db import connection
 
 def remove_rating_field_if_exists(apps, schema_editor):
     """Remove rating field only if it exists"""
+    if connection.vendor != 'postgresql':
+        return
     with connection.cursor() as cursor:
         # Check if the column exists
         cursor.execute("""
@@ -21,6 +23,8 @@ def remove_rating_field_if_exists(apps, schema_editor):
 
 def reverse_remove_rating_field(apps, schema_editor):
     """Add rating field back"""
+    if connection.vendor != 'postgresql':
+        return
     with connection.cursor() as cursor:
         cursor.execute("""
             ALTER TABLE home_testimonial 
