@@ -29,6 +29,13 @@ module.exports = {
         'ink': '#0b1f24',
         'ink-muted': '#4b5b60',
       },
+      fontFamily: {
+        // Make the default `font-sans` utility match the html-level Poppins.
+        // Without this, `font-sans` resolves to Tailwind's default
+        // (ui-sans-serif, system-ui, ...) and overrides the inherited Poppins
+        // back to system fonts wherever it is applied.
+        sans: ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+      },
       fontSize: {
         'eyebrow': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.12em' }],
         'display-lg': ['clamp(2rem, 3.5vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
