@@ -10,9 +10,20 @@ body, html {
   scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
 
-/* Add top spacing for pages that need navbar clearance */
+/* Clear the fixed navbar from page sections.
+   Uses padding-top, NOT margin-top: with margin-top the section's background
+   starts BELOW the gap, so the body background (white) shows through above
+   the section, creating a visible white band between a white nav and a dark
+   hero. With padding-top the section's own background extends up under the
+   fixed nav and there is no gap. */
 .navbar-spacing {
-  margin-top: 80px;
+  padding-top: 80px;
+}
+@media (max-width: 768px) {
+  .navbar-spacing { padding-top: 70px; }
+}
+@media (max-width: 480px) {
+  .navbar-spacing { padding-top: 65px; }
 }
 
 /* Alternative: padding version for sections that need internal spacing */
