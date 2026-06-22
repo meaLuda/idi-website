@@ -136,6 +136,8 @@
                         class="{% if url_name == 'lander' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} transition-colors">About Us</a>
                     <a href="{% url 'home:services' %}"
                         class="{% if url_name == 'services' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} transition-colors">Services</a>
+                    <a href="{% url 'home:case_studies_list' %}"
+                        class="{% if url_name == 'case_studies_list' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} transition-colors">Case Studies</a>
                     <a href="{% url 'home:lander' %}#how-we-work"
                         class="text-ink-muted hover:text-brand-orange transition-colors">Approach</a>
                     <a href="{% url 'home:projects_list' %}"
@@ -173,6 +175,8 @@
                         class="block py-2 {% if url_name == 'lander' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} border-b border-gray-100">About Us</a>
                     <a href="{% url 'home:services' %}"
                         class="block py-2 {% if url_name == 'services' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} border-b border-gray-100">Services</a>
+                    <a href="{% url 'home:case_studies_list' %}"
+                        class="block py-2 {% if url_name == 'case_studies_list' %}text-brand-teal-500 font-semibold{% else %}text-ink-muted hover:text-brand-orange{% endif %} border-b border-gray-100">Case Studies</a>
                     <a href="{% url 'home:lander' %}#how-we-work"
                         class="block py-2 text-ink-muted hover:text-brand-orange border-b border-gray-100">Approach</a>
                     <a href="{% url 'home:projects_list' %}"
@@ -238,7 +242,7 @@
                     <ul class="space-y-3 text-sm font-medium text-white/80">
                         <li><a href="{% url 'home:projects_list' %}" class="hover:text-white transition-colors">Work</a>
                         </li>
-                        <li><a href="{% url 'home:projects_list' %}" class="hover:text-white transition-colors">Case
+                        <li><a href="{% url 'home:case_studies_list' %}" class="hover:text-white transition-colors">Case
                                 Studies</a></li>
                         <li><a href="{% url 'home:projects_list' %}"
                                 class="hover:text-white transition-colors">Insights</a></li>

@@ -1,0 +1,333 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Power to Youth Case Study",
+    "description": "Reimagining Tradition: How Men and Boys Are Driving Change in Migori County.",
+    "author": {"@type": "Organization", "name": "IDI Africa", "url": "{{ request.scheme }}://{{ request.get_host }}/"},
+    "publisher": {
+        "@type": "Organization",
+        "name": "IDI Africa",
+        "logo": {"@type": "ImageObject", "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/wp-content/uploads/2024/12/idi-main-logo_webp_512x512-300x300.webp' %}"}
+    },
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "{{ request.build_absolute_uri }}"}
+}
+</script>
+<style>
+    /* Premium micro-interactions & visual enhancements */
+    .btn-shadow-teal {
+        box-shadow: 0 4px 14px rgba(0, 99, 119, 0.3);
+    }
+    .btn-shadow-teal:hover {
+        box-shadow: 0 6px 20px rgba(0, 99, 119, 0.4);
+    }
+    .hover-card-up {
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hover-card-up:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 38px rgba(0, 99, 119, 0.08);
+    }
+    /* Wave connector classes */
+    .step-connector {
+        background-image: radial-gradient(circle, #006377 1px, transparent 1px);
+        background-size: 8px 8px;
+        background-repeat: repeat-x;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Container Wrapper -->
+<div class="bg-white min-h-screen pt-28 pb-16">
+    <div class="container mx-auto px-4 max-w-7xl">
+
+        <!-- 1. HERO SECTION -->
+        <section class="bg-[#F4F7F6] rounded-[2rem] p-8 lg:p-14 mb-16 shadow-sm border border-[#e8eeec]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-7 flex flex-col items-start text-left">
+                    <div class="flex flex-wrap gap-2 items-center mb-6">
+                        <span class="bg-[#e2ebe9] text-[#006377] text-[10px] font-black tracking-widest px-4 py-1.5 rounded-full uppercase">
+                            Gender Rights
+                        </span>
+                        <span class="inline-flex items-center bg-white border border-[#e2ebe9] text-[#7c8f94] text-[10px] font-bold px-3.5 py-1.5 rounded-full">
+                            <svg class="w-3 h-3 mr-1.5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                            Community Engagement
+                        </span>
+                    </div>
+
+                    <h1 class="text-4xl md:text-5xl lg:text-[54px] font-black text-[#006377] leading-[1.05] mb-6 tracking-tight">
+                        Power to Youth
+                    </h1>
+
+                    <p class="text-xl md:text-2xl text-[#0b1f24] font-bold leading-snug mb-4 max-w-xl">
+                        Reimagining Tradition: How Men and Boys Are Driving Change in Migori County
+                    </p>
+                    
+                    <p class="text-base text-[#4a585a] font-normal leading-relaxed mb-8 max-w-xl">
+                        In Migori’s Kuria community, a new approach is challenging harmful traditions by engaging men and boys as allies for women’s rights.
+                    </p>
+
+                    <a href="#summary" class="inline-flex items-center justify-center bg-[#006377] hover:bg-[#004d5c] text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all duration-300 btn-shadow-teal mb-10">
+                        Case Study
+                    </a>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+                    <div class="rounded-3xl overflow-hidden shadow-card-lg aspect-[4/3] w-full border-4 border-white bg-[#006377]/10 flex items-center justify-center">
+                        <img src="{% static 'images/power_to_youth/img1.png' %}" alt="Power to Youth Dialogue" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PROJECT SUMMARY SECTION -->
+        <section id="summary" class="py-12 lg:py-16 scroll-mt-28">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <!-- Left circular quartered design -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="grid grid-cols-2 grid-rows-2 w-72 h-72 rounded-full overflow-hidden gap-1.5 bg-[#F4F7F6] p-1 border-2 border-gray-100 shadow-md">
+                        <div class="rounded-tl-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/power_to_youth/img2.png' %}" alt="Community Meeting" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="rounded-tr-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/power_to_youth/img3.png' %}" alt="Mentorship" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="rounded-bl-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/power_to_youth/img4.png' %}" alt="Design Sprint" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="rounded-br-full overflow-hidden h-full w-full">
+                            <img src="{% static 'images/power_to_youth/img5.png' %}" alt="Leadership" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Description -->
+                <div class="lg:col-span-7 text-left">
+                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">Project Summary</span>
+                    <h2 class="text-3xl font-extrabold text-[#006377] mb-6 tracking-tight">
+                        A New Question
+                    </h2>
+                    <div class="space-y-6 text-[#4a585a] font-normal leading-relaxed text-base">
+                        <p>
+                            Among the Kuria people of Migori County, Kenya, female genital mutilation (FGM) is a deeply rooted tradition, practiced by 84% of the community. It marks a girl’s transition into womanhood and often leads to early marriage.
+                        </p>
+                        <p>
+                            For generations, efforts to protect girls focused mainly on women. We asked a different question: Could men and boys — the cultural gatekeepers — be part of the solution?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. KEY INSIGHT BAR -->
+        <section class="my-16">
+            <div class="relative bg-[#0b1f24] rounded-3xl overflow-hidden py-16 px-8 lg:p-20 shadow-xl border border-white/5">
+                <style>.bg-insight-img-youth { background-image: url('{% static "images/power_to_youth/img1.png" %}'); }</style>
+                <div class="absolute inset-0 opacity-[0.22] bg-cover bg-center mix-blend-luminosity bg-insight-img-youth"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#051924] via-[#051924]/90 to-transparent"></div>
+                <div class="relative z-10 max-w-3xl text-left">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-orange mb-3 block">Listening Before Leading</span>
+                    <p class="text-lg md:text-xl lg:text-2xl font-normal text-white leading-snug tracking-tight">
+                        "Our journey began with introspection. We trained our team in human-centered design, grounding our work in empathy and collaboration to co-create solutions directly with the community."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DESIGN PRINCIPLES SECTION -->
+        <section class="py-12 lg:py-16 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#006377] mb-6 tracking-tight">Listening to the Community</h2>
+            <p class="text-lg md:text-xl font-normal text-gray-600 max-w-3xl mx-auto mb-16 tracking-tight">
+                Through three weeks of immersive field research, we spoke with 40 community members across generations, listening to their stories rather than just collecting statistics.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Principle 1 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-md flex flex-col items-start text-left hover-card-up">
+                    <div class="w-12 h-12 mb-6 rounded-2xl bg-[#f0f6f4] flex items-center justify-center text-[#006377]">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#006377] mb-4 leading-tight">Listening to Stories</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed font-light">
+                        Engaging in early conversations with religious leaders, elders, young women, and men revealed that many had never questioned the consequences of practices like FGM.
+                    </p>
+                </div>
+
+                <!-- Principle 2 (Highlight) -->
+                <div class="bg-[#006377] text-white rounded-3xl p-8 shadow-xl border border-transparent flex flex-col items-start text-left hover-card-up">
+                    <div class="w-12 h-12 mb-6 rounded-2xl bg-white/10 flex items-center justify-center text-[#5bd5e2]">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-4 leading-tight">Shifting Perspectives</h3>
+                    <p class="text-sm text-white/80 leading-relaxed font-light">
+                        One young man shared, "I never thought FGM was harmful; it was just what we did. Now I see how it affects my sisters." These insights guided the solutions we co-created.
+                    </p>
+                </div>
+
+                <!-- Principle 3 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-md flex flex-col items-start text-left hover-card-up">
+                    <div class="w-12 h-12 mb-6 rounded-2xl bg-[#f0f6f4] flex items-center justify-center text-[#006377]">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#006377] mb-4 leading-tight">Actionable Insights</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed font-light">
+                        By understanding the deep-rooted cultural context, our team converted qualitative feedback into creative design sprints for maximum community ownership.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<!-- 5. OUTPUTS & RESULTS (Full-Width Section) -->
+<section class="bg-[#006477] py-20 lg:py-28 text-white relative">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="text-center mb-16">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#5bd5e2] mb-3 block">Turning Insights into Action</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+                Community-Driven Ideas
+            </h2>
+            <p class="text-white/70 max-w-3xl mx-auto mt-4 font-light text-base">
+                During a design sprint, we co-designed and launched simple, direct interventions to reshape cultural roles.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Project Type 1 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col hover-card-up">
+                <div class="h-40 w-full relative">
+                    <img src="{% static 'images/power_to_youth/img2.png' %}" alt="Dialogues" class="w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <h3 class="absolute bottom-4 left-4 text-white font-bold text-lg">Men-Led Dialogues</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Safe spaces where men and boys openly question and rethink traditional gender expectations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Project Type 2 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col hover-card-up">
+                <div class="h-40 w-full relative">
+                    <img src="{% static 'images/power_to_youth/img3.png' %}" alt="Mentorship" class="w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <h3 class="absolute bottom-4 left-4 text-white font-bold text-lg">School Mentorship</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Classroom mentorship programs structured to guide young boys on gender equality and rights.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Project Type 3 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col hover-card-up">
+                <div class="h-40 w-full relative">
+                    <img src="{% static 'images/power_to_youth/img4.png' %}" alt="Media Campaigns" class="w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <h3 class="absolute bottom-4 left-4 text-white font-bold text-lg">Media Campaigns</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Developing media content promoting positive masculinity and rejecting FGM.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Project Type 4 -->
+            <div class="bg-white text-[#0b1f24] rounded-3xl overflow-hidden shadow-xl flex flex-col hover-card-up">
+                <div class="h-40 w-full relative">
+                    <img src="{% static 'images/power_to_youth/img5.png' %}" alt="Leadership" class="w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <h3 class="absolute bottom-4 left-4 text-white font-bold text-lg">Youth Leadership</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-sm text-gray-600 font-light leading-relaxed">
+                        Empowering young women and men to actively step into leadership roles in the community.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. MEASURING SUCCESS SECTION -->
+<div class="bg-white py-16 lg:py-24">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Left Info -->
+            <div class="lg:col-span-8 text-left">
+                <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2 block">Early Signs of Change</span>
+                <h2 class="text-3xl font-extrabold text-[#006377] mb-6 tracking-tight">
+                    Transforming Tradition
+                </h2>
+                <div class="space-y-4 text-base text-[#4a585a] font-normal leading-relaxed">
+                    <p>
+                        Today, small but powerful shifts are happening across Migori County:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Changing Perspectives:</strong> More men and boys are questioning harmful practices.</li>
+                        <li><strong>Youth Empowerment:</strong> Young women and men are stepping into leadership roles.</li>
+                        <li><strong>Stronger Collaboration:</strong> Communities are building solutions together.</li>
+                        <li><strong>Sustained Support:</strong> New funding is helping us expand and deepen our impact.</li>
+                    </ul>
+                    <p class="pt-4 font-medium text-lg text-[#006377]">
+                        This project is about more than ending FGM. It's about transforming tradition — and creating a future where girls thrive, and men are part of the change.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Circular Image -->
+            <div class="lg:col-span-4 flex justify-center lg:justify-end">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-[#F4F7F6] shadow-lg bg-[#006377]/10">
+                    <img src="{% static 'images/power_to_youth/img1.png' %}" alt="Power to Youth Team" class="w-full h-full object-cover object-top" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 7. INTERESTED IN WORKING WITH US (Bottom CTA) -->
+<section class="bg-white pb-16">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <div class="bg-[#006377] rounded-[2rem] p-8 md:py-10 md:px-12 text-white relative overflow-hidden shadow-xl">
+            <style>.bg-cta-pattern { background-image:url('{% static "images/home/hero-pattern.webp" %}'); background-size:520px; }</style>
+            <div class="absolute inset-0 opacity-[0.08] pointer-events-none bg-cta-pattern"></div>
+            <div class="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8 text-left">
+                <!-- Portrait with Organic Leaf Shape -->
+                <div class="w-36 h-28 shrink-0 overflow-hidden rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-[1.2rem] rounded-bl-[1.2rem] border border-white/20 shadow-md">
+                    <img src="{% static 'images/home/hero-portrait.webp' %}" alt="Smiling team member" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                
+                <!-- Text Content -->
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-2">Interested in working with us?</h3>
+                    <p class="text-white/85 text-sm md:text-base font-light">
+                        Let's collaborate on your next project and create impactful solutions that drive positive change.
+                    </p>
+                </div>
+                
+                <!-- Thin Outline Pill Button -->
+                <div class="shrink-0 mt-4 md:mt-0">
+                    <a href="{% url 'home:contact' %}" class="inline-block border border-white/70 hover:bg-white hover:text-[#006377] hover:border-transparent transition-all duration-300 text-white font-semibold text-sm px-8 py-3.5 rounded-full min-w-[140px] text-center">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

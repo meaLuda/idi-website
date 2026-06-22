@@ -1,0 +1,315 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }} | IDI Africa{% endblock %}
+{% block meta_description %}{{ page_description }}{% endblock %}
+
+{% block content %}
+<style>
+    /* Case Studies page – pixel-perfect overrides */
+    .cs-hero-wrap {
+        display: flex;
+        gap: 20px;
+        height: 400px;
+    }
+    .cs-hero-left {
+        flex: 0 0 42%;
+        background-color: #006377;
+        border-radius: 24px;
+        padding: 48px 52px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+    .cs-hero-right {
+        flex: 1 1 0;
+        display: flex;
+        gap: 12px;
+        overflow: hidden;
+    }
+    .cs-hero-img-main {
+        flex: 1 1 0;
+        border-radius: 24px;
+        overflow: hidden;
+    }
+    .cs-hero-img-main img,
+    .cs-hero-img-narrow img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .cs-hero-img-narrow {
+        flex: 0 0 110px;
+        border-radius: 24px;
+        overflow: hidden;
+    }
+    /* Dot indicators */
+    .cs-dots { display: flex; gap: 10px; }
+    .cs-dot { width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,0.35); }
+    .cs-dot.active { background: #fff; }
+
+    /* Card */
+    .case-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .case-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.09); }
+
+    /* Stat */
+    .cs-stat-val {
+        font-size: 2.75rem;
+        font-weight: 900;
+        line-height: 1.1;
+        color: #006377;
+        letter-spacing: -0.03em;
+        display: block;
+    }
+
+    /* Filter select caret */
+    .filter-select {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 1.1em;
+        padding-right: 2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1023px) {
+        .cs-hero-wrap { height: auto; flex-direction: column; }
+        .cs-hero-left { min-height: 280px; padding: 36px 32px; }
+        .cs-hero-right { height: 240px; }
+        .cs-hero-img-narrow { flex: 0 0 80px; }
+    }
+    @media (max-width: 639px) {
+        .cs-hero-right { height: 180px; gap: 8px; }
+        .cs-hero-img-narrow { flex: 0 0 60px; }
+        .cs-hero-left { padding: 28px 24px; min-height: 220px; }
+    }
+</style>
+
+<!-- 1. HERO SECTION -->
+<section class="navbar-spacing bg-white">
+    <div class="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 pt-6 pb-0">
+        <div class="cs-hero-wrap">
+
+            <!-- Left: Teal content box -->
+            <div class="cs-hero-left">
+                <div>
+                    <h1 class="text-[52px] sm:text-[60px] lg:text-[68px] font-black uppercase leading-[0.95] tracking-tight mb-5">
+                        CASE<br>STUDIES
+                    </h1>
+                    <p class="text-[14px] lg:text-[16px] text-white/90 leading-relaxed font-medium" style="max-width: 88%;">
+                        We start where systems fall short. By focusing on underserved communities and overlooked realities, we design toward equitable, inclusive outcomes that scale across diverse African contexts.
+                    </p>
+                </div>
+                <div class="cs-dots">
+                    <span class="cs-dot active"></span>
+                    <span class="cs-dot"></span>
+                    <span class="cs-dot"></span>
+                </div>
+            </div>
+
+            <!-- Right: Image collage (1 large + 2 narrow) -->
+            <div class="cs-hero-right">
+                <!-- Main large image -->
+                <div class="cs-hero-img-main">
+                    <img src="{% static 'images/case-studies/planting-guy.jpg' %}" alt="Man planting in field">
+                </div>
+                <!-- Narrow middle -->
+                <div class="cs-hero-img-narrow">
+                    <img src="{% static 'images/case-studies/planting-line.jpg' %}" alt="People planting in a line" style="object-position: center;">
+                </div>
+                <!-- Narrow right -->
+                <div class="cs-hero-img-narrow">
+                    <img src="{% static 'images/case-studies/planting-hands.jpg' %}" alt="Hands planting" style="object-position: center;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 2. MAIN HEADING -->
+<section class="py-8 sm:py-10">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-[36px] sm:text-[44px] font-black text-ink tracking-tight uppercase leading-none">Case Studies</h2>
+    </div>
+</section>
+
+<!-- 3. FILTER BAR -->
+<section class="pb-10">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-stretch border border-gray-200 rounded-[20px] bg-white shadow-sm overflow-hidden">
+            <!-- "Filter by" label -->
+            <div class="flex items-center px-6 py-4 md:py-0 border-b md:border-b-0 md:border-r border-gray-200 whitespace-nowrap">
+                <span class="text-sm font-black text-ink leading-tight">Filter<br class="hidden md:block">by</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 w-full">
+                <!-- Category -->
+                <div class="relative border-b md:border-b-0 md:border-r border-gray-200 px-6 py-4">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Category</label>
+                    <select class="filter-select w-full bg-transparent text-ink text-sm font-medium focus:outline-none cursor-pointer">
+                        <option>AgriTech, Health, Energy</option>
+                        <option>AgriTech</option>
+                        <option>Health</option>
+                        <option>Energy</option>
+                    </select>
+                </div>
+                <!-- Industry -->
+                <div class="relative border-b md:border-b-0 md:border-r border-gray-200 px-6 py-4">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Industry</label>
+                    <select class="filter-select w-full bg-transparent text-ink text-sm font-medium focus:outline-none cursor-pointer">
+                        <option>Public Sector, Cooperatives, Mobility</option>
+                        <option>Public Sector</option>
+                        <option>Cooperatives</option>
+                        <option>Mobility</option>
+                    </select>
+                </div>
+                <!-- Sort By -->
+                <div class="relative px-6 py-4">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Sort By</label>
+                    <select class="filter-select w-full bg-transparent text-ink text-sm font-medium focus:outline-none cursor-pointer">
+                        <option>Date - Newest</option>
+                        <option>Date - Oldest</option>
+                        <option>Title A-Z</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. CASE STUDY CARDS GRID -->
+<section class="pb-16 lg:pb-24">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {% for case in case_studies %}
+            <a href="{% url 'home:case_study_detail' case.slug %}" class="block group no-underline">
+            <article class="case-card {{ case.bg_color|default:'bg-white' }} border border-gray-100 rounded-[24px] overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300 h-full">
+                <!-- Image -->
+                <div class="h-[230px] overflow-hidden bg-gray-100 rounded-t-[24px]">
+                    <img src="{% static case.image %}" alt="{{ case.title }}" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Content -->
+                <div class="p-6 sm:p-8 flex flex-col flex-grow">
+                    <!-- Title + optional arrow icon -->
+                    <div class="flex justify-between items-start mb-1">
+                        <h3 class="text-[19px] font-black text-ink leading-snug pr-3">{{ case.title }}</h3>
+                        {% if case.show_icon %}
+                        <svg class="w-5 h-5 text-ink flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                        {% endif %}
+                    </div>
+
+                    <!-- Category label -->
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-4 block">{{ case.category }}</span>
+
+                    <!-- Challenge -->
+                    <p class="text-[13px] font-medium text-ink-muted leading-relaxed mb-6 flex-grow">
+                        <span class="font-bold text-ink">Challenge:</span> {{ case.challenge }}
+                    </p>
+
+                    <!-- Stat block -->
+                    <div class="mb-6">
+                        <span class="cs-stat-val">{{ case.stat_value }}</span>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-ink block leading-none mt-1">{{ case.stat_label }}</span>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 pt-5 border-t {% if case.bg_color == 'bg-[#f5f1ea]' %}border-gray-300{% else %}border-gray-100{% endif %}">
+                        {% for tag in case.tags %}
+                        <span class="px-3 py-1.5 text-[10px] font-bold rounded-full {% if case.bg_color == 'bg-[#f5f1ea]' %}bg-white text-ink shadow-sm border border-gray-100{% else %}bg-transparent border border-gray-200 text-ink-muted{% endif %}">
+                            {{ tag }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </article>
+            </a>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if page_obj.has_other_pages %}
+        <div class="flex items-center justify-between border-t border-gray-200 mt-16 pt-8">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="text-xs font-bold text-ink hover:text-[#006377] transition-colors flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Previous
+            </a>
+            {% else %}
+            <span class="text-xs font-bold text-gray-300 flex items-center gap-2 cursor-not-allowed">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Previous
+            </span>
+            {% endif %}
+
+            <div class="flex items-center gap-1">
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                    <span class="w-8 h-8 flex items-center justify-center text-xs font-bold text-white bg-[#006377] rounded-full">{{ num }}</span>
+                    {% else %}
+                    <a href="?page={{ num }}" class="w-8 h-8 flex items-center justify-center text-xs font-bold text-ink-muted hover:text-ink hover:bg-gray-100 rounded-full transition-colors">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="text-xs font-bold text-ink hover:text-[#006377] transition-colors flex items-center gap-2">
+                Next
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </a>
+            {% else %}
+            <span class="text-xs font-bold text-gray-300 flex items-center gap-2 cursor-not-allowed">
+                Next
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </span>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- 5. NEWSLETTER SECTION -->
+<section class="bg-white py-16 lg:py-20 border-t border-gray-100" id="subscribe-section">
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="text-left md:w-1/2">
+                <h2 class="text-2xl font-black text-ink mb-2">Join our newsletter</h2>
+                <p class="text-ink-muted text-sm font-medium">We'll send you a nice letter once per week. No spam.</p>
+            </div>
+            <div class="w-full md:w-1/2">
+                <form id="newsletter-form-case" class="flex flex-col sm:flex-row items-center gap-3">
+                    <label for="nl-email-case" class="sr-only">Email address</label>
+                    <input type="email" id="nl-email-case" name="email" required placeholder="Enter your email"
+                        class="w-full bg-white border border-gray-200 focus:border-[#006377] focus:ring-1 focus:ring-[#006377] rounded-full px-5 py-3 text-sm text-ink placeholder-gray-400 focus:outline-none transition-all duration-200">
+                    <button type="submit"
+                        class="w-full sm:w-auto px-8 py-3 bg-[#006377] text-white text-sm font-bold rounded-full hover:bg-[#004f60] transition-all duration-300 shadow-sm whitespace-nowrap">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('newsletter-form-case').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Thank you for subscribing!');
+    });
+</script>
+{% endblock %}
