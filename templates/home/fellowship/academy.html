@@ -1,19 +1,48 @@
 {% extends '../../base.html' %}
 {% load static %}
 
+{% block extra_head %}
+{% comment %}
+The "What is Decision Intelligence?" section is already a self-contained,
+quotable definition -- exactly the shape AI answer engines cite. FAQPage makes
+that explicit rather than leaving it to paragraph-level chunking.
+{% endcomment %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+        "@type": "Question",
+        "name": "What is Decision Intelligence Design?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Decision Intelligence Design blends data, design and behavioural insight to turn information into action. It gives cross-functional teams a way to tackle complex public and social challenges responsibly, and to scale what works across the public, private and civic sectors."
+        }
+    }, {
+        "@type": "Question",
+        "name": "Who is the Decision Intelligence Design Academy for?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DIDA runs two tracks. The Executive track is for senior leaders responsible for decisions at institutional scale. The Emerging Talent track is for practitioners and young professionals building applied decision-intelligence skills."
+        }
+    }]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- 1. Hero Section -->
 <section class="relative bg-[#006377] min-h-screen flex items-center pt-32 pb-24">
     <div class="absolute inset-0">
         <img src="{% static 'images/engagment_bg.webp' %}" class="w-full h-full object-cover opacity-20"
             alt="Hero Background"
-            onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'" loading="lazy">
+            onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'" loading="lazy" width="2040" height="1148" decoding="async">
         <div class="absolute inset-0 bg-[#006377]/70 mix-blend-multiply"></div>
     </div>
     <div class="container mx-auto px-4 relative z-10 text-white max-w-5xl">
-        <p class="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight mb-6 leading-tight">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight mb-6 leading-tight">
             Decision Intelligence <br class="hidden sm:inline">Design Academy <br class="hidden sm:inline">(DIDAcademy)
-        </p>
+        </h1>
         <p class="text-lg md:text-xl text-white/90 mb-10 max-w-3xl leading-relaxed">
             Developing Africa's capacity for design-, tech- & data-driven decision-making for social, business and
             public innovation.
@@ -55,7 +84,7 @@
                 <path d="M117.883 56.7037H92.6396V29.4996H145.087C145.087 44.5246 132.907 56.7037 117.883 56.7037Z" />
             </svg>
         </div>
-        <p class="text-display-lg font-normal text-[#006377] mb-6">What is Decision Intelligence?</p>
+        <h2 class="text-display-lg font-normal text-[#006377] mb-6">What is Decision Intelligence?</h2>
         <p class="text-ink-muted text-lg leading-relaxed text-center font-light">
             Decision intelligence blends data, design and behavioral insights to turn information into transformative
             action through emerging technologies. It is a unifying framework that enables cross-functional teams to
@@ -69,7 +98,7 @@
 <section class="py-16 md:py-24 bg-[#FAF3E0]">
     <div class="container mx-auto px-4 max-w-7xl">
         <div class="max-w-4xl mx-auto text-center mb-12">
-            <p class="text-display-lg font-normal text-ink mb-4">About the Academy</p>
+            <h2 class="text-display-lg font-normal text-ink mb-4">About the Academy</h2>
             <p class="text-ink-muted text-base leading-relaxed font-light">
                 The Decision Intelligence Design Academy (DIDAcademy) is Africa's leading capacity-development
                 ecosystem for decision-intelligent governance, leadership and innovation. We weave leadership and
@@ -107,12 +136,12 @@
     <div class="absolute inset-0">
         <img src="{% static 'images/governance/hero_bg.png' %}" class="w-full h-full object-cover opacity-20"
             alt="Programs Background"
-            onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'" loading="lazy">
+            onerror="this.src='https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop'" loading="lazy" width="1024" height="1024" decoding="async">
         <div class="absolute inset-0 bg-[#006377]/70 mix-blend-multiply"></div>
     </div>
     <div class="container mx-auto px-4 relative z-10 max-w-6xl">
-        <p class="text-display-lg font-normal text-white text-center mb-12">Decision Intelligence Programs
-        </p>
+        <h2 class="text-display-lg font-normal text-white text-center mb-12">Decision Intelligence Programs
+        </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- EXECUTIVE -->
@@ -124,7 +153,7 @@
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full"></div>
                     </div>
                 </div>
-                <p class="text-xl font-normal tracking-widest mb-8">Executive</p>
+                <h3 class="text-xl font-normal tracking-widest mb-8">Executive</h3>
 
                 <ul class="space-y-6 text-sm lg:text-base text-white/90">
                     <li class="flex items-start">
@@ -170,7 +199,7 @@
                         <div class="w-1.5 h-1.5 bg-[#f99a00] rounded-full"></div>
                     </div>
                 </div>
-                <p class="text-xl font-normal tracking-widest mb-8">Emerging Talent</p>
+                <h3 class="text-xl font-normal tracking-widest mb-8">Emerging Talent</h3>
 
                 <ul class="space-y-6 text-sm lg:text-base text-white/90">
                     <li class="flex items-start">
@@ -208,6 +237,51 @@
                 </ul>
             </div>
         </div>
+
+        {% if featured_programs %}
+        <!-- Featured programmes from the CMS.
+             Without this block every Program page was orphaned: routed and
+             rendering, but linked from nowhere and absent from the sitemap. -->
+        <div class="mt-16">
+            <h3 class="text-2xl md:text-3xl font-normal text-white text-center mb-10">
+                Current programmes
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for program in featured_programs %}
+                <a href="{% url 'home:program_detail' program.slug %}"
+                   class="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg
+                          focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+                          focus-visible:outline-brand-yellow
+                          transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                    {% if program.image %}
+                    <div class="aspect-[16/10] overflow-hidden bg-surface-alt">
+                        <img src="{{ program.image.url }}" alt="{{ program.title }}"
+                             width="640" height="400" loading="lazy" decoding="async"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    {% endif %}
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="inline-block self-start text-[10px] font-extrabold uppercase tracking-widest
+                                     text-brand-orange mb-3">
+                            {{ program.get_program_type_display }}
+                        </span>
+                        <h4 class="text-lg font-bold text-ink leading-snug mb-2">{{ program.title }}</h4>
+                        <p class="text-sm text-ink-muted leading-relaxed line-clamp-3 flex-1">
+                            {{ program.short_description }}
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-ink/10 flex items-center gap-4 text-xs text-ink-muted">
+                            {% if program.duration %}<span>{{ program.duration }}</span>{% endif %}
+                            {% if program.format %}<span>{{ program.format }}</span>{% endif %}
+                            {% if not program.application_open %}
+                                <span class="ml-auto font-bold text-ink/60">Applications closed</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
     </div>
 </section>
 
@@ -246,7 +320,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             <div class="order-2 lg:order-1">
-                <p class="text-3xl md:text-4xl font-normal text-[#006377] mb-6 leading-tight">An experiential<br>learning approach</p>
+                <h2 class="text-3xl md:text-4xl font-normal text-[#006377] mb-6 leading-tight">An experiential<br>learning approach</h2>
                 <p class="text-[#006377]/90 text-lg mb-8 max-w-md">
                     Our expert-led, experiential model employs flexible modules so partners can co-create participant-focused outcomes:
                 </p>
@@ -264,21 +338,21 @@
             
             <div class="order-1 lg:order-2 flex gap-3 h-[400px] md:h-[500px] image-accordion-container">
                 <!-- Vertical Image 1 -->
-                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-4" onclick="activateAccordionItem(this)">
-                    <img src="{% static 'images/core_principles/2J7A4415.jpg' %}" class="w-full h-full object-cover" alt="Learning 1" loading="lazy">
-                </div>
+                <button type="button" class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f99a00]" aria-pressed="false" aria-label="Expand image: Learning 1">
+                    <img src="{% static 'images/core_principles/2J7A4415.jpg' %}" class="w-full h-full object-cover" alt="" aria-hidden="true" loading="lazy" width="800" height="533" decoding="async">
+                </button>
                 <!-- Vertical Image 2 -->
-                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg relative transform -translate-y-2" onclick="activateAccordionItem(this)">
-                    <img src="{% static 'images/core_principles/2J7A4334.jpg' %}" class="w-full h-full object-cover" alt="Learning 2" loading="lazy">
-                </div>
+                <button type="button" class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg relative transform -translate-y-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f99a00]" aria-pressed="false" aria-label="Expand image: Learning 2">
+                    <img src="{% static 'images/core_principles/2J7A4334.jpg' %}" class="w-full h-full object-cover" alt="" aria-hidden="true" loading="lazy" width="800" height="533" decoding="async">
+                </button>
                 <!-- Vertical Image 3 -->
-                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-6" onclick="activateAccordionItem(this)">
-                    <img src="{% static 'images/core_principles/2J7A4124.jpg' %}" class="w-full h-full object-cover" alt="Learning 3" loading="lazy">
-                </div>
+                <button type="button" class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform translate-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f99a00]" aria-pressed="false" aria-label="Expand image: Learning 3">
+                    <img src="{% static 'images/core_principles/2J7A4124.jpg' %}" class="w-full h-full object-cover" alt="" aria-hidden="true" loading="lazy" width="800" height="533" decoding="async">
+                </button>
                 <!-- Vertical Image 4 -->
-                <div class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform -translate-y-4" onclick="activateAccordionItem(this)">
-                    <img src="{% static 'images/core_principles/2J7A4203.jpg' %}" class="w-full h-full object-cover" alt="Learning 4" loading="lazy">
-                </div>
+                <button type="button" class="image-accordion-item h-full rounded-2xl overflow-hidden shadow-lg transform -translate-y-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f99a00]" aria-pressed="false" aria-label="Expand image: Learning 4">
+                    <img src="{% static 'images/core_principles/2J7A4203.jpg' %}" class="w-full h-full object-cover" alt="" aria-hidden="true" loading="lazy" width="800" height="533" decoding="async">
+                </button>
             </div>
             
         </div>
@@ -286,24 +360,48 @@
 </section>
 
 <script>
-    function activateAccordionItem(el) {
-        const container = el.parentElement;
-        
-        // Remove active class from all sibling items
-        container.querySelectorAll('.image-accordion-item').forEach(item => {
-            if (item !== el) item.classList.remove('active');
-        });
-        
-        // Toggle the clicked one
-        el.classList.toggle('active');
-        
-        // Toggle the has-active class on the container
-        if (container.querySelector('.image-accordion-item.active')) {
-            container.classList.add('has-active');
-        } else {
-            container.classList.remove('has-active');
+    // Image accordion.
+    //
+    // The items are now <button> elements rather than <div onclick>, so they are
+    // focusable and operable with Enter/Space for free. Listeners are bound here
+    // instead of via inline onclick, and aria-pressed reports the state.
+    (function () {
+        var items = document.querySelectorAll('.image-accordion-item');
+        if (!items.length) return;
+
+        function activate(el) {
+            var container = el.parentElement;
+            container.querySelectorAll('.image-accordion-item').forEach(function (item) {
+                if (item !== el) {
+                    item.classList.remove('active');
+                    item.setAttribute('aria-pressed', 'false');
+                }
+            });
+            var nowActive = el.classList.toggle('active');
+            el.setAttribute('aria-pressed', nowActive ? 'true' : 'false');
+            container.classList.toggle(
+                'has-active', !!container.querySelector('.image-accordion-item.active')
+            );
         }
-    }
+
+        items.forEach(function (el) {
+            el.addEventListener('click', function () { activate(el); });
+            // Arrow keys move between items, matching how people expect a
+            // horizontal group of controls to behave.
+            el.addEventListener('keydown', function (e) {
+                if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+                e.preventDefault();
+                var list = Array.prototype.slice.call(
+                    el.parentElement.querySelectorAll('.image-accordion-item')
+                );
+                var i = list.indexOf(el);
+                var next = e.key === 'ArrowRight'
+                    ? list[(i + 1) % list.length]
+                    : list[(i - 1 + list.length) % list.length];
+                next.focus();
+            });
+        });
+    })();
 </script>
 
 <!-- 6. Join our collective intelligence network -->
@@ -312,7 +410,7 @@
         <p
             class="text-2xl md:text-3xl font-normal text-[#006377] text-center mb-8 max-w-2xl mx-auto leading-tight">
             Join Our Collective Intelligence Network for Talent-Driven Impact
-        </p>
+        </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             <!-- 01 Knowledge Partners -->
@@ -365,14 +463,14 @@
         </div>
 
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="#"
+            <a href="{% url 'home:contact' %}?inquiry=strategic-partnership"
                 class="bg-[#006377] text-white px-8 py-3 rounded-full font-medium flex items-center hover:bg-[#004e5e] transition-colors">
                 Become a partner
                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
             </a>
-            <a href="#"
+            <a href="{% url 'home:contact' %}?inquiry=academy-fellowship"
                 class="bg-transparent border border-[#006377] text-[#006377] px-8 py-3 rounded-full font-medium flex items-center hover:bg-[#006377]/5 transition-colors">
                 Co-design a program
                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -395,21 +493,39 @@
             <!-- Left: Get in touch Form -->
             <div>
                 <p class="text-[22px] font-normal mb-6 tracking-wide">Get in touch</p>
-                <form class="space-y-4">
+                {% comment %} Previously this form had no action, no method, no CSRF token and no
+                   JavaScript handler: pressing "Send message" issued a GET to the
+                   current page and silently discarded the enquiry. It now posts to
+                   the real contact endpoint, pre-tagged as an academy enquiry.
+
+                   The email and message inputs also had no labels at all -- they
+                   relied on placeholders, which vanish on focus and are not
+                   reliably announced by screen readers. {% endcomment %}
+                <form action="{% url 'home:contact' %}" method="POST" class="space-y-4" novalidate>
+                    {% csrf_token %}
+                    <input type="hidden" name="inquiry_type" value="academy-fellowship">
+                    <input type="hidden" name="name" value="DIDAcademy enquiry">
+                    <div aria-hidden="true" class="absolute left-[-9999px] w-px h-px overflow-hidden">
+                        <label for="academy-website">Leave this field empty</label>
+                        <input type="text" id="academy-website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
                     <div>
-                        <input type="email" placeholder="Your email address"
+                        <label for="academy-email" class="block text-sm text-white/90 mb-2">Your email address</label>
+                        <input type="email" id="academy-email" name="email" required autocomplete="email"
+                            placeholder="Your email address"
                             class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#ffa700] focus:bg-white/20 transition-all text-[15px]">
                     </div>
                     <div>
-                        <textarea placeholder="Your inquiry" rows="4"
+                        <label for="academy-message" class="block text-sm text-white/90 mb-2">Your inquiry</label>
+                        <textarea id="academy-message" name="message" required placeholder="Your inquiry" rows="4"
                             class="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#ffa700] focus:bg-white/20 transition-all text-[15px] resize-none"></textarea>
                     </div>
                     <div class="flex items-start gap-3 mt-4">
-                        <input type="checkbox" id="terms"
-                            class="mt-1 flex-shrink-0 w-4 h-4 rounded border-0 bg-white text-[#ffa700] focus:ring-[#ffa700]">
+                        <input type="checkbox" id="terms" name="terms" required
+                            class="mt-1 flex-shrink-0 w-4 h-4 rounded border-0 bg-white text-brand-yellow focus:ring-[#ffa700]">
                         <label for="terms" class="text-sm text-white/90 leading-relaxed">
-                            I agree to the <span class="font-bold text-white">Terms & Conditions</span> and consent to
-                            DIDC processing my data for communication purposes.
+                            I agree to the <a href="{% url 'home:terms' %}" class="font-bold text-white underline hover:no-underline">Terms &amp; Conditions</a> and consent to
+                            IDI processing my data for communication purposes.
                         </label>
                     </div>
                     <div class="pt-2">
@@ -447,14 +563,14 @@
             <!-- Logo -->
             <div class="flex items-center">
                 <img src="{% static 'images/wp-content/uploads/2024/08/idi-main-logo.webp' %}" alt="IDI Logo"
-                    class="h-8 md:h-10" onerror="this.style.display='none'" loading="lazy">
+                    class="h-8 md:h-10" onerror="this.style.display='none'" loading="lazy" width="240" height="86" decoding="async">
             </div>
 
             <!-- Middle Links -->
             <div class="flex items-center gap-2">
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <span class="text-white/50 mx-1">|</span>
-                <a href="#" class="hover:text-white transition-colors">Terms & Conditions</a>
+                <a href="{% url 'home:privacy_policy' %}" class="hover:text-white transition-colors">Privacy Policy</a>
+                <span class="text-white/80 mx-1">|</span>
+                <a href="{% url 'home:terms' %}" class="hover:text-white transition-colors">Terms &amp; Conditions</a>
             </div>
 
             <!-- Copyright -->

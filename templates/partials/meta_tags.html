@@ -1,19 +1,37 @@
 {% load static %}
+{% comment %}
+Shared head metadata for every page.
+
+Three override hooks exist so individual views can opt out of the site-wide
+defaults. They must stay conditional rather than being duplicated by a second
+tag, because two conflicting <meta name="robots"> tags are undefined behaviour
+across search engines:
+
+  page_robots      "noindex, nofollow, noarchive" for error pages and /verify/
+  canonical_url    absolute URL, when request.build_absolute_uri is wrong
+                   (it carries query strings, so ?page=2 self-canonicalises)
+  social_title / social_description
+                   generic Open Graph text. Used by /verify/ so pasting a
+                   certificate link into WhatsApp or Slack does not broadcast the
+                   recipient's name into the group via the preview card.
+{% endcomment %}
+{% firstof social_title page_title as og_title_value %}
+{% firstof social_description page_description as og_description_value %}
+
 <!-- Primary Meta Tags -->
 <meta name="title" content="{% if page_title %}{{ page_title }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
 <meta name="description" content="{% if page_description %}{{ page_description }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
-<meta name="keywords" content="{% if page_keywords %}{{ page_keywords }}{% else %}Decision Intelligence, Design, AI, Fellowship, Innovation, Africa, Kenya{% endif %}">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="robots" content="{% if page_robots %}{{ page_robots }}{% else %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endif %}">
 <meta name="author" content="Institute of Design & Innovation">
 <meta name="theme-color" content="#006377">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="{% if og_type %}{{ og_type }}{% else %}website{% endif %}">
 <meta property="og:site_name" content="IDI Africa">
-<meta property="og:locale" content="en_US">
-<meta property="og:url" content="{{ request.build_absolute_uri }}">
-<meta property="og:title" content="{% if page_title %}{{ page_title }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
-<meta property="og:description" content="{% if page_description %}{{ page_description }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
+<meta property="og:locale" content="en_KE">
+<meta property="og:url" content="{% if canonical_url %}{{ canonical_url }}{% else %}{{ request.build_absolute_uri }}{% endif %}">
+<meta property="og:title" content="{% if og_title_value %}{{ og_title_value }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
+<meta property="og:description" content="{% if og_description_value %}{{ og_description_value }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
 {% comment %}
 page_image.url may be relative (/media/… local) or already absolute (https://… on S3/
 Garage). Only prefix scheme+host when it is relative — otherwise we'd emit a broken
@@ -28,9 +46,9 @@ for the known-size fallback image (1200×630); we don't assert dims for CMS thum
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{% if page_title %}{{ page_title }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
-<meta name="twitter:description" content="{% if page_description %}{{ page_description }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
+<meta name="twitter:title" content="{% if og_title_value %}{{ og_title_value }} | IDI Africa{% else %}IDI Africa - Decision Intelligence Design{% endif %}">
+<meta name="twitter:description" content="{% if og_description_value %}{{ og_description_value }}{% else %}Decision Intelligence Design in Africa - Transforming complexity into actionable solutions.{% endif %}">
 <meta name="twitter:image" content="{% if page_image %}{% if '://' in page_image.url %}{{ page_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{{ page_image.url }}{% endif %}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/og/idi-og.jpg' %}{% endif %}">
 
 <!-- Canonical link -->
-<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<link rel="canonical" href="{% if canonical_url %}{{ canonical_url }}{% else %}{{ request.build_absolute_uri }}{% endif %}">

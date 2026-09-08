@@ -1,0 +1,49 @@
+{% extends 'home/legal/_base_legal.html' %}
+
+{% block legal_title %}Accessibility{% endblock %}
+{% block legal_updated %}September 2026{% endblock %}
+
+{% block legal_body %}
+<p>
+  We want <strong>idi.africa</strong> to be usable by everyone, including people who
+  browse with a keyboard, a screen reader, magnification, or with motion reduced.
+</p>
+
+<h2>What we aim for</h2>
+<p>
+  We work towards the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA.
+  That is a target we are actively working on rather than one we claim to have fully
+  met, and this page says plainly where we currently fall short.
+</p>
+
+<h2>What works today</h2>
+<ul>
+  <li>A skip link so keyboard users can jump straight to the main content.</li>
+  <li>Every image carries alternative text.</li>
+  <li>The navigation, including the mobile menu, is operable by keyboard, closes with
+      Escape, and returns focus where you left it.</li>
+  <li>Visible focus outlines on links, buttons and form fields.</li>
+  <li>Form fields have real labels, and errors are announced rather than shown only in colour.</li>
+  <li>Animation is reduced automatically if your device is set to prefer reduced motion.</li>
+  <li>Status is never conveyed by colour alone.</li>
+</ul>
+
+<h2>Where we know we fall short</h2>
+<ul>
+  <li>Some older case-study pages have decorative images that are larger than they need
+      to be, which is slow on a limited connection.</li>
+  <li>A small number of legacy colour combinations do not yet meet the 4.5:1 contrast
+      ratio for body text, and we are working through them.</li>
+  <li>Documents published as PDFs are not all tagged for screen readers. If you need
+      one in another format, ask us and we will provide it.</li>
+</ul>
+
+<h2>Tell us about a barrier</h2>
+<p>
+  If something on this site is hard or impossible to use, please tell us — it is the
+  fastest way for us to fix it. Email
+  <a href="mailto:collectives@idi.africa">collectives@idi.africa</a> or call
+  <a href="tel:+254708291098">+254 708 291 098</a>, describing the page and what went
+  wrong. We aim to reply within five working days.
+</p>
+{% endblock %}

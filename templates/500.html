@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Something went wrong | IDI Africa</title>
+<!--
+  Deliberately standalone: it extends nothing, loads no static files, and touches
+  no context processors or database.
+
+  (Note the wording avoids literal Django tag syntax -- the template engine parses
+  tags inside HTML comments too, so writing them here would be a syntax error.)
+
+  A 500 page is rendered when the site is already failing. If it inherits
+  base.html it re-runs every context processor, the static manifest lookup and the
+  navigation queries -- any of which can raise, turning a handled 500 into an
+  unhandled exception and a blank page. Everything here is inline on purpose.
+-->
+<style>
+  :root { color-scheme: light; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:#f6f5f0; color:#0b1f24;
+         font-family:'Poppins',ui-sans-serif,system-ui,-apple-system,sans-serif; }
+  .card { max-width:34rem; margin:2rem; padding:2.5rem; background:#fff; border-radius:1rem;
+          box-shadow:0 4px 16px rgba(5,25,36,.08); }
+  h1 { margin:0 0 .75rem; font-size:1.75rem; line-height:1.2; }
+  p { margin:0 0 1rem; color:#4b5b60; line-height:1.6; }
+  a { display:inline-block; margin-top:.5rem; padding:.75rem 1.5rem; border-radius:.5rem;
+      background:#006377; color:#fff; text-decoration:none; font-weight:700; }
+  a:hover { background:#004d5c; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <h1>Something went wrong</h1>
+    <p>
+      We hit an unexpected error on our end. The problem has been logged and
+      we're looking into it.
+    </p>
+    <p>Please try again in a few moments.</p>
+    <a href="/">Return to the homepage</a>
+  </main>
+</body>
+</html>

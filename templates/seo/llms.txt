@@ -2,7 +2,7 @@
 
 > IDI pioneers Decision Intelligence Design (DID) in Africa: research, strategy, and implementation that transform how services are designed and delivered. We turn complex public and social challenges into systems, tools, and capability that work in real contexts.
 
-Based in Nairobi, Kenya. Working across {{ countries|default:"14" }} African countries.
+Based in Nairobi, Kenya. Working across Africa, from Nairobi.
 
 ## What We Do
 
@@ -16,7 +16,7 @@ Three integrated service pillars:
 
 - Governance & Public Service Delivery
 - Responsible / Sovereign AI
-- Sustainability Practice
+- Health Practice
 - Venture Building & Innovation Ecosystems
 - Community & Public Service Delivery
 - Food Systems & Health Practice
@@ -25,9 +25,12 @@ Three integrated service pillars:
 
 Capability-building programs in Decision Intelligence Design for senior leaders (Executive), practitioners and young professionals (Emerging Talent), and ecosystem partners.
 
-## Track Record
-
-120+ projects delivered, 35+ institutional partners, 8 focus practices, 98.4% placement rate for strategic implementations.
+{% comment %}
+Track-record figures were removed pending sourcing. This file is served
+specifically for AI systems to read and quote, which makes it the highest-stakes
+place on the site for an unsourced number. Restore this section only with figures
+the organisation can evidence, and state the period they cover.
+{% endcomment %}
 
 ## Key Pages
 

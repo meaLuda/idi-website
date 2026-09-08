@@ -18,8 +18,8 @@
             <!-- Main content with animation -->
             <div class="flex flex-col md:flex-row items-center justify-between mb-16">
                 <div class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#006B7D] mb-6 leading-tight">Oops! Something Went wrong</h1>
-                    <p class="text-lg text-gray-600 mb-8">The page you're looking for seems to have wandered off. Let's get you back on track.</p>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#006B7D] mb-6 leading-tight">{{ error_heading|default:"Page not found" }}</h1>
+                    <p class="text-lg text-gray-600 mb-8">{{ error_message|default:"The page you're looking for seems to have wandered off." }} Let's get you back on track.</p>
                     
                     <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
                         <a href="{% url 'home:lander' %}" class="px-6 py-3 bg-[#006B7D] text-white font-medium rounded-lg hover:bg-[#e6a94e] transition-colors flex items-center justify-center hover:scale-105">
@@ -74,7 +74,7 @@
             <!-- Suggested pages -->
             <div>
                 <h2 class="text-2xl font-bold text-[#006B7D] mb-6">Explore Popular Pages</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <a href="{% url 'home:did-academy' %}" class="group p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-[#006B7D] transition-all duration-300">
                         <div class="w-12 h-12 bg-[#006B7D] bg-opacity-10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#006B7D] transition-colors duration-300">
                             <svg class="w-6 h-6 text-[#006B7D] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
