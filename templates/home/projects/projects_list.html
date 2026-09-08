@@ -60,14 +60,14 @@ and deep decision intelligence to structural transitions.{% endblock %}
                 <div
                     class="w-[110px] h-[110px] sm:w-[130px] sm:h-[130px] rounded-full overflow-hidden relative shadow-md flex-shrink-0">
                     <img src="{% static 'images/governance/board1.png' %}" alt="IDI Insights"
-                        class="w-full h-full object-cover" loading="lazy">
+                        class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
                     <div class="absolute inset-0 bg-brand-teal-700/60 mix-blend-multiply"></div>
                 </div>
                 <!-- Rectangle image (bottom) -->
                 <div
                     class="w-[110px] h-[150px] sm:w-[130px] sm:h-[180px] rounded-none overflow-hidden relative shadow-md flex-shrink-0">
                     <img src="{% static 'images/governance/case1.png' %}" alt="IDI field work"
-                        class="w-full h-full object-cover" loading="lazy">
+                        class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
                     <div class="absolute inset-0 bg-brand-teal-700/60 mix-blend-multiply"></div>
                 </div>
             </div>
@@ -93,63 +93,11 @@ and deep decision intelligence to structural transitions.{% endblock %}
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     2. FEATURED INSIGHT  —  warm amber photo bg + white floating card
-═══════════════════════════════════════════════ -->
-<section class="relative overflow-hidden border-b border-gray-200">
-    <!-- Full-bleed warm amber/brown background photo -->
-    <div class="absolute inset-0">
-        <img src="{% static 'images/teamDecionIntelligence.webp' %}" alt="Featured Insight Background"
-            class="w-full h-full object-cover" loading="lazy">
-        <!-- Warm amber tint overlay (darkened) -->
-        <div class="absolute inset-0" style="background-color: rgba(120, 60, 0, 0.85);"></div>
-    </div>
-
-    <!-- Content -->
-    <div class="relative z-10 container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-        <!-- Section label aligned to the start of the box -->
-        <p class="text-white font-bold text-base sm:text-lg mb-6 text-left max-w-5xl mx-auto">Featured Insight</p>
-
-        <!-- White floating card -->
-        <div class="bg-white rounded-2xl p-7 sm:p-10 max-w-5xl shadow-xl mx-auto">
-            <!-- BRIEF tag -->
-            <p class="text-[11px] font-black uppercase tracking-widest text-brand-teal-600 mb-3">Brief</p>
-
-            <!-- Title -->
-            <h2 class="text-xl sm:text-2xl font-extrabold text-ink leading-snug mb-4">
-                Systems Thinking in the Age of AI: Building Responsible Innovation
-            </h2>
-
-            <!-- Description -->
-            <p class="text-ink-muted text-sm leading-relaxed mb-6 font-light">
-                As organizations integrate AI into critical systems, we must move beyond AI ethics and toward AI
-                governance. This brief
-                explores the frameworks and practices needed to design AI systems that are not just responsible, but
-                generative of public
-                value.
-            </p>
-
-            <!-- Bottom: date + read time left, Read More right -->
-            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                <div class="flex items-center gap-4 text-ink-muted text-xs">
-                    <span>January 2026</span>
-                    <span>8 min read</span>
-                </div>
-                <a href="#"
-                    onclick="alert('Full paper access is limited to subscribers. Subscribe below!'); return false;"
-                    class="text-sm font-bold text-brand-teal-600 hover:text-brand-orange transition-colors duration-200 flex items-center gap-1.5">
-                    Read More
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-
+{% comment %} The "Featured Insight" hero was a placeholder: an invented brief
+   ("Systems Thinking in the Age of AI") with a made-up date and read time,
+   whose Read More link fired an alert() asking the visitor to subscribe to
+   something that does not exist. Removed rather than left presenting
+   fabricated research as published work. {% endcomment %}
 <!-- ═══════════════════════════════════════════════
      3. BROWSE BY TYPE  —  4 minimal white cards
 ═══════════════════════════════════════════════ -->
@@ -170,7 +118,7 @@ and deep decision intelligence to structural transitions.{% endblock %}
                     Long-form publications, structured guides and reference books for practitioners.
                 </p>
                 <span
-                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
+                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange-ink transition-colors">
                     Browse
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
@@ -187,7 +135,7 @@ and deep decision intelligence to structural transitions.{% endblock %}
                     In-depth essays, analytical research pieces and thought leadership writing.
                 </p>
                 <span
-                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
+                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange-ink transition-colors">
                     Browse
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
@@ -204,7 +152,7 @@ and deep decision intelligence to structural transitions.{% endblock %}
                     Practical templates, frameworks, checklists and methodologies for use.
                 </p>
                 <span
-                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
+                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange-ink transition-colors">
                     Browse
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
@@ -221,7 +169,7 @@ and deep decision intelligence to structural transitions.{% endblock %}
                     Tributes honouring the legacy and contributions of key thinkers in the field.
                 </p>
                 <span
-                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange transition-colors">
+                    class="text-[11px] font-bold uppercase text-brand-teal-500 flex items-center gap-1 group-hover:text-brand-orange-ink transition-colors">
                     Browse
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
@@ -251,242 +199,18 @@ and deep decision intelligence to structural transitions.{% endblock %}
                 Filter: <span id="active-filter-name" class="text-brand-orange uppercase ml-1"></span>
             </p>
             <button onclick="clearFilter()"
-                class="text-xs font-bold text-ink-muted hover:text-brand-orange uppercase">Clear ✕</button>
+                class="text-xs font-bold text-ink-muted hover:text-brand-orange-ink uppercase">Clear ✕</button>
         </div>
 
         <!-- Article list -->
         <div class="flex flex-col gap-6" id="articles-list">
 
-            <!-- ── ITEM 1 ── -->
-            <article
-                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                data-type="Articles" data-topics="governance public-service-delivery policy">
-                <div class="min-w-0">
-                    <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span
-                            class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
-                        <span class="text-ink-muted text-[11px]">Policy</span>
-                    </div>
-                    <h3
-                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#"
-                            onclick="alert('Full access is limited to subscribers. Subscribe below!'); return false;">
-                            The Future of Public Service Delivery
-                        </a>
-                    </h3>
-                    <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        How decision intelligence design is transforming public service delivery and civic capacity
-                        across Africa's structural transitions.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Governance</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Public
-                            Service Delivery</span>
-                    </div>
-                </div>
-                <div
-                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
-                    <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Jan 2026</span>
-                    <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">6 min read</span>
-                </div>
-            </article>
-
-            <!-- ── ITEM 2 ── -->
-            <article
-                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                data-type="Articles" data-topics="ai governance design artificial-intelligence">
-                <div class="min-w-0">
-                    <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span
-                            class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
-                        <span class="text-ink-muted text-[11px]">AI</span>
-                    </div>
-                    <h3
-                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#"
-                            onclick="alert('Full access is limited to subscribers. Subscribe below!'); return false;">
-                            Building Inclusive AI Governance Frameworks
-                        </a>
-                    </h3>
-                    <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        Designing AI architectures that are trusted, context-aware, and built for long-term sovereign
-                        public value in developmental contexts.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">AI</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Design</span>
-                    </div>
-                </div>
-                <div
-                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
-                    <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Dec 2025</span>
-                    <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">8 min read</span>
-                </div>
-            </article>
-
-            <!-- ── ITEM 3 ── -->
-            <article
-                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                data-type="Toolkits" data-topics="sustainability measurement toolkit">
-                <div class="min-w-0">
-                    <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span
-                            class="type-badge-toolkits text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Toolkits</span>
-                        <span class="text-ink-muted text-[11px]">Sustainability</span>
-                        <span class="text-ink-muted/40 text-[11px]">•</span>
-                        <span class="text-ink-muted text-[11px]">Measurement</span>
-                        <span class="text-ink-muted/40 text-[11px]">•</span>
-                        <span class="text-ink-muted text-[11px]">Tools</span>
-                    </div>
-                    <h3
-                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#"
-                            onclick="alert('Subscribers get complete toolkit repository access. Join now!'); return false;">
-                            Sustainability Toolkit: Measurement Frameworks
-                        </a>
-                    </h3>
-                    <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        Practical guidelines and structured metrics for tracking and assessing sustainability outcomes
-                        across public initiative execution.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Sustainability</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Measurement</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Toolkit</span>
-                    </div>
-                </div>
-                <div
-                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
-                    <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Dec 2025</span>
-                    <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">5 min read</span>
-                </div>
-            </article>
-
-            <!-- ── ITEM 4 ── -->
-            <article
-                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                data-type="Articles" data-topics="venture ecosystem innovation">
-                <div class="min-w-0">
-                    <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span
-                            class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
-                        <span class="text-ink-muted text-[11px]">Ecosystems</span>
-                    </div>
-                    <h3
-                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#"
-                            onclick="alert('Subscribers get complete repository access. Join now!'); return false;">
-                            Venture Ecosystem Rapid Assessment
-                        </a>
-                    </h3>
-                    <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        A multi-dimensional diagnostic matrix for auditing and expanding local venture building
-                        ecosystems across emerging technology clusters.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Venture</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Innovation</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Research</span>
-                    </div>
-                </div>
-                <div
-                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
-                    <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Nov 2025</span>
-                    <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">7 min read</span>
-                </div>
-            </article>
-
-            <!-- ── ITEM 5 ── -->
-            <article
-                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                data-type="Articles" data-topics="health design systems medical">
-                <div class="min-w-0">
-                    <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span
-                            class="type-badge-articles text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Articles</span>
-                        <span class="text-ink-muted text-[11px]">Health</span>
-                        <span class="text-ink-muted/40 text-[11px]">•</span>
-                        <span class="text-ink-muted text-[11px]">Design</span>
-                        <span class="text-ink-muted/40 text-[11px]">•</span>
-                        <span class="text-ink-muted text-[11px]">Systems</span>
-                    </div>
-                    <h3
-                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#"
-                            onclick="alert('Subscribers get complete repository access. Join now!'); return false;">
-                            The Role of Design in Health Systems
-                        </a>
-                    </h3>
-                    <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        Analyzing why human-centric design thinking is fundamental to engineering adaptive, resilient
-                        and accessible health ecosystems.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Health</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Design</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Systems</span>
-                    </div>
-                </div>
-                <div
-                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
-                    <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Nov 2025</span>
-                    <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">9 min read</span>
-                </div>
-            </article>
-
-            <!-- ── ITEM 6 ── -->
-            <article
-                class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
-                data-type="Toolkits" data-topics="innovation design implementation playbook">
-                <div class="min-w-0">
-                    <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span
-                            class="type-badge-toolkits text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full">Toolkits</span>
-                        <span class="text-ink-muted text-[11px]">Innovation</span>
-                        <span class="text-ink-muted/40 text-[11px]">•</span>
-                        <span class="text-ink-muted text-[11px]">Implementation</span>
-                    </div>
-                    <h3
-                        class="text-sm sm:text-base font-bold text-ink leading-snug mb-1.5 hover:text-brand-teal-500 transition-colors">
-                        <a href="#"
-                            onclick="alert('Subscribers get complete playbook repository. Join now!'); return false;">
-                            Innovation Challenges: Implementation Playbook
-                        </a>
-                    </h3>
-                    <p class="text-ink-muted text-xs sm:text-sm font-light leading-relaxed mb-2.5 max-w-2xl">
-                        An end-to-end framework outlining the tactical steps for launching, framing, and administering
-                        strategic innovation processes.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Innovation</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Design</span>
-                        <span
-                            class="text-[10px] font-semibold text-brand-teal-700 bg-brand-teal-50 px-2.5 py-0.5 rounded-full">Implementation</span>
-                    </div>
-                </div>
-                <div
-                    class="text-left md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-2 md:gap-1 pt-2 md:pt-0.5 border-t border-gray-100 md:border-t-0 flex-shrink-0">
-                    <span class="text-xs text-ink-muted font-medium whitespace-nowrap">Oct 2025</span>
-                    <span class="text-[11px] text-ink-muted/50 whitespace-nowrap">11 min read</span>
-                </div>
-            </article>
-
-            <!-- Dynamic DB projects -->
+            {% comment %} Six hardcoded placeholder articles were removed from here.
+               They carried invented titles, publication dates and read times,
+               and each "Read More" fired an alert() asking the visitor to
+               subscribe. They rendered directly above the real project loop
+               below, so nothing distinguished them from genuine content.
+               Real articles come from the Project model. {% endcomment %}
             {% for project in projects %}
             <article
                 class="article-item bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 shadow-card hover:shadow-card-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 sm:gap-8"
@@ -522,7 +246,7 @@ and deep decision intelligence to structural transitions.{% endblock %}
                     <span class="text-xs text-ink-muted font-medium whitespace-nowrap">{{ project.created_at|date:"M Y"
                         }}</span>
                     <a href="{% url 'home:project_detail' project.slug %}"
-                        class="text-[11px] font-bold text-brand-teal-500 hover:text-brand-orange whitespace-nowrap transition-colors">Read
+                        class="text-[11px] font-bold text-brand-teal-500 hover:text-brand-orange-ink whitespace-nowrap transition-colors">Read
                         →</a>
                 </div>
             </article>
@@ -591,7 +315,11 @@ and deep decision intelligence to structural transitions.{% endblock %}
         </p>
 
         <div id="nl-form-wrap">
-            <form id="newsletter-form" class="flex flex-col sm:flex-row items-center gap-3 justify-center">
+            <form hx-post="{% url 'home:newsletter_subscribe' %}"
+                  hx-target="#nl-result" hx-swap="innerHTML"
+                  class="flex flex-col sm:flex-row items-center gap-3 justify-center">
+                {% csrf_token %}
+                <input type="hidden" name="source" value="insights">
                 <label for="nl-email" class="sr-only">Email address</label>
                 <input type="email" id="nl-email" name="email" required placeholder="Enter your email..."
                     class="w-full sm:w-auto flex-grow bg-white border border-gray-300 focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100 rounded-full px-5 py-3 text-sm text-ink placeholder-ink-muted/50 focus:outline-none transition-all duration-200">
@@ -600,6 +328,7 @@ and deep decision intelligence to structural transitions.{% endblock %}
                     Subscribe
                 </button>
             </form>
+            <div id="nl-result" class="mt-3 text-center" aria-live="polite"></div>
         </div>
         <p id="newsletter-success" class="hidden text-brand-teal-600 font-semibold text-sm mt-6">
             ✓ Thank you! You've been added to our mailing list.
@@ -651,12 +380,9 @@ and deep decision intelligence to structural transitions.{% endblock %}
         document.getElementById('active-filter-banner').style.display = 'none';
     }
 
-    // Newsletter submit
-    document.getElementById('newsletter-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        document.getElementById('nl-form-wrap').style.display = 'none';
-        document.getElementById('newsletter-success').classList.remove('hidden');
-    });
+    // Newsletter submissions now post to home:newsletter_subscribe via HTMX.
+    // The old handler hid the form and revealed a success message without
+    // sending the address anywhere.
 </script>
 
 {% endblock %}

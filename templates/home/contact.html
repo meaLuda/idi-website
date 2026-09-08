@@ -1,13 +1,23 @@
 {% extends '../base.html' %}
 {% load static %}
 
+{% block needs_alpine %}
+{% comment %}
+Alpine is loaded here rather than site-wide: only this template and contact.html
+use x-data, so ~16 of 18 routes were downloading and parsing it for nothing.
+Loading it with defer (not on window.load) also removes the flash where x-data
+markup sat inert until every image had downloaded.
+{% endcomment %}
+<script src="{% static 'js/vendor/alpine.min.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
 <!-- 1. Hero Section -->
 <section class="relative text-white overflow-hidden navbar-spacing" style="background-color: #002f3c;">
     <div class="absolute inset-0 opacity-[0.06] pointer-events-none" style="background-image:url('{% static 'images/home/hero-pattern.webp' %}'); background-size:300px 300px;"></div>
     <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to right, #002f3c 0%, rgba(0, 47, 60, 0.85) 60%, transparent 100%);"></div>
     <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 flex flex-col justify-center min-h-[300px] lg:min-h-[380px]">
-        <span class="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#ffa700] mb-3 block">Get In Touch</span>
+        <span class="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-yellow mb-3 block">Get In Touch</span>
         <h1 class="text-display-xl font-black uppercase tracking-tight leading-[1.1] max-w-4xl mb-4">
             Let's design the future,<br class="hidden sm:inline"> together.
         </h1>
@@ -48,20 +58,40 @@
                 <h2 class="text-2xl lg:text-3xl font-extrabold text-brand-teal-950 uppercase tracking-tight mb-2">Send us a message</h2>
                 <p class="text-ink-muted text-sm font-light mb-8">Please fill in the form below and we will route your request directly to the appropriate team.</p>
                 
-                <form action="." method="POST" class="space-y-6">
+                <form action="{% url 'home:contact' %}" method="POST" class="space-y-6" novalidate>
                     {% csrf_token %}
+                    {{ form.ts }}
+                    {# Honeypot: off-screen rather than display:none, which some bots detect. #}
+                    <div aria-hidden="true" class="absolute left-[-9999px] w-px h-px overflow-hidden">
+                        <label for="id_website">Leave this field empty</label>
+                        {{ form.website }}
+                    </div>
+
+                    {% if form.errors %}
+                    <div role="alert" class="rounded-xl border border-red-200 bg-red-50 px-4 py-3">
+                        <p class="text-sm font-bold text-red-700">Please check the form below.</p>
+                        <ul class="mt-1 text-sm text-red-700 list-disc pl-5">
+                            {% for field in form %}{% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}{% endfor %}
+                            {% for error in form.non_field_errors %}<li>{{ error }}</li>{% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <!-- Full Name -->
                         <div class="space-y-2">
                             <label for="name" class="block text-xs font-bold tracking-wider text-brand-teal-900">Your name <span class="text-red-500">*</span></label>
                             <input type="text" id="name" name="name" required placeholder="Your name"
+                                   value="{{ form.name.value|default:'' }}" autocomplete="name"
                                    class="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-teal-500/20 focus:border-brand-teal-500 transition-all placeholder:text-gray-400">
                         </div>
                         
                         <!-- Organization -->
                         <div class="space-y-2">
                             <label for="org" class="block text-xs font-bold tracking-wider text-brand-teal-900">Your organization</label>
-                            <input type="text" id="org" name="org" placeholder="Your organization"
+                            <input type="text" id="org" name="organization" placeholder="Your organization"
+                                   value="{{ form.organization.value|default:'' }}" autocomplete="organization"
                                    class="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-teal-500/20 focus:border-brand-teal-500 transition-all placeholder:text-gray-400">
                         </div>
                     </div>
@@ -71,6 +101,7 @@
                         <div class="space-y-2">
                             <label for="email" class="block text-xs font-bold tracking-wider text-brand-teal-900">Your email address <span class="text-red-500">*</span></label>
                             <input type="email" id="email" name="email" required placeholder="Your email address"
+                                   value="{{ form.email.value|default:'' }}" autocomplete="email"
                                    class="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-teal-500/20 focus:border-brand-teal-500 transition-all placeholder:text-gray-400">
                         </div>
                         
@@ -81,11 +112,11 @@
                                 <select id="inquiry_type" name="inquiry_type" required
                                         class="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-teal-500/20 focus:border-brand-teal-500 transition-all appearance-none cursor-pointer">
                                     <option value="" disabled selected class="text-gray-400 bg-white">Select an option</option>
-                                    <option value="strategic-partnership" class="text-gray-900 bg-white">Strategic Partnership</option>
-                                    <option value="academy-fellowship" class="text-gray-900 bg-white">DID Academy / Fellowship</option>
-                                    <option value="research-data" class="text-gray-900 bg-white">Insights & Data Collaborations</option>
-                                    <option value="careers" class="text-gray-900 bg-white">Career Opportunities</option>
-                                    <option value="general" class="text-gray-900 bg-white">General Inquiry</option>
+                                    <option value="strategic-partnership" {% if form.inquiry_type.value == "strategic-partnership" %}selected{% endif %} class="text-gray-900 bg-white">Strategic Partnership</option>
+                                    <option value="academy-fellowship" {% if form.inquiry_type.value == "academy-fellowship" %}selected{% endif %} class="text-gray-900 bg-white">DID Academy / Fellowship</option>
+                                    <option value="research-data" {% if form.inquiry_type.value == "research-data" %}selected{% endif %} class="text-gray-900 bg-white">Insights & Data Collaborations</option>
+                                    <option value="careers" {% if form.inquiry_type.value == "careers" %}selected{% endif %} class="text-gray-900 bg-white">Career Opportunities</option>
+                                    <option value="general" {% if form.inquiry_type.value == "general" %}selected{% endif %} class="text-gray-900 bg-white">General Inquiry</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -98,7 +129,7 @@
                     <div class="space-y-2">
                         <label for="message" class="block text-xs font-bold uppercase tracking-wider text-brand-teal-900">Your Message <span class="text-red-500">*</span></label>
                         <textarea id="message" name="message" required rows="6" placeholder="Describe how we can help you..."
-                                  class="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-teal-500/20 focus:border-brand-teal-500 transition-all placeholder:text-gray-400 resize-y"></textarea>
+                                  class="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-teal-500/20 focus:border-brand-teal-500 transition-all placeholder:text-gray-400 resize-y">{{ form.message.value|default:'' }}</textarea>
                     </div>
                     
                     <!-- Submit Button -->
@@ -116,7 +147,7 @@
                 <div class="text-white rounded-3xl p-8 lg:p-10 shadow-card-lg relative overflow-hidden" style="background: linear-gradient(135deg, #006377 0%, #003b47 100%); border: 1px solid rgba(255, 255, 255, 0.08);">
                     <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image:url('{% static 'images/home/hero-pattern.webp' %}'); background-size:300px 300px;"></div>
                     
-                    <h3 class="text-2xl font-extrabold uppercase tracking-tight mb-8 text-[#ffa700]">Nairobi HQ</h3>
+                    <h3 class="text-2xl font-extrabold uppercase tracking-tight mb-8 text-brand-yellow">Nairobi HQ</h3>
                     
                     <div class="space-y-6">
                         <!-- Location -->
@@ -125,7 +156,7 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                             </div>
                             <div>
-                                <p class="text-xs uppercase tracking-wider text-white/50 font-bold mb-1">Office Location</p>
+                                <p class="text-xs uppercase tracking-wider text-white/80 font-bold mb-1">Office Location</p>
                                 <p class="text-sm font-light leading-relaxed text-white/95">
                                     iHiT Center, Dennis Pritt Road,<br>
                                     Next to Maalim Juma Road, Kilimani,<br>
@@ -141,8 +172,8 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             </div>
                             <div>
-                                <p class="text-xs uppercase tracking-wider text-white/50 font-bold mb-1">General Inquiries</p>
-                                <a href="mailto:info@idi.africa" class="text-sm font-semibold text-white hover:text-brand-orange transition-colors">
+                                <p class="text-xs uppercase tracking-wider text-white/80 font-bold mb-1">General Inquiries</p>
+                                <a href="mailto:info@idi.africa" class="text-sm font-semibold text-white hover:text-brand-orange-ink transition-colors">
                                     info@idi.africa
                                 </a>
                             </div>
@@ -154,7 +185,7 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
                             <div>
-                                <p class="text-xs uppercase tracking-wider text-white/50 font-bold mb-1">Support Hours</p>
+                                <p class="text-xs uppercase tracking-wider text-white/80 font-bold mb-1">Support Hours</p>
                                 <p class="text-sm font-light text-white/95">
                                     Monday &ndash; Friday, 9:00 AM &ndash; 5:00 PM EAT
                                 </p>
@@ -164,7 +195,7 @@
                     
                     <!-- Premium Dividers -->
                     <div class="border-t border-white/10 mt-8 pt-8 flex items-center justify-between">
-                        <span class="text-xs uppercase tracking-widest text-white/40 font-bold">Follow us:</span>
+                        <span class="text-xs uppercase tracking-widest text-white/80 font-bold">Follow us:</span>
                         <div class="flex gap-3">
                             <!-- LinkedIn -->
                             <a href="https://www.linkedin.com/company/idiafrica" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-brand-orange flex items-center justify-center text-white transition-all">
@@ -180,7 +211,7 @@
                 
                 <!-- Real Interactive Google Map -->
                 <div class="bg-surface-alt rounded-3xl border border-gray-200/50 shadow-card overflow-hidden relative h-[280px]">
-                    <iframe 
+                    <iframe title="Map showing the IDI office on Dennis Pritt Road, Kilimani, Nairobi" 
                         width="100%" 
                         height="100%" 
                         frameborder="0" 

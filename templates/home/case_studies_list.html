@@ -65,14 +65,6 @@
     }
 
     /* Filter select caret */
-    .filter-select {
-        appearance: none;
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-        background-repeat: no-repeat;
-        background-position: right 0.75rem center;
-        background-size: 1.1em;
-        padding-right: 2rem;
-    }
 
     /* Responsive adjustments */
     @media (max-width: 1023px) {
@@ -114,15 +106,15 @@
             <div class="cs-hero-right">
                 <!-- Main large image -->
                 <div class="cs-hero-img-main">
-                    <img src="{% static 'images/case-studies/planting-guy.jpg' %}" alt="Man planting in field">
+                    <img src="{% static 'images/case-studies/planting-guy.jpg' %}" alt="Man planting in field" width="800" height="533" decoding="async">
                 </div>
                 <!-- Narrow middle -->
                 <div class="cs-hero-img-narrow">
-                    <img src="{% static 'images/case-studies/planting-line.jpg' %}" alt="People planting in a line" style="object-position: center;">
+                    <img src="{% static 'images/case-studies/planting-line.jpg' %}" alt="People planting in a line" style="object-position: center;" width="400" height="267" decoding="async">
                 </div>
                 <!-- Narrow right -->
                 <div class="cs-hero-img-narrow">
-                    <img src="{% static 'images/case-studies/planting-hands.jpg' %}" alt="Hands planting" style="object-position: center;">
+                    <img src="{% static 'images/case-studies/planting-hands.jpg' %}" alt="Hands planting" style="object-position: center;" width="400" height="262" decoding="async">
                 </div>
             </div>
 
@@ -137,49 +129,17 @@
     </div>
 </section>
 
-<!-- 3. FILTER BAR -->
-<section class="pb-10">
-    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row items-stretch border border-gray-200 rounded-[20px] bg-white shadow-sm overflow-hidden">
-            <!-- "Filter by" label -->
-            <div class="flex items-center px-6 py-4 md:py-0 border-b md:border-b-0 md:border-r border-gray-200 whitespace-nowrap">
-                <span class="text-sm font-black text-ink leading-tight">Filter<br class="hidden md:block">by</span>
-            </div>
+{% comment %}
+The filter bar was removed. Its three selects had no id, no name, no wired
+label, and -- decisively -- no JavaScript or server-side handler anywhere:
+'filter-select' appeared only in a CSS rule. Changing any of them did
+nothing at all, and their option values (AgriTech / Energy / Mobility) did
+not correspond to the categories the case studies actually use.
 
-            <div class="grid grid-cols-1 md:grid-cols-3 w-full">
-                <!-- Category -->
-                <div class="relative border-b md:border-b-0 md:border-r border-gray-200 px-6 py-4">
-                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Category</label>
-                    <select class="filter-select w-full bg-transparent text-ink text-sm font-medium focus:outline-none cursor-pointer">
-                        <option>AgriTech, Health, Energy</option>
-                        <option>AgriTech</option>
-                        <option>Health</option>
-                        <option>Energy</option>
-                    </select>
-                </div>
-                <!-- Industry -->
-                <div class="relative border-b md:border-b-0 md:border-r border-gray-200 px-6 py-4">
-                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Industry</label>
-                    <select class="filter-select w-full bg-transparent text-ink text-sm font-medium focus:outline-none cursor-pointer">
-                        <option>Public Sector, Cooperatives, Mobility</option>
-                        <option>Public Sector</option>
-                        <option>Cooperatives</option>
-                        <option>Mobility</option>
-                    </select>
-                </div>
-                <!-- Sort By -->
-                <div class="relative px-6 py-4">
-                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Sort By</label>
-                    <select class="filter-select w-full bg-transparent text-ink text-sm font-medium focus:outline-none cursor-pointer">
-                        <option>Date - Newest</option>
-                        <option>Date - Oldest</option>
-                        <option>Title A-Z</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+Restoring this needs real filtering. Because the list is paginated
+server-side, that means query parameters on case_studies_list rather than
+client-side hiding, which would only ever filter the current page.
+{% endcomment %}
 
 <!-- 4. CASE STUDY CARDS GRID -->
 <section class="pb-16 lg:pb-24">
@@ -292,24 +252,25 @@
                 <p class="text-ink-muted text-sm font-medium">We'll send you a nice letter once per week. No spam.</p>
             </div>
             <div class="w-full md:w-1/2">
-                <form id="newsletter-form-case" class="flex flex-col sm:flex-row items-center gap-3">
-                    <label for="nl-email-case" class="sr-only">Email address</label>
-                    <input type="email" id="nl-email-case" name="email" required placeholder="Enter your email"
-                        class="w-full bg-white border border-gray-200 focus:border-[#006377] focus:ring-1 focus:ring-[#006377] rounded-full px-5 py-3 text-sm text-ink placeholder-gray-400 focus:outline-none transition-all duration-200">
-                    <button type="submit"
-                        class="w-full sm:w-auto px-8 py-3 bg-[#006377] text-white text-sm font-bold rounded-full hover:bg-[#004f60] transition-all duration-300 shadow-sm whitespace-nowrap">
-                        Subscribe
-                    </button>
-                </form>
+                <form hx-post="{% url 'home:newsletter_subscribe' %}"
+                  hx-target="#nl-result-case" hx-swap="innerHTML"
+                  class="flex flex-col sm:flex-row items-center gap-3 justify-center">
+                {% csrf_token %}
+                <input type="hidden" name="source" value="case-studies">
+                <label for="nl-email-case" class="sr-only">Email address</label>
+                <input type="email" id="nl-email-case" name="email" required placeholder="Enter your email..."
+                    class="w-full sm:w-auto flex-grow bg-white border border-gray-300 focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100 rounded-full px-5 py-3 text-sm text-ink placeholder-ink-muted/50 focus:outline-none transition-all duration-200">
+                <button type="submit"
+                    class="flex-shrink-0 px-7 py-3 bg-brand-teal-500 text-white text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brand-orange transition-all duration-300 shadow-card whitespace-nowrap">
+                    Subscribe
+                </button>
+            </form>
+            <div id="nl-result-case" class="mt-3 text-center" aria-live="polite"></div>
             </div>
         </div>
     </div>
 </section>
 
-<script>
-    document.getElementById('newsletter-form-case').addEventListener('submit', function (e) {
-        e.preventDefault();
-        alert('Thank you for subscribing!');
-    });
-</script>
+{% comment %} The newsletter form now posts to home:newsletter_subscribe via HTMX; the
+   old handler only called preventDefault() and alert()ed a fake success. {% endcomment %}
 {% endblock %}

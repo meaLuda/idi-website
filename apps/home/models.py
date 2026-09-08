@@ -63,7 +63,17 @@ class TeamMember(models.Model):
     bio = RichTextUploadingField('bio', config_name='extends')  
     linkedin = models.URLField(blank=True)
     slug = models.SlugField(unique=True, blank=True)
-    create_at = models.DateTimeField(auto_now=True)
+    # Renamed from `create_at`: the field is auto_now, so despite the old name it
+    # always recorded the last modification, not creation. The sitemap used it as
+    # <lastmod>, which meant an unrelated edit looked like a content change.
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    class Meta:
+        # Without an ordering, `TeamMember.objects.all()[:6]` is a LIMIT with no
+        # ORDER BY, which returns an arbitrary six rows on PostgreSQL, and the
+        # sitemap paginates an unordered queryset.
+        ordering = ['name']
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -321,3 +331,73 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ContactMessage(models.Model):
+    """An enquiry submitted through the contact form.
+
+    Added because the contact view previously discarded every submission: its POST
+    branch set ``success = True`` and returned, so visitors saw "Message Sent!"
+    while the enquiry went nowhere. Real business enquiries were lost.
+    """
+
+    INQUIRY_TYPES = [
+        ('strategic-partnership', 'Strategic Partnership'),
+        ('academy-fellowship', 'DID Academy / Fellowship'),
+        ('research-data', 'Insights & Data Collaborations'),
+        ('careers', 'Career Opportunities'),
+        ('general', 'General Inquiry'),
+    ]
+
+    name = models.CharField(max_length=120)
+    organization = models.CharField(max_length=160, blank=True)
+    email = models.EmailField()
+    inquiry_type = models.CharField(max_length=32, choices=INQUIRY_TYPES, default='general')
+    message = models.TextField()
+
+    is_handled = models.BooleanField(default=False, help_text='Tick once someone has replied.')
+    handled_note = models.TextField(blank=True)
+
+    # Delivery is best-effort: a failed send must never lose the enquiry, since
+    # the database row is the durable record.
+    notification_sent = models.BooleanField(default=False)
+
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Contact message'
+        verbose_name_plural = 'Contact messages'
+        indexes = [
+            models.Index(fields=['is_handled', '-created_at'], name='contact_handled_idx'),
+        ]
+
+    def __str__(self):
+        return f'{self.name} <{self.email}> - {self.get_inquiry_type_display()}'
+
+
+class NewsletterSubscriber(models.Model):
+    """An email address collected by the newsletter forms.
+
+    The two newsletter forms (on /projects/ and /case-studies/) previously had no
+    action and no handler: their submit listeners called preventDefault() and then
+    showed a success message or an alert(). Every address entered was discarded
+    while the visitor was told they had subscribed.
+    """
+
+    email = models.EmailField(unique=True)
+    source = models.CharField(
+        max_length=40, blank=True,
+        help_text='Which page the subscription came from.',
+    )
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Newsletter subscriber'
+        verbose_name_plural = 'Newsletter subscribers'
+
+    def __str__(self):
+        return self.email
+

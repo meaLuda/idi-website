@@ -1,14 +1,38 @@
-from django.shortcuts import get_object_or_404, render
+import logging
+
+from django.conf import settings
+from django.http import HttpResponse
+from django.core.exceptions import ValidationError as DjangoValidationError
+from django.core.mail import send_mail
+from django.core.validators import validate_email
 from django.core.paginator import Paginator
-from django.views.generic import ListView, DetailView
-from .models import Project, TeamMember, Testimonial, Program, Partner, Client, HomeStat, ServicePillar
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+from django.views.decorators.http import require_POST
+from django.views.generic import DetailView
+
+from .forms import ContactForm
+from .models import (
+    Client,
+    ContactMessage,
+    NewsletterSubscriber,
+    HomeStat,
+    Partner,
+    Program,
+    Project,
+    ServicePillar,
+    TeamMember,
+    Testimonial,
+)
+
+logger = logging.getLogger(__name__)
 
 ARTICLE_PAGE_SIZE = 5
 
 PRACTICE_TILES = [
-    {"num": "01", "slug": "food-systems-health-practice", "title": "FOOD SYSTEMS PRACTICE"},
-    {"num": "02", "slug": "sustainability-practice", "title": "HEALTH"},
-    {"num": "03", "slug": "community-public-service-delivery", "title": "environment"},
+    {"num": "01", "slug": "food-systems-health-practice", "title": "Food Systems Practice"},
+    {"num": "02", "slug": "health-practice", "title": "Health Practice"},
+    {"num": "03", "slug": "community-public-service-delivery", "title": "Environment"},
     {"num": "04", "slug": "responsible-sovereign-ai", "title": "Responsible / Sovereign AI"},
     {"num": "05", "slug": "governance-public-service-delivery", "title": "Governance & Public Service Delivery"},
     {"num": "06", "slug": "venture-building-innovation-ecosystems", "title": "Venture Building & Innovation Ecosystems"},
@@ -28,27 +52,26 @@ def articles(request):
 
 # Create your views here.
 def home(request):
-    # Optimize queries with select_related and prefetch_related
-    team_members = TeamMember.objects.select_related().all()[:6]
-    projects = Project.objects.filter(is_active=True).select_related()[:6]
+    # Only what index.html actually renders. This previously also queried
+    # TeamMember, Testimonial, Partner and Client and passed them to a template
+    # that references none of them -- four wasted queries on every homepage hit.
+    # (The homepage partner logos are static files, not Partner rows.)
+    #
+    # select_related() was also called with no arguments throughout this module.
+    # It is a no-op without a ForeignKey to follow, and there are none in this
+    # app, so those calls have been dropped rather than left as decoration.
+    projects = Project.objects.filter(is_active=True).order_by('order', '-created_at')[:6]
     article_first_page = article_page(1)
     home_stats = HomeStat.objects.filter(is_active=True)
     service_pillars = ServicePillar.objects.filter(is_active=True)
-    testimonials = Testimonial.objects.filter(is_active=True).select_related()
-    partners = Partner.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
-    clients = Client.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
-    
+
     # SEO metadata
     context = {
-        'team_members': team_members,
         'projects': projects,
         'article_first_page': article_first_page,
         'home_stats': home_stats,
         'service_pillars': service_pillars,
         'practices': PRACTICE_TILES,
-        'testimonials': testimonials,
-        'partners': partners,
-        'clients': clients,
         'page_title': 'Home',
         'page_description': 'IDI Africa pioneers Decision Intelligence Design in Africa, transforming complexity into actionable solutions through our innovative fellowship programs and impactful initiatives.',
         'page_keywords': 'Decision Intelligence, Design Thinking, AI, Innovation, Fellowship, Africa, Kenya',
@@ -58,22 +81,21 @@ def home(request):
 
 
 def academy(request):
-    # Get featured programs for the current year with optimized query
+    # Featured programmes shown on the academy page and linked to
+    # /programs/<slug>/. The template previously ignored this queryset entirely,
+    # which left every Program page orphaned: routed, rendering, and reachable
+    # only by guessing the URL.
+    #
+    # The year filter was hardcoded to 2025, so featured programmes would have
+    # silently disappeared from the page in 2026. Ordering now surfaces the most
+    # recent year first instead.
     featured_programs = Program.objects.filter(
-        is_active=True, 
-        is_featured=True, 
-        year=2025
-    ).select_related().order_by('order')
-    
-    # Get partners and clients for the academy page
-    partners = Partner.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
-    clients = Client.objects.filter(is_active=True, is_featured=True).select_related().order_by('order')
-    
+        is_active=True, is_featured=True,
+    ).order_by('order', '-year')
+
     # SEO metadata
     context = {
         'featured_programs': featured_programs,
-        'partners': partners,
-        'clients': clients,
         'page_title': 'Decision Intelligence Design Academy',
         'page_description': 'Develop critical skills in decision intelligence design through our comprehensive academy programs for professionals, executives, and organizations.',
         'page_keywords': 'Academy, Decision Intelligence Design, Training, Professional Development, Executive Education, Africa, Kenya',
@@ -147,57 +169,11 @@ def program_detail(request, slug):
 
 # New view for Projects list page (Our Work)
 def projects_list(request):
-    projects = Project.objects.filter(is_active=True).select_related().order_by('-created_at')
-    
-    mock_articles = [
-        {
-            "category": "Policy",
-            "title": "The Future of Public Service Delivery",
-            "excerpt": "How decision intelligence design is transforming public service delivery across Africa.",
-            "tags": ["Governance", "Public Service Delivery"],
-            "date": "January 2026",
-        },
-        {
-            "category": "AI",
-            "title": "Building Inclusive AI Governance Frameworks",
-            "excerpt": "Designing AI architectures that are trusted, context-aware, and built for long-term public value.",
-            "tags": ["AI", "Governance", "Design"],
-            "date": "December 2025",
-        },
-        {
-            "category": "Toolkit",
-            "title": "Sustainability Toolkit: Measurement Frameworks",
-            "excerpt": "Practical tools for tracking and measuring sustainability impacts across public initiatives.",
-            "tags": ["Sustainability", "Measurement", "Toolkit"],
-            "date": "December 2025",
-        },
-        {
-            "category": "Ecosystems",
-            "title": "Venture Ecosystem Rapid Assessment",
-            "excerpt": "A comprehensive framework for evaluating and developing local venture building ecosystems.",
-            "tags": ["Venture", "Ecosystem", "Innovation"],
-            "date": "November 2025",
-        },
-        {
-            "category": "Health",
-            "title": "The Role of Design in Health Systems",
-            "excerpt": "Why service design is critical to building resilient, responsive, and patient-centric healthcare systems.",
-            "tags": ["Health", "Design", "Systems"],
-            "date": "November 2025",
-        },
-        {
-            "category": "Playbook",
-            "title": "Innovation Challenges: Implementation Playbook",
-            "excerpt": "A step-by-step guide to designing, launching, and managing public sector innovation challenges.",
-            "tags": ["Innovation", "Design", "Implementation"],
-            "date": "October 2025",
-        }
-    ]
+    projects = Project.objects.filter(is_active=True).order_by('-created_at')
     
     # SEO metadata
     context = {
         'projects': projects,
-        'mock_articles': mock_articles,
         'page_title': 'Insights',
         'page_description': 'Research, thought leadership, and tools. Bringing context, representation, and deep decision intelligence to structural transitions.',
         'page_keywords': 'Insights, Decision Intelligence Design, Research, Whitepapers, Africa, Innovation',
@@ -206,6 +182,17 @@ def projects_list(request):
 
 
 CASE_STUDIES = [
+    {
+        "slug": "digitizing-maternal-care",
+        "title": "Digitizing Maternal Care",
+        "category": "HEALTH",
+        "challenge": "Paper-based maternal health records slowed care and made outcomes invisible.",
+        "stat_value": "57",
+        "stat_label": "YOUNG INNOVATORS TRAINED",
+        "tags": ["Health", "Digitisation", "Youth"],
+        "image": "images/community/case1.webp",
+        "bg_color": "bg-[#f5f1ea]",
+    },
     {
         "slug": "power-to-youth",
         "title": "Power to Youth",
@@ -553,7 +540,15 @@ def case_studies_list(request):
     context = {
         'case_studies': page_obj.object_list,
         'page_obj': page_obj,
-        'page_title': 'Case Studies',
+        # The default canonical is request.build_absolute_uri(), which keeps the
+        # query string -- so /case-studies/?page=2 canonicalised to itself, giving
+        # several near-duplicate indexable URLs with identical titles. Point every
+        # page at the unparameterised list instead.
+        'canonical_url': request.build_absolute_uri(reverse('home:case_studies_list')),
+        'page_title': (
+            f'Case Studies — Page {page_obj.number} of {paginator.num_pages}'
+            if page_obj.number > 1 else 'Case Studies'
+        ),
         'page_description': 'We start where systems fall short. By focusing on underserved communities and overlooked realities, we design toward equitable, inclusive outcomes that scale across diverse African contexts.',
         'page_keywords': 'Case Studies, Decision Intelligence Design, Solutions, Outcomes, Africa',
     }
@@ -910,76 +905,45 @@ CASE_STUDY_DETAIL_DATA = {
 
 
 def _build_default_detail(slug, title, category, challenge, stat_value, stat_label, tags, image, bg_color=None, **kwargs):
-    """Build a generic detail page for any slug not in CASE_STUDY_DETAIL_DATA."""
+    """Build a detail page for a slug not present in CASE_STUDY_DETAIL_DATA.
+
+    IMPORTANT — do not add placeholder figures here.
+
+    This function previously invented project-specific facts for every case study
+    that lacked real data: fixed "3x", "500+", "85%", "12 partner organisations"
+    statistics, a "Partner Organisation" client, a "2023 - 2024" timeline, and a
+    partner list that attached real organisations' logos (UNICEF, Challenge Works)
+    to projects as "Partner A/B/C". Those rendered on roughly nine live case
+    studies, including named engagements with public institutions, and were
+    indistinguishable from measured results.
+
+    A case study with a short honest description is fine. One with invented
+    numbers is a liability -- and once an AI answer engine cites a fabricated
+    figure, it propagates well beyond this site.
+
+    So: only fields derived from real card data are returned. Every section in
+    templates/home/case_studies_detail.html is guarded, so anything absent here
+    simply does not render. To enrich a case study, add a real entry to
+    CASE_STUDY_DETAIL_DATA with figures the project owner can stand behind.
+    """
     detail = {
         "slug": slug,
         "title": title,
-        "subtitle": f"How IDI Africa tackled {title.lower()} through decision intelligence design",
         "category": category,
         "sector": category.title(),
-        "client": "Partner Organisation",
-        "timeline": "2023 – 2024",
         "tags": tags,
         "hero_image": image,
-        "hero_image2": "images/governance/case2.webp",
-        "portrait_image": "images/governance/program_team.webp",
-        "overview": (
-            f"This case study explores how IDI Africa partnered with local stakeholders to address "
-            f"the challenge: {challenge} Through rigorous research, co-design, and "
-            "iterative prototyping, we developed a scalable solution that delivered measurable impact "
-            "for communities across the region."
-        ),
-        "key_insight": (
-            "The most powerful interventions happen when communities are treated as co-designers, "
-            "not beneficiaries. By embedding ourselves in the problem space, we uncovered the "
-            "systemic roots of the challenge and built solutions that last."
-        ),
-        "problems": [
-            {"icon": "chart", "title": "Systemic Gap", "description": challenge},
-            {"icon": "user", "title": "Limited Access", "description": "Communities lacked access to tools and infrastructure to address the underlying challenge."},
-            {"icon": "alert", "title": "Coordination Failure", "description": "Multiple actors worked in silos, preventing coordinated responses that could have amplified impact."},
-        ],
-        "approach_steps": [
-            {"number": "01", "title": "Research & Discovery", "description": "Immersive community research to understand the lived experience of the challenge."},
-            {"number": "02", "title": "Co-Design", "description": "Participatory design sessions with community members and key stakeholders."},
-            {"number": "03", "title": "Prototype & Test", "description": "Rapid prototyping with real users to validate assumptions before scaling."},
-            {"number": "04", "title": "Implementation", "description": "Structured rollout with continuous feedback loops and adaptation."},
-            {"number": "05", "title": "Scale & Sustain", "description": "Building local capacity to own, operate, and iterate on the solution independently."},
-        ],
-        "output_stats": [
-            {"value": stat_value, "label": stat_label, "image": image},
-            {"value": "3×", "label": "Improvement in service delivery efficiency", "image": "images/governance/case2.webp"},
-            {"value": "500+", "label": "Community members directly impacted", "image": "images/governance/case3.webp"},
-            {"value": "12", "label": "Partner organisations engaged", "image": "images/community/case1.webp"},
-            {"value": "85%", "label": "Satisfaction rate among beneficiaries", "image": "images/community/case2.webp"},
-            {"value": "2 yrs", "label": "Sustained operation post-project", "image": "images/community/case3.webp"},
-        ],
-        "measurable_improvements": [
-            {"value": stat_value, "label": stat_label},
-            {"value": "3×", "label": "Efficiency Gain"},
-            {"value": "Better", "label": "Data Quality"},
-            {"value": "100%", "label": "Partner Retention"},
-            {"value": "Reduced", "label": "Service Gaps"},
-            {"value": "Improved", "label": "Outcomes"},
-        ],
-        "measuring_success": (
-            "Impact was measured through a combination of quantitative metrics—service uptake, "
-            "retention rates, and outcome data—and qualitative feedback from community members "
-            "and frontline workers. All indicators were defined collaboratively with partners "
-            "at the outset of the project."
-        ),
-        "measuring_image": "images/governance/board2.webp",
-        "partners": [
-            {"name": "Partner A", "logo": "images/partners/unicef.webp"},
-            {"name": "Partner B", "logo": "images/partners/challenge-works.webp"},
-            {"name": "Partner C", "logo": "images/partners/regional-center.webp"},
-        ],
-        "related": [
-            {"slug": "power-to-youth", "title": "Power to Youth", "category": "GENDER RIGHTS", "image": "images/power_to_youth/img1.png"},
-            {"slug": "transboundary-data-flows-unep-giz-action-lab", "title": "Transboundary Data Flows - UNEP, GIZ, Action Lab", "category": "DATA GOVERNANCE", "image": "images/governance/case2.webp"},
-            {"slug": "spaceai-dairy-digitisation-cooperative-enablement", "title": "SpaceAI (Dairy Digitisation & Cooperative Enablement)", "category": "AGRITECH", "image": "images/community/case2.webp"},
-        ],
+        # Restates the challenge already shown on the card. No invented outcomes.
+        "overview": challenge,
     }
+
+    # The card's own headline statistic is real data entered alongside the case
+    # study, so it is carried through. Nothing is invented to sit beside it.
+    if stat_value and stat_label:
+        detail["output_stats"] = [
+            {"value": stat_value, "label": stat_label, "image": image},
+        ]
+
     detail.update(kwargs)
     return detail
 
@@ -1010,7 +974,7 @@ def case_study_detail(request, slug):
 
 # New view for Team page
 def team_list(request):
-    team_members = TeamMember.objects.select_related().all()
+    team_members = TeamMember.objects.order_by('name')
     
     # SEO metadata
     context = {
@@ -1029,7 +993,9 @@ class TeamMemberDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        member = self.get_object()
+        # self.object is already loaded by DetailView.get(); calling get_object()
+        # again would issue a second query for the same row on every page view.
+        member = self.object
         
         # Always set single_member to True
         context['single_member'] = True
@@ -1058,52 +1024,61 @@ def llms_txt(request):
                   content_type='text/plain; charset=utf-8')
 
 
-def custom_page_not_found(request, exception):
+ERROR_ROBOTS = 'noindex, nofollow'
+
+
+def _error_context(title, heading, description):
+    """Shared context for the error handlers.
+
+    All four previously rendered 404.html with "index, follow" inherited from
+    meta_tags.html, so a crawler hitting any mistyped URL was invited to index an
+    error page.
     """
-    Custom 404 page handler
-    """
-    context = {
-        'page_title': '404 - Page Not Found',
-        'page_description': 'The page you were looking for could not be found on IDI Africa.',
-        'page_keywords': 'error, 404, page not found, IDI Africa',
+    return {
+        'page_title': title,
+        'page_description': description,
+        'page_robots': ERROR_ROBOTS,
+        'error_heading': heading,
+        'error_message': description,
     }
-    return render(request, '404.html', context, status=404)
+
+
+def custom_page_not_found(request, exception):
+    return render(request, '404.html', _error_context(
+        '404 - Page Not Found',
+        'Page not found',
+        "The page you're looking for doesn't exist, or has moved.",
+    ), status=404)
 
 
 def custom_server_error(request):
+    """500 handler.
+
+    Renders a standalone template with render_to_string and an explicit, empty
+    context: the normal render() path runs every context processor and the full
+    base template, any of which can raise while the site is already broken --
+    turning a 500 into an unhandled exception with no page at all.
     """
-    Custom 500 page handler
-    """
-    context = {
-        'page_title': '500 - Server Error',
-        'page_description': 'We apologize, but something went wrong on our end at IDI Africa.',
-        'page_keywords': 'error, 500, server error, IDI Africa',
-    }
-    return render(request, '404.html', context, status=500)
+    from django.template.loader import render_to_string
+
+    html = render_to_string('500.html', {})
+    return HttpResponse(html, status=500)
 
 
 def custom_permission_denied(request, exception):
-    """
-    Custom 403 page handler
-    """
-    context = {
-        'page_title': '403 - Permission Denied',
-        'page_description': 'You do not have permission to access this page on IDI Africa.',
-        'page_keywords': 'error, 403, permission denied, IDI Africa',
-    }
-    return render(request, '404.html', context, status=403)
+    return render(request, '403.html', _error_context(
+        '403 - Permission Denied',
+        'You do not have access to this page',
+        'You do not have permission to view this page.',
+    ), status=403)
 
 
 def custom_bad_request(request, exception):
-    """
-    Custom 400 page handler
-    """
-    context = {
-        'page_title': '400 - Bad Request',
-        'page_description': 'The request sent to the IDI Africa server was invalid.',
-        'page_keywords': 'error, 400, bad request, IDI Africa',
-    }
-    return render(request, '404.html', context, status=400)
+    return render(request, '400.html', _error_context(
+        '400 - Bad Request',
+        'That request could not be processed',
+        'The request sent to the server was invalid.',
+    ), status=400)
 
 
 def governance_public_service_delivery(request):
@@ -1206,16 +1181,118 @@ def venture_building(request):
     return render(request, 'home/venture_building.html', context)
 
 
-def contact(request):
+
+
+# --- Legal / policy pages ---------------------------------------------------
+# The footer linked to Privacy Policy, Terms and Accessibility with href="#" on
+# every page, and the academy consent checkbox promised a Terms page that did not
+# exist. Absent policy pages are also an E-E-A-T signal: they are among the first
+# things both people and answer engines look for when judging whether an
+# organisation is legitimate.
+
+def privacy_policy(request):
+    return render(request, 'home/legal/privacy.html', {
+        'page_title': 'Privacy Policy',
+        'page_description': 'How the Institute of Design & Innovation collects, uses and protects personal data.',
+    })
+
+
+def terms(request):
+    return render(request, 'home/legal/terms.html', {
+        'page_title': 'Terms & Conditions',
+        'page_description': 'The terms governing use of the IDI Africa website and services.',
+    })
+
+
+def accessibility(request):
+    return render(request, 'home/legal/accessibility.html', {
+        'page_title': 'Accessibility',
+        'page_description': 'Our commitment to making idi.africa usable by everyone, and how to report a barrier.',
+    })
+
+
+@require_POST
+def newsletter_subscribe(request):
+    """Record a newsletter signup.
+
+    Returns an HTMX-friendly fragment so the forms can report a real outcome
+    instead of the fake success message they showed before.
     """
-    View for the dedicated Contact Us page.
+    email = (request.POST.get('email') or '').strip().lower()
+    source = (request.POST.get('source') or '').strip()[:40]
+
+    try:
+        validate_email(email)
+    except DjangoValidationError:
+        return render(request, 'home/partials/_newsletter_result.html',
+                      {'ok': False, 'message': 'Please enter a valid email address.'},
+                      status=400)
+
+    NewsletterSubscriber.objects.get_or_create(
+        email=email, defaults={'source': source},
+    )
+    # The same response whether or not the address was already on the list, so the
+    # endpoint cannot be used to test who is subscribed.
+    return render(request, 'home/partials/_newsletter_result.html',
+                  {'ok': True, 'message': "Thanks — you're on the list."})
+
+
+def _notify_contact_message(message):
+    """Best-effort staff notification. Never raises."""
+    recipients = getattr(settings, 'CONTACT_NOTIFICATION_EMAILS', None)
+    if not recipients:
+        return
+    try:
+        sent = send_mail(
+            subject=f'[IDI] {message.get_inquiry_type_display()} — {message.name}',
+            message=(
+                f'Name: {message.name}\n'
+                f'Organisation: {message.organization or "—"}\n'
+                f'Email: {message.email}\n'
+                f'Type: {message.get_inquiry_type_display()}\n\n'
+                f'{message.message}\n'
+            ),
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=list(recipients),
+            fail_silently=False,
+        )
+        if sent:
+            ContactMessage.objects.filter(pk=message.pk).update(notification_sent=True)
+    except Exception:
+        # The enquiry is already saved; losing the email must not lose the lead.
+        logger.exception('Failed to send contact notification for message %s', message.pk)
+
+
+def contact(request):
+    """Contact page.
+
+    Persists the enquiry, then tries to notify staff by email. The database row is
+    the durable record: a mail failure is logged but never loses the message and
+    never shows the visitor an error, because the enquiry itself did arrive.
+
+    Previously this view set success = True and discarded the POST entirely, so
+    visitors were shown "Message Sent!" while nothing was stored or sent.
     """
     success = False
     if request.method == "POST":
-        # Process visual inquiry submission
-        success = True
-        
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            message = form.save()
+            _notify_contact_message(message)
+            # Post/Redirect/Get so a refresh cannot resubmit the enquiry.
+            return redirect(f"{reverse('home:contact')}?sent=1")
+    else:
+        # ?inquiry=<type> lets CTAs elsewhere on the site pre-select the enquiry
+        # type, e.g. the academy page's "Become a partner" button.
+        initial = {'ts': ContactForm.make_timestamp()}
+        requested = request.GET.get('inquiry')
+        if requested in dict(ContactMessage.INQUIRY_TYPES):
+            initial['inquiry_type'] = requested
+        form = ContactForm(initial=initial)
+        success = request.GET.get('sent') == '1'
+
     context = {
+        'form': form,
         'success': success,
         'page_title': 'Contact Us',
         'page_description': 'Get in touch with IDI Africa. Whether you want to partner with us, join our fellowship, or initiate an inquiry, we would love to hear from you.',

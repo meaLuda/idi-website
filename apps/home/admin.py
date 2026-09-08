@@ -1,19 +1,19 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Project, TeamMember, Testimonial, Program, Partner, Client, HomeStat, ServicePillar
+from .models import ContactMessage, Project, TeamMember, Testimonial, Program, Partner, Client, HomeStat, ServicePillar
 
 @admin.register(TeamMember)
 class TeamMemberAdmin(admin.ModelAdmin):
-    list_display = ('name', 'position', 'create_at')
+    list_display = ('name', 'position', 'updated_at')
     search_fields = ('name', 'position')
-    readonly_fields = ('create_at',)
+    readonly_fields = ('created_at', 'updated_at')
     fieldsets = (
         (None, {
             'fields': ('name', 'position', 'image', 'background_shape', 'bio')
         }),
         ('Additional Information', {
-            'fields': ('linkedin', 'slug', 'create_at')
+            'fields': ('linkedin', 'slug', 'created_at', 'updated_at')
         }),
     )
 
@@ -106,8 +106,6 @@ class ProgramAdmin(admin.ModelAdmin):
         }),
     )
     
-    def get_queryset(self, request):
-        return super().get_queryset(request).select_related()
 
 
 @admin.register(Partner)
@@ -148,3 +146,29 @@ class ClientAdmin(admin.ModelAdmin):
             'fields': ('is_active', 'is_featured', 'order')
         }),
     )
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    """Enquiries submitted through the contact form.
+
+    Read-mostly: the visitor's words are a record and should not be edited. Only
+    the handling fields are writable.
+    """
+
+    list_display = ('created_at', 'name', 'organization', 'inquiry_type',
+                    'email', 'is_handled', 'notification_sent')
+    list_filter = ('is_handled', 'inquiry_type', 'notification_sent', 'created_at')
+    search_fields = ('name', 'email', 'organization', 'message')
+    date_hierarchy = 'created_at'
+    readonly_fields = ('name', 'organization', 'email', 'inquiry_type', 'message',
+                       'notification_sent', 'created_at')
+    fieldsets = (
+        ('Enquiry', {'fields': ('created_at', 'name', 'organization', 'email',
+                                'inquiry_type', 'message')}),
+        ('Handling', {'fields': ('is_handled', 'handled_note', 'notification_sent')}),
+    )
+
+    def has_add_permission(self, request):
+        return False
+

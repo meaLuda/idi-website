@@ -4,6 +4,50 @@
 {% block title %}{{ page_title }} | IDI Africa{% endblock %}
 {% block meta_description %}{{ page_description }}{% endblock %}
 
+{% block extra_head %}
+{% comment %}
+This template renders the majority of the case studies and previously emitted no
+structured data whatsoever. datePublished is deliberately omitted: these entries
+carry no trustworthy publication date, and inventing one would repeat exactly the
+problem the fabricated-statistics cleanup removed.
+{% endcomment %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ cs.title|escapejs }}",
+    {% if cs.overview %}"description": "{{ cs.overview|truncatewords:40|escapejs }}",{% endif %}
+    {% if cs.hero_image %}"image": "{{ request.scheme }}://{{ request.get_host }}{% static cs.hero_image %}",{% endif %}
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
+    },
+    "author": {"@type": "Organization", "name": "Institute of Design & Innovation"},
+    "publisher": {
+        "@type": "Organization",
+        "name": "Institute of Design & Innovation",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/wp-content/uploads/2024/12/idi-main-logo_webp_512x512-300x300.webp' %}"
+        }
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home",
+         "item": "{{ request.scheme }}://{{ request.get_host }}/"},
+        {"@type": "ListItem", "position": 2, "name": "Case Studies",
+         "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home:case_studies_list' %}"},
+        {"@type": "ListItem", "position": 3, "name": "{{ cs.title|escapejs }}"}
+    ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <style>
     /* ── Custom Styling Enhancements ── */
@@ -364,7 +408,9 @@
 
 <!-- =========================================================
      8. MEASURING SUCCESS SECTION
+     Guarded: no generic filler when a case study has no recorded outcome.
      ========================================================= -->
+{% if cs.outcome_text or cs.measuring_success %}
 <section class="bg-white py-16 lg:py-24">
     <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -405,10 +451,13 @@
         </div>
     </div>
 </section>
+{% endif %}
 
 <!-- =========================================================
      9. PARTNERS SECTION
+     Guarded: only render when real partners are recorded for this case study.
      ========================================================= -->
+{% if cs.partners %}
 <section class="bg-[#f7f5f0] py-16 lg:py-20 border-t border-gray-100">
     <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-[28px] sm:text-[32px] font-extrabold text-[#006377] mb-4">
@@ -454,6 +503,7 @@
         </div>
     </div>
 </section>
+{% endif %}
 
 <!-- =========================================================
      10. RELATED CASE STUDIES

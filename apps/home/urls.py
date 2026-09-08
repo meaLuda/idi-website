@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import RedirectView
 from django.http import JsonResponse
 from . import views
 
@@ -12,7 +13,9 @@ urlpatterns = [
     path('', views.home, name="lander"),
     path('articles/', views.articles, name="articles"),
     # New URL paths
-    path('fellowship/did-academy', views.academy, name="did-academy"),
+    path('fellowship/did-academy/', views.academy, name="did-academy"),
+    # Redirect the old slash-less URL so existing links and bookmarks keep working.
+    path('fellowship/did-academy', RedirectView.as_view(pattern_name='home:did-academy', permanent=True)),
     path('fellowship/democratic-futures-civic-innovation/', views.civic_innovation_fellowship, name='civic_innovation_fellowship'),
     path('team/<slug:slug>/', views.TeamMemberDetailView.as_view(), name='team_member_detail'),
     path('projects/<slug:slug>/', views.project_detail, name='project_detail'),
@@ -31,5 +34,9 @@ urlpatterns = [
     path('venture-building-innovation-ecosystems/', views.venture_building, name='venture_building'),
     path('services/', views.services, name='services'),
     path('contact/', views.contact, name='contact'),
+    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
+    path('terms/', views.terms, name='terms'),
+    path('accessibility/', views.accessibility, name='accessibility'),
+    path('newsletter/subscribe/', views.newsletter_subscribe, name='newsletter_subscribe'),
     path('health/', health_check, name='health_check'),
 ]
