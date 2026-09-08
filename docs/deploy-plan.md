@@ -67,6 +67,28 @@ Django's default. Migration `0010` corrects it — verify this first after deplo
 
 ---
 
+## Build architecture — read this first
+
+**The production host is x86_64/amd64. This machine is Apple Silicon (arm64).**
+
+`docker build` without `--platform` produces an arm64 image that `docker load`
+accepts and then cannot run. Because `deploy-cutover` replaces the running
+container before it checks health, the site goes down until someone notices.
+
+That happened on the first attempt on 2026-09-08: idi.africa returned 404 for
+roughly four minutes. Migrations had not yet run, so the database was untouched
+and re-tagging the previous image was enough to restore service.
+
+`deploy-image` now builds `--platform linux/amd64` and asserts the resulting
+image's architecture, so a mismatch fails locally before anything is shipped.
+
+> **The Makefile is gitignored**, so that fix is not version-controlled. If the
+> Makefile is ever recreated or copied to another machine, re-add both the
+> `--platform` flag and the architecture assertion. This is the strongest reason
+> to bring the deploy pipeline into the repository.
+
+---
+
 ## Steps
 
 ```bash
@@ -152,6 +174,12 @@ invented statistics. Expected, but visible to anyone watching the site.
 
 **Low — first deploy in two months.** The gap is the risk, not any single change:
 more moves at once, so verify deliberately rather than assuming.
+
+**Known false alarm:** `deploy-verify` can report a 404 even on a successful
+deploy. It runs the instant the container reports healthy, which is a moment
+before Traefik re-registers the recreated container. Re-check the URL by hand
+before concluding anything is wrong — this happened on the successful
+2026-09-08 deploy.
 
 **Not blocking, worth knowing:** `docker-compose.production.yml` mounts
 `idi_static` over the image's collected static. A stale volume can shadow a
