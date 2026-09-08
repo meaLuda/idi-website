@@ -4,9 +4,11 @@ These pin the payload encoding, because a change that silently pushes the symbol
 to a higher version makes every already-printed certificate's size guidance wrong.
 """
 
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, TestCase
 
 from apps.credentials import qr, tokens
+from apps.credentials.tests.test_models import make_certificate, make_cohort
+from apps.credentials.tests.utils import isolated_cache
 
 
 class PayloadTests(SimpleTestCase):
@@ -59,3 +61,49 @@ class OutputTests(SimpleTestCase):
 
     def test_quiet_zone_is_never_dropped(self):
         self.assertEqual(qr.QUIET_ZONE, 4)
+
+
+@isolated_cache
+class QrPayloadRoundTripTests(TestCase):
+    """The test that was missing.
+
+    test_uppercase_code_as_encoded_in_the_qr_resolves in test_views.py checked
+    /v/<UPPERCASE CODE> -- it uppercased the code but not the path. The real
+    payload uppercases the ENTIRE url, so the printed QR encodes /V/, and the
+    only route was ^v/. Every printed certificate would have 404'd.
+
+    This takes the exact string handed to segno, strips the scheme and host, and
+    routes what remains. Nothing between build_payload() and the URLconf is
+    assumed.
+    """
+
+    def setUp(self):
+        self.cert = make_certificate(make_cohort())
+
+    def _path_from_payload(self, base='https://idi.africa'):
+        payload = qr.build_payload(base, self.cert.get_short_url())
+        # Everything after the host, exactly as a scanner would request it.
+        return payload[len(base.upper()):]
+
+    def test_the_exact_qr_payload_path_resolves(self):
+        path = self._path_from_payload()
+        self.assertTrue(path.startswith('/V/'), f'unexpected payload path: {path}')
+        response = self.client.get(path)
+        self.assertEqual(
+            response.status_code, 200,
+            f'the path encoded in the printed QR ({path}) does not resolve',
+        )
+        self.assertContains(response, self.cert.recipient_full_name)
+
+    def test_both_cases_of_the_short_path_resolve(self):
+        code = self.cert.token
+        for path in (f'/v/{code}', f'/V/{code}', f'/v/{code}/', f'/V/{code}/'):
+            self.assertEqual(
+                self.client.get(path).status_code, 200, f'{path} did not resolve'
+            )
+
+    def test_uppercase_long_form_resolves(self):
+        for path in (f'/verify/{self.cert.token}/', f'/VERIFY/{self.cert.token}/'):
+            self.assertEqual(
+                self.client.get(path).status_code, 200, f'{path} did not resolve'
+            )
