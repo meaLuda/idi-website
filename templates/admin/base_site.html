@@ -1,0 +1,32 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% comment %}
+Overrides Django's admin/base_site.html to apply the IDI brand.
+
+Only two blocks are touched — the stylesheet and the header branding — so every
+other admin template still comes from Django and upgrades cleanly. The colours
+live in static/admin/css/idi-admin.css as overrides of Django's own CSS custom
+properties, rather than as a forked stylesheet.
+
+The admin title strings themselves are set in idi/urls.py (admin.site.site_header
+and friends); this template only changes how they are presented.
+{% endcomment %}
+
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" href="{% static 'admin/css/idi-admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+  <a href="{% url 'admin:index' %}">
+    {% comment %}
+    alt is empty because the wordmark beside it carries the name; otherwise a
+    screen reader announces the organisation twice.
+    {% endcomment %}
+    <img src="{% static 'images/wp-content/uploads/2024/08/idi-main-logo.webp' %}"
+         alt="" width="240" height="86" class="idi-admin-logo">
+    <span class="idi-admin-title">{{ site_header|default:"IDI Admin Portal" }}</span>
+  </a>
+</h1>
+{% endblock %}

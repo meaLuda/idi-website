@@ -10,7 +10,7 @@
     <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center min-h-[400px] lg:min-h-[500px]">
         <!-- Globe image with glow shadow -->
         <div class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-[0_0_80px_rgba(6,182,212,0.18)] mb-8 flex items-center justify-center relative bg-black/50 border border-white/5">
-            <img src="{% static 'images/sovereign/hero_globe.png' %}" alt="Sovereign AI Globe" class="w-full h-full object-cover" loading="lazy">
+            <img src="{% static 'images/sovereign/hero_globe.png' %}" alt="Sovereign AI Globe" class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
         </div>
         <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none bg-gradient-to-r from-cyan-400 via-teal-300 to-fuchsia-400 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
             Sovereign AI
@@ -120,10 +120,10 @@
             <!-- Images Collage (6 cols) -->
             <div class="lg:col-span-6 grid grid-cols-12 gap-4">
                 <div class="col-span-8 rounded-3xl overflow-hidden shadow-card relative h-[350px] lg:h-auto">
-                    <img src="{% static 'images/sovereign/program_team.png' %}" alt="AI developers working together" class="w-full h-full object-cover" loading="lazy">
+                    <img src="{% static 'images/sovereign/program_team.png' %}" alt="AI developers working together" class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
                 </div>
                 <div class="col-span-4 rounded-3xl overflow-hidden shadow-card relative h-[350px] lg:h-auto">
-                    <img src="{% static 'images/sovereign/city_slice.png' %}" alt="Nairobi skyline slice" class="w-full h-full object-cover" loading="lazy">
+                    <img src="{% static 'images/sovereign/city_slice.png' %}" alt="Nairobi skyline slice" class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
                 </div>
             </div>
         </div>
@@ -211,114 +211,74 @@
             <!-- Row 1 -->
             <!-- Member 1: Arthur Oyako -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team1.png' %}" alt="Arthur Oyako" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <img src="{% static 'images/sovereign/team1.png' %}" alt="Arthur Oyako" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Arthur Oyako</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Project Director</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Member 2: Dominic Lwande -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team2.png' %}" alt="Dominic Lwande" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <img src="{% static 'images/sovereign/team2.png' %}" alt="Dominic Lwande" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Dominic Lwande</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Lead Researcher</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Member 3: Diana Zoro -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team3.png' %}" alt="Diana Zoro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <img src="{% static 'images/sovereign/team3.png' %}" alt="Diana Zoro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Diana Zoro</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Civic Designer</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Member 4: Eli Otieno -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team4.png' %}" alt="Eli Otieno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <img src="{% static 'images/sovereign/team4.png' %}" alt="Eli Otieno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Eli Otieno</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Row 2 -->
             <!-- Member 5: Joshua Kemei -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team5.png' %}" alt="Joshua Kemei" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <img src="{% static 'images/sovereign/team5.png' %}" alt="Joshua Kemei" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Joshua Kemei</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Data Scientist</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Member 6: Job Kamunge -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team6.png' %}" alt="Job Kamunge" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <img src="{% static 'images/sovereign/team6.png' %}" alt="Job Kamunge" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Job Kamunge</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">AI Engineer</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Member 7: Amina Moyo -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team7.png' %}" alt="Amina Moyo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <img src="{% static 'images/sovereign/team7.png' %}" alt="Amina Moyo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Amina Moyo</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">Community Liaison</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             
             <!-- Member 8: Edith Waweru -->
             <div class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
-                <img src="{% static 'images/sovereign/team8.png' %}" alt="Edith Waweru" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                <img src="{% static 'images/sovereign/team8.png' %}" alt="Edith Waweru" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
                     <h4 class="text-xl font-bold text-white mb-1">Edith Waweru</h4>
                     <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">UX Researcher</p>
-                    <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="text-white hover:text-brand-orange">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -337,7 +297,7 @@
             <!-- Case Study 1 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
                 <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/sovereign/case1.png' %}" alt="Citizen data workshop" class="w-full h-full object-cover" loading="lazy">
+                    <img src="{% static 'images/sovereign/case1.png' %}" alt="Citizen data workshop" class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
                 </div>
                 <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
                     <div>
@@ -350,7 +310,7 @@
                         </ul>
                     </div>
                     <div>
-                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                        <a href="{% url 'home:case_studies_list' %}" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange-ink transition-colors">
                             READ CASE STUDY <span class="ml-1.5">➔</span>
                         </a>
                     </div>
@@ -360,7 +320,7 @@
             <!-- Case Study 2 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
                 <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/sovereign/case2.png' %}" alt="Agricultural Decision Systems" class="w-full h-full object-cover" loading="lazy">
+                    <img src="{% static 'images/sovereign/case2.png' %}" alt="Agricultural Decision Systems" class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
                 </div>
                 <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
                     <div>
@@ -373,7 +333,7 @@
                         </ul>
                     </div>
                     <div>
-                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                        <a href="{% url 'home:case_studies_list' %}" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange-ink transition-colors">
                             READ CASE STUDY <span class="ml-1.5">➔</span>
                         </a>
                     </div>
@@ -383,7 +343,7 @@
             <!-- Case Study 3 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
                 <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/sovereign/case3.png' %}" alt="Language models" class="w-full h-full object-cover" loading="lazy">
+                    <img src="{% static 'images/sovereign/case3.png' %}" alt="Language models" class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
                 </div>
                 <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
                     <div>
@@ -396,7 +356,7 @@
                         </ul>
                     </div>
                     <div>
-                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                        <a href="{% url 'home:case_studies_list' %}" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange-ink transition-colors">
                             READ CASE STUDY <span class="ml-1.5">➔</span>
                         </a>
                     </div>
@@ -406,7 +366,7 @@
             <!-- Case Study 4 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/60 shadow-card flex flex-col md:flex-row items-stretch">
                 <div class="md:w-2/5 min-h-[250px] relative">
-                    <img src="{% static 'images/sovereign/case4.png' %}" alt="Algorithmic Transparency" class="w-full h-full object-cover" loading="lazy">
+                    <img src="{% static 'images/sovereign/case4.png' %}" alt="Algorithmic Transparency" class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
                 </div>
                 <div class="md:w-3/5 p-8 lg:p-10 flex flex-col justify-between">
                     <div>
@@ -419,7 +379,7 @@
                         </ul>
                     </div>
                     <div>
-                        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                        <a href="{% url 'home:case_studies_list' %}" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange-ink transition-colors">
                             READ CASE STUDY <span class="ml-1.5">➔</span>
                         </a>
                     </div>
@@ -442,7 +402,7 @@
             <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
                 <div>
                     <div class="h-52 overflow-hidden bg-gray-100">
-                        <img src="{% static 'images/sovereign/insight1.png' %}" alt="AI and profit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                        <img src="{% static 'images/sovereign/insight1.png' %}" alt="AI and profit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                     </div>
                     <div class="p-6">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">Insights</span>
@@ -451,7 +411,7 @@
                     </div>
                 </div>
                 <div class="px-6 pb-6 pt-2">
-                    <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                    <a href="{% url 'home:projects_list' %}" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange-ink transition-colors">
                         Read Article <span class="ml-1">➔</span>
                     </a>
                 </div>
@@ -461,7 +421,7 @@
             <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
                 <div>
                     <div class="h-52 overflow-hidden bg-gray-100">
-                        <img src="{% static 'images/sovereign/insight2.png' %}" alt="Local Data Metaphors" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                        <img src="{% static 'images/sovereign/insight2.png' %}" alt="Local Data Metaphors" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                     </div>
                     <div class="p-6">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">Insights</span>
@@ -470,7 +430,7 @@
                     </div>
                 </div>
                 <div class="px-6 pb-6 pt-2">
-                    <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                    <a href="{% url 'home:projects_list' %}" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange-ink transition-colors">
                         Read Article <span class="ml-1">➔</span>
                     </a>
                 </div>
@@ -480,7 +440,7 @@
             <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200/60 shadow-card hover:shadow-card-lg transition-shadow duration-300 flex flex-col justify-between h-full">
                 <div>
                     <div class="h-52 overflow-hidden bg-gray-100">
-                        <img src="{% static 'images/sovereign/insight3.png' %}" alt="Designing Algorithms Users" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                        <img src="{% static 'images/sovereign/insight3.png' %}" alt="Designing Algorithms Users" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1024" height="1024" decoding="async">
                     </div>
                     <div class="p-6">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-2 block">Insights</span>
@@ -489,7 +449,7 @@
                     </div>
                 </div>
                 <div class="px-6 pb-6 pt-2">
-                    <a href="#" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange transition-colors">
+                    <a href="{% url 'home:projects_list' %}" class="inline-flex items-center text-sm font-bold text-brand-teal-500 hover:text-brand-orange-ink transition-colors">
                         Read Article <span class="ml-1">➔</span>
                     </a>
                 </div>

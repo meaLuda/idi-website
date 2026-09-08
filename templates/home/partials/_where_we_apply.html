@@ -16,12 +16,15 @@
                     <a href="{% url 'home:community_public_service_delivery' %}" class="block group h-full">
                         {% elif tile.slug == 'food-systems-health-practice' %}
                         <a href="{% url 'home:food_systems_health_practice' %}" class="block group h-full">
-                            {% elif tile.slug == 'sustainability-practice' %}
+                            {% elif tile.slug == 'health-practice' %}
                             <a href="{% url 'home:sustainability_practice' %}" class="block group h-full">
                                 {% elif tile.slug == 'venture-building-innovation-ecosystems' %}
                                 <a href="{% url 'home:venture_building' %}" class="block group h-full">
                                     {% else %}
-                                    <a href="#" class="block group h-full">
+                                    {% comment %} Fallback for a tile slug with no matching route. It used to be
+                                       href="#", so a typo in PRACTICE_TILES produced a silently dead
+                                       card; the practices index is at least a real destination. {% endcomment %}
+                                    <a href="{% url 'home:services' %}" class="block group h-full">
                                         {% endif %}
                                         <article
                                             class="bg-gradient-to-br from-[#f4f4f3] to-[#dcdde0] rounded-2xl p-6 lg:p-8 h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card hover:cursor-pointer flex flex-col justify-between">
@@ -51,7 +54,7 @@
                                                              style="background-image: url('{% static 'images/home/practices/community-public-service-delivery.webp' %}');">
                                                         </div>
                                                     </div>
-                                                    {% elif tile.slug == 'sustainability-practice' %}
+                                                    {% elif tile.slug == 'health-practice' %}
                                                     <!-- Health: Half of a Semi Circle (Quadrant) -->
                                                     <div class="h-52 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
                                                         <div class="w-48 h-48 rounded-tl-full border-[3px] border-[#b2b5b9] bg-cover bg-center shadow-[0_6px_16px_rgba(0,0,0,0.08)]"

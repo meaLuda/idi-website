@@ -36,7 +36,7 @@
             <!-- Right Content (Image) -->
             <div class="lg:col-span-6 relative mt-12 lg:mt-0">
                 <div class="rounded-3xl overflow-hidden shadow-2xl relative aspect-[4/3] lg:aspect-auto lg:h-[550px]">
-                    <img src="{% static 'images/food/case1.png' %}" alt="Students in classroom" class="w-full h-full object-cover" loading="lazy">
+                    <img src="{% static 'images/food/case1.png' %}" alt="Students in classroom" class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
                 </div>
                 <!-- Overlapping floating card -->
                 <div class="absolute -bottom-8 -left-8 lg:-bottom-12 lg:-left-12 bg-white rounded-2xl shadow-xl p-6 lg:p-8 max-w-xs border border-gray-100">
@@ -127,7 +127,7 @@
         <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold mb-12">A structured, accessible logic driving national inclusion.</p>
         
         <div class="rounded-3xl overflow-hidden shadow-2xl w-full aspect-[21/9] lg:aspect-[2.5/1]">
-            <img src="{% static 'images/food/city_slice.png' %}" alt="City Skyline at Sunset" class="w-full h-full object-cover" loading="lazy">
+            <img src="{% static 'images/food/city_slice.png' %}" alt="City Skyline at Sunset" class="w-full h-full object-cover" loading="lazy" width="1024" height="1024" decoding="async">
         </div>
     </div>
 </section>
@@ -144,8 +144,11 @@
                 <h2 class="text-3xl lg:text-4xl font-extrabold leading-tight mb-8">
                     Quantifying <br>Structural <br>Transformation.
                 </h2>
-                <a href="#" class="inline-block bg-[#ffecd1] text-black font-bold text-sm px-8 py-3 rounded-full hover:bg-white transition-colors text-center min-w-[160px]">
-                    Download <br>Report
+                {% comment %} "Download Report" pointed at href="#". Replaced with a link that
+                   goes somewhere real; restore the download once a report file
+                   exists to link to. {% endcomment %}
+                <a href="{% url 'home:contact' %}?inquiry=research-data" class="inline-block bg-[#ffecd1] text-black font-bold text-sm px-8 py-3 rounded-full hover:bg-white transition-colors text-center min-w-[160px]">
+                    Request <br>the Report
                 </a>
             </div>
             
@@ -202,7 +205,7 @@
                 <h3 class="text-2xl font-extrabold text-[#006377]">AI Ethics & Governance Toolkit</h3>
             </div>
             
-            <a href="#" class="bg-[#006377] text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-[#051924] transition-colors flex items-center shrink-0">
+            <a href="{% url 'home:case_studies_list' %}" class="bg-[#006377] text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-[#051924] transition-colors flex items-center shrink-0">
                 Explore Case Study <span class="ml-2">➔</span>
             </a>
         </div>

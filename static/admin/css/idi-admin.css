@@ -1,0 +1,225 @@
+/* IDI brand theme for the Django admin.
+ *
+ * Colours sampled from static/images/wp-content/uploads/2024/08/idi-main-logo.webp:
+ * teal #0c6078 and gold #d89024. Those round to the site's existing design tokens
+ * (brand-teal-500 #006377, brand-orange #f99a00), so the admin uses the tokens
+ * rather than the sampled approximations — one palette across the whole product.
+ *
+ * Implemented purely by overriding Django's own CSS custom properties, so no
+ * admin markup or stylesheet is forked and upstream changes keep working.
+ *
+ * Contrast is measured, not assumed. Note white-on-gold is only 2.18:1, so the
+ * gold accent always carries ink-coloured text (7.81:1) rather than white.
+ */
+
+:root {
+  /* --- brand ------------------------------------------------------------ */
+  --idi-teal: #006377;
+  --idi-teal-dark: #004d5c;
+  --idi-teal-deep: #051924;
+  --idi-teal-100: #b8dadf;
+  --idi-teal-50: #e6f1f3;
+  --idi-gold: #f99a00;
+  --idi-gold-dark: #d17f00;
+  --idi-gold-ink: #9a5b00;   /* gold as text on white: 5.43:1 */
+  --idi-ink: #0b1f24;
+  --idi-ink-muted: #4b5b60;
+  --idi-surface-alt: #f6f5f0;
+
+  /* --- Django admin variables ------------------------------------------- */
+  --primary: var(--idi-teal);
+  --secondary: var(--idi-teal);
+  --accent: var(--idi-gold);
+  --primary-fg: #ffffff;
+
+  --body-fg: var(--idi-ink);
+  --body-bg: var(--idi-surface-alt);
+  --body-quiet-color: var(--idi-ink-muted);
+  --body-loud-color: var(--idi-ink);
+
+  --header-color: #ffffff;
+  --header-branding-color: #ffffff;
+  --header-bg: var(--idi-teal);
+  --header-link-color: #ffffff;
+
+  --breadcrumbs-fg: #ffffff;
+  --breadcrumbs-link-fg: #ffffff;
+  --breadcrumbs-bg: var(--idi-teal-dark);
+
+  /* Links use teal (6.88:1 on white); gold is reserved for hover and accents,
+     in its darker ink variant so it stays legible as text. */
+  --link-fg: var(--idi-teal);
+  --link-hover-color: var(--idi-gold-ink);
+  --link-selected-fg: var(--idi-teal-dark);
+
+  --hairline-color: #e3e6e4;
+  --border-color: #d8dcda;
+
+  --button-fg: #ffffff;
+  --button-bg: var(--idi-teal);
+  --button-hover-bg: var(--idi-teal-dark);
+
+  /* Save / primary action carries the brand gold, with ink text for contrast. */
+  --default-button-bg: var(--idi-gold);
+  --default-button-hover-bg: var(--idi-gold-dark);
+
+  --close-button-bg: var(--idi-ink-muted);
+  --close-button-hover-bg: var(--idi-ink);
+
+  --delete-button-bg: #b3261e;
+  --delete-button-hover-bg: #8c1d18;
+
+  --object-tools-fg: var(--idi-ink);
+  --object-tools-bg: var(--idi-gold);
+  --object-tools-hover-bg: var(--idi-gold-dark);
+
+  --selected-bg: var(--idi-teal-50);
+  --selected-row: #fff6e3;
+
+  --message-success-bg: #e6f1f3;
+  --message-warning-bg: #fff6e3;
+  --message-error-bg: #fdeceb;
+}
+
+/* Django ships a dark mode; without matching overrides the admin would fall back
+   to its default blue on dark. The palette is inverted rather than reused: the
+   teal is too dark to read on an ink background, so lighter tints lead. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: var(--idi-teal-100);
+    --secondary: #0c8485;
+    --accent: #ffb43d;
+    --primary-fg: var(--idi-teal-deep);
+
+    --body-fg: #e8eef0;
+    --body-bg: #0f2a31;
+    --body-quiet-color: #a9bcc1;
+    --body-loud-color: #ffffff;
+
+    --header-color: #ffffff;
+    --header-branding-color: #ffffff;
+    --header-bg: var(--idi-teal-deep);
+    --header-link-color: #ffffff;
+
+    --breadcrumbs-fg: #d8e6ea;
+    --breadcrumbs-link-fg: #ffffff;
+    --breadcrumbs-bg: #073a47;
+
+    --link-fg: #8ac2cb;            /* 8.63:1 on the dark body */
+    --link-hover-color: #ffb43d;   /* 9.59:1 */
+    --link-selected-fg: #b8dadf;
+
+    --hairline-color: #143a44;
+    --border-color: #1c4b57;
+
+    --button-fg: var(--idi-teal-deep);
+    --button-bg: var(--idi-teal-100);
+    --button-hover-bg: #8ac2cb;
+
+    --default-button-bg: #ffb43d;
+    --default-button-hover-bg: #f99a00;
+
+    --object-tools-fg: var(--idi-teal-deep);
+    --object-tools-bg: #ffb43d;
+    --object-tools-hover-bg: #f99a00;
+
+    --selected-bg: #0d3a44;
+    --selected-row: #3d3018;
+
+    --message-success-bg: #0d3a44;
+    --message-warning-bg: #3d3018;
+    --message-error-bg: #4a1f1c;
+  }
+}
+
+/* --- refinements the variables do not reach ------------------------------ */
+
+/* Sized rather than left intrinsic, so the header does not jump before the
+   logo loads. */
+/* Two things about the logo in the header:
+   1. #branding is a flex container in Django's own CSS, so the 240px-wide image
+      is a flex item and shrinks by default. flex-shrink:0 stops that.
+   2. The IDI wordmark is dark teal artwork drawn for light backgrounds. On the
+      teal header it disappeared entirely -- only the two gold dots showed. It
+      therefore sits on a white plate, which is also how it appears in the
+      public site's navigation. */
+.idi-admin-logo {
+  flex: 0 0 auto;
+  height: 34px;
+  width: auto;
+  max-width: none;
+  display: block;
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-sizing: content-box;
+}
+
+#site-name,
+#branding h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Django sets the site-name link to var(--accent). With the brand gold that
+   would be 3.16:1 on the teal header -- below the 4.5:1 needed for text -- so
+   the wordmark is forced to white (6.88:1). */
+#site-name a:link,
+#site-name a:visited,
+#site-name a:hover {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.idi-admin-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.92;
+}
+
+/* A brand rule under the header, echoing the divider used across the site. */
+#header {
+  border-bottom: 3px solid var(--idi-gold);
+}
+
+/* Django renders the login form on the plain body background; give it the same
+   card treatment the public site uses so the two feel related. */
+.login #container {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(5, 25, 36, 0.08);
+  overflow: hidden;
+}
+
+.login #header {
+  border-bottom: 3px solid var(--idi-gold);
+}
+
+/* Keep focus visible: the default outline is easy to lose against the teal, and
+   losing focus styling is the most common accessibility regression in a retheme. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.button:focus-visible {
+  outline: 2px solid var(--idi-gold);
+  outline-offset: 2px;
+}
+
+/* The certificate change form renders a QR preview; keep it legible on both
+   light and dark backgrounds by giving it its own white plate. */
+.field-qr_preview img {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 6px;
+}

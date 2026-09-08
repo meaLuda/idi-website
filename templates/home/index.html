@@ -1,6 +1,16 @@
 {% extends '../base.html' %}
 {% load static %}
 
+{% block needs_alpine %}
+{% comment %}
+Alpine is loaded here rather than site-wide: only this template and contact.html
+use x-data, so ~16 of 18 routes were downloading and parsing it for nothing.
+Loading it with defer (not on window.load) also removes the flash where x-data
+markup sat inert until every image had downloaded.
+{% endcomment %}
+<script src="{% static 'js/vendor/alpine.min.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
 {% include "home/partials/_hero.html" %}
 {# {% include "home/partials/_brand_divider.html" %} #}
@@ -119,92 +129,92 @@
             <div class="logo-marquee-track">
                 <img src="{% static 'images/partners/action-lab.webp' %}" alt="Action Lab"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/breaking-dreams.webp' %}" alt="Breaking Dreams"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/challenge-works.webp' %}" alt="Challenge Works"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/ddi.webp' %}" alt="DDI"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="512" height="466" decoding="async">
                 <img src="{% static 'images/partners/e4impact.webp' %}" alt="E4Impact"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/founders-factory.webp' %}" alt="Founders Factory"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/proportion.webp' %}" alt="Proportion"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/regional-center.webp' %}" alt="Regional Center"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="655" height="372" decoding="async">
                 <img src="{% static 'images/partners/space-ai.webp' %}" alt="Space AI"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/special-envoy.webp' %}" alt="Special Envoy"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="512" height="197" decoding="async">
                 <img src="{% static 'images/partners/under-your-skin.webp' %}" alt="Under Your Skin"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/unep-seeklogo.png' %}" alt="UNEP"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="1704" height="2000" decoding="async">
                 <img src="{% static 'images/partners/unep.webp' %}" alt="UNEP Webp"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="225" height="225" decoding="async">
                 <img src="{% static 'images/partners/unicef.webp' %}" alt="UNICEF"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="300" height="300" decoding="async">
             </div>
 
             <!-- Second Track (Seamless Duplicate) -->
             <div class="logo-marquee-track" aria-hidden="true">
                 <img src="{% static 'images/partners/action-lab.webp' %}" alt="Action Lab"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/breaking-dreams.webp' %}" alt="Breaking Dreams"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/challenge-works.webp' %}" alt="Challenge Works"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/ddi.webp' %}" alt="DDI"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="512" height="466" decoding="async">
                 <img src="{% static 'images/partners/e4impact.webp' %}" alt="E4Impact"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/founders-factory.webp' %}" alt="Founders Factory"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/proportion.webp' %}" alt="Proportion"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/regional-center.webp' %}" alt="Regional Center"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="655" height="372" decoding="async">
                 <img src="{% static 'images/partners/space-ai.webp' %}" alt="Space AI"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/special-envoy.webp' %}" alt="Special Envoy"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="512" height="197" decoding="async">
                 <img src="{% static 'images/partners/under-your-skin.webp' %}" alt="Under Your Skin"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="750" height="750" decoding="async">
                 <img src="{% static 'images/partners/unep-seeklogo.png' %}" alt="UNEP"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="1704" height="2000" decoding="async">
                 <img src="{% static 'images/partners/unep.webp' %}" alt="UNEP Webp"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="225" height="225" decoding="async">
                 <img src="{% static 'images/partners/unicef.webp' %}" alt="UNICEF"
                     class="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy">
+                    loading="lazy" width="300" height="300" decoding="async">
             </div>
         </div>
     </div>

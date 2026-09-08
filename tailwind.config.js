@@ -18,9 +18,17 @@ module.exports = {
           700: '#004d5c',
           800: '#073a47',
           900: '#051924',
+          // 950 was referenced by contact.html and two practice pages but never
+          // defined, so `text-brand-teal-950` generated no CSS and those headings
+          // rendered in the inherited colour.
+          950: '#03121a',
         },
         'hero-teal': '#0c8485',
         'brand-orange': '#f99a00',
+        // Text-safe variant of brand-orange. The base colour is 2.18:1 on white,
+        // which fails WCAG AA for body text; this is 5.43:1. Use brand-orange for
+        // fills and large display type, brand-orange-ink for text on light.
+        'brand-orange-ink': '#9a5b00',
         'brand-amber': '#ffad00',
         'brand-yellow': '#ffd300',
         'brand-sage': '#ccd19c',

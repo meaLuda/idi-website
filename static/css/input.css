@@ -656,3 +656,33 @@ svg {
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Reduced motion.
+
+   Several animations shipped with no guard at all: the 30s partner-logo
+   marquee, the infinite 404 compass rotation, and the stat counters. Vestibular
+   disorders make continuous motion genuinely unpleasant, and the OS-level
+   setting is how people ask for it to stop.
+
+   Animations are near-eliminated rather than removed outright (0.01ms), so any
+   JavaScript waiting on animationend/transitionend still fires and does not
+   leave the interface stuck mid-state.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* SVG SMIL animations ignore the CSS rules above. */
+  animate,
+  animateTransform,
+  animateMotion {
+    display: none !important;
+  }
+}

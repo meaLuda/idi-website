@@ -57,6 +57,16 @@
 
         function animateCounter(el) {
             var rawValue = el.getAttribute('data-value');
+
+            // Honour the OS reduced-motion setting. CSS cannot stop a
+            // requestAnimationFrame loop, so it is checked here. This also stops
+            // the counter rewriting innerText ~120 times per element, which
+            // screen readers announce on every change.
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                el.innerText = rawValue;
+                return;
+            }
+
             var match = rawValue.match(/^([\d.]+)(.*)$/);
             if (!match) {
                 el.innerText = rawValue;
