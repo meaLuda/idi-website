@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+
+from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,17 +22,73 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# Provided via the SECRET_KEY env var in production; the insecure fallback is dev-only.
-SECRET_KEY = os.getenv(
-    'SECRET_KEY',
-    'django-insecure-h#1=zgzhz&c@g+p9w0b9kr$b-_$8+iyn6g8_0a!js*u12%lonj',
-)
+
+def env_bool(name, default=False):
+    """Parse a boolean env var.
+
+    Accepts the forms people actually write. The previous implementation compared
+    against the literal string 'true', so a .env carrying DEBUG='1' silently
+    evaluated to False -- which switched local development into production mode
+    (SSL redirect, secure-only cookies) and broke admin login over plain HTTP.
+    """
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().strip('\'"').lower() in {'1', 'true', 'yes', 'on'}
+
+
+def env_list(name, default=()):
+    """Comma-separated env var -> list of stripped, non-empty strings."""
+    raw = os.getenv(name)
+    if not raw:
+        return list(default)
+    return [item.strip() for item in raw.split(',') if item.strip()]
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
+DEBUG = env_bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['170.187.145.60','idi.africa','www.idi.africa','localhost','127.0.0.1','.ngrok-free.app','.ngrok.io','.ngrok.app','.ngrok-free.dev','.ngrok.dev', '.localtunnel.me', '.loca.lt']
+# SECURITY WARNING: keep the secret key used in production secret!
+# In DEBUG the insecure fallback keeps local setup frictionless; with DEBUG off a
+# missing SECRET_KEY is fatal rather than silently booting on a key that is public
+# in this repository's history.
+SECRET_KEY = os.getenv('SECRET_KEY') or ''
+if not SECRET_KEY:
+    if DEBUG:
+        SECRET_KEY = 'django-insecure-dev-only-do-not-use-in-production'
+    else:
+        raise ImproperlyConfigured(
+            'SECRET_KEY must be set in the environment when DEBUG is off.'
+        )
+
+# Hosts that serve the real site. Overridable per-environment via ALLOWED_HOSTS.
+ALLOWED_HOSTS = env_list(
+    'ALLOWED_HOSTS',
+    default=['idi.africa', 'www.idi.africa', '170.187.145.60'],
+)
+
+# Loopback is allowed in every environment, not just development. The container
+# HEALTHCHECK and any orchestrator probe request http://127.0.0.1:8000/health/
+# from inside the container, so excluding these makes the container report
+# unhealthy in production. Allowing loopback names carries no real Host-header
+# risk: an external attacker cannot cause a request to arrive with a loopback
+# Host that resolves anywhere useful.
+LOOPBACK_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+
+# Tunnelling hosts, by contrast, are a development convenience only: leaving them
+# in production would let an attacker-controlled ngrok domain pass the check.
+DEV_ONLY_HOSTS = [
+    '.ngrok-free.app', '.ngrok.io', '.ngrok.app', '.ngrok-free.dev', '.ngrok.dev',
+    '.localtunnel.me', '.loca.lt',
+]
+DEV_ONLY_ORIGINS = [
+    'http://localhost', 'http://localhost:8000', 'http://127.0.0.1', 'http://127.0.0.1:8000',
+    'https://*.ngrok-free.app', 'https://*.ngrok-free.dev', 'https://*.ngrok.io',
+    'https://*.ngrok.app', 'https://*.ngrok.dev', 'https://*.localtunnel.me', 'https://*.loca.lt',
+]
+ALLOWED_HOSTS += [h for h in LOOPBACK_HOSTS if h not in ALLOWED_HOSTS]
+if DEBUG:
+    ALLOWED_HOSTS += DEV_ONLY_HOSTS
 
 # Google Analytics 4 measurement id (e.g. 'G-XXXXXXXXXX'). Empty = analytics off.
 GA_MEASUREMENT_ID = os.getenv('GA_MEASUREMENT_ID', '')
@@ -47,12 +105,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django.contrib.sites",  # new
     "django.contrib.sitemaps",  # new 
-    'compressor',
     'storages',
     'ckeditor',
     'ckeditor_uploader',
     # internal apps
     'apps.home',
+    'apps.credentials',
 ]
 
 SITE_ID = 1  # new
@@ -70,13 +128,25 @@ MIDDLEWARE = [
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
-# CSRF settings
-CSRF_COOKIE_SECURE = True  # Only send CSRF cookie over HTTPS
-CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to access the CSRF cookie
-CSRF_TRUSTED_ORIGINS = ['https://idi.africa', 'https://www.idi.africa','http://localhost', 'http://127.0.0.1','http://170.187.145.60','https://*.ngrok-free.app','https://*.ngrok-free.dev','https://*.ngrok.io','https://*.ngrok.app','https://*.ngrok.dev', 'https://*.localtunnel.me', 'https://*.loca.lt']  # Trusted origins that can submit forms
+# CSRF / session cookies.
+# These are gated on DEBUG rather than hardcoded True: marking cookies Secure
+# means the browser will not send them over plain HTTP, so an unconditional True
+# makes admin login impossible on a local http://127.0.0.1 server.
+CSRF_COOKIE_SECURE = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
 
-# Session settings
-SESSION_COOKIE_SECURE = True  # Only send session cookie over HTTPS
+CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to access the CSRF cookie
+SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+# Origins trusted to submit forms.
+CSRF_TRUSTED_ORIGINS = env_list(
+    'CSRF_TRUSTED_ORIGINS',
+    default=['https://idi.africa', 'https://www.idi.africa', 'http://170.187.145.60'],
+)
+if DEBUG:
+    CSRF_TRUSTED_ORIGINS += DEV_ONLY_ORIGINS
 
 ROOT_URLCONF = 'idi.urls'
 
@@ -112,16 +182,23 @@ if os.getenv('DB_NAME'):
             'PASSWORD': os.getenv('DB_PASSWORD'),
             'HOST': os.getenv('DB_HOST'),
             'PORT': os.getenv('DB_PORT'),
-            'CONN_MAX_AGE': 600
+            'CONN_MAX_AGE': 600,
+            'CONN_HEALTH_CHECKS': True,
         }
     }
-else:
+elif DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+else:
+    # Falling back to SQLite in production would silently start the site against an
+    # empty local file instead of the real database. Fail loudly instead.
+    raise ImproperlyConfigured(
+        'DB_NAME must be set in the environment when DEBUG is off.'
+    )
 
 
 
@@ -149,7 +226,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -158,14 +235,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-COMPRESS_ROOT = BASE_DIR / 'static'
 
-COMPRESS_ENABLED = True
 
+# django-compressor was installed and enabled, but not one template contained a
+# "compress" template tag, so it only ever produced stale artefacts in
+# static/CACHE. WhiteNoise's CompressedManifestStaticFilesStorage already handles
+# hashing plus gzip/brotli, so the dependency was removed entirely.
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -203,6 +281,28 @@ if USE_S3:
         # so an existing local media tree syncs to the bucket root 1:1.
     }
 
+# Private storage for archived certificate PDFs.
+# A SEPARATE bucket, not a prefix: the Garage website flag is per-bucket and the
+# Traefik /media/ router matches the whole prefix, so anything in the default
+# bucket is world-readable with a one-year immutable cache. querystring_auth=True
+# makes admin download links short-lived presigned URLs instead.
+CERT_BUCKET_NAME = os.getenv('CERT_BUCKET_NAME', '')
+if USE_S3 and CERT_BUCKET_NAME:
+    STORAGES['certificates'] = {
+        'BACKEND': 'storages.backends.s3.S3Storage',
+        'OPTIONS': {
+            'bucket_name': CERT_BUCKET_NAME,
+            'endpoint_url': os.getenv('AWS_S3_ENDPOINT_URL'),
+            'region_name': os.getenv('AWS_S3_REGION_NAME', 'garage'),
+            'addressing_style': 'path',
+            'signature_version': 's3v4',
+            'querystring_auth': True,     # presigned, expiring URLs
+            'querystring_expire': 300,    # 5 minutes
+            'file_overwrite': False,
+            'default_acl': None,
+        },
+    }
+
 # File upload settings - ensure proper permissions
 FILE_UPLOAD_PERMISSIONS = 0o644
 FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
@@ -212,7 +312,6 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 26214400   # 25MB
 # CKEditor settings
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
-X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 customColorPalette = [
@@ -265,38 +364,30 @@ SESSION_COOKIE_AGE = 86400  # 24 hours
 # Security Headers
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
+# SAMEORIGIN, not DENY: the CKEditor file browser used by the admin renders in a
+# same-origin iframe, which DENY blocks. Defined exactly once -- it was previously
+# set in two places with conflicting values.
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
 # HTTPS hardening — only enforced in production (DEBUG=False) so local HTTP dev still works.
 # nginx terminates TLS and forwards X-Forwarded-Proto, so trust it for is_secure().
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
+
+    # On by default, but overridable so the container can be run locally in
+    # production mode (DEBUG=False) without TLS. Left unconditional, plain HTTP to
+    # 127.0.0.1:8000 gets a 301 to https://127.0.0.1:8000, where gunicorn speaks
+    # no TLS -- the browser then hangs on a handshake that never completes and the
+    # site appears to load forever. In real deployments Traefik terminates TLS and
+    # forwards X-Forwarded-Proto, so this stays on there.
+    SECURE_SSL_REDIRECT = env_bool('SECURE_SSL_REDIRECT', default=True)
     # Health checks (Docker/orchestrators) probe over plain HTTP — exempt them
     # from the HTTPS redirect so they get 200 instead of a 301.
     SECURE_REDIRECT_EXEMPT = [r'^health/$']
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
-
-# Static Files Optimization
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-]
-
-# Compression Settings
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = False
-COMPRESS_CSS_FILTERS = [
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.rCSSMinFilter',
-]
-COMPRESS_JS_FILTERS = [
-    'compressor.filters.jsmin.JSMinFilter',
-]
 
 # Logging Configuration
 LOGGING = {
@@ -319,10 +410,87 @@ LOGGING = {
         'level': 'INFO',
     },
     'loggers': {
+        # Every executed SQL statement was previously logged in development,
+        # which buries real output. Opt in explicitly with SQL_DEBUG=true.
         'django.db.backends': {
             'handlers': ['console'],
-            'level': 'DEBUG' if DEBUG else 'INFO',
+            'level': 'DEBUG' if env_bool('SQL_DEBUG') else 'WARNING',
+            'propagate': False,
+        },
+        'apps.credentials': {
+            'handlers': ['console'],
+            'level': 'INFO',
             'propagate': False,
         },
     },
 }
+
+
+# ---------------------------------------------------------------------------
+# Cache
+# ---------------------------------------------------------------------------
+# There was previously no CACHES setting at all, so Django fell back to a
+# per-process LocMemCache. Gunicorn runs 4 preloaded workers that recycle at
+# --max-requests, which makes any cache-based counter (rate limiting in
+# apps.credentials, in particular) split four ways and reset unpredictably.
+# Locally this points at the shared dev-valkey container; Valkey speaks the
+# Redis protocol, so Django's built-in RedisCache works unchanged.
+CACHE_URL = os.getenv('CACHE_URL', 'redis://127.0.0.1:6379/3')
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': CACHE_URL,
+        # dev-valkey is shared with other projects: keep IDI keys in their own
+        # namespace as well as their own database index.
+        'KEY_PREFIX': os.getenv('CACHE_KEY_PREFIX', 'idi'),
+    }
+}
+
+# ---------------------------------------------------------------------------
+# Proxy / client IP
+# ---------------------------------------------------------------------------
+# Traefik terminates TLS and proxies to gunicorn, appending the real client to
+# X-Forwarded-For. Number of proxy hops we control, counted from the right of
+# that header. Anything further left is client-supplied and must not be trusted.
+TRUSTED_PROXY_HOPS = int(os.getenv('TRUSTED_PROXY_HOPS', '1'))
+
+# Salt for hashing visitor IPs in the certificate scan log. Deliberately NOT
+# SECRET_KEY: rotating the secret key is routine and must neither break scan
+# de-duplication nor de-anonymise the log. An unsalted SHA-256 of an IPv4 address
+# is trivially reversible, so this salt is the entire privacy control -- keep it
+# secret and do not remove it.
+SCAN_IP_SALT = os.getenv('SCAN_IP_SALT', '')
+if not SCAN_IP_SALT:
+    if DEBUG:
+        SCAN_IP_SALT = 'dev-only-scan-salt'
+    else:
+        raise ImproperlyConfigured(
+            'SCAN_IP_SALT must be set in the environment when DEBUG is off.'
+        )
+
+# ---------------------------------------------------------------------------
+# Email
+# ---------------------------------------------------------------------------
+# Previously absent entirely, which meant contact-form notifications could not be
+# sent and BrokenLinkEmailsMiddleware silently mailed nobody. Locally this points
+# at the dev-mailpit container (web UI on :8025).
+EMAIL_BACKEND = os.getenv(
+    'EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend'
+)
+EMAIL_HOST = os.getenv('EMAIL_HOST', '127.0.0.1')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', '1025'))
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = env_bool('EMAIL_USE_TLS', default=False)
+EMAIL_TIMEOUT = 10
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'IDI Africa <noreply@idi.africa>')
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
+
+# Where contact-form notifications go.
+CONTACT_NOTIFICATION_EMAILS = env_list(
+    'CONTACT_NOTIFICATION_EMAILS', default=['collectives@idi.africa']
+)
+
+_admin_emails = env_list('ADMIN_EMAILS')
+ADMINS = [('IDI Admin', addr) for addr in _admin_emails]
+MANAGERS = ADMINS

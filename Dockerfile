@@ -64,8 +64,15 @@ RUN mkdir -p /app/media /app/staticfiles /app/cache && \
     chown -R django:django /app/media /app/staticfiles /app/cache && \
     chmod -R 755 /app/media
 
-# Collect static files (hashed + gzip + brotli via WhiteNoise; runs before switching users)
-RUN python manage.py collectstatic --noinput
+# Collect static files (hashed + gzip + brotli via WhiteNoise; runs before switching users).
+#
+# DEBUG=True is scoped to this single RUN layer and does not persist into the
+# image. Settings intentionally refuse to boot without SECRET_KEY, SCAN_IP_SALT
+# and DB_NAME when DEBUG is off, and none of those are available at build time --
+# .env is excluded from the build context so secrets never enter an image layer.
+# collectstatic needs no database and no secrets, and STORAGES is configured
+# independently of DEBUG, so the hashing/compression output is identical.
+RUN DEBUG=True python manage.py collectstatic --noinput
 
 # Port where the Django app runs
 EXPOSE 8000

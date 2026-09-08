@@ -14,3 +14,4 @@ venv
 db.sqlite3
 .vscode/
 scratch/
+private_media/

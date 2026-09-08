@@ -26,7 +26,13 @@ from django.views.static import serve
 
 # Uploaded media rarely changes; let browsers/CDN cache it for 30 days.
 cached_media_serve = cache_control(max_age=2592000, public=True)(serve)
-from apps.home.sitemap import StaticSitemap, ProjectSitemap, TeamMemberSitemap
+from apps.home.sitemap import (
+    CaseStudySitemap,
+    ProgramSitemap,
+    ProjectSitemap,
+    StaticSitemap,
+    TeamMemberSitemap,
+)
 from apps.home.views import custom_bad_request, custom_page_not_found, custom_permission_denied, custom_server_error, llms_txt
 
 # AI answer-engine crawlers we explicitly welcome (GEO). They get the same
@@ -41,11 +47,28 @@ AI_CRAWLERS = [
 ]
 
 
+# Paths no crawler should index. Defined once and emitted in EVERY user-agent
+# block below -- a disallow added only to the "User-agent: *" block does not apply
+# to a bot that matches its own more specific block.
+#
+# /verify/ and /v/ are certificate-verification lookups keyed by a per-recipient
+# code: one indexable URL per certificate issued, exposing recipient names in
+# search snippets. Crawl exclusion here is a courtesy; the actual guarantee is the
+# noindex meta tag and X-Robots-Tag header set by the views themselves, since a
+# disallowed-but-linked URL can still surface as a bare result.
+DISALLOWED_PATHS = ["/admin/", "/verify/", "/v/"]
+
+
 @require_GET
 def robots_txt(request):
-    lines = ["User-agent: *", "Allow: /", "Disallow: /admin/", ""]
+    def block(user_agent):
+        lines = [f"User-agent: {user_agent}", "Allow: /"]
+        lines += [f"Disallow: {path}" for path in DISALLOWED_PATHS]
+        return lines + [""]
+
+    lines = block("*")
     for bot in AI_CRAWLERS:
-        lines += [f"User-agent: {bot}", "Allow: /", "Disallow: /admin/", ""]
+        lines += block(bot)
     lines += [
         f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
         f"# LLM-readable summary: {request.build_absolute_uri('/llms.txt')}",
@@ -67,11 +90,15 @@ handler400 = 'apps.home.views.custom_bad_request'
 sitemaps = {
     'static': StaticSitemap,
     'projects': ProjectSitemap,
+    'programs': ProgramSitemap,
+    'case_studies': CaseStudySitemap,
     'team': TeamMemberSitemap,
 }
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Mounted before the home include so /verify/ and /v/ resolve here.
+    path('', include('apps.credentials.urls', namespace='credentials')),
     path('', include('apps.home.urls', namespace='home')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     

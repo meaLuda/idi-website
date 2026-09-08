@@ -1,17 +1,4 @@
 services:
-  db:
-    image: postgres:15-alpine
-    container_name: idi_postgres
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: idi_db
-      POSTGRES_USER: idi_user
-      POSTGRES_PASSWORD: idi_password
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
   web:
     build: .
     ports:
@@ -27,12 +14,29 @@ services:
       - .env
     environment:
       - DEBUG=False
-      - DB_HOST=db
+      # The shared dev-postgres container already running on this machine, rather
+      # than a second Postgres bundled into this compose file. DB_NAME/DB_USER/
+      # DB_PASSWORD come from .env and point at a database dedicated to this
+      # branch, so the other branch's ididb is left alone.
+      - DB_HOST=host.docker.internal
+      - DB_PORT=5432
+      # 127.0.0.1 inside a container is the container, not the host, so the
+      # default cache URL cannot reach the shared dev-valkey. The throttle fails
+      # open, so a wrong value degrades quietly rather than breaking pages --
+      # which is exactly why it is worth setting explicitly.
+      - CACHE_URL=redis://host.docker.internal:6379/3
+      # Local runs have no TLS in front of the container. Without this, every
+      # request 301s to https://127.0.0.1:8000, which gunicorn cannot serve, so
+      # the browser hangs. Remove (or set True) wherever a TLS terminator such as
+      # Traefik sits in front.
+      - SECURE_SSL_REDIRECT=False
       # Media settings
       - MEDIA_ROOT=/app/media
       - MEDIA_URL=/media/
-    depends_on:
-      - db
+    extra_hosts:
+      # Docker Desktop provides this automatically; declaring it keeps the
+      # compose file working on Linux engines too.
+      - "host.docker.internal:host-gateway"
     # Ensure proper user mapping for volume permissions
     # user: "1000:1000"  # Commented out for server deployment - let entrypoint handle permissions
     restart: unless-stopped
@@ -52,5 +56,3 @@ services:
     profiles:
       - production
 
-volumes:
-  pgdata:

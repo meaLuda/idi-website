@@ -1,11 +1,17 @@
-pillow
-django
-django-ckeditor
-gunicorn
+# Pinned deliberately: this file was previously unpinned for django/pillow, so every
+# image rebuild could pull a different major version. Versions below are the set
+# verified to boot and pass the test suite (`manage.py check` + `manage.py test`).
+Django == 6.1.1
+pillow == 12.3.0
+django-ckeditor == 6.7.3
+gunicorn == 23.0.0
 whitenoise[brotli] == 6.5.0
-python-dotenv
-django-compressor
-psycopg2-binary
-requests
+python-dotenv == 1.2.1
+psycopg2-binary == 2.9.12
+requests == 2.34.2
 django-storages == 1.14.2
 boto3 == 1.34.0
+
+# Certificate verification (apps.credentials)
+segno == 1.6.6            # QR generation: zero deps, native SVG with physical units
+redis == 7.1.0            # cache/throttle backend (Django's built-in RedisCache client)
