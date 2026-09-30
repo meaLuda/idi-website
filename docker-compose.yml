@@ -6,8 +6,10 @@ services:
     volumes:
       # Mount media directory with proper permissions
       - ./media:/app/media
-      # Optional: Mount static files for development
-      - ./staticfiles:/app/staticfiles
+      # NOTE: /app/staticfiles is deliberately NOT mounted. A volume there shadows
+      # the collectstatic output baked into the image, forcing the entrypoint to
+      # rebuild ~5,800 compressed files before gunicorn can start. WhiteNoise
+      # serves them from inside the image.
     # Inject secrets (SECRET_KEY, DB credentials, GA_MEASUREMENT_ID, ...) from the host
     # .env at runtime — keeps them out of the built image.
     env_file:

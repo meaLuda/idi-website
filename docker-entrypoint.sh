@@ -63,9 +63,25 @@ fix_media_permissions() {
 }
 
 # Function to collect static files (WhiteNoise generates hashed + gzip/brotli variants).
+#
 # NOTE: no --clear. Clearing wipes the target dir first, which on a fresh/wrong-owned
 # named volume triggers a permissions crash-loop. collectstatic is idempotent without it.
+#
+# The Dockerfile already runs collectstatic at build time, so the image ships a
+# complete staticfiles tree and manifest. Repeating it at every container start
+# reprocessed ~5,800 files (each gzipped AND brotli-compressed), which took over
+# three minutes on a loaded host -- and because it runs before gunicorn binds,
+# that was three minutes of 404s on every deploy and every rollback.
+#
+# So: skip when the image's own manifest is already present. Set
+# FORCE_COLLECTSTATIC=true to override, which is what you want if /app/staticfiles
+# is a volume that shadows the image's copy.
 collect_static() {
+    if [ "${FORCE_COLLECTSTATIC:-false}" != "true" ] \
+       && [ -f /app/staticfiles/staticfiles.json ]; then
+        echo "Static files already collected in the image; skipping (set FORCE_COLLECTSTATIC=true to force)."
+        return 0
+    fi
     echo "Collecting static files..."
     python manage.py collectstatic --noinput
 }
