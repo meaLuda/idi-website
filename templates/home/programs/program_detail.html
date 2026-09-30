@@ -99,10 +99,17 @@ marked up.
 <!-- Hero Section with improved visual presentation -->
 <section id="cover-{{ program.id }}" class="relative h-[50vh] md:h-[75vh] program-hero-padding">
     <div class="absolute inset-0">
-        <img src="{% if program.image %}{{ program.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
+        {% if program.image %}<img src="{{ program.image.url }}" 
              alt="{{ program.title }}" 
              class="w-full h-full object-cover"
              loading="eager">
+        {% else %}
+        {% comment %} No image on file. Previously this loaded a stock photo from
+           cdn.pixabay.com on every render -- a third-party request and an
+           odd stand-in. A flat brand tint is decorative, so it is hidden
+           from assistive technology. {% endcomment %}
+        <div class="w-full h-full bg-brand-teal-500/10" aria-hidden="true"></div>
+        {% endif %}
         <!-- Enhanced gradient overlay for better accessibility -->
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
     </div>

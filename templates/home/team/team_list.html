@@ -29,17 +29,36 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                 {% for member in team_members %}
                 <a href="{{ member.get_absolute_url }}" class="group relative rounded-2xl overflow-hidden shadow-card aspect-[4/5] bg-gray-100 block">
-                    <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
-                        alt="{{ member.name }}" 
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    {% if member.image %}
+                    <img src="{{ member.image.url }}"
+                        alt="{{ member.name }}"
+                        width="640" height="800" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    {% else %}
+                    {% comment %} No photo on file. Previously this pulled a stock galaxy image
+                       from cdn.pixabay.com -- a third-party request on every render,
+                       and a strange stand-in for a person. The initials block below
+                       needs no network and reads correctly. {% endcomment %}
+                    <div class="w-full h-full flex items-center justify-center bg-brand-teal-500/10"
+                         role="img" aria-label="{{ member.name }}">
+                        <span class="text-4xl font-black text-brand-teal-500/50 select-none" aria-hidden="true">
+                            {{ member.name|slice:":1"|upper }}
+                        </span>
+                    </div>
+                    {% endif %}
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-teal-900/95 via-brand-teal-900/40 to-transparent flex flex-col justify-end p-6">
-                        <h4 class="text-xl font-bold text-white mb-1">{{ member.name }}</h4>
+                        <h2 class="text-xl font-bold text-white mb-1">{{ member.name }}</h2>
                         <p class="text-sm text-brand-orange font-semibold uppercase tracking-wider mb-4">{{ member.position }}</p>
-                        <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <span class="text-white hover:text-brand-orange-ink">
+                        {% if member.linkedin %}
+                        {% comment %} Shown on hover AND on focus, so keyboard users can see it.
+                           Rendered only when a profile actually exists -- it used to
+                           be a decorative <span> that linked nowhere. {% endcomment %}
+                        <div class="flex space-x-3 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300">
+                            <span class="text-white">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             </span>
                         </div>
+                        {% endif %}
                     </div>
                 </a>
                 {% empty %}

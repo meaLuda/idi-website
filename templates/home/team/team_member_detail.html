@@ -56,9 +56,16 @@
                     <div class="md:col-span-5 bg-gradient-to-b from-[#f3f3f3] to-[#e9f5f7] p-8 md:p-12 flex flex-col items-center justify-center text-center">
                         <div class="relative w-64 h-64 md:w-72 md:h-72 mb-8">
                             <div class="absolute inset-0 bg-[#006377] rounded-full opacity-10 blur-xl transform scale-105"></div>
-                            <img src="{% if member.image %}{{ member.image.url }}{% else %}https://cdn.pixabay.com/photo/2022/10/07/10/56/the-universe-7504793_960_720.jpg{% endif %}" 
+                            {% if member.image %}<img src="{{ member.image.url }}" 
                                  alt="{{ member.name }}" 
                                  class="relative w-full h-full object-cover rounded-full shadow-lg border-4 border-white grayscale hover:grayscale-0 transition-all duration-500" loading="lazy">
+        {% else %}
+        {% comment %} No image on file. Previously this loaded a stock photo from
+           cdn.pixabay.com on every render -- a third-party request and an
+           odd stand-in. A flat brand tint is decorative, so it is hidden
+           from assistive technology. {% endcomment %}
+        <div class="w-full h-full bg-brand-teal-500/10" aria-hidden="true"></div>
+        {% endif %}
                         </div>
                         
                         <h1 class="text-3xl md:text-4xl font-bold text-[#006377] mb-3">{{ member.name }}</h1>
