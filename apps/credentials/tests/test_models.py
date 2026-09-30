@@ -126,15 +126,27 @@ class SnapshotTests(TestCase):
 
 
 class ImmutabilityTests(TestCase):
-    def test_editing_an_issued_certificate_raises(self):
+    def test_editing_a_verified_certificate_raises(self):
+        """Locking is triggered by verification, not by issuance."""
         cert = make_certificate(make_cohort())
-        cert = Certificate.objects.get(pk=cert.pk)  # reload so _loaded_values is set
+        Certificate.objects.filter(pk=cert.pk).update(scan_count=1)
+        cert = Certificate.objects.get(pk=cert.pk)
         cert.recipient_full_name = 'Someone Entirely Different'
         with self.assertRaises(ValidationError):
             cert.save()
 
-    def test_editing_each_frozen_field_raises(self):
+    def test_an_unverified_certificate_can_be_corrected(self):
+        """Registrars issue directly as 'issued'; typos must be fixable."""
         cert = make_certificate(make_cohort())
+        cert = Certificate.objects.get(pk=cert.pk)
+        cert.recipient_full_name = 'Ada N. Kimani'
+        cert.save()
+        cert.refresh_from_db()
+        self.assertEqual(cert.recipient_full_name, 'Ada N. Kimani')
+
+    def test_editing_each_frozen_field_raises_once_verified(self):
+        cert = make_certificate(make_cohort())
+        Certificate.objects.filter(pk=cert.pk).update(scan_count=1)
         for field, value in [
             ('recipient_full_name', 'Other Person'),
             ('program_title', 'Other Programme'),

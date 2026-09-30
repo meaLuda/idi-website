@@ -71,12 +71,20 @@ class ReadonlyFieldTests(TestCase):
         readonly = self.admin.get_readonly_fields(self._request(), draft)
         self.assertNotIn('recipient_full_name', readonly)
 
-    def test_issued_freezes_the_credential_fields(self):
+    def test_verification_freezes_the_credential_fields(self):
         issued = make_certificate(self.cohort)
+        Certificate.objects.filter(pk=issued.pk).update(scan_count=1)
+        issued.refresh_from_db()
         readonly = self.admin.get_readonly_fields(self._request(), issued)
         for field in ('recipient_full_name', 'program_title', 'completion_date',
                       'issue_date', 'serial'):
             self.assertIn(field, readonly, f'{field} is still editable after issue')
+
+    def test_an_unverified_issued_certificate_stays_editable(self):
+        issued = make_certificate(self.cohort)
+        readonly = self.admin.get_readonly_fields(self._request(), issued)
+        self.assertNotIn('recipient_full_name', readonly)
+        self.assertNotIn('program_title', readonly)
 
     def test_status_and_revocation_stay_editable(self):
         issued = make_certificate(self.cohort)

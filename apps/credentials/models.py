@@ -293,20 +293,41 @@ class Certificate(models.Model):
         instance._loaded_values = dict(zip(field_names, values))
         return instance
 
+    @property
+    def is_locked(self):
+        """True once the record must stop changing.
+
+        Immutability exists so a certificate someone has already verified cannot
+        be quietly altered underneath them. It was originally applied the moment a
+        certificate left draft, which in practice meant every record locked
+        instantly -- registrars issue directly as 'issued', so a typo in a
+        recipient's name could not be corrected at all, only revoked and reissued.
+
+        A certificate nobody has ever looked up carries no such expectation, so it
+        stays editable until its first verification. After that, or once it is
+        revoked or superseded, corrections go through revoke + reissue.
+        """
+        if self.status in (self.Status.REVOKED, self.Status.SUPERSEDED):
+            return True
+        return bool(self.scan_count)
+
     def _assert_frozen_fields_unchanged(self):
         loaded = getattr(self, '_loaded_values', None)
         if not loaded:
             return
         if loaded.get('status') == self.Status.DRAFT:
             return  # drafts are still editable
+        if not self.is_locked:
+            return  # issued but never verified by anyone -- corrections allowed
         changed = [
             name for name in FROZEN_FIELDS
             if name in loaded and loaded[name] != getattr(self, name)
         ]
         if changed:
             raise ValidationError(
-                'A certificate that has left draft cannot be edited '
-                f'({", ".join(changed)}). Revoke it and issue a replacement instead.'
+                'This certificate has already been verified by someone (or has '
+                f'been revoked), so {", ".join(changed)} can no longer be changed. '
+                'Revoke it and issue a replacement instead.'
             )
 
     def _apply_cohort_snapshots(self):
