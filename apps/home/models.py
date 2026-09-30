@@ -69,11 +69,20 @@ class TeamMember(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
+    # Display position, matching the convention used by Project, ServicePillar,
+    # HomeStat, Partner and Client. TeamMember was the only content model without
+    # one, so the team page was stuck in alphabetical order with no way to put
+    # leadership first. Lower numbers appear first; ties fall back to name.
+    order = models.PositiveSmallIntegerField(
+        default=0,
+        help_text='Lower numbers appear first. Equal numbers sort alphabetically.',
+    )
+
     class Meta:
-        # Without an ordering, `TeamMember.objects.all()[:6]` is a LIMIT with no
-        # ORDER BY, which returns an arbitrary six rows on PostgreSQL, and the
-        # sitemap paginates an unordered queryset.
-        ordering = ['name']
+        # An explicit ordering also matters because `TeamMember.objects.all()[:6]`
+        # would otherwise be a LIMIT with no ORDER BY, which returns an arbitrary
+        # six rows on PostgreSQL, and the sitemap paginates an unordered queryset.
+        ordering = ['order', 'name']
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -401,3 +410,142 @@ class NewsletterSubscriber(models.Model):
     def __str__(self):
         return self.email
 
+
+
+class CaseStudy(models.Model):
+    """A case study, editable in the admin.
+
+    These previously lived as Python dictionaries in apps/home/views.py
+    (CASE_STUDIES and CASE_STUDY_DETAIL_DATA), which meant the only case studies
+    anyone could edit were the three backed by the Project model. Everything else
+    required a code change and a deploy to correct a typo.
+
+    Field names deliberately mirror the keys the existing templates already read,
+    so the templates needed almost no change.
+    """
+
+    slug = models.SlugField(unique=True, max_length=120)
+    title = models.CharField(max_length=200)
+    subtitle = models.CharField(
+        max_length=250, blank=True,
+        help_text='Short line under the title on the detail page.',
+    )
+    teaser = models.TextField(
+        blank=True,
+        help_text='Short description for the listing card. 1-2 sentences.',
+    )
+    category = models.CharField(
+        max_length=80, blank=True,
+        help_text="Shown as the card label, e.g. 'GENDER RIGHTS'.",
+    )
+    sector = models.CharField(max_length=80, blank=True)
+    client = models.CharField(max_length=200, blank=True)
+    partners_text = models.CharField(
+        max_length=250, blank=True,
+        help_text="Partner names for the card, e.g. 'UNEP · GIZ · Action Lab'.",
+    )
+    timeline = models.CharField(max_length=100, blank=True, help_text="e.g. '2023 - 2024'")
+
+    challenge = models.CharField(
+        max_length=300, blank=True,
+        help_text='One-line problem summary shown on the card.',
+    )
+    overview = models.TextField(blank=True)
+    our_role = models.TextField(blank=True)
+    key_insight = models.TextField(blank=True)
+    approach_text = models.TextField(blank=True)
+    outcome_text = models.TextField(blank=True)
+    measuring_success = models.TextField(blank=True)
+
+    hero_image = models.ImageField(upload_to='uploads/case_studies/', blank=True, null=True)
+    hero_image_static = models.CharField(
+        max_length=200, blank=True,
+        help_text='Path under static/ for legacy imported imagery. Ignored if an image is uploaded.',
+    )
+
+    tags = models.CharField(
+        max_length=200, blank=True,
+        help_text="Comma-separated, e.g. 'Health, Digitisation, Youth'",
+    )
+    bg_color = models.CharField(
+        max_length=40, blank=True,
+        help_text="Tailwind class for the card background, e.g. 'bg-[#f5f1ea]'",
+    )
+
+    is_published = models.BooleanField(
+        default=True,
+        help_text='Untick to hide from the site without deleting it.',
+    )
+    order = models.PositiveSmallIntegerField(
+        default=0, help_text='Lower numbers appear first.',
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = 'Case study'
+        verbose_name_plural = 'Case studies'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        downscale_image_field(self.hero_image, max_edge=1600)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('home:case_study_detail', kwargs={'slug': self.slug})
+
+    @property
+    def tag_list(self):
+        return [t.strip() for t in self.tags.split(',') if t.strip()]
+
+    @property
+    def hero(self):
+        """Uploaded image if present, else the legacy static path."""
+        if self.hero_image:
+            return self.hero_image.url
+        return None
+
+    @property
+    def headline_stats(self):
+        """Measured outcomes only — the numbers safe to lead with."""
+        return self.stats.filter(kind=CaseStudyStat.Kind.OUTCOME)
+
+
+class CaseStudyStat(models.Model):
+    """A single figure shown on a case study.
+
+    `kind` exists because not every number on a case study is something IDI
+    achieved. Prevalence figures describe the problem being addressed, and
+    presenting them as results would overclaim. Only OUTCOME stats are used as
+    headline figures.
+    """
+
+    class Kind(models.TextChoices):
+        OUTCOME = 'outcome', 'Outcome (something we achieved)'
+        CONTEXT = 'context', 'Context (describes the problem, not our result)'
+
+    case_study = models.ForeignKey(
+        CaseStudy, on_delete=models.CASCADE, related_name='stats',
+    )
+    value = models.CharField(max_length=40, help_text="e.g. '91%', '5', '<15 min'")
+    label = models.CharField(max_length=160, help_text="e.g. 'faster case research'")
+    kind = models.CharField(max_length=10, choices=Kind.choices, default=Kind.OUTCOME)
+    note = models.CharField(
+        max_length=200, blank=True,
+        help_text='Optional qualifier shown with the figure, e.g. the source or scope.',
+    )
+    order = models.PositiveSmallIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+        verbose_name = 'Statistic'
+        verbose_name_plural = 'Statistics'
+
+    def __str__(self):
+        return f'{self.value} {self.label}'

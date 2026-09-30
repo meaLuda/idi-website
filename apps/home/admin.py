@@ -1,16 +1,21 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import ContactMessage, Project, TeamMember, Testimonial, Program, Partner, Client, HomeStat, ServicePillar
+from .models import CaseStudy, CaseStudyStat, ContactMessage, Project, TeamMember, Testimonial, Program, Partner, Client, HomeStat, ServicePillar
 
 @admin.register(TeamMember)
 class TeamMemberAdmin(admin.ModelAdmin):
-    list_display = ('name', 'position', 'updated_at')
+    # `order` first and list-editable so positions can be set for the whole team
+    # on one screen, rather than opening each member in turn.
+    list_display = ('order', 'name', 'position', 'updated_at')
+    list_editable = ('order',)
+    list_display_links = ('name',)
+    ordering = ('order', 'name')
     search_fields = ('name', 'position')
     readonly_fields = ('created_at', 'updated_at')
     fieldsets = (
         (None, {
-            'fields': ('name', 'position', 'image', 'background_shape', 'bio')
+            'fields': ('name', 'position', 'order', 'image', 'background_shape', 'bio')
         }),
         ('Additional Information', {
             'fields': ('linkedin', 'slug', 'created_at', 'updated_at')
@@ -171,4 +176,67 @@ class ContactMessageAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False
+
+
+class CaseStudyStatInline(admin.TabularInline):
+    """Statistics edited alongside the case study itself."""
+
+    model = CaseStudyStat
+    extra = 3
+    fields = ('order', 'value', 'label', 'kind', 'note')
+    ordering = ('order', 'id')
+
+
+@admin.register(CaseStudy)
+class CaseStudyAdmin(admin.ModelAdmin):
+    """Case studies.
+
+    Until now only the three Project-backed studies were editable; the rest were
+    Python dictionaries in views.py, so changing a word meant a code deploy.
+    """
+
+    list_display = ('order', 'title', 'category', 'partners_text',
+                    'stat_summary', 'is_published')
+    list_display_links = ('title',)
+    list_editable = ('order', 'is_published')
+    list_filter = ('is_published', 'category')
+    search_fields = ('title', 'slug', 'teaser', 'overview', 'partners_text')
+    prepopulated_fields = {'slug': ('title',)}
+    ordering = ('order', 'title')
+    inlines = [CaseStudyStatInline]
+    readonly_fields = ('created_at', 'updated_at')
+    fieldsets = (
+        ('Card (what people see in the listing)', {
+            'fields': ('title', 'slug', 'category', 'partners_text', 'teaser',
+                       'challenge', 'hero_image', 'bg_color'),
+            'description': 'The teaser and the statistics below are what appear '
+                           'on the case-studies listing.',
+        }),
+        ('Detail page', {
+            'fields': ('subtitle', 'sector', 'client', 'timeline', 'tags',
+                       'overview', 'our_role', 'key_insight', 'approach_text',
+                       'outcome_text', 'measuring_success'),
+        }),
+        ('Publishing', {'fields': ('is_published', 'order', 'created_at', 'updated_at')}),
+        ('Legacy imagery', {
+            'classes': ('collapse',),
+            'fields': ('hero_image_static',),
+            'description': 'Static path kept from the imported content. Upload a '
+                           'hero image above to replace it.',
+        }),
+    )
+
+    @admin.display(description='Stats')
+    def stat_summary(self, obj):
+        outcomes = obj.stats.filter(kind=CaseStudyStat.Kind.OUTCOME).count()
+        context = obj.stats.filter(kind=CaseStudyStat.Kind.CONTEXT).count()
+        if not outcomes and not context:
+            return '—'
+        parts = [f'{outcomes} outcome'] if outcomes else []
+        if context:
+            parts.append(f'{context} context')
+        return ', '.join(parts)
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related('stats')
 

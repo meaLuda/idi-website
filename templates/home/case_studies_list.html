@@ -150,7 +150,17 @@ client-side hiding, which would only ever filter the current page.
             <article class="case-card {{ case.bg_color|default:'bg-white' }} border border-gray-100 rounded-[24px] overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300 h-full">
                 <!-- Image -->
                 <div class="h-[230px] overflow-hidden bg-gray-100 rounded-t-[24px]">
-                    <img src="{% static case.image %}" alt="{{ case.title }}" class="w-full h-full object-cover">
+                    {% if case.hero_image %}
+                    <img src="{{ case.hero_image.url }}" alt="{{ case.title }}"
+                         width="800" height="460" loading="lazy" decoding="async"
+                         class="w-full h-full object-cover">
+                    {% elif case.hero_image_static %}
+                    <img src="{% static case.hero_image_static %}" alt="{{ case.title }}"
+                         width="800" height="460" loading="lazy" decoding="async"
+                         class="w-full h-full object-cover">
+                    {% else %}
+                    <div class="w-full h-full bg-brand-teal-500/10" aria-hidden="true"></div>
+                    {% endif %}
                 </div>
 
                 <!-- Content -->
@@ -167,22 +177,37 @@ client-side hiding, which would only ever filter the current page.
                     </div>
 
                     <!-- Category label -->
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-4 block">{{ case.category }}</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 block">{{ case.category }}</span>
+                    {% if case.partners_text %}
+                    <span class="text-[11px] text-ink-muted mb-4 block">{{ case.partners_text }}</span>
+                    {% else %}<span class="mb-4 block"></span>{% endif %}
 
                     <!-- Challenge -->
                     <p class="text-[13px] font-medium text-ink-muted leading-relaxed mb-6 flex-grow">
-                        <span class="font-bold text-ink">Challenge:</span> {{ case.challenge }}
+                        {% if case.teaser %}{{ case.teaser }}
+                        {% else %}<span class="font-bold text-ink">Challenge:</span> {{ case.challenge }}{% endif %}
                     </p>
 
-                    <!-- Stat block -->
-                    <div class="mb-6">
-                        <span class="cs-stat-val">{{ case.stat_value }}</span>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-ink block leading-none mt-1">{{ case.stat_label }}</span>
+                    <!-- Stat block: outcomes lead; context figures are marked. -->
+                    {% if case.stats.exists %}
+                    <div class="mb-6 grid grid-cols-2 gap-x-4 gap-y-3">
+                        {% for stat in case.stats.all %}
+                        <div>
+                            <span class="cs-stat-val">{{ stat.value }}</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-ink block leading-tight mt-1">
+                                {{ stat.label }}
+                            </span>
+                            {% if stat.kind == 'context' %}
+                            <span class="text-[9px] uppercase tracking-wider text-ink-muted/70 block mt-0.5">Context</span>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
                     </div>
+                    {% endif %}
 
                     <!-- Tags -->
                     <div class="flex flex-wrap gap-2 pt-5 border-t {% if case.bg_color == 'bg-[#f5f1ea]' %}border-gray-300{% else %}border-gray-100{% endif %}">
-                        {% for tag in case.tags %}
+                        {% for tag in case.tag_list %}
                         <span class="px-3 py-1.5 text-[10px] font-bold rounded-full {% if case.bg_color == 'bg-[#f5f1ea]' %}bg-white text-ink shadow-sm border border-gray-100{% else %}bg-transparent border border-gray-200 text-ink-muted{% endif %}">
                             {{ tag }}
                         </span>

@@ -1,7 +1,7 @@
 import logging
 
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.core.mail import send_mail
 from django.core.validators import validate_email
@@ -13,6 +13,8 @@ from django.views.generic import DetailView
 
 from .forms import ContactForm
 from .models import (
+    CaseStudy,
+    CaseStudyStat,
     Client,
     ContactMessage,
     NewsletterSubscriber,
@@ -532,8 +534,15 @@ CASE_STUDIES = [
 
 # New view for Case Studies page
 def case_studies_list(request):
+    # Sourced from the CaseStudy model so the team can edit these in the admin.
+    # They were previously a Python list here, which meant only the three
+    # Project-backed studies were editable and everything else needed a deploy.
     page_number = request.GET.get('page', 1)
-    paginator = Paginator(CASE_STUDIES, 6)
+    queryset = (
+        CaseStudy.objects.filter(is_published=True)
+        .prefetch_related('stats')
+    )
+    paginator = Paginator(queryset, 6)
     page_obj = paginator.get_page(page_number)
 
     # SEO metadata
@@ -950,31 +959,72 @@ def _build_default_detail(slug, title, category, challenge, stat_value, stat_lab
 
 def case_study_detail(request, slug):
     if slug == 'kenyas-ai-opportunities-plan-action-lab':
-        from django.shortcuts import redirect
         return redirect('home:project_detail', slug='kenyas-ai-opportunities-plan-action-lab')
 
-    detail = CASE_STUDY_DETAIL_DATA.get(slug)
-
-    if detail is None:
-        card = next((c for c in CASE_STUDIES if c["slug"] == slug), None)
-        if card:
+    # The database is the source of truth. The legacy dictionaries below remain
+    # only as a fallback for any slug not yet imported, and can be deleted once
+    # every case study has been confirmed in the admin.
+    case_study = (
+        CaseStudy.objects.filter(slug=slug, is_published=True)
+        .prefetch_related('stats')
+        .first()
+    )
+    if case_study is not None:
+        cs = _case_study_context(case_study)
+    else:
+        detail = CASE_STUDY_DETAIL_DATA.get(slug)
+        if detail is None:
+            card = next((c for c in CASE_STUDIES if c.get('slug') == slug), None)
+            if card is None:
+                raise Http404('Case study not found')
             detail = _build_default_detail(**card)
-        else:
-            from django.http import Http404
-            raise Http404("Case study not found")
+        cs = detail
 
     context = {
-        'cs': detail,
-        'page_title': detail['title'],
-        'page_description': detail['overview'][:160],
-        'page_keywords': f'{detail["title"]}, Case Study, Decision Intelligence Design, Africa, IDI',
+        'cs': cs,
+        'page_title': cs.get('title', 'Case Study'),
+        'page_description': (cs.get('teaser') or cs.get('overview') or '')[:300],
+        'page_keywords': 'Case Study, Decision Intelligence Design, Africa',
     }
     return render(request, 'home/case_studies_detail.html', context)
 
 
-# New view for Team page
+def _case_study_context(case_study):
+    """Shape a CaseStudy row into the dict the detail template already expects."""
+    stats = list(case_study.stats.all())
+    return {
+        'slug': case_study.slug,
+        'title': case_study.title,
+        'subtitle': case_study.subtitle,
+        'teaser': case_study.teaser,
+        'category': case_study.category,
+        'sector': case_study.sector,
+        'client': case_study.client,
+        'partners_text': case_study.partners_text,
+        'timeline': case_study.timeline,
+        'tags': case_study.tag_list,
+        'overview': case_study.overview,
+        'our_role': case_study.our_role,
+        'key_insight': case_study.key_insight,
+        'approach_text': case_study.approach_text,
+        'outcome_text': case_study.outcome_text,
+        'measuring_success': case_study.measuring_success,
+        'hero_image': case_study.hero_image_static or '',
+        'hero_image_url': case_study.hero_image.url if case_study.hero_image else '',
+        # Only measured outcomes lead the page; context figures are listed
+        # separately so a prevalence statistic is never read as a result.
+        'output_stats': [
+            {'value': s.value, 'label': s.label, 'note': s.note}
+            for s in stats if s.kind == 'outcome'
+        ],
+        'context_stats': [
+            {'value': s.value, 'label': s.label, 'note': s.note}
+            for s in stats if s.kind == 'context'
+        ],
+    }
+
 def team_list(request):
-    team_members = TeamMember.objects.order_by('name')
+    team_members = TeamMember.objects.order_by('order', 'name')
     
     # SEO metadata
     context = {
